@@ -4,19 +4,28 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public List<GameObject> trashList = new List<GameObject>(5);
-    public GameObject trashPrefab;
+    public List<GameObject> trashList = new List<GameObject>(10);
+    public GameObject[] trashPrefab;
     public Camera mainCamera;
     public float maxDistance = 5f;
+    public float delay = 2f;
+    public float timer = 0f;
 
     private void Update()
     {
+        timer += Time.deltaTime;
         for (int i = 0; i < trashList.Count; i++)
         {
             if (trashList[i] == null)
             {
-                trashList.RemoveAt(i);
-                SpawnRandomTrash(trashPrefab);
+                int randInt = Random.Range(0, trashPrefab.Length);
+                if(timer >= delay)
+                {
+                    trashList.RemoveAt(i);
+                    SpawnRandomTrash(trashPrefab[randInt]);
+                    timer = 0f;
+                }
+
             }
         }
 

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - test
+  - ConstructPoint
   layers:
   - Default
   - TransparentFX
