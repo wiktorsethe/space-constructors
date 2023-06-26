@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrashMovement : MonoBehaviour
+public class Meteorite : MonoBehaviour
 {
     [Header("Other Scripts")]
     public GameManager gameManager;
@@ -17,20 +17,20 @@ public class TrashMovement : MonoBehaviour
     [Header("Variables")]
     public float speed = 5f;
     private float bufferDistance = 1f;
-    private float distanceToPlayer = 4f;
+
     private void Start()
     {
         gameManager = GameObject.FindObjectOfType(typeof(GameManager)) as GameManager;
         camSize = GameObject.FindObjectOfType(typeof(CameraSize)) as CameraSize;
         gameManager.AddToTrashList(gameObject);
         mainCamera = Camera.main;
-        distanceToPlayer = (camSize.shipX + camSize.shipY) / 2f;
+
 
         playerShip = GameObject.FindGameObjectWithTag("Player").transform;
-        
+
         Vector3 direction = playerShip.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        angle += CalculateAngleOffset(direction.magnitude, distanceToPlayer);
+        angle += CalculateAngleOffset(direction.magnitude, 2f);
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
@@ -59,5 +59,4 @@ public class TrashMovement : MonoBehaviour
         float offsetAngle = Mathf.Asin(offsetDistance / Mathf.Max(distance, minDistance)) * Mathf.Rad2Deg;
         return offsetAngle;
     }
-
 }

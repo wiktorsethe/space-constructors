@@ -6,6 +6,7 @@ TagManager:
   tags:
   - test
   - ConstructPoint
+  - Ship
   layers:
   - Default
   - TransparentFX

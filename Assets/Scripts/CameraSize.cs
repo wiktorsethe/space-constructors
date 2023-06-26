@@ -5,49 +5,61 @@ using UnityEngine;
 
 public class CameraSize : MonoBehaviour
 {
+    [Header("Objects")]
     public Transform parentObject;
     public Transform shipCenter;
-
     private Camera mainCamera;
+    [Space(20f)]
 
-
+    [Header("Variables")]
+    public float shipX;
+    public float shipY;
     private void Start()
     {
         mainCamera = Camera.main;
         ChangeCamSize();
+  
     }
-    
+
     public void ChangeCamSize()
     {
         if (parentObject != null)
         {
             Bounds parentBounds = CalculateParentBounds();
 
-            // Obliczanie odleg³oœci kamery od obiektu, aby ca³y obiekt by³ widoczny
-            float objectHeight = parentBounds.size.y * 5;
+            shipX = parentBounds.size.x;
+            shipY = parentBounds.size.y;
+            float objectHeight = parentBounds.size.y * 2;
+
             float objectWidth = parentBounds.size.x * 2;
             float distance = (objectHeight / 2f) / Mathf.Tan(mainCamera.fieldOfView * 0.5f * Mathf.Deg2Rad);
 
-            // Ustawianie pozycji kamery na œrodek obiektu
             Vector3 cameraPosition = shipCenter.position - mainCamera.transform.forward * distance;
             mainCamera.transform.position = cameraPosition;
 
-            // Ustawianie wielkoœci widoku kamery
             float frustumHeight = 2f * distance * Mathf.Tan(mainCamera.fieldOfView * 0.5f * Mathf.Deg2Rad);
             float frustumWidth = frustumHeight * mainCamera.aspect;
 
             if (objectWidth > objectHeight)
             {
                 mainCamera.orthographicSize = objectWidth * 0.5f;
+                if (mainCamera.orthographicSize <= 5f)
+                {
+                    mainCamera.orthographicSize = 5f;
+                }
             }
             else
             {
                 mainCamera.orthographicSize = objectHeight * 0.5f;
+                if(mainCamera.orthographicSize <= 5f)
+                {
+                    mainCamera.orthographicSize = 5f;
+                }
             }
         }
     }
 
-    private Bounds CalculateParentBounds()
+    public Bounds CalculateParentBounds()
     {
         Renderer[] renderers = parentObject.GetComponentsInChildren<Renderer>();
 

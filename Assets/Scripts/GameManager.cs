@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Lists and Objects")]
     public List<GameObject> trashList = new List<GameObject>(10);
     public GameObject[] trashPrefab;
     public Camera mainCamera;
+    [Space(20f)]
+
+    [Header("Variables")]
     public float maxDistance = 5f;
     public float delay = 2f;
     public float timer = 0f;

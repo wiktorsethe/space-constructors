@@ -5,21 +5,31 @@ using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
+    [Header("Other Scripts")]
+    private ShipManager shipManager;
+    [Space(20f)]
+
+    [Header("Objects")]
     public GameObject constructMenu;
     public GameObject gameMenu;
     public GameObject pauseMenu;
     public GameObject shipPartMenuPrefab;
-    private ShipManager shipManager;
+    [Space(20f)]
+
+    [Header("Lists")]
     public GameObject[] constructPoints;
     public List<GameObject> shipPartsInstantiate = new List<GameObject>();
+
     private void Start()
     {
         shipManager = GameObject.FindObjectOfType(typeof(ShipManager)) as ShipManager;
+
     }
     public void ConstructMenu()
     {
         constructMenu.SetActive(true);
-        
+
+
         for (int i = 0; i < shipPartsInstantiate.Count; i++)
         {
             Destroy(shipPartsInstantiate[i]);
@@ -35,6 +45,8 @@ public class Menu : MonoBehaviour
     }
     public void PauseMenu()
     {
+        shipManager.RotateToCenter();
+        shipManager.MoveObj();
         Time.timeScale = 0f;
         pauseMenu.SetActive(true);
         gameMenu.SetActive(false);
@@ -50,6 +62,7 @@ public class Menu : MonoBehaviour
         constructMenu.SetActive(false);
         gameMenu.SetActive(true);
         pauseMenu.SetActive(false);
+
         constructPoints = GameObject.FindGameObjectsWithTag("ConstructPoint");
         Time.timeScale = 1f;
         for (int i = 0; i < constructPoints.Length; i++)
@@ -62,4 +75,6 @@ public class Menu : MonoBehaviour
     {
         constructMenu.SetActive(false);
     }
+
+
 }

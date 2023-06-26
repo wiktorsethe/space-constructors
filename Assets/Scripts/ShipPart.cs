@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class ShipPart : MonoBehaviour
 {
-    public List<GameObject> shipPrefabList = new List<GameObject>();
+    [Header("Other Scripts")]
     private Menu menu;
     private ShipManager shipManager;
+    [Space(20f)]
+
+    [Header("List")]
+    public List<GameObject> shipPrefabList = new List<GameObject>();
+
     private void Start()
     {
         shipManager = GameObject.FindObjectOfType(typeof(ShipManager)) as ShipManager;
