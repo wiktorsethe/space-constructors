@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 
 public class CameraSize : MonoBehaviour
 {
@@ -9,51 +9,47 @@ public class CameraSize : MonoBehaviour
     public Transform parentObject;
     public Transform shipCenter;
     private Camera mainCamera;
-    [Space(20f)]
-
-    [Header("Variables")]
-    public float shipX;
-    public float shipY;
+ 
     private void Start()
     {
         mainCamera = Camera.main;
         ChangeCamSize();
   
     }
-
     public void ChangeCamSize()
     {
         if (parentObject != null)
         {
             Bounds parentBounds = CalculateParentBounds();
 
-            shipX = parentBounds.size.x;
-            shipY = parentBounds.size.y;
-            float objectHeight = parentBounds.size.y * 2;
+            float objectHeight = parentBounds.size.y * 2f;
 
-            float objectWidth = parentBounds.size.x * 2;
+            float objectWidth = parentBounds.size.x * 1.5f;
             float distance = (objectHeight / 2f) / Mathf.Tan(mainCamera.fieldOfView * 0.5f * Mathf.Deg2Rad);
 
-            Vector3 cameraPosition = shipCenter.position - mainCamera.transform.forward * distance;
-            mainCamera.transform.position = cameraPosition;
+            //Vector3 cameraPosition = shipCenter.position - mainCamera.transform.forward * distance;
+            //mainCamera.transform.position = cameraPosition;
 
             float frustumHeight = 2f * distance * Mathf.Tan(mainCamera.fieldOfView * 0.5f * Mathf.Deg2Rad);
             float frustumWidth = frustumHeight * mainCamera.aspect;
 
             if (objectWidth > objectHeight)
             {
-                mainCamera.orthographicSize = objectWidth * 0.5f;
-                if (mainCamera.orthographicSize <= 5f)
+                float targetSize = objectWidth * 0.5f;
+                //mainCamera.orthographicSize = objectWidth * 0.5f;
+                DOTween.To(() => mainCamera.orthographicSize, x => mainCamera.orthographicSize = x, targetSize, 1f).SetUpdate(UpdateType.Normal, true);
+                if (targetSize <= 5f)
                 {
-                    mainCamera.orthographicSize = 5f;
+                    DOTween.To(() => mainCamera.orthographicSize, x => mainCamera.orthographicSize = x, 5f, 1f).SetUpdate(UpdateType.Normal, true);
                 }
             }
             else
             {
-                mainCamera.orthographicSize = objectHeight * 0.5f;
-                if(mainCamera.orthographicSize <= 5f)
+                float targetSize = objectHeight * 0.5f;
+                DOTween.To(() => mainCamera.orthographicSize, x => mainCamera.orthographicSize = x, targetSize, 1f).SetUpdate(UpdateType.Normal, true);
+                if (targetSize <= 5f)
                 {
-                    mainCamera.orthographicSize = 5f;
+                    DOTween.To(() => mainCamera.orthographicSize, x => mainCamera.orthographicSize = x, 5f, 1f).SetUpdate(UpdateType.Normal, true);
                 }
             }
         }
@@ -76,5 +72,10 @@ public class CameraSize : MonoBehaviour
         }
 
         return new Bounds(Vector3.zero, Vector3.zero);
+    }
+    public void CamSize(float targetSize, float duration)
+    {   
+        
+        DOTween.To(() => mainCamera.orthographicSize, x => mainCamera.orthographicSize = x, targetSize, duration).SetUpdate(UpdateType.Normal, true);
     }
 }

@@ -5,8 +5,8 @@ using UnityEngine;
 public class Meteorite : MonoBehaviour
 {
     [Header("Other Scripts")]
-    public GameManager gameManager;
-    public CameraSize camSize;
+    private GameManager gameManager;
+    private HpBar hpBar;
     [Space(20f)]
 
     [Header("Objects")]
@@ -21,8 +21,8 @@ public class Meteorite : MonoBehaviour
     private void Start()
     {
         gameManager = GameObject.FindObjectOfType(typeof(GameManager)) as GameManager;
-        camSize = GameObject.FindObjectOfType(typeof(CameraSize)) as CameraSize;
-        gameManager.AddToTrashList(gameObject);
+        hpBar = GameObject.FindObjectOfType(typeof(HpBar)) as HpBar;
+        //gameManager.AddToTrashList(gameObject);
         mainCamera = Camera.main;
 
 
@@ -58,5 +58,13 @@ public class Meteorite : MonoBehaviour
         float minDistance = 0.01f;
         float offsetAngle = Mathf.Asin(offsetDistance / Mathf.Max(distance, minDistance)) * Mathf.Rad2Deg;
         return offsetAngle;
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.CompareTag("Player"))
+        {
+            hpBar.SetHealth(30f);
+            Destroy(gameObject);
+        }
     }
 }

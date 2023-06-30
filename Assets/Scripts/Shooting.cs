@@ -17,7 +17,7 @@ public class Shooting : MonoBehaviour
     void Update()
     {
         shootTimer += Time.deltaTime;
-        if(shootTimer >= 1f)
+        if(shootTimer >= 3f)
         {
             FireBullet();
             shootTimer = 0f;

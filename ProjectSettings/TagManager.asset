@@ -7,6 +7,9 @@ TagManager:
   - test
   - ConstructPoint
   - Ship
+  - Bullet
+  - Enemy
+  - Planet
   layers:
   - Default
   - TransparentFX

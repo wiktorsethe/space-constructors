@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 7589423825356600477}
   - component: {fileID: 6834733014254051563}
   - component: {fileID: 1524484626093203621}
-  - component: {fileID: 2739690927284687488}
   - component: {fileID: 406641218820950976}
+  - component: {fileID: 8661883830537309268}
   m_Layer: 5
   m_Name: ConstructPoint
   m_TagString: ConstructPoint
@@ -123,8 +123,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2739690927284687488}
-        m_TargetAssemblyTypeName: ShipPart, Assembly-CSharp
+      - m_Target: {fileID: 8661883830537309268}
+        m_TargetAssemblyTypeName: ConstructPoint, Assembly-CSharp
         m_MethodName: ActiveConstructMenu
         m_Mode: 1
         m_Arguments:
@@ -135,21 +135,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &2739690927284687488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8910757091375593749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2250ac0a5813cac4f8136c0746ed1c7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shipPrefabList:
-  - {fileID: 0}
-  - {fileID: 5953221920737725232, guid: 3a6b92c16afd98c45838f02c733ece46, type: 3}
 --- !u!58 &406641218820950976
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -166,3 +151,16 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.125
+--- !u!114 &8661883830537309268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8910757091375593749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb7714278afc19143a6adf9c51b679c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shipPrefabList: []
