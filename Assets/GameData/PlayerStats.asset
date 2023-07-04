@@ -16,8 +16,8 @@ MonoBehaviour:
   currentHealth: 10
   experience: 0
   level: 1
-  bestTime: 28.811804
+  bestTime: 38.720566
   mostKills: 0
   mostGoldEarned: 0
-  gold: 1448
-  gravity: 111
+  gold: 698
+  gravity: 999

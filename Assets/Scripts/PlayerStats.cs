@@ -14,4 +14,5 @@ public class PlayerStats : ScriptableObject
     public int mostGoldEarned;
     public int gold;
     public int gravity;
+    public int ore;
 }

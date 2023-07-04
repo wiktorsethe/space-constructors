@@ -2,34 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class EnemyWarrior : MonoBehaviour
 {
     private ExpBar expBar;
+    private HpBar hpBar;
     public float health;
     public int experience; // ??
     public int gold;
     public GameManager gameManager;
     public PlayerStats playerStats;
     private GameObject player;
-    public float inTarget = 7;
-
-    public float bulletSpeed = 10f;
-    public string target;
-    private float shootTimer = 0f;
-
-    public GameObject bulletPrefab;
-    public Transform firePoint;
-
+    private float attackTimer = 0f;
     private float moveSpeed = 2f;
     private void Start()
     {
         expBar = GameObject.FindObjectOfType(typeof(ExpBar)) as ExpBar;
+        hpBar = GameObject.FindObjectOfType(typeof(HpBar)) as HpBar;
         gameManager = GameObject.FindObjectOfType(typeof(GameManager)) as GameManager;
         player = GameObject.FindGameObjectWithTag("Player");
     }
     private void Update()
     {
-        if(health <= 0)
+        attackTimer += Time.deltaTime;
+        if (health <= 0)
         {
             expBar.SetExperience(experience);
             playerStats.gold += gold;
@@ -38,37 +33,27 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
         }
         float distance = Vector2.Distance(transform.position, player.transform.position);
-        shootTimer += Time.deltaTime;
-        if (distance < inTarget)
-        {
-            if(shootTimer < 2f)
-            {
-                Vector3 vectorToTarget = player.transform.position - transform.position;
-                transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget);
-            }
-
-            if (shootTimer >= 3f)
-            {
-                FireBullet();
-                shootTimer = 0f;
-            }
-        }
-        else if(distance >= (inTarget - 1f) && distance < 30f)
+        if (distance < 30f && attackTimer >= 2.5f)
         {
             Vector3 vectorToTarget = player.transform.position - transform.position;
-            transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget);
+            transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget); // rotacja do przegadania bo pewnie bedzie tylko L/R
             //transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime); //ciekawe rzeczy jak weümiemy .right
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
         }
-
     }
-
-    void FireBullet()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        bullet.GetComponent<ShootingBullet>().target = target;
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        Vector2 bulletVelocity = firePoint.up * bulletSpeed;
-        rb.velocity = bulletVelocity;
+        if(collision.transform.tag == "Player")
+        {
+            attackTimer = 0f;
+        }
+    }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if(collision.transform.tag == "Player" && attackTimer > 2f)
+        {
+            hpBar.SetHealth(5f);
+            attackTimer = 0f;
+        }
     }
 }

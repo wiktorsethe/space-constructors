@@ -24,7 +24,7 @@ public class ShootingBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Ship") && target == "Player")
+        if (collision.gameObject.CompareTag("Ship") && target == "Ship")
         {
             hpBar.SetHealth(5f);
             Destroy(gameObject);
@@ -32,6 +32,11 @@ public class ShootingBullet : MonoBehaviour
         else if (collision.gameObject.CompareTag("Enemy") && target == "Enemy")
         {
             collision.gameObject.GetComponent<Enemy>().health -= 5f;
+            Destroy(gameObject);
+        }
+        if (collision.gameObject.CompareTag("Player") && target == "Player")
+        {
+            hpBar.SetHealth(5f);
             Destroy(gameObject);
         }
     }
