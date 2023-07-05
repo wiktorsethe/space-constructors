@@ -87,8 +87,8 @@ public class ExpBar : MonoBehaviour
     }
     public void SetExperience(int exp)
     {
-        expBar.value += exp;
         playerStats.experience += exp;
+        DOTween.To(() => expBar.value, x => expBar.value = x, playerStats.experience, 1.5f);
     }
     public void StartNewLevel()
     {

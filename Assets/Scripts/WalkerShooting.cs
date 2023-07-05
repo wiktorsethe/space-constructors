@@ -42,6 +42,10 @@ public class WalkerShooting : MonoBehaviour
             FireBullet();
             shootTimer = 0f;
         }
+        else if(enemies.Length == 0)
+        {
+            distance = 1000f;
+        }
 
     }
 

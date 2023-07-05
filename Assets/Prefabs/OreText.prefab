@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2939861516415387379}
   - component: {fileID: 6012977892133567931}
-  - component: {fileID: 5434990024660534800}
   - component: {fileID: 1186229341284731582}
   - component: {fileID: 4572195796217859194}
+  - component: {fileID: 435087885714341342}
   m_Layer: 5
   m_Name: OreText
   m_TagString: Untagged
@@ -82,18 +82,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5434990024660534800
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8062151463999637536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8efd372193a546040991dfe35d5d2843, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &1186229341284731582
 Animator:
   serializedVersion: 5
@@ -207,3 +195,15 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 6012977892133567931}
   m_maskType: 0
+--- !u!114 &435087885714341342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8062151463999637536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5c87d37a9ae54b4b969fc31b3a0bf31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

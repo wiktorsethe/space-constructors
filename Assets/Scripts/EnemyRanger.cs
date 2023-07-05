@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
-
+using TMPro;
 public class EnemyRanger : MonoBehaviour
 {
     private ExpBar expBar;
     public float health;
-    public int experience; // ??
+    public int experience;
     public int gold;
     public GameManager gameManager;
     public PlayerStats playerStats;
@@ -33,21 +33,28 @@ public class EnemyRanger : MonoBehaviour
     public int maxHealth;
     private int currentHealth;
     [SerializeField] private float Angle;
+    private float hideTimer = 0f;
+
+    [SerializeField] private GameObject miningTextPrefab;
+
     private void Start()
     {
         expBar = GameObject.FindObjectOfType(typeof(ExpBar)) as ExpBar;
         gameManager = GameObject.FindObjectOfType(typeof(GameManager)) as GameManager;
         player = GameObject.FindGameObjectWithTag("Player");
+
+        canvas.worldCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        currentHealth = maxHealth;
+        SetMaxHealth(maxHealth);
+        healthBarCanvas.SetActive(false);
     }
     private void Update()
     {
-        if (health <= 0)
+        fillBar.color = healthGradient.Evaluate(healthBar.normalizedValue);
+        hideTimer += Time.deltaTime;
+        if(hideTimer > 2f)
         {
-            expBar.SetExperience(experience);
-            playerStats.gold += gold;
-            gameManager.goldEarned += gold;
-            gameManager.kills += 1;
-            Destroy(gameObject);
+            healthBarCanvas.SetActive(false);
         }
         float distance = Vector2.Distance(transform.position, player.transform.position);
         shootTimer += Time.deltaTime;
@@ -56,7 +63,7 @@ public class EnemyRanger : MonoBehaviour
             if (shootTimer < 2f)
             {
                 Vector3 vectorToTarget = player.transform.position - transform.position;
-                transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget);
+                transform.Find("EnemyRangerImage").transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget);
             }
 
             if (shootTimer >= 3f)
@@ -68,13 +75,11 @@ public class EnemyRanger : MonoBehaviour
         else if (distance >= (inTarget - 1f) && distance < 30f)
         {
             Vector3 vectorToTarget = player.transform.position - transform.position;
-            transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget); // rotacja do przegadania bo pewnie bedzie tylko L/R
             //transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime); //ciekawe rzeczy jak weŸmiemy .right
+            transform.Find("EnemyRangerImage").transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget);
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
         }
-
     }
-
     void FireBullet()
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
@@ -92,5 +97,29 @@ public class EnemyRanger : MonoBehaviour
     public void SetHealth()
     {
         DOTween.To(() => healthBar.value, x => healthBar.value = x, currentHealth, 1.5f);
+    }
+    public void CollisionDetected()
+    {
+        healthBarCanvas.SetActive(true);
+        hideTimer = 0f;
+        currentHealth -= 10;
+        SetHealth();
+        if (currentHealth <= 0)
+        {
+            expBar.SetExperience(experience);
+            playerStats.gold += gold;
+            gameManager.goldEarned += gold;
+            gameManager.kills += 1;
+            Destroy(gameObject, 2f);
+        }
+        if (miningTextPrefab)
+        {
+            ShowMiningText(10);
+        }
+    }
+    private void ShowMiningText(int amount)
+    {
+        var text = Instantiate(miningTextPrefab, transform.position, Quaternion.identity);
+        text.GetComponent<TMP_Text>().text = "+ " + amount.ToString();
     }
 }

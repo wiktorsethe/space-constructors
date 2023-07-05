@@ -31,7 +31,6 @@ public class ShootingBullet : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Enemy") && target == "Enemy")
         {
-            collision.gameObject.GetComponent<Enemy>().health -= 5f;
             Destroy(gameObject);
         }
         if (collision.gameObject.CompareTag("Player") && target == "Player")
