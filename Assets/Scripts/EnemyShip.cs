@@ -4,23 +4,27 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
-public class EnemyWarrior : MonoBehaviour
+public class EnemyShip : MonoBehaviour
 {
     [Header("Other Scripts")]
     private ExpBar expBar;
-    public HpBar hpBar;
     private GameManager gameManager;
     public PlayerStats playerStats;
     [Space(20f)]
     [Header("Variables")]
     [SerializeField] private int experience;
     [SerializeField] private int gold;
-    public float attackTimer = 0f;
+    private float inTarget = 5;
+    private float shootTimer = 0f;
+    private float bulletSpeed = 10f;
     private float moveSpeed = 2f;
     [Space(20f)]
     [Header("GameObjects and Rest")]
     private GameObject player;
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject miningTextPrefab;
+    [SerializeField] private string target;
     [Space(20f)]
     [Header("Health System")]
     [SerializeField] private Canvas canvas;
@@ -32,14 +36,11 @@ public class EnemyWarrior : MonoBehaviour
     private int currentHealth;
     [SerializeField] private float Angle;
     private float hideTimer = 0f;
-
     private void Start()
     {
         expBar = GameObject.FindObjectOfType(typeof(ExpBar)) as ExpBar;
-        hpBar = GameObject.FindObjectOfType(typeof(HpBar)) as HpBar;
         gameManager = GameObject.FindObjectOfType(typeof(GameManager)) as GameManager;
         player = GameObject.FindGameObjectWithTag("Player");
-
         canvas.worldCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         currentHealth = maxHealth;
         SetMaxHealth(maxHealth);
@@ -53,16 +54,37 @@ public class EnemyWarrior : MonoBehaviour
         {
             healthBarCanvas.SetActive(false);
         }
-
-        attackTimer += Time.deltaTime;
         float distance = Vector2.Distance(transform.position, player.transform.position);
-        if (distance < 30f && attackTimer >= 2.5f)
+        shootTimer += Time.deltaTime;
+        if (distance <= inTarget)
+        {
+            if (shootTimer < 2f)
+            {
+                Vector3 vectorToTarget = player.transform.position - transform.position;
+                transform.Find("EnemyShipImage").transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget);
+            }
+
+            if (shootTimer >= 3f)
+            {
+                FireBullet();
+                shootTimer = 0f;
+            }
+        }
+        else if (distance > inTarget)
         {
             Vector3 vectorToTarget = player.transform.position - transform.position;
-            transform.Find("EnemyWarriorImage").transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget); // rotacja do przegadania bo pewnie bedzie tylko L/R
             //transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime); //ciekawe rzeczy jak weümiemy .right
+            transform.Find("EnemyShipImage").transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget);
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
         }
+    }
+    void FireBullet()
+    {
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        bullet.GetComponent<ShootingBullet>().target = target;
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        Vector2 bulletVelocity = firePoint.up * bulletSpeed;
+        rb.velocity = bulletVelocity;
     }
     public void SetMaxHealth(int health)
     {
@@ -86,6 +108,7 @@ public class EnemyWarrior : MonoBehaviour
             playerStats.gold += gold;
             gameManager.goldEarned += gold;
             gameManager.kills += 1;
+            shootTimer = -10f;
             Destroy(gameObject, 2f);
         }
         if (miningTextPrefab)

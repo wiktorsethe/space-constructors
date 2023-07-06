@@ -6,36 +6,36 @@ using DG.Tweening;
 using TMPro;
 public class EnemyRanger : MonoBehaviour
 {
+    [Header("Other Scripts")]
     private ExpBar expBar;
-    public float health;
-    public int experience;
-    public int gold;
-    public GameManager gameManager;
+    private GameManager gameManager;
     public PlayerStats playerStats;
-    private GameObject player;
-    public float inTarget = 7;
-
-    public float bulletSpeed = 10f;
-    public string target = "Player";
-    private float shootTimer = 0f;
-
-    public GameObject bulletPrefab;
-    public Transform firePoint;
-
+    [Space(20f)]
+    [Header("Variables")]
+    [SerializeField] private int experience;
+    [SerializeField] private int gold;
     private float moveSpeed = 2f;
-
+    private float shootTimer = 0f;
+    private float bulletSpeed = 10f;
+    private float inTarget = 7;
+    [Space(20f)]
+    [Header("GameObjects and Rest")]
+    private GameObject player;
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Transform firePoint;
+    [SerializeField] private GameObject miningTextPrefab;
+    [SerializeField] private string target = "Player";
+    [Space(20f)]
     [Header("Health System")]
     [SerializeField] private Canvas canvas;
     [SerializeField] private GameObject healthBarCanvas;
     [SerializeField] private Slider healthBar;
     [SerializeField] private Gradient healthGradient;
     [SerializeField] private Image fillBar;
-    public int maxHealth;
+    [SerializeField] private int maxHealth;
     private int currentHealth;
     [SerializeField] private float Angle;
     private float hideTimer = 0f;
-
-    [SerializeField] private GameObject miningTextPrefab;
 
     private void Start()
     {
@@ -77,7 +77,7 @@ public class EnemyRanger : MonoBehaviour
             Vector3 vectorToTarget = player.transform.position - transform.position;
             //transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime); //ciekawe rzeczy jak weümiemy .right
             transform.Find("EnemyRangerImage").transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget);
-            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
         }
     }
     void FireBullet()
@@ -110,6 +110,7 @@ public class EnemyRanger : MonoBehaviour
             playerStats.gold += gold;
             gameManager.goldEarned += gold;
             gameManager.kills += 1;
+            shootTimer = -10f;
             Destroy(gameObject, 2f);
         }
         if (miningTextPrefab)
@@ -120,6 +121,6 @@ public class EnemyRanger : MonoBehaviour
     private void ShowMiningText(int amount)
     {
         var text = Instantiate(miningTextPrefab, transform.position, Quaternion.identity);
-        text.GetComponent<TMP_Text>().text = "+ " + amount.ToString();
+        text.GetComponent<TMP_Text>().text = amount.ToString();
     }
 }

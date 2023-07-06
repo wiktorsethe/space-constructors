@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   currentHealth: 10
-  experience: 0
+  experience: 160
   level: 1
   bestTime: 38.720566
-  mostKills: 0
-  mostGoldEarned: 0
-  gold: 698
+  mostKills: 11
+  mostGoldEarned: 1100
+  gold: 1328
   gravity: 999
+  ore: 0

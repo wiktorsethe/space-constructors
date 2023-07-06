@@ -2,15 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelGenerator : MonoBehaviour
+public class UniverseLevelGenerator : MonoBehaviour
 {
     public List<GameObject> terrainSpawnPoints = new List<GameObject>();
     public GameObject[] levelParts;
     private Camera mainCamera;
-    private float bufferDistance = 1.2f;
+    private float bufferDistance = 10f;
     private void Start()
     {
         mainCamera = Camera.main;
+        Instantiate(levelParts[0], terrainSpawnPoints[0].transform.position, Quaternion.identity);
+        terrainSpawnPoints.RemoveAt(0);
     }
     private void Update()
     {
@@ -18,7 +20,7 @@ public class LevelGenerator : MonoBehaviour
         {
             if (!IsObjectOutsideScreen(terrainSpawnPoints[i]))
             {
-                int randInt = Random.Range(0, levelParts.Length);
+                int randInt = Random.Range(1, levelParts.Length);
                 Instantiate(levelParts[randInt], terrainSpawnPoints[i].transform.position, Quaternion.identity);
                 terrainSpawnPoints.RemoveAt(i);
             }

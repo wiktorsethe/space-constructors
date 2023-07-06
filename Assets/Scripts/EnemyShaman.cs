@@ -6,32 +6,36 @@ using DG.Tweening;
 using TMPro;
 public class EnemyShaman : MonoBehaviour
 {
+    [Header("Other Scripts")]
     private ExpBar expBar;
-    public float health;
-    public int experience; // ??
-    public int gold;
-    public GameManager gameManager;
     public PlayerStats playerStats;
-    private GameObject player;
+    private GameManager gameManager;
+    [Space(20f)]
+    [Header("Variables")]
+    [SerializeField] private int experience; // ??
+    [SerializeField] private int gold;
     private float spawnTimer = 0f;
     private float moveSpeed = 2f;
     public float inTarget = 7;
-    public GameObject[] spawnPoints;
-    public GameObject enemyWarriorPrefab;
-    public List<GameObject> minions = new List<GameObject>();
-
+    [Space(20f)]
+    [Header("GameObjects and Rest")]
+    private GameObject player;
+    [SerializeField] private GameObject[] spawnPoints;
+    [SerializeField] private GameObject enemyWarriorPrefab;
+    private List<GameObject> minions = new List<GameObject>();
+    [SerializeField] private GameObject miningTextPrefab;
+    [Space(20f)]
     [Header("Health System")]
     [SerializeField] private Canvas canvas;
     [SerializeField] private GameObject healthBarCanvas;
     [SerializeField] private Slider healthBar;
     [SerializeField] private Gradient healthGradient;
     [SerializeField] private Image fillBar;
-    public int maxHealth;
+    [SerializeField] private int maxHealth;
     private int currentHealth;
     [SerializeField] private float Angle;
     private float hideTimer = 0f;
 
-    [SerializeField] private GameObject miningTextPrefab;
     private void Start()
     {
         expBar = GameObject.FindObjectOfType(typeof(ExpBar)) as ExpBar;
@@ -57,7 +61,7 @@ public class EnemyShaman : MonoBehaviour
         {
             Vector3 vectorToTarget = player.transform.position - transform.position;
             transform.Find("EnemyShamanImage").transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget); // rotacja do przegadania bo pewnie bedzie tylko L/R
-            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
         }
         else if(distance < inTarget)
         {
@@ -107,6 +111,6 @@ public class EnemyShaman : MonoBehaviour
     private void ShowMiningText(int amount)
     {
         var text = Instantiate(miningTextPrefab, transform.position, Quaternion.identity);
-        text.GetComponent<TMP_Text>().text = "+ " + amount.ToString();
+        text.GetComponent<TMP_Text>().text = amount.ToString();
     }
 }

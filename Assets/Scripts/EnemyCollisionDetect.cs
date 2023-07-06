@@ -20,6 +20,10 @@ public class EnemyCollisionDetect : MonoBehaviour
             {
                 transform.parent.GetComponent<EnemyShaman>().CollisionDetected();
             }
+            if (transform.parent.tag == "EnemyShip")
+            {
+                transform.parent.GetComponent<EnemyShip>().CollisionDetected();
+            }
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -44,4 +48,5 @@ public class EnemyCollisionDetect : MonoBehaviour
             }
         }
     }
+
 }

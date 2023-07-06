@@ -8,11 +8,13 @@ TagManager:
   - ConstructPoint
   - Ship
   - Bullet
-  - Enemy
   - Planet
   - EnemyWarrior
   - EnemyShaman
   - EnemyRanger
+  - EnemyShip
+  - Enemy
+  - EnemyDash
   layers:
   - Default
   - TransparentFX

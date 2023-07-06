@@ -4,23 +4,24 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
-public class EnemyWarrior : MonoBehaviour
+public class EnemyDash : MonoBehaviour
 {
     [Header("Other Scripts")]
     private ExpBar expBar;
-    public HpBar hpBar;
     private GameManager gameManager;
     public PlayerStats playerStats;
     [Space(20f)]
     [Header("Variables")]
     [SerializeField] private int experience;
     [SerializeField] private int gold;
-    public float attackTimer = 0f;
-    private float moveSpeed = 2f;
+    private float inTarget = 5;
+    private float moveSpeed = 7f;
+    public float dashSpeed = 0f;
     [Space(20f)]
     [Header("GameObjects and Rest")]
     private GameObject player;
     [SerializeField] private GameObject miningTextPrefab;
+    [SerializeField] private string target;
     [Space(20f)]
     [Header("Health System")]
     [SerializeField] private Canvas canvas;
@@ -32,14 +33,15 @@ public class EnemyWarrior : MonoBehaviour
     private int currentHealth;
     [SerializeField] private float Angle;
     private float hideTimer = 0f;
-
+    Vector3 vectorToTarget;
+    private bool hasDirection = false;
+    private bool isInState = false;
+    public bool triggerTouch = false;
     private void Start()
     {
         expBar = GameObject.FindObjectOfType(typeof(ExpBar)) as ExpBar;
-        hpBar = GameObject.FindObjectOfType(typeof(HpBar)) as HpBar;
         gameManager = GameObject.FindObjectOfType(typeof(GameManager)) as GameManager;
         player = GameObject.FindGameObjectWithTag("Player");
-
         canvas.worldCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         currentHealth = maxHealth;
         SetMaxHealth(maxHealth);
@@ -49,19 +51,49 @@ public class EnemyWarrior : MonoBehaviour
     {
         fillBar.color = healthGradient.Evaluate(healthBar.normalizedValue);
         hideTimer += Time.deltaTime;
+        dashSpeed += Time.deltaTime;
+        Debug.Log(triggerTouch);
         if (hideTimer > 2f)
         {
             healthBarCanvas.SetActive(false);
         }
-
-        attackTimer += Time.deltaTime;
         float distance = Vector2.Distance(transform.position, player.transform.position);
-        if (distance < 30f && attackTimer >= 2.5f)
+        if (distance <= inTarget && !isInState)
+        {
+
+            transform.Find("EnemyShipImage").transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget);
+            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, player.gameObject.GetComponent<ShipMovement>().moveSpeed * Time.deltaTime);
+            isInState = true;
+
+        }
+        else if (distance > inTarget && !isInState)
         {
             Vector3 vectorToTarget = player.transform.position - transform.position;
-            transform.Find("EnemyWarriorImage").transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget); // rotacja do przegadania bo pewnie bedzie tylko L/R
             //transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime); //ciekawe rzeczy jak weümiemy .right
+            transform.Find("EnemyShipImage").GetComponent<PolygonCollider2D>().isTrigger = false;
+            transform.Find("EnemyShipImage").transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget);
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
+        }
+        else if (isInState)
+        {
+            if (dashSpeed > 4f)
+            {
+                if (!hasDirection)
+                {
+                    vectorToTarget = player.transform.position - transform.position;
+                    hasDirection = true;
+                }
+                transform.Find("EnemyShipImage").GetComponent<PolygonCollider2D>().isTrigger = true;
+                transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget);
+                transform.Translate(Vector3.up * player.gameObject.GetComponent<ShipMovement>().moveSpeed * Time.deltaTime);
+                if (distance > inTarget && isInState && triggerTouch)
+                {
+                    dashSpeed = 0f;
+                    hasDirection = false;
+                    triggerTouch = false;
+                }
+            }
+
         }
     }
     public void SetMaxHealth(int health)
