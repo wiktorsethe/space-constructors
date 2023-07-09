@@ -7,7 +7,7 @@ public class UniverseLevelGenerator : MonoBehaviour
     public List<GameObject> terrainSpawnPoints = new List<GameObject>();
     public GameObject[] levelParts;
     private Camera mainCamera;
-    private float bufferDistance = 10f;
+    private float bufferDistance = 15f;
     private void Start()
     {
         mainCamera = Camera.main;

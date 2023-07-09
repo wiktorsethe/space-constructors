@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f0a9c7aa76a3284c8917c2d5c736654, type: 3}
+  m_Name: CardsDatabase
+  m_EditorClassIdentifier: 
+  cards:
+  - image: {fileID: 21300000, guid: 9125c204f566db048a92ebcb64d9d14a, type: 3}
+    description: You will get 10 damage more for normal gun but -2  in move speed
+    mineralCost: 0
+    screwCost: 0
+    normalGunDamageValue: 10
+    LaserGunDamageValue: 0
+    DoubleGunDamageValue: 0
+    BigGunDamageValue: 0
+    normalGunAttackSpeedValue: 0
+    LaserGunAttackSpeedValue: 0
+    DoubleGunAttackSpeedValue: 0
+    BigGunAttackSpeedValue: 0
+    moveSpeedValue: -2

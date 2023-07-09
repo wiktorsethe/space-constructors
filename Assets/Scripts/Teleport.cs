@@ -5,12 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class Teleport : MonoBehaviour
 {
-    public string targetScene;
+    [SerializeField] private string targetScene;
     private GameObject player;
-    public float attractionDistance = 5f;
-    public float attractionForce = 10f;
-    public CameraShake camShake;
-    public CameraSize camSize;
+    [SerializeField] private float attractionDistance = 5f;
+    [SerializeField] private float attractionForce = 10f;
+    private CameraShake camShake;
+    private CameraSize camSize;
     private Camera mainCamera;
     private bool sizeChanged = false;
     private float collisionTime = -1;

@@ -15,6 +15,7 @@ TagManager:
   - EnemyShip
   - Enemy
   - EnemyDash
+  - Terrain
   layers:
   - Default
   - TransparentFX
