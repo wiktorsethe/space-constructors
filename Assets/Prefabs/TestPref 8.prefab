@@ -114,7 +114,6 @@ GameObject:
   - component: {fileID: 5953221920737725235}
   - component: {fileID: 8435063709393020295}
   - component: {fileID: 3305462637453477550}
-  - component: {fileID: 3892786012035484861}
   m_Layer: 0
   m_Name: TestPref 8
   m_TagString: Ship
@@ -216,19 +215,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3892786012035484861
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5953221920737725232}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2250ac0a5813cac4f8136c0746ed1c7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cost: 100
 --- !u!1 &5953221921869543456
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,6 +412,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2566265039767232474, guid: c928b84be04ab294baf525fb5cc1f4fa, type: 3}
     - target: {fileID: 8661883830537309268, guid: 039168ff0887d144eaf236cb8c7227bb, type: 3}
+      propertyPath: shipPartType
+      value: main
+      objectReference: {fileID: 0}
+    - target: {fileID: 8661883830537309268, guid: 039168ff0887d144eaf236cb8c7227bb, type: 3}
       propertyPath: shipPrefabList.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -552,6 +542,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2566265039767232474, guid: c928b84be04ab294baf525fb5cc1f4fa, type: 3}
     - target: {fileID: 8661883830537309268, guid: 039168ff0887d144eaf236cb8c7227bb, type: 3}
+      propertyPath: shipPartType
+      value: main
+      objectReference: {fileID: 0}
+    - target: {fileID: 8661883830537309268, guid: 039168ff0887d144eaf236cb8c7227bb, type: 3}
       propertyPath: shipPrefabList.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -677,6 +671,10 @@ PrefabInstance:
       propertyPath: shipPrefabList.Array.data[1]
       value: 
       objectReference: {fileID: 2566265039767232474, guid: c928b84be04ab294baf525fb5cc1f4fa, type: 3}
+    - target: {fileID: 8661883830537309268, guid: 039168ff0887d144eaf236cb8c7227bb, type: 3}
+      propertyPath: shipPartType
+      value: main
+      objectReference: {fileID: 0}
     - target: {fileID: 8661883830537309268, guid: 039168ff0887d144eaf236cb8c7227bb, type: 3}
       propertyPath: shipPrefabList.Array.size
       value: 2

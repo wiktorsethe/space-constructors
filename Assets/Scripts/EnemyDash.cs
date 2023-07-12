@@ -62,7 +62,7 @@ public class EnemyDash : MonoBehaviour
         {
 
             transform.Find("EnemyShipImage").transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget);
-            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, player.gameObject.GetComponent<ShipMovement>().moveSpeed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, playerStats.shipSpeedValue * Time.deltaTime);
             isInState = true;
 
         }
@@ -85,7 +85,7 @@ public class EnemyDash : MonoBehaviour
                 }
                 transform.Find("EnemyShipImage").GetComponent<PolygonCollider2D>().isTrigger = true;
                 transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget);
-                transform.Translate(Vector3.up * player.gameObject.GetComponent<ShipMovement>().moveSpeed * Time.deltaTime);
+                transform.Translate(Vector3.up * playerStats.shipSpeedValue * Time.deltaTime);
                 if (distance > inTarget && isInState && triggerTouch)
                 {
                     dashSpeed = 0f;

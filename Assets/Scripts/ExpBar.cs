@@ -8,16 +8,17 @@ public class ExpBar : MonoBehaviour
     public Slider expBar;
     public PlayerStats playerStats;
     private HpBar hpBar;
+    private Menu menu;
     private void Start()
     {
         GetExperience();
         hpBar = GameObject.FindObjectOfType(typeof(HpBar)) as HpBar;
+        menu = GameObject.FindObjectOfType(typeof(Menu)) as Menu;
     }
     private void Update()
     {
         if (expBar.value >= expBar.maxValue)
         {
-            playerStats.level += 1;
             StartNewLevel();
         }
     }
@@ -92,8 +93,15 @@ public class ExpBar : MonoBehaviour
     }
     public void StartNewLevel()
     {
-        expBar.value = 0;
+        playerStats.level++;
         playerStats.experience = 0;
+        SetExperience(0);
+        Invoke("EnterCardMenu", 2f);
         hpBar.RegenerateHealth();
+        GetExperience();
+    }
+    void EnterCardMenu()
+    {
+        menu.CardMenu();
     }
 }

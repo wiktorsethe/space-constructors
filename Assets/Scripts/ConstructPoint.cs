@@ -7,10 +7,7 @@ public class ConstructPoint : MonoBehaviour
     [Header("Other Scripts")]
     private Menu menu;
     private ShipManager shipManager;
-    [Space(20f)]
-
-    [Header("List")]
-    public List<GameObject> shipPrefabList = new List<GameObject>();
+    public string shipPartType;
 
     private void Start()
     {

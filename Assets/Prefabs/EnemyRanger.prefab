@@ -397,6 +397,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6827807731172849508}
   - component: {fileID: 6827807731172849507}
+  - component: {fileID: 1806739916165891088}
   m_Layer: 0
   m_Name: EnemyRanger
   m_TagString: EnemyRanger
@@ -433,16 +434,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a6d7d9dab9f0bc4295621355ffa49c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  playerStats: {fileID: 11400000, guid: 284895b3224468a48aa2a763a688b966, type: 2}
   experience: 10
   gold: 100
-  gameManager: {fileID: 0}
-  playerStats: {fileID: 11400000, guid: 284895b3224468a48aa2a763a688b966, type: 2}
-  inTarget: 7
-  bulletSpeed: 10
-  target: Player
   bulletPrefab: {fileID: 5949201873329385209, guid: fcc211509cfc5ed4083bfec3ab4eca73, type: 3}
   firePoint: {fileID: 1274150154848872869}
+  miningTextPrefab: {fileID: 8062151463999637536, guid: b9d2f93f3a98b4d4b8a1be849730c94f, type: 3}
+  target: Player
   canvas: {fileID: 8091111630722438857}
   healthBarCanvas: {fileID: 440217932249484122}
   healthBar: {fileID: 1024808554811514564}
@@ -478,4 +476,23 @@ MonoBehaviour:
   fillBar: {fileID: 1133387383564706749}
   maxHealth: 20
   Angle: 5
-  miningTextPrefab: {fileID: 8062151463999637536, guid: b9d2f93f3a98b4d4b8a1be849730c94f, type: 3}
+--- !u!114 &1806739916165891088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6827807731172849505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f3c539612fd085439dde3d60a72e49e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  droppedItemPrefab: {fileID: 8792934401642765450, guid: f27a101f2383d7249ba404bd7ce75b92, type: 3}
+  lootList:
+  - {fileID: 11400000, guid: e622f413ee7b9b04ebfd8f8cc3bea7cd, type: 2}
+  - {fileID: 11400000, guid: e2d73389d4b00ea4ea37784745f0340f, type: 2}
+  - {fileID: 11400000, guid: d0b8aa1e2a405584c825719e588d11d3, type: 2}
+  - {fileID: 11400000, guid: ead27c22d8baafb4a8350f6387deea25, type: 2}
+  - {fileID: 11400000, guid: cb06786d15658b3449a9e67119a16e98, type: 2}
+  - {fileID: 11400000, guid: 98d083ba7c649164a9486346349175dc, type: 2}

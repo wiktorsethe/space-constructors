@@ -15,14 +15,37 @@ MonoBehaviour:
   cards:
   - image: {fileID: 21300000, guid: 9125c204f566db048a92ebcb64d9d14a, type: 3}
     description: You will get 10 damage more for normal gun but -2  in move speed
-    mineralCost: 0
-    screwCost: 0
     normalGunDamageValue: 10
-    LaserGunDamageValue: 0
-    DoubleGunDamageValue: 0
-    BigGunDamageValue: 0
+    laserGunDamageValue: 0
+    doubleGunDamageValue: 0
+    bigGunDamageValue: 0
     normalGunAttackSpeedValue: 0
-    LaserGunAttackSpeedValue: 0
-    DoubleGunAttackSpeedValue: 0
-    BigGunAttackSpeedValue: 0
-    moveSpeedValue: -2
+    laserGunAttackSpeedValue: 0
+    doubleGunAttackSpeedValue: 0
+    bigGunAttackSpeedValue: 0
+    shipSpeedValue: -2
+    shipAttackSpeedValue: 0
+  - image: {fileID: 21300000, guid: 9125c204f566db048a92ebcb64d9d14a, type: 3}
+    description: You will get +4 ship speed but 3 damage less on normal gun
+    normalGunDamageValue: -3
+    laserGunDamageValue: 0
+    doubleGunDamageValue: 0
+    bigGunDamageValue: 0
+    normalGunAttackSpeedValue: 0
+    laserGunAttackSpeedValue: 0
+    doubleGunAttackSpeedValue: 0
+    bigGunAttackSpeedValue: 0
+    shipSpeedValue: 4
+    shipAttackSpeedValue: 0
+  - image: {fileID: 21300000, guid: 9125c204f566db048a92ebcb64d9d14a, type: 3}
+    description: You will get 3 damage more for double gun
+    normalGunDamageValue: 0
+    laserGunDamageValue: 0
+    doubleGunDamageValue: 3
+    bigGunDamageValue: 0
+    normalGunAttackSpeedValue: 0
+    laserGunAttackSpeedValue: 0
+    doubleGunAttackSpeedValue: 0
+    bigGunAttackSpeedValue: 0
+    shipSpeedValue: 0
+    shipAttackSpeedValue: 0

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7128265960731214793}
   - component: {fileID: 235491032500637108}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: NormalGunBullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120,7 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac4d2c3cc48d8c14fbfdda6ce4496427, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: test
+  target: 
+  damage: 0
 --- !u!70 &235491032500637108
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

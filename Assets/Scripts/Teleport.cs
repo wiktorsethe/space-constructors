@@ -31,6 +31,7 @@ public class Teleport : MonoBehaviour
     }
     private void Update()
     {
+        //player = GameObject.FindGameObjectWithTag("Player");
         float distance = Vector3.Distance(player.transform.position, transform.position);
 
         if(distance < attractionDistance)

@@ -12,13 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d521a13f52d8f74ba943251194f4e71, type: 3}
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
-  maxHealth: 10
-  currentHealth: 10
-  experience: 160
+  shipMaxHealth: 100
+  shipCurrentHealth: 100
+  experience: 0
   level: 1
-  bestTime: 38.720566
-  mostKills: 11
-  mostGoldEarned: 1100
-  gold: 1328
-  gravity: 999
-  ore: 0
+  bestTime: 0
+  mostKills: 0
+  mostGoldEarned: 0
+  gold: 500
+  shipGravity: 1
+  ore: 50
+  screw: 5
+  normalGunDamageValue: 1
+  laserGunDamageValue: 1
+  doubleGunDamageValue: 1
+  bigGunDamageValue: 1
+  normalGunAttackSpeedValue: 4
+  laserGunAttackSpeedValue: 4
+  doubleGunAttackSpeedValue: 3
+  bigGunAttackSpeedValue: 6
+  shipSpeedValue: 10
+  shipSave: {fileID: 1501607862434661057, guid: 63a76ba5d8b11424d9003b2dcad46a02, type: 3}
+  shipDefault: {fileID: 1501607862434661057, guid: 63a76ba5d8b11424d9003b2dcad46a02, type: 3}

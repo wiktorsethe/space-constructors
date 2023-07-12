@@ -6,6 +6,7 @@ public class ShootingBullet : MonoBehaviour
 {
     public string target;
     private float destroyTimer = 0f;
+    public float damage;
     private HpBar hpBar;
 
     private void Start()
@@ -26,7 +27,7 @@ public class ShootingBullet : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ship") && target == "Ship")
         {
-            hpBar.SetHealth(5f);
+            hpBar.SetHealth(damage);
             Destroy(gameObject);
         }
         else if (collision.gameObject.CompareTag("Enemy") && target == "Enemy")
@@ -35,7 +36,7 @@ public class ShootingBullet : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Player") && target == "Player")
         {
-            hpBar.SetHealth(5f);
+            hpBar.SetHealth(damage);
             Destroy(gameObject);
         }
     }

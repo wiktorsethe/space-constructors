@@ -87,6 +87,7 @@ public class EnemyWarrior : MonoBehaviour
             gameManager.goldEarned += gold;
             gameManager.kills += 1;
             Destroy(gameObject, 2f);
+            GetComponent<LootBag>().InstantiateLoot(transform.position);
         }
         if (miningTextPrefab)
         {

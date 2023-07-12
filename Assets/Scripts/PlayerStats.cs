@@ -5,14 +5,24 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayerStats", menuName = "GameData/Player Stats")]
 public class PlayerStats : ScriptableObject
 {
-    public float maxHealth;
-    public float currentHealth;
+    public float shipMaxHealth;
+    public float shipCurrentHealth;
     public int experience;
     public int level;
     public float bestTime;
     public int mostKills;
     public int mostGoldEarned;
     public int gold;
-    public int gravity;
+    public float shipGravity;
     public int ore;
+    public int screw;
+    public float normalGunDamageValue;
+    public float laserGunDamageValue;
+    public float doubleGunDamageValue;
+    public float bigGunDamageValue;
+    public float normalGunAttackSpeedValue;
+    public float laserGunAttackSpeedValue;
+    public float doubleGunAttackSpeedValue;
+    public float bigGunAttackSpeedValue;
+    public float shipSpeedValue;
 }

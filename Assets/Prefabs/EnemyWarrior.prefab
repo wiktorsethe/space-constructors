@@ -289,6 +289,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5343667911992834471}
   - component: {fileID: 5343667911992834464}
+  - component: {fileID: 734144062415520742}
   m_Layer: 0
   m_Name: EnemyWarrior
   m_TagString: EnemyWarrior
@@ -326,12 +327,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpBar: {fileID: 0}
-  health: 10
+  playerStats: {fileID: 11400000, guid: 284895b3224468a48aa2a763a688b966, type: 2}
   experience: 10
   gold: 100
-  gameManager: {fileID: 0}
-  playerStats: {fileID: 11400000, guid: 284895b3224468a48aa2a763a688b966, type: 2}
   attackTimer: 0
+  miningTextPrefab: {fileID: 8062151463999637536, guid: b9d2f93f3a98b4d4b8a1be849730c94f, type: 3}
   canvas: {fileID: 5343667911351076156}
   healthBarCanvas: {fileID: 5343667911351076153}
   healthBar: {fileID: 5343667911351076159}
@@ -367,7 +367,26 @@ MonoBehaviour:
   fillBar: {fileID: 5343667912097601203}
   maxHealth: 20
   Angle: 5
-  miningTextPrefab: {fileID: 8062151463999637536, guid: b9d2f93f3a98b4d4b8a1be849730c94f, type: 3}
+--- !u!114 &734144062415520742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5343667911992834465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f3c539612fd085439dde3d60a72e49e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  droppedItemPrefab: {fileID: 8792934401642765450, guid: f27a101f2383d7249ba404bd7ce75b92, type: 3}
+  lootList:
+  - {fileID: 11400000, guid: e622f413ee7b9b04ebfd8f8cc3bea7cd, type: 2}
+  - {fileID: 11400000, guid: e2d73389d4b00ea4ea37784745f0340f, type: 2}
+  - {fileID: 11400000, guid: d0b8aa1e2a405584c825719e588d11d3, type: 2}
+  - {fileID: 11400000, guid: ead27c22d8baafb4a8350f6387deea25, type: 2}
+  - {fileID: 11400000, guid: cb06786d15658b3449a9e67119a16e98, type: 2}
+  - {fileID: 11400000, guid: 98d083ba7c649164a9486346349175dc, type: 2}
 --- !u!1 &5343667912097601228
 GameObject:
   m_ObjectHideFlags: 0

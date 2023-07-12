@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
@@ -9,8 +10,9 @@ public class ShipManager : MonoBehaviour
     [Header("Other Scripts")]
     private Menu menu;
     private CameraSize camSize;
-    private Shooting shooting;
     public PlayerStats playerStats;
+    public ShipPartsDatabase shipPartsDB;
+    public ShipProgress shipProgress;
     [Space(20f)]
 
     [Header("GameObjects")]
@@ -19,29 +21,52 @@ public class ShipManager : MonoBehaviour
     private GameObject player;
     public TMP_Text gravityWarningText;
 
-    public string targetTag;
     public float distanceThreshold = 10f;
     public GameObject arrowPrefab;
     private GameObject arrow;
     public float arrowDistance = 2f;
     private bool animate = false;
+    private float backTimer = 0f;
+    private bool backToSpace = false;
+
     private void Start()
     {
         menu = GameObject.FindObjectOfType(typeof(Menu)) as Menu;
         camSize = GameObject.FindObjectOfType(typeof(CameraSize)) as CameraSize;
-        shooting = GameObject.FindObjectOfType(typeof(Shooting)) as Shooting;
         player = GameObject.FindGameObjectWithTag("Player");
+        ship = GameObject.Find("SHIP"/*(Clone)"*/);
+        if (shipProgress.shipParts.Count > 0)
+        {
+            for(int i=0; i<shipProgress.shipParts.Count; i++)
+            {
+                GameObject shipPart = Instantiate(shipPartsDB.shipParts[shipProgress.shipParts[i].shipPartIndex].shipPart, shipProgress.shipParts[i].position, shipProgress.shipParts[i].rotation);
+                shipPart.transform.parent = ship.transform;
+            }
 
+            GameObject[] targets = GameObject.FindGameObjectsWithTag("ConstructPoint");
+            for (int i = 0; i < targets.Length; i++)
+            {
+                foreach (Vector3 shipPartPos in shipProgress.usedContstructPoints)
+                {
+                    if (targets[i].transform.position == shipPartPos)
+                    {
+                        Destroy(targets[i].gameObject);
+                    }
+                }
+            }
+        }
     }
     private void Update()
     {
-        if(playerStats.currentHealth <= 0)
+        backTimer += Time.deltaTime;
+
+        if(playerStats.shipCurrentHealth <= 0)
         {
             menu.GameOver();
             Destroy(gameObject);
         }
 
-        GameObject[] targets = GameObject.FindGameObjectsWithTag(targetTag); 
+        GameObject[] targets = GameObject.FindGameObjectsWithTag("Planet");
 
         foreach (GameObject target in targets)
         {
@@ -67,17 +92,17 @@ public class ShipManager : MonoBehaviour
                 }
 
 
-                if (playerStats.gravity > target.GetComponent<Teleport>().gravity + 10)
+                if (playerStats.shipGravity > target.GetComponent<Teleport>().gravity + 10)
                 {
                     Color col = new Color(0.3f, 1f, 0);
                     arrow.GetComponent<SpriteRenderer>().color = col;
                 }
-                else if(playerStats.gravity <= target.GetComponent<Teleport>().gravity + 10 && playerStats.gravity == target.GetComponent<Teleport>().gravity)
+                else if(playerStats.shipGravity <= target.GetComponent<Teleport>().gravity + 10 && playerStats.shipGravity == target.GetComponent<Teleport>().gravity)
                 {
                     Color col = new Color(1f, 0.7f, 0);
                     arrow.GetComponent<SpriteRenderer>().color = col;
                 }
-                else if(playerStats.gravity < target.GetComponent<Teleport>().gravity)
+                else if(playerStats.shipGravity < target.GetComponent<Teleport>().gravity)
                 {
                     Color col = new Color(1f, 0.1f, 0);
                     arrow.GetComponent<SpriteRenderer>().color = col;
@@ -92,16 +117,11 @@ public class ShipManager : MonoBehaviour
     }
     public void NewPart(int index)
     {
-        if(playerStats.gold >= activeConstructPoint.GetComponent<ConstructPoint>().shipPrefabList[index].GetComponent<ShipPart>().cost)
+        if(playerStats.gold >= shipPartsDB.shipParts[index].cost)
         {
-            ship = GameObject.Find("SHIP");
-            GameObject shipPart = Instantiate(activeConstructPoint.GetComponent<ConstructPoint>().shipPrefabList[index], activeConstructPoint.transform.position, activeConstructPoint.transform.rotation);
+            ship = GameObject.Find("SHIP"/*(Clone)"*/); // tu usunac clone jak nie dziala
+            GameObject shipPart = Instantiate(shipPartsDB.shipParts[index].shipPart, activeConstructPoint.transform.position, activeConstructPoint.transform.rotation);
             shipPart.transform.parent = ship.transform;
-            Transform child = shipPart.transform.Find("ShootingPoint");
-            if (child != null)
-            {
-                shooting.AddToList(child);
-            }
             menu.constructPoints = GameObject.FindGameObjectsWithTag("ConstructPoint");
             for (int i = 0; i < menu.constructPoints.Length; i++)
             {
@@ -113,9 +133,17 @@ public class ShipManager : MonoBehaviour
             Destroy(activeConstructPoint);
             menu.ExitConstructMenu();
             camSize.ChangeCamSize();
-            playerStats.gold -= activeConstructPoint.GetComponent<ConstructPoint>().shipPrefabList[index].GetComponent<ShipPart>().cost;
+            playerStats.gold -= shipPartsDB.shipParts[index].cost;
+            shipPartsDB.shipParts[index].amount--;
+            playerStats.shipGravity += 5;
+            ShipPartInScene newShipPart;
+            newShipPart.shipPartIndex = index;
+            newShipPart.position = shipPart.transform.localPosition;
+            newShipPart.rotation = activeConstructPoint.transform.rotation;
+            shipProgress.shipParts.Add(newShipPart);
+            shipProgress.usedContstructPoints.Add(new Vector3(activeConstructPoint.transform.position.x - 3f, activeConstructPoint.transform.position.y, activeConstructPoint.transform.position.z));
         }
-        
+
     }
     public void RotateToCenter()
     {

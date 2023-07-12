@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
         sceneNameText.text = sceneName;
         FadeInSceneNameText();
         Invoke("FadeOutSceneNameText", 3f);
+        //Instantiate(playerStats.shipSave, transform.position, Quaternion.identity); //jak nie dzia³a to usuñ
     }
     private void Update()
     {

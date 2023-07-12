@@ -8,12 +8,17 @@ public class ShipMovement : MonoBehaviour
     public FloatingJoystick rotationJoystick;
     private Rigidbody2D rb;
     [Header("Variables")]
-    public float moveSpeed;
     public float rotationSpeed;
     private Vector2 moveVector;
+    public PlayerStats playerStats;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+    }
+    private void Start()
+    {
+        movementJoystick = GameObject.Find("Movement JoyStick").GetComponent<FloatingJoystick>();
+        rotationJoystick = GameObject.Find("Rotation JoyStick").GetComponent<FloatingJoystick>();
     }
     private void Update()
     {
@@ -23,8 +28,8 @@ public class ShipMovement : MonoBehaviour
     private void Move()
     {
         moveVector = Vector2.zero;
-        moveVector.x = movementJoystick.Horizontal * moveSpeed * Time.deltaTime;
-        moveVector.y = movementJoystick.Vertical * moveSpeed * Time.deltaTime;
+        moveVector.x = movementJoystick.Horizontal * playerStats.shipSpeedValue * Time.deltaTime;
+        moveVector.y = movementJoystick.Vertical * playerStats.shipSpeedValue * Time.deltaTime;
         rb.MovePosition(rb.position + moveVector);
     }
     private void Rotate()
