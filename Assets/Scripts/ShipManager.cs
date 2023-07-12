@@ -55,6 +55,8 @@ public class ShipManager : MonoBehaviour
                 }
             }
         }
+        ship.gameObject.transform.position = playerStats.shipPosition;
+        menu.HideConstructPoints();
     }
     private void Update()
     {

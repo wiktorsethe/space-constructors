@@ -36,6 +36,7 @@ public class PlayerStatsEditor : Editor
             playerStats.laserGunAttackSpeedValue = 4;
             playerStats.doubleGunAttackSpeedValue = 3;
             playerStats.bigGunAttackSpeedValue = 6;
+            playerStats.shipPosition = new Vector3(0f, 0f, 0f);
         }
         GUILayout.FlexibleSpace();
         GUILayout.EndHorizontal();
@@ -45,6 +46,7 @@ public class PlayerStatsEditor : Editor
         playerStats.shipCurrentHealth = EditorGUILayout.FloatField("Ship Current Health", playerStats.shipCurrentHealth);
         playerStats.shipSpeedValue = EditorGUILayout.FloatField("Ship Speed", playerStats.shipSpeedValue);
         playerStats.shipGravity = EditorGUILayout.FloatField("Gravity", playerStats.shipGravity);
+        playerStats.shipPosition = EditorGUILayout.Vector3Field("Ship Position", playerStats.shipPosition);
         //playerStats.shipSave = EditorGUILayout.ObjectField("Ship Save", playerStats.shipSave); 
         EditorGUILayout.Space();
         GUILayout.Label("       GUNS DAMAGE BONUS / PROCENTAGE", EditorStyles.boldLabel);

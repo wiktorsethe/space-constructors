@@ -46,12 +46,7 @@ public class Menu : MonoBehaviour
     private void Start()
     {
         shipManager = GameObject.FindObjectOfType(typeof(ShipManager)) as ShipManager;
-        constructPoints = GameObject.FindGameObjectsWithTag("ConstructPoint");
-        for (int i = 0; i < constructPoints.Length; i++)
-        {
-            constructPoints[i].GetComponent<Image>().enabled = false;
-            constructPoints[i].GetComponent<Button>().enabled = false;
-        }
+
     }
     private void Update()
     {
@@ -193,6 +188,15 @@ public class Menu : MonoBehaviour
         pauseMenu.SetActive(false);
         gameOverMenu.SetActive(false);
         Time.timeScale = 1f;
+    }
+    public void HideConstructPoints()
+    {
+        constructPoints = GameObject.FindGameObjectsWithTag("ConstructPoint");
+        for (int i = 0; i < constructPoints.Length; i++)
+        {
+            constructPoints[i].GetComponent<Image>().enabled = false;
+            constructPoints[i].GetComponent<Button>().enabled = false;
+        }
     }
 
 }

@@ -674,6 +674,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7918180775261759583, guid: 65198c27d9c135245ba220a98923574f, type: 3}
+      propertyPath: safeSpawn
+      value: 
+      objectReference: {fileID: 331437371}
+    - target: {fileID: 7918180775261759583, guid: 65198c27d9c135245ba220a98923574f, type: 3}
+      propertyPath: playerStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 284895b3224468a48aa2a763a688b966, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65198c27d9c135245ba220a98923574f, type: 3}
 --- !u!4 &171843970 stripped
@@ -1212,6 +1220,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 77716802801249651, guid: 1f5ad89a3342aaa42b52c8e471816236, type: 3}
   m_PrefabInstance: {fileID: 318923677}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &331437370
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 331437371}
+  m_Layer: 0
+  m_Name: SafeSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &331437371
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 331437370}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 63.7, y: 20, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 938989915}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &333633687
 GameObject:
   m_ObjectHideFlags: 0
@@ -2546,6 +2585,7 @@ Transform:
   - {fileID: 318923679}
   - {fileID: 1059732426}
   - {fileID: 171843970}
+  - {fileID: 331437371}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2760,6 +2800,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7918180775261759583, guid: 65198c27d9c135245ba220a98923574f, type: 3}
+      propertyPath: safeSpawn
+      value: 
+      objectReference: {fileID: 331437371}
+    - target: {fileID: 7918180775261759583, guid: 65198c27d9c135245ba220a98923574f, type: 3}
+      propertyPath: playerStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 284895b3224468a48aa2a763a688b966, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65198c27d9c135245ba220a98923574f, type: 3}
 --- !u!4 &1059732426 stripped
@@ -7070,7 +7118,6 @@ MonoBehaviour:
   shipProgress: {fileID: 11400000, guid: e5214ab3914aca544b64f6cc6b7c753d, type: 2}
   activeConstructPoint: {fileID: 0}
   gravityWarningText: {fileID: 1098182486}
-  targetTag: Planet
   distanceThreshold: 30
   arrowPrefab: {fileID: 8681041838900958791, guid: 88862655e2443024383a9140edb100ed, type: 3}
   arrowDistance: 3

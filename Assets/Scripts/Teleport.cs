@@ -15,6 +15,8 @@ public class Teleport : MonoBehaviour
     private bool sizeChanged = false;
     private float collisionTime = -1;
     public int gravity;
+    [SerializeField] private Transform safeSpawn;
+    public PlayerStats playerStats;
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -26,6 +28,7 @@ public class Teleport : MonoBehaviour
     {
         if (collision.transform.tag == "Ship")
         {
+            playerStats.shipPosition = safeSpawn.position;
             SceneManager.LoadScene(targetScene);
         }
     }

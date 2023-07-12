@@ -25,4 +25,5 @@ public class PlayerStats : ScriptableObject
     public float doubleGunAttackSpeedValue;
     public float bigGunAttackSpeedValue;
     public float shipSpeedValue;
+    public Vector3 shipPosition;
 }
