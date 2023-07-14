@@ -16,27 +16,7 @@ public class PlayerStatsEditor : Editor
         GUILayout.FlexibleSpace();
         if (GUILayout.Button("RESET TO DEFAULT", buttonStyle, GUILayout.Height(40), GUILayout.Width(200)))
         {
-            playerStats.shipMaxHealth = 100;
-            playerStats.shipCurrentHealth = 100;
-            playerStats.shipSpeedValue = 10;
-            playerStats.level = 1;
-            playerStats.experience = 0;
-            playerStats.shipGravity = 1;
-            playerStats.gold = 500;
-            playerStats.ore = 50;
-            playerStats.screw = 5;
-            playerStats.bestTime = 0;
-            playerStats.mostKills = 0;
-            playerStats.mostGoldEarned = 0;
-            playerStats.normalGunDamageValue = 1;
-            playerStats.laserGunDamageValue = 1;
-            playerStats.doubleGunDamageValue = 1;
-            playerStats.bigGunDamageValue = 1;
-            playerStats.normalGunAttackSpeedValue = 4;
-            playerStats.laserGunAttackSpeedValue = 4;
-            playerStats.doubleGunAttackSpeedValue = 3;
-            playerStats.bigGunAttackSpeedValue = 6;
-            playerStats.shipPosition = new Vector3(0f, 0f, 0f);
+            playerStats.Reset();
         }
         GUILayout.FlexibleSpace();
         GUILayout.EndHorizontal();
@@ -72,7 +52,15 @@ public class PlayerStatsEditor : Editor
         EditorGUILayout.Space();
         GUILayout.Label("       DEATH SCREEN STATS", EditorStyles.boldLabel);
         playerStats.bestTime = EditorGUILayout.FloatField("Best Time Stat", playerStats.bestTime);
+        playerStats.todayBestTime = EditorGUILayout.FloatField("Today Best Time", playerStats.todayBestTime);
         playerStats.mostKills = EditorGUILayout.IntField("Most Kills Stat", playerStats.mostKills);
+        playerStats.todayMostKills = EditorGUILayout.IntField("Today Kills", playerStats.todayMostKills);
         playerStats.mostGoldEarned = EditorGUILayout.IntField("Most Gold Earned Stat", playerStats.mostGoldEarned);
+        playerStats.todayMostGoldEarned = EditorGUILayout.IntField("Today Most Gold Earned", playerStats.todayMostGoldEarned);
+        EditorGUILayout.Space();
+        GUILayout.Label("       CHALLENGES", EditorStyles.boldLabel);
+        playerStats.loginTime = EditorGUILayout.TextField("Login Time", playerStats.loginTime);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("challenges"), true);
+        serializedObject.ApplyModifiedProperties();
     }
 }

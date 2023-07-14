@@ -15,31 +15,37 @@ MonoBehaviour:
   shipParts:
   - image: {fileID: 21300000, guid: cee9dbe90b270c944ae1dabf41c93b10, type: 3}
     shipPart: {fileID: 5953221920737725232, guid: 8a36e4a37f4681842a2a5d08ad5eb84e, type: 3}
-    amount: 93
-    cost: 1
+    amount: 0
+    oreCost: 0
+    gravityBonus: 2
     shipPartType: corridor
   - image: {fileID: 21300000, guid: 17fa84703485d314b8d6b5216987d4b1, type: 3}
     shipPart: {fileID: 5953221920737725232, guid: 8c5c946de78166c43b50ddd344e0c1c4, type: 3}
-    amount: 97
-    cost: 1
+    amount: 0
+    oreCost: 0
+    gravityBonus: 6
     shipPartType: main
   - image: {fileID: 21300000, guid: 76beef9fdae7b48468ddf07d0400a374, type: 3}
     shipPart: {fileID: 2566265039767232474, guid: c928b84be04ab294baf525fb5cc1f4fa, type: 3}
-    amount: 99
-    cost: 1
+    amount: 0
+    oreCost: 0
+    gravityBonus: 1
     shipPartType: normalGun
   - image: {fileID: 21300000, guid: 803b0b9bfc1fd824aae8423bfbab83b4, type: 3}
     shipPart: {fileID: 2566265039767232474, guid: a1ae2524dece0e64bae343132162b6ab, type: 3}
-    amount: 100
-    cost: 1
+    amount: 0
+    oreCost: 0
+    gravityBonus: 1
     shipPartType: laserGun
   - image: {fileID: 21300000, guid: 0da63bf69e254aa4a83c345c3de497c8, type: 3}
     shipPart: {fileID: 2566265039767232474, guid: 784004fbb19601440abd806ae104b635, type: 3}
-    amount: 100
-    cost: 1
+    amount: 0
+    oreCost: 0
+    gravityBonus: 1
     shipPartType: bigGun
   - image: {fileID: 21300000, guid: da6b55611e420f443a65d0be7a8f8719, type: 3}
     shipPart: {fileID: 2566265039767232474, guid: 87f03315fe9515345806355290a80874, type: 3}
-    amount: 100
-    cost: 1
+    amount: 0
+    oreCost: 0
+    gravityBonus: 1
     shipPartType: doubleGun

@@ -82,6 +82,7 @@ public class EnemyShip : MonoBehaviour
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         bullet.GetComponent<ShootingBullet>().target = target;
+        bullet.GetComponent<ShootingBullet>().damage = 10;
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         Vector2 bulletVelocity = firePoint.up * bulletSpeed;
         rb.velocity = bulletVelocity;

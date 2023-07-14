@@ -89,7 +89,7 @@ public class Menu : MonoBehaviour
                 //obj.GetComponent<RectTransform>().DOAnchorPos(new Vector2(397f, 0f), 0.1f).SetUpdate(UpdateType.Normal, true);
                 obj.GetComponent<ShipPartMenu>().index = i;
                 obj.transform.Find("Image").GetComponent<Image>().sprite = shipPartsDB.shipParts[i].image;
-                obj.transform.Find("CostText").GetComponent<TMP_Text>().text = shipPartsDB.shipParts[i].cost.ToString();
+                obj.transform.Find("CostText").GetComponent<TMP_Text>().text = shipPartsDB.shipParts[i].oreCost.ToString();
                 obj.transform.Find("AmountText").GetComponent<TMP_Text>().text = shipPartsDB.shipParts[i].amount.ToString();
                 shipPartsInstantiate.Add(obj);
                 obj.GetComponent<Button>().onClick.AddListener(() => shipManager.NewPart(obj.GetComponent<ShipPartMenu>().index));
@@ -181,6 +181,7 @@ public class Menu : MonoBehaviour
         playerStats.bigGunAttackSpeedValue += generatedCards[i].bigGunAttackSpeedValue;
         playerStats.doubleGunAttackSpeedValue += generatedCards[i].doubleGunAttackSpeedValue;
         playerStats.shipSpeedValue += generatedCards[i].shipSpeedValue;
+        playerStats.oreMiningBonusValue = generatedCards[i].oreMiningBonus;
         generatedCards.Clear();
         cardsMenu.SetActive(false);
         constructMenu.SetActive(false);

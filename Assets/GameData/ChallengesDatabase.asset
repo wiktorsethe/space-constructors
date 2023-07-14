@@ -9,43 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d521a13f52d8f74ba943251194f4e71, type: 3}
-  m_Name: PlayerStats
+  m_Script: {fileID: 11500000, guid: 835650430eadb48469ce56acb3b8d4f3, type: 3}
+  m_Name: ChallengesDatabase
   m_EditorClassIdentifier: 
-  shipMaxHealth: 100
-  shipCurrentHealth: 100
-  experience: 0
-  level: 1
-  bestTime: 0
-  todayBestTime: 0
-  mostKills: 0
-  todayMostKills: 0
-  mostGoldEarned: 0
-  todayMostGoldEarned: 0
-  gold: 650
-  shipGravity: 1
-  ore: 50
-  screw: 5
-  normalGunDamageValue: 1
-  laserGunDamageValue: 1
-  doubleGunDamageValue: 1
-  bigGunDamageValue: 1
-  normalGunAttackSpeedValue: 4
-  laserGunAttackSpeedValue: 4
-  doubleGunAttackSpeedValue: 3
-  bigGunAttackSpeedValue: 6
-  shipSpeedValue: 10
-  oreMiningBonusValue: 1
-  shipPosition: {x: 0, y: 0, z: 0}
   challenges:
   - task: Do it
-    reward: {fileID: 11400000, guid: 5263916799579ea459ef2334c8dd4354, type: 2}
-    amount: 50
-    bestTimeTask: 100
-    mostGoldEarnedTask: 100
-    mostKillsTask: 0
-    isDone: 0
-  - task: Do it again
     reward: {fileID: 11400000, guid: 5263916799579ea459ef2334c8dd4354, type: 2}
     amount: 50
     bestTimeTask: 100
@@ -59,4 +27,10 @@ MonoBehaviour:
     mostGoldEarnedTask: 100
     mostKillsTask: 0
     isDone: 0
-  loginTime: 14.07.2023 20:14:54
+  - task: Do it again
+    reward: {fileID: 11400000, guid: 5263916799579ea459ef2334c8dd4354, type: 2}
+    amount: 50
+    bestTimeTask: 100
+    mostGoldEarnedTask: 100
+    mostKillsTask: 0
+    isDone: 0

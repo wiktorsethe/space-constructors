@@ -26,8 +26,6 @@ public class ShipManager : MonoBehaviour
     private GameObject arrow;
     public float arrowDistance = 2f;
     private bool animate = false;
-    private float backTimer = 0f;
-    private bool backToSpace = false;
 
     private void Start()
     {
@@ -60,8 +58,6 @@ public class ShipManager : MonoBehaviour
     }
     private void Update()
     {
-        backTimer += Time.deltaTime;
-
         if(playerStats.shipCurrentHealth <= 0)
         {
             menu.GameOver();
@@ -119,7 +115,7 @@ public class ShipManager : MonoBehaviour
     }
     public void NewPart(int index)
     {
-        if(playerStats.gold >= shipPartsDB.shipParts[index].cost)
+        if(playerStats.ore >= shipPartsDB.shipParts[index].oreCost)
         {
             ship = GameObject.Find("SHIP"/*(Clone)"*/); // tu usunac clone jak nie dziala
             GameObject shipPart = Instantiate(shipPartsDB.shipParts[index].shipPart, activeConstructPoint.transform.position, activeConstructPoint.transform.rotation);
@@ -135,9 +131,9 @@ public class ShipManager : MonoBehaviour
             Destroy(activeConstructPoint);
             menu.ExitConstructMenu();
             camSize.ChangeCamSize();
-            playerStats.gold -= shipPartsDB.shipParts[index].cost;
+            playerStats.ore -= shipPartsDB.shipParts[index].oreCost;
             shipPartsDB.shipParts[index].amount--;
-            playerStats.shipGravity += 5;
+            playerStats.shipGravity += shipPartsDB.shipParts[index].gravityBonus;
             ShipPartInScene newShipPart;
             newShipPart.shipPartIndex = index;
             newShipPart.position = shipPart.transform.localPosition;

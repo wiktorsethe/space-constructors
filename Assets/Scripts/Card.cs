@@ -16,4 +16,5 @@ public struct Card
     public int doubleGunAttackSpeedValue;
     public int bigGunAttackSpeedValue;
     public int shipSpeedValue;
+    public float oreMiningBonus;
 }

@@ -17,11 +17,13 @@ public class Teleport : MonoBehaviour
     public int gravity;
     [SerializeField] private Transform safeSpawn;
     public PlayerStats playerStats;
+    private GameManager gameManager;
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         camShake = GameObject.FindObjectOfType(typeof(CameraShake)) as CameraShake;
         camSize = GameObject.FindObjectOfType(typeof(CameraSize)) as CameraSize;
+        gameManager = GameObject.FindObjectOfType(typeof(GameManager)) as GameManager;
         mainCamera = Camera.main;
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -29,6 +31,9 @@ public class Teleport : MonoBehaviour
         if (collision.transform.tag == "Ship")
         {
             playerStats.shipPosition = safeSpawn.position;
+            PlayerPrefs.SetFloat("BestTimeTimer", gameManager.bestTimeTimer);
+            PlayerPrefs.SetInt("Kills", gameManager.kills);
+            PlayerPrefs.SetInt("GoldEarned", gameManager.goldEarned);
             SceneManager.LoadScene(targetScene);
         }
     }
