@@ -49,6 +49,7 @@ public class PlayerStatsEditor : Editor
         playerStats.gold = EditorGUILayout.IntField("Gold", playerStats.gold);
         playerStats.ore = EditorGUILayout.IntField("Ore", playerStats.ore);
         playerStats.screw = EditorGUILayout.IntField("Screw ", playerStats.screw);
+        playerStats.selectedSkin = EditorGUILayout.IntField("Selected Skin", playerStats.selectedSkin);
         EditorGUILayout.Space();
         GUILayout.Label("       DEATH SCREEN STATS", EditorStyles.boldLabel);
         playerStats.bestTime = EditorGUILayout.FloatField("Best Time Stat", playerStats.bestTime);
@@ -58,9 +59,14 @@ public class PlayerStatsEditor : Editor
         playerStats.mostGoldEarned = EditorGUILayout.IntField("Most Gold Earned Stat", playerStats.mostGoldEarned);
         playerStats.todayMostGoldEarned = EditorGUILayout.IntField("Today Most Gold Earned", playerStats.todayMostGoldEarned);
         EditorGUILayout.Space();
-        GUILayout.Label("       CHALLENGES", EditorStyles.boldLabel);
+        GUILayout.Label("       DAILY CHALLENGES", EditorStyles.boldLabel);
         playerStats.loginTime = EditorGUILayout.TextField("Login Time", playerStats.loginTime);
         EditorGUILayout.PropertyField(serializedObject.FindProperty("challenges"), true);
         serializedObject.ApplyModifiedProperties();
+        EditorGUILayout.Space();
+        GUILayout.Label("       DAILY REWARDS", EditorStyles.boldLabel);
+        playerStats.dailyRewardsDay = EditorGUILayout.IntField("Daily Rewards Day", playerStats.dailyRewardsDay);
+        playerStats.firstBonus = EditorGUILayout.Toggle("First Bonus", playerStats.firstBonus);
+        playerStats.lastDateBonus = EditorGUILayout.TextField("Last Date Bonus", playerStats.lastDateBonus);
     }
 }

@@ -32,6 +32,10 @@ public class PlayerStats : ScriptableObject
     public Vector3 shipPosition;
     public Challenge[] challenges;
     public string loginTime;
+    public int dailyRewardsDay;
+    public bool firstBonus;
+    public string lastDateBonus;
+    public int selectedSkin;
 
     public void Reset()
     {
@@ -71,5 +75,9 @@ public class PlayerStats : ScriptableObject
             challenges[i].isDone = false;
         }
         loginTime = "10.10.2010 10:10:10";
+        dailyRewardsDay = 0;
+        firstBonus = false;
+        lastDateBonus = "10.10.2010 10:10:10";
+        selectedSkin = 0;
     }
 }
