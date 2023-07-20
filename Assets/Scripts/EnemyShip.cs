@@ -25,6 +25,8 @@ public class EnemyShip : MonoBehaviour
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject miningTextPrefab;
     [SerializeField] private string target;
+    private GameObject[] objectsList;
+    private float distance;
     [Space(20f)]
     [Header("Health System")]
     [SerializeField] private Canvas canvas;
@@ -36,6 +38,7 @@ public class EnemyShip : MonoBehaviour
     private int currentHealth;
     [SerializeField] private float Angle;
     private float hideTimer = 0f;
+
     private void Start()
     {
         expBar = GameObject.FindObjectOfType(typeof(ExpBar)) as ExpBar;
@@ -54,7 +57,23 @@ public class EnemyShip : MonoBehaviour
         {
             healthBarCanvas.SetActive(false);
         }
-        float distance = Vector2.Distance(transform.position, player.transform.position);
+
+        objectsList = GameObject.FindGameObjectsWithTag("Ship");
+        float closestDistance = Mathf.Infinity;
+        GameObject closestObject = null;
+
+        foreach (GameObject obj in objectsList)
+        {
+            distance = Vector3.Distance(transform.position, obj.transform.position);
+
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestObject = obj;
+            }
+        }
+        
+        //float distance = Vector2.Distance(transform.position, player.transform.position);
         shootTimer += Time.deltaTime;
         if (distance <= inTarget)
         {

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 using DG.Tweening;
 
@@ -9,6 +10,10 @@ public class GameManager : MonoBehaviour
     [Header("Lists and Objects")]
     public Camera mainCamera;
     public PlayerStats playerStats;
+    public GameObject bossPrefab;
+    private CameraSize camSize;
+    private CameraFollow camFollow;
+    private Boundaries bounds;
     private ObstacleSpawner[] obstacleSpawners;
     [Space(20f)]
 
@@ -20,6 +25,9 @@ public class GameManager : MonoBehaviour
     public string sceneName;
     private void Start()
     {
+        camSize = GameObject.FindObjectOfType(typeof(CameraSize)) as CameraSize;
+        camFollow = GameObject.FindObjectOfType(typeof(CameraFollow)) as CameraFollow;
+        bounds = GameObject.FindObjectOfType(typeof(Boundaries)) as Boundaries;
         obstacleSpawners = GameObject.FindObjectsOfType<ObstacleSpawner>();
         sceneNameText.text = sceneName;
         FadeInSceneNameText();
@@ -47,6 +55,16 @@ public class GameManager : MonoBehaviour
         {
             playerStats.mostGoldEarned = goldEarned;
             playerStats.todayMostGoldEarned = goldEarned;
+        }
+
+        if(playerStats.level == 5 && SceneManager.GetActiveScene().name == "Universe" && !PlayerPrefs.HasKey("FirstBoss"))
+        {
+            Instantiate(bossPrefab, new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y + mainCamera.orthographicSize + 5f, 0f), Quaternion.identity);
+            float newSize = mainCamera.orthographicSize * 3f;
+            camSize.CamSize(newSize, 4f);
+            camFollow.enabled = false;
+            bounds.Check();
+            PlayerPrefs.SetString("FirstBoss", "True");
         }
     }
 
