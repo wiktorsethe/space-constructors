@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;
 public class Boss : MonoBehaviour
 {
     public ShootingNormalGun[] shootingScripts;
@@ -19,12 +21,34 @@ public class Boss : MonoBehaviour
     private GameObject player;
     private bool firstGunsShoot = false;
     private bool secondGunsShoot = false;
+    [SerializeField] private GameObject damageTextPrefab;
+    [Header("Health System")]
+    [SerializeField] private GameObject healthBarCanvas;
+    [SerializeField] private Slider healthBar;
+    [SerializeField] private Gradient healthGradient;
+    [SerializeField] private Image fillBar;
+    [SerializeField] private int maxHealth;
+    private int currentHealth;
+    [SerializeField] private float Angle;
+    private ExpBar expBar;
+    private GameManager gameManager;
+    [SerializeField] private int experience;
+    [SerializeField] private int gold;
     private void Start()
     {
+        expBar = GameObject.FindObjectOfType(typeof(ExpBar)) as ExpBar;
+        gameManager = GameObject.FindObjectOfType(typeof(GameManager)) as GameManager;
         player = GameObject.FindGameObjectWithTag("Player");
+        healthBarCanvas = GameObject.Find("BossHPBar");
+        healthBar = GameObject.Find("BossHPBar").GetComponent<Slider>();
+        fillBar = GameObject.Find("BossHPBar").GetComponentInChildren<Image>();
+        currentHealth = maxHealth;
+        SetMaxHealth(maxHealth);
+        healthBarCanvas.SetActive(true);
     }
     private void Update()
     {
+        fillBar.color = healthGradient.Evaluate(healthBar.normalizedValue);
         specialActionTimer += Time.deltaTime;
         shootTimer += Time.deltaTime;
 
@@ -64,6 +88,7 @@ public class Boss : MonoBehaviour
             {
                 FireSecondWave();
                 secondGunsShoot = true;
+                isPositionSelected = false;
             }
         }
         else if (specialActionTimer >= 13f && specialActionTimer < 17.5f)
@@ -102,55 +127,6 @@ public class Boss : MonoBehaviour
             isPositionSelected = false;
             specialActionTimer = 0f;
         }
-        /*
-        if (specialActionTimer >= 3f && specialActionTimer <= 7.5f)
-        {
-            Sequence rotationSequence = DOTween.Sequence();
-            rotationSequence.Append(transform.DORotate(new Vector3(0, 0, 360), 4f, RotateMode.FastBeyond360));
-            if (shootTimer >= 0.5f)
-            {
-                
-                FireBullet();
-                shootTimer = 0f;
-            }
-        }
-        else if(specialActionTimer >= 8f && specialActionTimer < 12f || specialActionTimer >= 15f && specialActionTimer < 20f)
-        {
-            if (!isPositionSelected)
-            {
-                dashPosition = player.transform.position;
-                isPositionSelected = true;
-            }
-            //transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime); //ciekawe rzeczy jak weŸmiemy .right
-            //transform.Find("EnemyShipImage").transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget);
-            transform.position = Vector2.MoveTowards(transform.position, dashPosition, 5f * Time.deltaTime);
-        }
-        else if(specialActionTimer >= 12f && specialActionTimer < 15f)
-        {
-            isPositionSelected = false;
-        }
-        else if(specialActionTimer >= 30f)
-        {
-            isPositionSelected = false;
-            specialActionTimer = 0f;
-        }
-        */
-
-            /*
-            objectsList = GameObject.FindGameObjectsWithTag("Ship");
-            float closestDistance = Mathf.Infinity;
-            GameObject closestObject = null;
-
-            foreach (GameObject obj in objectsList)
-            {
-                distance = Vector3.Distance(transform.position, obj.transform.position);
-
-                if (distance < closestDistance)
-                {
-                    closestDistance = distance;
-                    closestObject = obj;
-                }
-            }*/
     }
     void FireBullet()
     {
@@ -196,5 +172,41 @@ public class Boss : MonoBehaviour
         Rigidbody2D rb2 = bullet2.GetComponent<Rigidbody2D>();
         Vector2 bulletVelocity2 = firePoints[7].up * bulletSpeed;
         rb2.velocity = bulletVelocity2;
+    }
+    public void SetMaxHealth(int health)
+    {
+        healthBar.maxValue = health;
+        healthBar.value = health;
+        fillBar.color = healthGradient.Evaluate(1f);
+    }
+    public void SetHealth()
+    {
+        DOTween.To(() => healthBar.value, x => healthBar.value = x, currentHealth, 1.5f);
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Bullet")
+        {
+            currentHealth -= 10;
+            SetHealth();
+            if (currentHealth <= 0)
+            {
+                expBar.SetExperience(experience);
+                playerStats.gold += gold;
+                gameManager.goldEarned += gold;
+                gameManager.kills += 1;
+                shootTimer = -10f;
+                Destroy(gameObject, 2f);
+            }
+            if (damageTextPrefab)
+            {
+                ShowDamageText(10);
+            }
+        }
+    }
+    private void ShowDamageText(int amount)
+    {
+        var text = Instantiate(damageTextPrefab, transform.position, Quaternion.identity);
+        text.GetComponent<TMP_Text>().text = amount.ToString();
     }
 }

@@ -27,6 +27,7 @@ public class Menu : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject gameOverMenu;
     public GameObject cardsMenu;
+    public GameObject bossHPBar;
     public GameObject shipPartMenuPrefab;
     [Space(20f)]
 
@@ -46,7 +47,6 @@ public class Menu : MonoBehaviour
     private void Start()
     {
         shipManager = GameObject.FindObjectOfType(typeof(ShipManager)) as ShipManager;
-
     }
     private void Update()
     {
@@ -199,5 +199,12 @@ public class Menu : MonoBehaviour
             constructPoints[i].GetComponent<Button>().enabled = false;
         }
     }
-
+    public void ActiveBossHealthBar()
+    {
+        bossHPBar.SetActive(true);
+    }
+    public void DeactiveBossHealthBar()
+    {
+        bossHPBar.SetActive(false);
+    }
 }

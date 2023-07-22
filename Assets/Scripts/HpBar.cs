@@ -32,4 +32,9 @@ public class HpBar : MonoBehaviour
         playerStats.shipCurrentHealth = hpBar.maxValue;
         DOTween.To(() => hpBar.value, x => hpBar.value = x, playerStats.shipCurrentHealth, 1.5f);
     }
+    public void RegenerateHealthByFragment(float health)
+    {
+        playerStats.shipCurrentHealth += health;
+        DOTween.To(() => hpBar.value, x => hpBar.value = x, playerStats.shipCurrentHealth, 1.5f);
+    }
 }

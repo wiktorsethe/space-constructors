@@ -16,6 +16,7 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.SetFloat("BestTimeTimer", 0);
         PlayerPrefs.SetInt("Kills", 0);
         PlayerPrefs.SetInt("GoldEarned", 0);
+        PlayerPrefs.DeleteKey("FirstBoss");
         SceneManager.LoadScene(1);
     }
 }

@@ -12,33 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17da9d895f6dfe74e967795140b0ae5f, type: 3}
   m_Name: ShipProgress
   m_EditorClassIdentifier: 
-  shipParts:
-  - shipPartIndex: 0
-    position: {x: 0, y: -0.7, z: 0}
-    rotation: {x: -0, y: -0, z: 1, w: 0}
-  - shipPartIndex: 0
-    position: {x: -0.70000005, y: 0, z: 0}
-    rotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  - shipPartIndex: 0
-    position: {x: 0.70000005, y: 0, z: 0}
-    rotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  - shipPartIndex: 1
-    position: {x: -2.1000001, y: -0.00000011920929, z: 0}
-    rotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  - shipPartIndex: 0
-    position: {x: -2.8000002, y: -0.7000002, z: 0}
-    rotation: {x: -0, y: -0, z: 1.0000001, w: 0}
-  - shipPartIndex: 1
-    position: {x: -2.8000002, y: -2.1000001, z: 0}
-    rotation: {x: -0, y: -0, z: 1, w: 0}
-  - shipPartIndex: 2
-    position: {x: -2.1000001, y: -2.8000002, z: 0}
-    rotation: {x: -0, y: -0, z: 0.7071068, w: -0.7071068}
-  usedContstructPoints:
-  - {x: 0, y: -0.7, z: 0}
-  - {x: -0.70000005, y: 0, z: 0}
-  - {x: 0.70000005, y: 0, z: 0}
-  - {x: -2.1000001, y: -0.00000011920929, z: 0}
-  - {x: -2.8000002, y: -0.7000002, z: 0}
-  - {x: -2.8000002, y: -2.1000001, z: 0}
-  - {x: -2.1000001, y: -2.8000002, z: 0}
+  shipParts: []
+  usedContstructPoints: []

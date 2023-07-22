@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [Header("Lists and Objects")]
     public Camera mainCamera;
     public PlayerStats playerStats;
+    private Menu menu;
     public GameObject bossPrefab;
     private CameraSize camSize;
     private CameraFollow camFollow;
@@ -28,7 +29,9 @@ public class GameManager : MonoBehaviour
         camSize = GameObject.FindObjectOfType(typeof(CameraSize)) as CameraSize;
         camFollow = GameObject.FindObjectOfType(typeof(CameraFollow)) as CameraFollow;
         bounds = GameObject.FindObjectOfType(typeof(Boundaries)) as Boundaries;
+        menu = GameObject.FindObjectOfType(typeof(Menu)) as Menu;
         obstacleSpawners = GameObject.FindObjectsOfType<ObstacleSpawner>();
+        menu.DeactiveBossHealthBar();
         sceneNameText.text = sceneName;
         FadeInSceneNameText();
         Invoke("FadeOutSceneNameText", 3f);
@@ -59,10 +62,15 @@ public class GameManager : MonoBehaviour
 
         if(playerStats.level == 5 && SceneManager.GetActiveScene().name == "Universe" && !PlayerPrefs.HasKey("FirstBoss"))
         {
+            menu.ActiveBossHealthBar();
             Instantiate(bossPrefab, new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y + mainCamera.orthographicSize + 5f, 0f), Quaternion.identity);
             float newSize = mainCamera.orthographicSize * 3f;
             camSize.CamSize(newSize, 4f);
             camFollow.enabled = false;
+            foreach(ObstacleSpawner script in obstacleSpawners)
+            {
+                script.enabled = false;
+            }
             bounds.Check();
             PlayerPrefs.SetString("FirstBoss", "True");
         }
