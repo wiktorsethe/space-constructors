@@ -196,6 +196,7 @@ public class Boss : MonoBehaviour
                 gameManager.goldEarned += gold;
                 gameManager.kills += 1;
                 shootTimer = -10f;
+                GetComponent<LootBag>().InstantiateLoot(transform.position);
                 Destroy(gameObject, 2f);
             }
             if (damageTextPrefab)

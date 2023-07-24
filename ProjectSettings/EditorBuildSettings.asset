@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Planet.unity
     guid: 95c62e5d753b66745922b192ab2e0450
+  - enabled: 1
+    path: Assets/Scenes/MisteriousPlace.unity
+    guid: 14803a613d8ea114799ad4f23e0b0031
   m_configObjects: {}

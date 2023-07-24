@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 public class CollectLoot : MonoBehaviour
 {
@@ -118,6 +119,15 @@ public class CollectLoot : MonoBehaviour
                     }
                     Destroy(this.gameObject);
                 }
+            }
+        }
+        if (other.gameObject.tag == "Ship")
+        {
+            if (lootName == "Orb")
+            {
+                SceneManager.LoadScene("MisteriousPlace");
+                ShowMiningText(1, "Orb");
+                Destroy(this.gameObject);
             }
         }
     }

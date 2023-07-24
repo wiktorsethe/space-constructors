@@ -1196,6 +1196,7 @@ GameObject:
   - component: {fileID: 9114515689591244848}
   - component: {fileID: 4123953773312274052}
   - component: {fileID: 7339748162749697221}
+  - component: {fileID: 8378899507091014168}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Enemy
@@ -1371,3 +1372,18 @@ MonoBehaviour:
   Angle: 5
   experience: 1000
   gold: 100
+--- !u!114 &8378899507091014168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9114515689591244851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f3c539612fd085439dde3d60a72e49e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  droppedItemPrefab: {fileID: 8792934401642765450, guid: f27a101f2383d7249ba404bd7ce75b92, type: 3}
+  lootList:
+  - {fileID: 11400000, guid: 9da94a22635956544b664ec69e7bfae6, type: 2}
