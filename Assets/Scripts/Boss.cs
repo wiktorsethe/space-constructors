@@ -34,6 +34,9 @@ public class Boss : MonoBehaviour
     private GameManager gameManager;
     [SerializeField] private int experience;
     [SerializeField] private int gold;
+    private bool isDefeated = false;
+    private Vector3 startingPos;
+    float speed;
     private void Start()
     {
         expBar = GameObject.FindObjectOfType(typeof(ExpBar)) as ExpBar;
@@ -45,6 +48,7 @@ public class Boss : MonoBehaviour
         currentHealth = maxHealth;
         SetMaxHealth(maxHealth);
         healthBarCanvas.SetActive(true);
+        startingPos = transform.position;
     }
     private void Update()
     {
@@ -63,7 +67,7 @@ public class Boss : MonoBehaviour
                 shootTimer = 0f;
             }
         }
-        else if(specialActionTimer >= 7.5f && specialActionTimer < 12f)
+        else if(specialActionTimer >= 7.5f && specialActionTimer < 11.9f)
         {
             if (!isPositionSelected)
             {
@@ -74,7 +78,16 @@ public class Boss : MonoBehaviour
             //transform.Find("EnemyShipImage").transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget);
             transform.position = Vector2.MoveTowards(transform.position, dashPosition, 5f * Time.deltaTime);
         }
-        else if(specialActionTimer >= 12f && specialActionTimer < 12.5f)
+        else if (specialActionTimer >= 11.9f && specialActionTimer < 12f)
+        {
+            float distance = Vector3.Distance(transform.position, startingPos);
+            speed = distance / 2f;
+        }
+        else if (specialActionTimer >= 12f && specialActionTimer < 14f)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, startingPos, speed * Time.deltaTime);
+        }
+        else if (specialActionTimer >= 14f && specialActionTimer < 14.5f)
         {
             if (!firstGunsShoot)
             {
@@ -82,7 +95,7 @@ public class Boss : MonoBehaviour
                 firstGunsShoot = true;
             }
         }
-        else if (specialActionTimer >= 12.5f && specialActionTimer < 13f)
+        else if (specialActionTimer >= 14.5f && specialActionTimer < 15f)
         {
             if (!secondGunsShoot)
             {
@@ -91,7 +104,7 @@ public class Boss : MonoBehaviour
                 isPositionSelected = false;
             }
         }
-        else if (specialActionTimer >= 13f && specialActionTimer < 17.5f)
+        else if (specialActionTimer >= 15f && specialActionTimer < 19.4f)
         {
             if (!isPositionSelected)
             {
@@ -104,7 +117,16 @@ public class Boss : MonoBehaviour
             //transform.Find("EnemyShipImage").transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget);
             transform.position = Vector2.MoveTowards(transform.position, dashPosition, 5f * Time.deltaTime);
         }
-        else if (specialActionTimer >= 17.5f && specialActionTimer < 18f)
+        else if (specialActionTimer >= 19.4f && specialActionTimer < 19.5f)
+        {
+            float distance = Vector3.Distance(transform.position, startingPos);
+            speed = distance / 2f;
+        }
+        else if (specialActionTimer >= 19.5f && specialActionTimer < 21.5f)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, startingPos, speed * Time.deltaTime);
+        }
+        else if (specialActionTimer >= 21.5f && specialActionTimer < 22f)
         {
             if (!firstGunsShoot)
             {
@@ -112,20 +134,35 @@ public class Boss : MonoBehaviour
                 firstGunsShoot = true;
             }
         }
-        else if (specialActionTimer >= 18f && specialActionTimer < 18.5f)
+        else if (specialActionTimer >= 22f && specialActionTimer < 22.5f)
         {
             if (!secondGunsShoot)
             {
                 FireSecondWave();
                 secondGunsShoot = true;
+                isPositionSelected = false;
             }
         }
-        else if(specialActionTimer >= 20f)
+        else if (specialActionTimer >= 22.5f)
         {
             firstGunsShoot = false;
             secondGunsShoot = false;
             isPositionSelected = false;
             specialActionTimer = 0f;
+        }
+        
+        if (currentHealth <= 0 && !isDefeated)
+        {
+            gameManager.menu.DeactiveBossHealthBar();
+            float newSize = gameManager.mainCamera.orthographicSize / 3f;
+            gameManager.camSize.CamSize(newSize, 4f);
+            gameManager.camFollow.enabled = true;
+            foreach (ObstacleSpawner script in gameManager.obstacleSpawners)
+            {
+                script.enabled = true;
+            }
+            gameManager.bounds.DeactivateBariers();
+            isDefeated = true;
         }
     }
     void FireBullet()
@@ -196,6 +233,7 @@ public class Boss : MonoBehaviour
                 gameManager.goldEarned += gold;
                 gameManager.kills += 1;
                 shootTimer = -10f;
+                GetComponent<PolygonCollider2D>().enabled = false;
                 GetComponent<LootBag>().InstantiateLoot(transform.position);
                 Destroy(gameObject, 2f);
             }

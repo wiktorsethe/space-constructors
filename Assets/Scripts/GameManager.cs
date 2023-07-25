@@ -10,12 +10,12 @@ public class GameManager : MonoBehaviour
     [Header("Lists and Objects")]
     public Camera mainCamera;
     public PlayerStats playerStats;
-    private Menu menu;
+    public Menu menu;
     public GameObject bossPrefab;
-    private CameraSize camSize;
-    private CameraFollow camFollow;
-    private Boundaries bounds;
-    private ObstacleSpawner[] obstacleSpawners;
+    public CameraSize camSize;
+    public CameraFollow camFollow;
+    public Boundaries bounds;
+    public ObstacleSpawner[] obstacleSpawners;
     [Space(20f)]
 
     [Header("Variables")]
@@ -72,6 +72,16 @@ public class GameManager : MonoBehaviour
                 script.enabled = false;
             }
             bounds.Check();
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("EnemyShip");
+            foreach(GameObject enemy in enemies)
+            {
+                Destroy(enemy);
+            }
+            GameObject[] meteorites = GameObject.FindGameObjectsWithTag("Meteorite");
+            foreach (GameObject meteorite in meteorites)
+            {
+                Destroy(meteorite);
+            }
             PlayerPrefs.SetString("FirstBoss", "True");
         }
     }

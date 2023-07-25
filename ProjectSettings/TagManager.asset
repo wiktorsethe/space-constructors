@@ -16,6 +16,7 @@ TagManager:
   - Enemy
   - EnemyDash
   - Terrain
+  - Meteorite
   layers:
   - Default
   - TransparentFX

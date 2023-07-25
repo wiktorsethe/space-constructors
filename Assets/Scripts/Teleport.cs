@@ -42,14 +42,16 @@ public class Teleport : MonoBehaviour
         //player = GameObject.FindGameObjectWithTag("Player");
         float distance = Vector3.Distance(player.transform.position, transform.position);
 
-        if(distance < attractionDistance)
+        if(distance <= attractionDistance)
         {
             if(collisionTime == -1)
             {
                 collisionTime = Mathf.Sqrt(2f * distance / attractionForce);
             }
+            GetComponent<PlanetRotate>().rotatingSpeed = 3f;
             int vibrato = (int)(attractionDistance - distance);
-            player.GetComponent<Rigidbody2D>().AddForce(transform.position.normalized * attractionForce);
+            Vector3 direction = transform.position - player.transform.position;
+            player.GetComponent<Rigidbody2D>().AddForce(direction * attractionForce);
             camShake.ShakeCamera(3f, 0.5f, vibrato);
             float targetSize = mainCamera.orthographicSize + 3f;
             if (!sizeChanged)

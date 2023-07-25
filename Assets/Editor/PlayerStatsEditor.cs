@@ -50,6 +50,7 @@ public class PlayerStatsEditor : Editor
         playerStats.ore = EditorGUILayout.IntField("Ore", playerStats.ore);
         playerStats.screw = EditorGUILayout.IntField("Screw ", playerStats.screw);
         playerStats.selectedSkin = EditorGUILayout.IntField("Selected Skin", playerStats.selectedSkin);
+        playerStats.refreshKey = EditorGUILayout.IntField("Refresh Keys", playerStats.refreshKey);
         EditorGUILayout.Space();
         GUILayout.Label("       DEATH SCREEN STATS", EditorStyles.boldLabel);
         playerStats.bestTime = EditorGUILayout.FloatField("Best Time Stat", playerStats.bestTime);

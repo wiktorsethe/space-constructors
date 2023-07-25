@@ -36,6 +36,7 @@ public class PlayerStats : ScriptableObject
     public bool firstBonus;
     public string lastDateBonus;
     public int selectedSkin;
+    public int refreshKey;
 
     public void Reset()
     {
@@ -79,5 +80,6 @@ public class PlayerStats : ScriptableObject
         firstBonus = false;
         lastDateBonus = "10.10.2010 10:10:10";
         selectedSkin = 0;
+        refreshKey = 3;
     }
 }

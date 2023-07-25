@@ -6,7 +6,8 @@ public class Boundaries : MonoBehaviour
 {
     private Camera mainCam;
     public GameObject barier;
-    public Transform[] spawnPoints; 
+    public Transform[] spawnPoints;
+    public List<GameObject> bariers = new List<GameObject>();
     public void ActivateBariers()
     {
         mainCam = Camera.main;
@@ -15,18 +16,33 @@ public class Boundaries : MonoBehaviour
         GameObject downBarier = Instantiate(barier, spawnPoints[0].position, Quaternion.identity);
         downBarier.transform.localScale = new Vector3(cameraWidth, 1f, 1f);
         downBarier.GetComponent<BoxCollider2D>().isTrigger = false;
+        bariers.Add(downBarier);
+
         GameObject topBarier = Instantiate(barier, spawnPoints[1].position, Quaternion.identity);
         topBarier.transform.localScale = new Vector3(cameraWidth, 1f, 1f);
         topBarier.GetComponent<BoxCollider2D>().isTrigger = false;
+        bariers.Add(topBarier);
+
         GameObject leftBarier = Instantiate(barier, spawnPoints[2].position, Quaternion.identity);
         leftBarier.transform.localScale = new Vector3(1f, cameraHeight, 1f);
         leftBarier.GetComponent<BoxCollider2D>().isTrigger = false;
+        bariers.Add(leftBarier);
+
         GameObject rightBarier = Instantiate(barier, spawnPoints[3].position, Quaternion.identity);
         rightBarier.transform.localScale = new Vector3(1f, cameraHeight, 1f);
         rightBarier.GetComponent<BoxCollider2D>().isTrigger = false;
+        bariers.Add(rightBarier);
+
     }
     public void Check()
     {
         Invoke("ActivateBariers", 5f);
+    }
+    public void DeactivateBariers()
+    {
+        foreach (GameObject barier in bariers)
+        {
+            Destroy(barier);
+        }
     }
 }

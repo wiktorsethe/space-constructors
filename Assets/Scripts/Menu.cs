@@ -42,6 +42,7 @@ public class Menu : MonoBehaviour
     public GameObject[] constructPoints;
     public List<GameObject> shipPartsInstantiate = new List<GameObject>();
     public List<GameObject> cards = new List<GameObject>();
+    public List<GameObject> refreshes = new List<GameObject>();
     public List<int> generatedCardsIndexes = new List<int>();
     public List<Card> generatedCards = new List<Card>();
     private void Start()
@@ -52,6 +53,13 @@ public class Menu : MonoBehaviour
     {
         //shipManager = GameObject.FindObjectOfType(typeof(ShipManager)) as ShipManager;
         goldText.text = "Gold: " + playerStats.gold.ToString();
+        if (playerStats.refreshKey <= 0)
+        {
+            foreach(GameObject refresh in refreshes)
+            {
+                refresh.SetActive(false);
+            }
+        }
     }
     public void ConstructMenu()
     {
@@ -189,6 +197,21 @@ public class Menu : MonoBehaviour
         pauseMenu.SetActive(false);
         gameOverMenu.SetActive(false);
         Time.timeScale = 1f;
+    }
+    public void RefreshCard(int i)
+    {
+        int randIndex = Random.Range(0, cardsDB.cards.Length);
+        while (generatedCardsIndexes.Contains(randIndex))
+        {
+            randIndex = Random.Range(0, cardsDB.cards.Length);
+        }
+        generatedCardsIndexes.Add(randIndex);
+        cards[i].transform.Find("DescriptionText").GetComponent<TMP_Text>().text = cardsDB.cards[randIndex].description;
+        cards[i].transform.Find("Image").GetComponent<Image>().sprite = cardsDB.cards[randIndex].image;
+        generatedCards.Add(cardsDB.cards[randIndex]);
+        playerStats.refreshKey--;
+        refreshes[i].GetComponent<Image>().enabled = false;
+        refreshes[i].GetComponent<Button>().enabled = false;
     }
     public void HideConstructPoints()
     {
