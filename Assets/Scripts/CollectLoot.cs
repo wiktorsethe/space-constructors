@@ -7,6 +7,8 @@ public class CollectLoot : MonoBehaviour
 {
     [Header("Other Scripts")]
     public ShipPartsDatabase shipPartsDB;
+    public PlayerStats playerStats;
+    private GameManager gameManager;
     [Space(20f)]
 
     [Header("Other GameObjects")]
@@ -22,6 +24,7 @@ public class CollectLoot : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        gameManager = GameObject.FindObjectOfType(typeof(GameManager)) as GameManager;
     }
     private void Update()
     {
@@ -125,8 +128,12 @@ public class CollectLoot : MonoBehaviour
         {
             if (lootName == "Orb")
             {
-                SceneManager.LoadScene("MisteriousPlace");
                 ShowMiningText(1, "Orb");
+                playerStats.shipPosition = transform.position;
+                PlayerPrefs.SetFloat("BestTimeTimer", gameManager.bestTimeTimer);
+                PlayerPrefs.SetInt("Kills", gameManager.kills);
+                PlayerPrefs.SetInt("GoldEarned", gameManager.goldEarned);
+                SceneManager.LoadScene("MisteriousPlace");
                 Destroy(this.gameObject);
             }
         }

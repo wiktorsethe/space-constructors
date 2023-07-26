@@ -7,6 +7,10 @@ public class CameraFollow : MonoBehaviour
     public Transform target;
     public float smoothSpeed = 1f;
 
+    private void Start()
+    {
+        smoothSpeed = 1e+17f;
+    }
     void Update()
     {
         if (target)
