@@ -31,7 +31,10 @@ public class GameManager : MonoBehaviour
         bounds = GameObject.FindObjectOfType(typeof(Boundaries)) as Boundaries;
         menu = GameObject.FindObjectOfType(typeof(Menu)) as Menu;
         obstacleSpawners = GameObject.FindObjectsOfType<ObstacleSpawner>();
-        menu.DeactiveBossHealthBar();
+        if (menu)
+        {
+            menu.DeactiveBossHealthBar();
+        }
         sceneNameText.text = sceneName;
         FadeInSceneNameText();
         Invoke("FadeOutSceneNameText", 3f);
