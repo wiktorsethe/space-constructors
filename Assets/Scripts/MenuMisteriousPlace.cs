@@ -13,8 +13,15 @@ public class MenuMisteriousPlace : MonoBehaviour
     public GameObject cardPrefab;
     public PlayerStats playerStats;
     public CardsDatabase cardsDB;
+    private CameraSize camSize;
+    private Camera mainCam;
     public List<Card> generatedCards = new List<Card>();
 
+    private void Start()
+    {
+        camSize = GameObject.FindObjectOfType(typeof(CameraSize)) as CameraSize;
+        mainCam = Camera.main;
+    }
     public void PauseMenu()
     {
         Time.timeScale = 0f;
@@ -52,19 +59,26 @@ public class MenuMisteriousPlace : MonoBehaviour
     }
     public void ChooseCard(int i)
     {
-        playerStats.normalGunDamageValue += generatedCards[i].normalGunDamageValue;
-        playerStats.laserGunDamageValue += generatedCards[i].laserGunDamageValue;
-        playerStats.bigGunDamageValue += generatedCards[i].bigGunDamageValue;
-        playerStats.doubleGunDamageValue += generatedCards[i].doubleGunDamageValue;
-        playerStats.normalGunAttackSpeedValue += generatedCards[i].normalGunAttackSpeedValue;
-        playerStats.laserGunAttackSpeedValue += generatedCards[i].laserGunAttackSpeedValue;
-        playerStats.bigGunAttackSpeedValue += generatedCards[i].bigGunAttackSpeedValue;
-        playerStats.doubleGunAttackSpeedValue += generatedCards[i].doubleGunAttackSpeedValue;
-        playerStats.shipSpeedValue += generatedCards[i].shipSpeedValue;
-        playerStats.oreMiningBonusValue = generatedCards[i].oreMiningBonus;
+        playerStats.normalGunDamageValue += generatedCards[i].normalGunDamageValue * 2;
+        playerStats.laserGunDamageValue += generatedCards[i].laserGunDamageValue * 2;
+        playerStats.bigGunDamageValue += generatedCards[i].bigGunDamageValue * 2;
+        playerStats.doubleGunDamageValue += generatedCards[i].doubleGunDamageValue * 2;
+        playerStats.normalGunAttackSpeedValue += generatedCards[i].normalGunAttackSpeedValue * 2;
+        playerStats.laserGunAttackSpeedValue += generatedCards[i].laserGunAttackSpeedValue * 2;
+        playerStats.bigGunAttackSpeedValue += generatedCards[i].bigGunAttackSpeedValue * 2;
+        playerStats.doubleGunAttackSpeedValue += generatedCards[i].doubleGunAttackSpeedValue * 2;
+        playerStats.shipSpeedValue += generatedCards[i].shipSpeedValue * 2;
+        playerStats.oreMiningBonusValue = generatedCards[i].oreMiningBonus * 2;
         gameMenu.SetActive(true);
         pauseMenu.SetActive(false);
         misteriousManMenu.SetActive(false);
         Time.timeScale = 1f;
+        camSize.CamSize(mainCam.orthographicSize / 3f, 5f);
+        Invoke("ChangeScene", 5f);
+    }
+    void ChangeScene()
+    {
+        SceneManager.LoadScene("Universe");
+
     }
 }

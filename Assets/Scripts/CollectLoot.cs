@@ -123,6 +123,12 @@ public class CollectLoot : MonoBehaviour
                     Destroy(this.gameObject);
                 }
             }
+            if (lootName == "Screw")
+            {
+                ShowMiningText(1, "Screw");
+                playerStats.screw += 5; //zmiana
+                Destroy(this.gameObject);
+            }
         }
         if (other.gameObject.tag == "Ship")
         {

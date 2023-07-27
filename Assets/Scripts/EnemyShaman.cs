@@ -101,6 +101,8 @@ public class EnemyShaman : MonoBehaviour
             playerStats.gold += gold;
             gameManager.goldEarned += gold;
             gameManager.kills += 1;
+            spawnTimer = -10f;
+            GetComponent<LootBag>().InstantiateLoot(transform.position);
             Destroy(gameObject, 2f);
         }
         if (miningTextPrefab)
