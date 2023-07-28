@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: ShipPartsDatabase
   m_EditorClassIdentifier: 
   shipParts:
-  - image: {fileID: 21300000, guid: cee9dbe90b270c944ae1dabf41c93b10, type: 3}
+  - image: {fileID: 21300000, guid: 73046434a08477945ba0acff471eff25, type: 3}
     shipPart: {fileID: 5953221920737725232, guid: 8a36e4a37f4681842a2a5d08ad5eb84e, type: 3}
-    amount: 8
+    amount: 5
     oreCost: 0
     gravityBonus: 2
     shipPartType: corridor
-  - image: {fileID: 21300000, guid: 17fa84703485d314b8d6b5216987d4b1, type: 3}
+  - image: {fileID: 21300000, guid: 81a8daacbd4053e4997c55531cf1b14b, type: 3}
     shipPart: {fileID: 5953221920737725232, guid: 8c5c946de78166c43b50ddd344e0c1c4, type: 3}
-    amount: 8
+    amount: 2
     oreCost: 0
     gravityBonus: 6
     shipPartType: main
