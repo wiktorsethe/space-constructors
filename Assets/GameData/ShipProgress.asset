@@ -14,7 +14,67 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipParts:
   - shipPartIndex: 0
+    position: {x: -2.25, y: 1.3, z: 0}
+    rotation: {x: -0, y: -0, z: 0.5, w: 0.8660254}
+  - shipPartIndex: 1
+    position: {x: -4.068653, y: 2.35, z: 0}
+    rotation: {x: -0, y: -0, z: 0.5, w: 0.8660254}
+  - shipPartIndex: 0
+    position: {x: -6.492691, y: 1.1514428, z: 0}
+    rotation: {x: -0, y: -0, z: 1, w: -0.00000008940697}
+  - shipPartIndex: 0
+    position: {x: -2.25, y: -1.3, z: 0}
+    rotation: {x: -0, y: -0, z: 0.86602545, w: 0.49999994}
+  - shipPartIndex: 1
+    position: {x: -4.068653, y: -2.3500001, z: 0}
+    rotation: {x: -0, y: -0, z: 0.86602545, w: 0.49999994}
+  - shipPartIndex: 0
+    position: {x: 0, y: -2.6, z: 0}
+    rotation: {x: -0, y: -0, z: 1, w: 0}
+  - shipPartIndex: 1
+    position: {x: 0, y: -4.7, z: 0}
+    rotation: {x: -0, y: -0, z: 1, w: 0}
+  - shipPartIndex: 0
+    position: {x: -4.242691, y: -5.0485573, z: 0}
+    rotation: {x: -0, y: -0, z: 0.8660253, w: -0.5000001}
+  - shipPartIndex: 0
+    position: {x: 2.25, y: -6.2, z: 0}
+    rotation: {x: -0, y: -0, z: 0.49999994, w: -0.86602545}
+  - shipPartIndex: 0
+    position: {x: 2.25, y: -1.3, z: 0}
+    rotation: {x: -0, y: -0, z: -0.86602545, w: 0.49999994}
+  - shipPartIndex: 1
+    position: {x: 4.068653, y: -2.3500001, z: 0}
+    rotation: {x: -0, y: -0, z: -0.86602545, w: 0.49999994}
+  - shipPartIndex: 0
     position: {x: 2.25, y: 1.3, z: 0}
     rotation: {x: -0, y: -0, z: -0.5, w: 0.8660254}
+  - shipPartIndex: 1
+    position: {x: 4.068653, y: 2.35, z: 0}
+    rotation: {x: -0, y: -0, z: -0.5, w: 0.8660254}
+  - shipPartIndex: 0
+    position: {x: 6.492691, y: 1.1514428, z: 0}
+    rotation: {x: -0, y: -0, z: -1, w: -0.00000008940697}
+  - shipPartIndex: 0
+    position: {x: 8.74519, y: 5.0499997, z: 0}
+    rotation: {x: -0, y: -0, z: -0.5, w: 0.8660254}
+  - shipPartIndex: 1
+    position: {x: 10.563843, y: 6.0999994, z: 0}
+    rotation: {x: -0, y: -0, z: -0.5, w: 0.8660254}
   usedContstructPoints:
+  - {x: -2.25, y: 1.3, z: 0}
+  - {x: -4.068653, y: 2.35, z: 0}
+  - {x: -6.492691, y: 1.1514428, z: 0}
+  - {x: -2.25, y: -1.3, z: 0}
+  - {x: -4.068653, y: -2.3500001, z: 0}
+  - {x: 0, y: -2.6, z: 0}
+  - {x: 0, y: -4.7, z: 0}
+  - {x: -4.242691, y: -5.0485573, z: 0}
+  - {x: 2.25, y: -6.2, z: 0}
+  - {x: 2.25, y: -1.3, z: 0}
+  - {x: 4.068653, y: -2.3500001, z: 0}
   - {x: 2.25, y: 1.3, z: 0}
+  - {x: 4.068653, y: 2.35, z: 0}
+  - {x: 6.492691, y: 1.1514428, z: 0}
+  - {x: 8.74519, y: 5.0499997, z: 0}
+  - {x: 10.563843, y: 6.0999994, z: 0}
