@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 7918180775261759571}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 22.31, y: 14.72, z: 0}
-  m_LocalScale: {x: 3.07, y: 5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 24fef823e7d3446428852d669aff0923, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -117,9 +117,9 @@ MonoBehaviour:
   targetScene: Planet
   attractionDistance: 10
   attractionForce: 10
-  camShake: {fileID: 0}
-  camSize: {fileID: 0}
   gravity: 0
+  safeSpawn: {fileID: 0}
+  playerStats: {fileID: 0}
 --- !u!70 &7918180775261759580
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -134,5 +134,5 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.89, y: 1}
+  m_Size: {x: 9, y: 9}
   m_Direction: 0

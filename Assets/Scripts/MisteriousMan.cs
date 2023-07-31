@@ -14,7 +14,7 @@ public class MisteriousMan : MonoBehaviour
     }
     private void Update()
     {
-        if(Vector2.Distance(transform.position, player.transform.position) < 5f && !isMenuOpened)
+        if(Vector2.Distance(transform.position, player.transform.position) < 10f && !isMenuOpened)
         {
             menuMisteriousPlace.MisteriousManMenu();
             Time.timeScale = 0f;
