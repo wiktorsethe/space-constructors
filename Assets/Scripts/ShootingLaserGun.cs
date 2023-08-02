@@ -9,16 +9,16 @@ public class ShootingLaserGun : MonoBehaviour
     [Space(20f)]
 
     [Header("Objects and List")]
-    public GameObject bulletPrefab;
-    public Transform firePoint;
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Transform firePoint;
     [Space(20f)]
 
     [Header("Variables")]
-    public float bulletSpeed = 10f;
-    public string target;
+    [SerializeField] private float bulletSpeed = 10f;
+    [SerializeField] private string target;
     public float shootTimer = 0f;
-    public float delayTimer;
-    public int delayIndex = 0;
+    [SerializeField] private float delayTimer;
+    [SerializeField] private int delayIndex = 0;
     void Update()
     {
         shootTimer += Time.deltaTime;

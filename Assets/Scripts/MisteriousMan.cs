@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class MisteriousMan : MonoBehaviour
 {
-    private GameObject player;
+    [Header("Other Scripts")]
     private MenuMisteriousPlace menuMisteriousPlace;
+    [Space(20f)]
+    [Header("Other")]
+    private GameObject player;
     private bool isMenuOpened = false;
     private void Start()
     {

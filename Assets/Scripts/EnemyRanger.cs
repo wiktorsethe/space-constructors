@@ -25,6 +25,8 @@ public class EnemyRanger : MonoBehaviour
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject miningTextPrefab;
     [SerializeField] private string target = "Player";
+    private bool facingRight;
+    private float previousX;
     [Space(20f)]
     [Header("Health System")]
     [SerializeField] private Canvas canvas;
@@ -36,6 +38,7 @@ public class EnemyRanger : MonoBehaviour
     private int currentHealth;
     [SerializeField] private float Angle;
     private float hideTimer = 0f;
+
 
     private void Start()
     {
@@ -52,7 +55,11 @@ public class EnemyRanger : MonoBehaviour
     {
         fillBar.color = healthGradient.Evaluate(healthBar.normalizedValue);
         hideTimer += Time.deltaTime;
-        if(hideTimer > 2f)
+
+        float velocityX = transform.position.x - previousX;
+        previousX = transform.position.x;
+
+        if (hideTimer > 2f)
         {
             healthBarCanvas.SetActive(false);
         }
@@ -62,8 +69,16 @@ public class EnemyRanger : MonoBehaviour
         {
             if (shootTimer < 2f)
             {
-                Vector3 vectorToTarget = player.transform.position - transform.position;
-                transform.Find("EnemyRangerImage").transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget);
+                if (velocityX > 0 && facingRight)
+                {
+                    Flip();
+                }
+                if (velocityX < 0 && !facingRight)
+                {
+                    Flip();
+                }
+                //Vector3 vectorToTarget = player.transform.position - transform.position;
+                //transform.Find("EnemyRangerImage").transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget);
             }
 
             if (shootTimer >= 3f)
@@ -76,8 +91,17 @@ public class EnemyRanger : MonoBehaviour
         {
             Vector3 vectorToTarget = player.transform.position - transform.position;
             //transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime); //ciekawe rzeczy jak weŸmiemy .right
-            transform.Find("EnemyRangerImage").transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget);
+            //transform.Find("EnemyRangerImage").transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget);
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
+
+            if (velocityX > 0 && facingRight)
+            {
+                Flip();
+            }
+            if (velocityX < 0 && !facingRight)
+            {
+                Flip();
+            }
         }
     }
     void FireBullet()
@@ -124,5 +148,12 @@ public class EnemyRanger : MonoBehaviour
     {
         var text = Instantiate(miningTextPrefab, transform.position, Quaternion.identity);
         text.GetComponent<TMP_Text>().text = amount.ToString();
+    }
+    private void Flip()
+    {
+        Vector3 currentScale = gameObject.transform.localScale;
+        currentScale.x *= -1;
+        gameObject.transform.localScale = currentScale;
+        facingRight = !facingRight;
     }
 }

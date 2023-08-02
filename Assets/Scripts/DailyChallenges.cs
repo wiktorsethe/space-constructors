@@ -10,7 +10,7 @@ public class DailyChallenges : MonoBehaviour
 {
     public ChallengesDatabase challengesDB;
     public PlayerStats playerStats;
-    public GameObject[] challengesObjects;
+    [SerializeField] private GameObject[] challengesObjects;
     //public SaveManager save;
     private List<int> except = new List<int>();
     private void Start()

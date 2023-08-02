@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlanetRotate : MonoBehaviour
 {
     public float rotatingSpeed;
-    public float rotatingLocalSpeed;
-    public GameObject pivotObject;
+    [SerializeField] private float rotatingLocalSpeed;
+    [SerializeField] private GameObject pivotObject;
 
     private void Update()
     {

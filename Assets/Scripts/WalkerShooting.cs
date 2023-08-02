@@ -5,16 +5,16 @@ using UnityEngine;
 public class WalkerShooting : MonoBehaviour
 {
     [Header("Objects and List")]
-    public GameObject bulletPrefab;
-    public Transform firePoint;
-    public GameObject[] enemies;
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Transform firePoint;
+    [SerializeField] private GameObject[] enemies;
     //public GameObject activeEnemy;
     private float distance;
     [Space(20f)]
 
     [Header("Variables")]
-    public float bulletSpeed = 10f;
-    public string target;
+    [SerializeField] private float bulletSpeed = 10f;
+    [SerializeField] private string target;
     private float shootTimer = 0f;
     private float attractDistance = 10f;
 

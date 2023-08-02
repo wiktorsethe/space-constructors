@@ -7,12 +7,17 @@ using System;
 
 public class DailyRewards : MonoBehaviour
 {
-    public GameObject[] days;
-    public Button claimButton;
-    public GameObject adButton;
+    [Header("Other Scripts")]
     public PlayerStats playerStats;
     //public SaveManager save;
     //public AdManager adManager;
+    [Space(20f)]
+    [Header("UI")]
+    [SerializeField] private GameObject[] days;
+    [SerializeField] private Button claimButton;
+    [SerializeField] private GameObject adButton;
+    [Space(20f)]
+    [Header("Variables")]
     private int currentDay;
     private string lastDate;
     private void Start()

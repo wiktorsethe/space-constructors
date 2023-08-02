@@ -6,14 +6,20 @@ using TMPro;
 
 public class Shop : MonoBehaviour
 {
+    [Header("Other Scripts")]
     public PlayerStats playerStats;
     public SkinsDatabase skinsDB;
-    public Image skinSprite;
+    [Space(20f)]
+    [Header("UI")]
+    [SerializeField] private Image skinSprite;
+    [SerializeField] private GameObject buyButton;
+    [SerializeField] private GameObject selectButton;
+    [SerializeField] private TMP_Text costBuyText;
+    [SerializeField] private TMP_Text selectText;
+    [Space(20f)]
+    [Header("Other")]
     private int activeSkinIndex;
-    public GameObject buyButton;
-    public GameObject selectButton;
-    public TMP_Text costBuyText;
-    public TMP_Text selectText;
+
     private void Start()
     {
         activeSkinIndex = playerStats.selectedSkin;

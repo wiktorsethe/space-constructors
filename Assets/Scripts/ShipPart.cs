@@ -9,6 +9,7 @@ public struct ShipPart
     public GameObject shipPart;
     public int amount;
     public int oreCost;
+    public int screwCost;
     public int gravityBonus;
     public string shipPartType;
 }

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class UniverseLevelGenerator : MonoBehaviour
 {
-    public List<GameObject> terrainSpawnPoints = new List<GameObject>();
-    public GameObject[] levelParts;
+    [SerializeField] private List<GameObject> terrainSpawnPoints = new List<GameObject>();
+    [SerializeField] private GameObject[] levelParts;
     private Camera mainCamera;
     private float bufferDistance = 15f;
     private void Start()

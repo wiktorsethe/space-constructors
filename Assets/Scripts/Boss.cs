@@ -6,22 +6,27 @@ using DG.Tweening;
 using TMPro;
 public class Boss : MonoBehaviour
 {
-    public ShootingNormalGun[] shootingScripts;
-    private float specialActionTimer = 0;
+    [Header("Other Scripts")]
     public PlayerStats playerStats;
-    public GameObject bulletPrefab;
-    public Transform[] firePoints;
-    public float bulletSpeed;
-    public string target;
-    public float shootTimer = 0;
-    private GameObject[] objectsList;
-    private float distance;
-    private bool isPositionSelected = false;
-    private Vector3 dashPosition;
+    private ExpBar expBar;
+    private GameManager gameManager;
+    [Space(20f)]
+
+    [Header("Other GameObjects")]
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private GameObject damageTextPrefab;
+    [SerializeField] private Transform[] firePoints;
     private GameObject player;
+    [Space(20f)]
+
+    [Header("Shooting")]
+    [SerializeField] private float bulletSpeed;
+    [SerializeField] private string target;
+    private float shootTimer = 0;
     private bool firstGunsShoot = false;
     private bool secondGunsShoot = false;
-    [SerializeField] private GameObject damageTextPrefab;
+    [Space(20f)]
+
     [Header("Health System")]
     [SerializeField] private GameObject healthBarCanvas;
     [SerializeField] private Slider healthBar;
@@ -29,14 +34,18 @@ public class Boss : MonoBehaviour
     [SerializeField] private Image fillBar;
     [SerializeField] private int maxHealth;
     private int currentHealth;
-    [SerializeField] private float Angle;
-    private ExpBar expBar;
-    private GameManager gameManager;
+    [Space(20f)]
+
+    [Header("Other")]
+    private bool isPositionSelected = false;
+    private Vector3 dashPosition;
     [SerializeField] private int experience;
     [SerializeField] private int gold;
     private bool isDefeated = false;
     private Vector3 startingPos;
-    float speed;
+    private float specialActionTimer = 0;
+    private float speed;
+
     private void Start()
     {
         expBar = GameObject.FindObjectOfType(typeof(ExpBar)) as ExpBar;
@@ -235,6 +244,8 @@ public class Boss : MonoBehaviour
                 shootTimer = -10f;
                 GetComponent<PolygonCollider2D>().enabled = false;
                 GetComponent<LootBag>().InstantiateLoot(transform.position);
+                gameManager.bounds.DeactivateBariers();
+                gameManager.bounds.ActivatePlanets();
                 Destroy(gameObject, 2f);
             }
             if (damageTextPrefab)

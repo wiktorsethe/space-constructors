@@ -5,9 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class MenuPlanet : MonoBehaviour
 {
-    public GameObject gameMenu;
-    public GameObject pauseMenu;
-    public GameObject gameOverMenu;
+    [Header("UI")]
+    [SerializeField] private GameObject gameMenu;
+    [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject gameOverMenu;
 
     public void PauseMenu()
     {

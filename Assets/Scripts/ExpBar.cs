@@ -5,10 +5,14 @@ using UnityEngine.UI;
 using DG.Tweening;
 public class ExpBar : MonoBehaviour
 {
-    public Slider expBar;
+    [Header("Other Scripts")]
     public PlayerStats playerStats;
     private HpBar hpBar;
     private Menu menu;
+    [Space(20f)]
+    [Header("Other")]
+    [SerializeField] private Slider expBar;
+    
     private void Start()
     {
         GetExperience();

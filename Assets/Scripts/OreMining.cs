@@ -18,7 +18,7 @@ public class OreMining : MonoBehaviour
     [SerializeField] private Slider healthBar;
     [SerializeField] private Gradient healthGradient;
     [SerializeField] private Image fillBar;
-    public int maxHealth;
+    [SerializeField] private int maxHealth;
     private int currentHealth;
     [SerializeField] private float Angle;
     private bool attacked = false;

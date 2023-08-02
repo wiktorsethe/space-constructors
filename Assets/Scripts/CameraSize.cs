@@ -6,8 +6,8 @@ using DG.Tweening;
 public class CameraSize : MonoBehaviour
 {
     [Header("Objects")]
-    public Transform parentObject;
-    public Transform shipCenter;
+    [SerializeField] private Transform parentObject;
+    [SerializeField] private Transform shipCenter;
     private Camera mainCamera;
  
     private void Start()

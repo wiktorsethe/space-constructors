@@ -18,8 +18,8 @@ public class CollectLoot : MonoBehaviour
 
     [Header("Other")]
     public string lootName;
-    public float speed = 2f;
-    float timer = 0f;
+    private float speed = 2f;
+    private float timer = 0f;
 
     private void Start()
     {

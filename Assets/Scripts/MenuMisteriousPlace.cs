@@ -7,15 +7,20 @@ using UnityEngine.SceneManagement;
 
 public class MenuMisteriousPlace : MonoBehaviour
 {
-    public GameObject pauseMenu;
-    public GameObject gameMenu;
-    public GameObject misteriousManMenu;
-    public GameObject cardPrefab;
+    [Header("Other Scripts")]
     public PlayerStats playerStats;
     public CardsDatabase cardsDB;
     private CameraSize camSize;
+    [Space(20f)]
+    [Header("Other GameObjects")]
+    [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject gameMenu;
+    [SerializeField] private GameObject misteriousManMenu;
+    [SerializeField] private GameObject cardPrefab;
     private Camera mainCam;
-    public List<Card> generatedCards = new List<Card>();
+    [Space(20f)]
+    [Header("Lists")]
+    [SerializeField] private List<Card> generatedCards = new List<Card>();
 
     private void Start()
     {

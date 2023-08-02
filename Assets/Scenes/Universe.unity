@@ -1089,6 +1089,41 @@ RectTransform:
   m_AnchoredPosition: {x: -700, y: 400}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &210831633
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 210831634}
+  m_Layer: 0
+  m_Name: PotentialSpawnPoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &210831634
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210831633}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.7289333, y: 4.6514373, z: -0.20140931}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 640396187}
+  - {fileID: 586610517}
+  - {fileID: 992443293}
+  - {fileID: 820347107}
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &242010653
 GameObject:
   m_ObjectHideFlags: 0
@@ -1387,6 +1422,10 @@ PrefabInstance:
     - target: {fileID: 77716802801249649, guid: 1f5ad89a3342aaa42b52c8e471816236, type: 3}
       propertyPath: m_Name
       value: Sun
+      objectReference: {fileID: 0}
+    - target: {fileID: 77716802801249649, guid: 1f5ad89a3342aaa42b52c8e471816236, type: 3}
+      propertyPath: m_TagString
+      value: Planet
       objectReference: {fileID: 0}
     - target: {fileID: 77716802801249651, guid: 1f5ad89a3342aaa42b52c8e471816236, type: 3}
       propertyPath: m_RootOrder
@@ -1996,6 +2035,7 @@ MonoBehaviour:
   - {fileID: 1414245506}
   - {fileID: 578948986}
   bariers: []
+  planets: []
 --- !u!1 &578948985
 GameObject:
   m_ObjectHideFlags: 0
@@ -2032,6 +2072,37 @@ RectTransform:
   m_AnchoredPosition: {x: 550, y: 0}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &586610516
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 586610517}
+  m_Layer: 0
+  m_Name: PotentialStartingSpawnPoint (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &586610517
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586610516}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -108.4, y: 62.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 210831634}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &597966319
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2390,6 +2461,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 614557611}
   m_CullTransparentMesh: 1
+--- !u!1 &640396186
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 640396187}
+  m_Layer: 0
+  m_Name: PotentialStartingSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &640396187
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640396186}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 210831634}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &647926029
 GameObject:
   m_ObjectHideFlags: 0
@@ -3087,6 +3189,37 @@ RectTransform:
   m_AnchoredPosition: {x: -900, y: 0}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &820347106
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 820347107}
+  m_Layer: 0
+  m_Name: PotentialStartingSpawnPoint (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &820347107
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820347106}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 92.5, y: -82.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 210831634}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &864846843
 GameObject:
   m_ObjectHideFlags: 0
@@ -3508,6 +3641,37 @@ RectTransform:
   m_AnchoredPosition: {x: 700, y: 0}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &992443292
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 992443293}
+  m_Layer: 0
+  m_Name: PotentialStartingSpawnPoint (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &992443293
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992443292}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 22.7, y: 129.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 210831634}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &998806457
 GameObject:
   m_ObjectHideFlags: 0
@@ -3722,6 +3886,10 @@ PrefabInstance:
       propertyPath: pivotObject
       value: 
       objectReference: {fileID: 318923678}
+    - target: {fileID: 7918180775261759568, guid: 65198c27d9c135245ba220a98923574f, type: 3}
+      propertyPath: rotatingSpeed
+      value: 13.08
+      objectReference: {fileID: 0}
     - target: {fileID: 7918180775261759571, guid: 65198c27d9c135245ba220a98923574f, type: 3}
       propertyPath: m_Name
       value: Planet
@@ -5542,8 +5710,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63f88d3993c273e43b0962453fd29ed9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  expBar: {fileID: 159143573}
   playerStats: {fileID: 11400000, guid: 284895b3224468a48aa2a763a688b966, type: 2}
+  expBar: {fileID: 159143573}
 --- !u!114 &1450058417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8088,7 +8256,11 @@ MonoBehaviour:
   shipProgress: {fileID: 11400000, guid: e5214ab3914aca544b64f6cc6b7c753d, type: 2}
   activeConstructPoint: {fileID: 0}
   gravityWarningText: {fileID: 1098182486}
-  distanceThreshold: 30
+  potentialSpawnPoints:
+  - {fileID: 640396186}
+  - {fileID: 586610516}
+  - {fileID: 992443292}
+  - {fileID: 820347106}
   arrowPrefab: {fileID: 8681041838900958791, guid: 88862655e2443024383a9140edb100ed, type: 3}
   arrowDistance: 3
 --- !u!1 &2069715830

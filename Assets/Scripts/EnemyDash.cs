@@ -36,7 +36,7 @@ public class EnemyDash : MonoBehaviour
     Vector3 vectorToTarget;
     private bool hasDirection = false;
     private bool isInState = false;
-    public bool triggerTouch = false;
+    private bool triggerTouch = false;
     private void Start()
     {
         expBar = GameObject.FindObjectOfType(typeof(ExpBar)) as ExpBar;

@@ -5,11 +5,11 @@ using UnityEngine;
 public class LootBag : MonoBehaviour
 {
     [Header("Other GameObjects")]
-    public GameObject droppedItemPrefab;
+    [SerializeField] private GameObject droppedItemPrefab;
     [Space(20f)]
 
     [Header("List of Loot Items")]
-    public List<Loot> lootList = new List<Loot>();
+    [SerializeField] private List<Loot> lootList = new List<Loot>();
 
     Loot GetDroppedItem()
     {

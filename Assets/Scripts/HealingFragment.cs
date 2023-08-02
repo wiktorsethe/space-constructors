@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class HealingFragment : MonoBehaviour
 {
-    private float regen = 0f;
-    private float timer = 0f;
+    [Header("Other Scripts")]
     public PlayerStats playerStats;
     private HpBar hpBar;
+    [Space(20f)]
+    [Header("Variables")]
+    private float regen = 0f;
+    private float timer = 0f;
+    
     private void Start()
     {
         hpBar = GameObject.FindObjectOfType(typeof(HpBar)) as HpBar;

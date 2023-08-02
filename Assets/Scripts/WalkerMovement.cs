@@ -8,8 +8,8 @@ public class WalkerMovement : MonoBehaviour
     public FloatingJoystick rotationJoystick;
     private Rigidbody2D rb;
     [Header("Variables")]
-    public float moveSpeed;
-    public float rotationSpeed;
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float rotationSpeed;
     private Vector2 moveVector;
     private void Awake()
     {

@@ -8,7 +8,7 @@ public class ShipMovement : MonoBehaviour
     public FloatingJoystick rotationJoystick;
     private Rigidbody2D rb;
     [Header("Variables")]
-    public float rotationSpeed;
+    [SerializeField] private float rotationSpeed;
     private Vector2 moveVector;
     public PlayerStats playerStats;
     private void Awake()

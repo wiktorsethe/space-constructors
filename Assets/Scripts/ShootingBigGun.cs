@@ -9,13 +9,13 @@ public class ShootingBigGun : MonoBehaviour
     [Space(20f)]
 
     [Header("Objects and List")]
-    public GameObject bulletPrefab;
-    public Transform firePoint;
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Transform firePoint;
     [Space(20f)]
 
     [Header("Variables")]
-    public float bulletSpeed = 5f;
-    public string target;
+    [SerializeField] private float bulletSpeed = 5f;
+    [SerializeField] private string target;
     public float shootTimer = 0f;
     void Update()
     {

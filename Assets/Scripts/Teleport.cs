@@ -5,19 +5,26 @@ using UnityEngine.SceneManagement;
 
 public class Teleport : MonoBehaviour
 {
-    [SerializeField] private string targetScene;
-    private GameObject player;
-    [SerializeField] private float attractionDistance = 5f;
-    [SerializeField] private float attractionForce = 10f;
+    [Header("Other Scripts")]
     private CameraShake camShake;
     private CameraSize camSize;
-    private Camera mainCamera;
+    public PlayerStats playerStats;
+    private GameManager gameManager;
+    [Space(20f)]
+    [Header("Variables")]
+    [SerializeField] private float attractionDistance = 5f;
+    [SerializeField] private float attractionForce = 10f;
+    [SerializeField] private string targetScene;
     private bool sizeChanged = false;
     private float collisionTime = -1;
     public int gravity;
+    private Vector3 size;
+    [Space(20f)]
+    [Header("Other")]
+    private GameObject player;
+    private Camera mainCamera;
     [SerializeField] private Transform safeSpawn;
-    public PlayerStats playerStats;
-    private GameManager gameManager;
+    
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -25,6 +32,10 @@ public class Teleport : MonoBehaviour
         camSize = GameObject.FindObjectOfType(typeof(CameraSize)) as CameraSize;
         gameManager = GameObject.FindObjectOfType(typeof(GameManager)) as GameManager;
         mainCamera = Camera.main;
+
+        SpriteRenderer meshRender = GetComponent<SpriteRenderer>();
+        Bounds bounds = meshRender.bounds;
+        size = bounds.size;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -53,7 +64,7 @@ public class Teleport : MonoBehaviour
             Vector3 direction = transform.position - player.transform.position;
             player.GetComponent<Rigidbody2D>().AddForce(direction * attractionForce);
             camShake.ShakeCamera(3f, 0.5f, vibrato);
-            float targetSize = mainCamera.orthographicSize + 3f;
+            float targetSize = mainCamera.orthographicSize + size.x;
             if (!sizeChanged)
             {
                 camSize.CamSize(targetSize, collisionTime);

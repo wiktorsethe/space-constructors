@@ -5,9 +5,15 @@ using UnityEngine;
 public class Boundaries : MonoBehaviour
 {
     private Camera mainCam;
-    public GameObject barier;
-    public Transform[] spawnPoints;
-    public List<GameObject> bariers = new List<GameObject>();
+    [SerializeField] private GameObject barier;
+    [SerializeField] private Transform[] spawnPoints;
+    [SerializeField] private List<GameObject> bariers = new List<GameObject>();
+    public GameObject[] planets;
+    public void Check()
+    {
+        Invoke("ActivateBariers", 5f);
+        DeactivatePlanets();
+    }
     public void ActivateBariers()
     {
         mainCam = Camera.main;
@@ -33,16 +39,28 @@ public class Boundaries : MonoBehaviour
         rightBarier.GetComponent<BoxCollider2D>().isTrigger = false;
         bariers.Add(rightBarier);
 
-    }
-    public void Check()
-    {
-        Invoke("ActivateBariers", 5f);
+        
     }
     public void DeactivateBariers()
     {
         foreach (GameObject barier in bariers)
         {
             Destroy(barier);
+        }
+    }
+    public void DeactivatePlanets()
+    {
+        planets = GameObject.FindGameObjectsWithTag("Planet");
+        foreach (GameObject planet in planets)
+        {
+            planet.SetActive(false);
+        }
+    }
+    public void ActivatePlanets()
+    {
+        foreach (GameObject planet in planets)
+        {
+            planet.SetActive(true);
         }
     }
 }

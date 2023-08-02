@@ -22,29 +22,29 @@ public class Menu : MonoBehaviour
     [Space(20f)]
 
     [Header("Objects")]
-    public GameObject constructMenu;
-    public GameObject gameMenu;
-    public GameObject pauseMenu;
-    public GameObject gameOverMenu;
-    public GameObject cardsMenu;
-    public GameObject bossHPBar;
-    public GameObject shipPartMenuPrefab;
+    [SerializeField] private GameObject constructMenu;
+    [SerializeField] private GameObject gameMenu;
+    [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject gameOverMenu;
+    [SerializeField] private GameObject cardsMenu;
+    [SerializeField] private GameObject bossHPBar;
+    [SerializeField] private GameObject shipPartMenuPrefab;
     [Space(20f)]
 
     [Header("Texts")]
-    public TMP_Text bestTimeText;
-    public TMP_Text mostKillsText;
-    public TMP_Text mostGoldEarnedText;
-    public TMP_Text goldText;
+    [SerializeField] private TMP_Text bestTimeText;
+    [SerializeField] private TMP_Text mostKillsText;
+    [SerializeField] private TMP_Text mostGoldEarnedText;
+    [SerializeField] private TMP_Text goldText;
     [Space(20f)]
 
     [Header("Lists")]
     public GameObject[] constructPoints;
-    public List<GameObject> shipPartsInstantiate = new List<GameObject>();
-    public List<GameObject> cards = new List<GameObject>();
-    public List<GameObject> refreshes = new List<GameObject>();
-    public List<int> generatedCardsIndexes = new List<int>();
-    public List<Card> generatedCards = new List<Card>();
+    [SerializeField] private List<GameObject> shipPartsInstantiate = new List<GameObject>();
+    [SerializeField] private List<GameObject> cards = new List<GameObject>();
+    [SerializeField] private List<GameObject> refreshes = new List<GameObject>();
+    [SerializeField] private List<int> generatedCardsIndexes = new List<int>();
+    [SerializeField] private List<Card> generatedCards = new List<Card>();
     private void Start()
     {
         shipManager = GameObject.FindObjectOfType(typeof(ShipManager)) as ShipManager;

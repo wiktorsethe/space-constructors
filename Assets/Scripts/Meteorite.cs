@@ -9,11 +9,11 @@ public class Meteorite : MonoBehaviour
     [Space(20f)]
 
     [Header("Objects")]
-    public Transform playerShip;
+    [SerializeField] private Transform playerShip;
     [Space(20f)]
 
     [Header("Variables")]
-    public float speed = 5f;
+    [SerializeField] private float speed = 5f;
     private bool hasDirection = false;
     private Vector3 direction;
     private Camera mainCamera;

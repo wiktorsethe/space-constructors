@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
+    [Header("Other Scripts")]
+    private Camera mainCamera;
+    [Space(20f)]
+    [Header("Lists")]
     public List<GameObject> terrainSpawnPoints = new List<GameObject>();
     public GameObject[] levelParts;
-    private Camera mainCamera;
+    [Space(20f)]
+    [Header("Variables")]
     private float bufferDistance = 1.2f;
     private void Start()
     {

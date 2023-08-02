@@ -19,12 +19,13 @@ public class ShipManager : MonoBehaviour
     private GameObject ship;
     public GameObject activeConstructPoint;
     private GameObject player;
-    public TMP_Text gravityWarningText;
+    [SerializeField] private TMP_Text gravityWarningText;
+    [SerializeField] private GameObject[] potentialSpawnPoints;
 
-    public float distanceThreshold = 10f;
-    public GameObject arrowPrefab;
+    private float distanceThreshold = 10f;
+    [SerializeField] private GameObject arrowPrefab;
     private GameObject arrow;
-    public float arrowDistance = 2f;
+    [SerializeField] private float arrowDistance = 2f;
     private bool animate = false;
 
     private void Start()
@@ -55,6 +56,11 @@ public class ShipManager : MonoBehaviour
         }
         ship.gameObject.transform.position = playerStats.shipPosition;
         menu.HideConstructPoints();
+        if(playerStats.shipPosition == new Vector3(0f, 0f, 0f))
+        {
+            int randIndex = Random.Range(0, potentialSpawnPoints.Length);
+            transform.position = potentialSpawnPoints[randIndex].transform.position;
+        }
     }
     private void Update()
     {
@@ -115,7 +121,7 @@ public class ShipManager : MonoBehaviour
     }
     public void NewPart(int index)
     {
-        if(playerStats.ore >= shipPartsDB.shipParts[index].oreCost)
+        if(playerStats.ore >= shipPartsDB.shipParts[index].oreCost && playerStats.screw >= shipPartsDB.shipParts[index].screwCost) //tu dodac te srubki
         {
             ship = GameObject.Find("SHIP"/*(Clone)"*/); // tu usunac clone jak nie dziala
             GameObject shipPart = Instantiate(shipPartsDB.shipParts[index].shipPart, activeConstructPoint.transform.position, activeConstructPoint.transform.rotation);
@@ -132,6 +138,7 @@ public class ShipManager : MonoBehaviour
             menu.ExitConstructMenu();
             camSize.ChangeCamSize();
             playerStats.ore -= shipPartsDB.shipParts[index].oreCost;
+            playerStats.screw -= shipPartsDB.shipParts[index].screwCost;
             shipPartsDB.shipParts[index].amount--;
             playerStats.shipGravity += shipPartsDB.shipParts[index].gravityBonus;
             ShipPartInScene newShipPart;
