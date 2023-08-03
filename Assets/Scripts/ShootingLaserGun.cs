@@ -10,6 +10,7 @@ public class ShootingLaserGun : MonoBehaviour
 
     [Header("Objects and List")]
     [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Animator shootAnimator;
     [SerializeField] private Transform firePoint;
     [Space(20f)]
 
@@ -25,7 +26,7 @@ public class ShootingLaserGun : MonoBehaviour
         delayTimer += Time.deltaTime;
         if (shootTimer >= playerStats.laserGunAttackSpeedValue)
         {
-            if (delayTimer >= 0.2f)
+            if (delayTimer >= 0.3f)
             {
                 if(delayIndex < 3)
                 {
@@ -47,6 +48,7 @@ public class ShootingLaserGun : MonoBehaviour
     }
     void FireBullet()
     {
+        shootAnimator.SetTrigger("Play");
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         bullet.GetComponent<ShootingBullet>().target = target;
         bullet.GetComponent<ShootingBullet>().damage = 2 * playerStats.laserGunDamageValue;

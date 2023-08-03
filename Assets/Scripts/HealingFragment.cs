@@ -9,6 +9,7 @@ public class HealingFragment : MonoBehaviour
     private HpBar hpBar;
     [Space(20f)]
     [Header("Variables")]
+    [SerializeField] private Animator healAnimator;
     private float regen = 0f;
     private float timer = 0f;
     
@@ -20,8 +21,9 @@ public class HealingFragment : MonoBehaviour
     {
         regen = playerStats.shipMaxHealth * 0.0005f;
         timer += Time.deltaTime;
-        if (timer >= 0.1f)
+        if (timer >= 3f)
         {
+            healAnimator.SetTrigger("Play");
             hpBar.RegenerateHealthByFragment(regen);
             timer = 0f;
         }

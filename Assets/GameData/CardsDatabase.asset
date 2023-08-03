@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CardsDatabase
   m_EditorClassIdentifier: 
   cards:
-  - image: {fileID: 21300000, guid: 9125c204f566db048a92ebcb64d9d14a, type: 3}
+  - image: {fileID: 21300000, guid: bb19d358101dac644a00ad597b5ad036, type: 3}
     description: You will get 10 damage more for normal gun but -2  in move speed
     normalGunDamageValue: 10
     laserGunDamageValue: 0
@@ -25,7 +25,7 @@ MonoBehaviour:
     bigGunAttackSpeedValue: 0
     shipSpeedValue: -2
     oreMiningBonus: 0
-  - image: {fileID: 21300000, guid: 9125c204f566db048a92ebcb64d9d14a, type: 3}
+  - image: {fileID: 21300000, guid: bb19d358101dac644a00ad597b5ad036, type: 3}
     description: You will get +4 ship speed but 3 damage less on normal gun
     normalGunDamageValue: -3
     laserGunDamageValue: 0
@@ -50,8 +50,20 @@ MonoBehaviour:
     shipSpeedValue: 0
     oreMiningBonus: 0
   - image: {fileID: 21300000, guid: 9125c204f566db048a92ebcb64d9d14a, type: 3}
-    description: 1
-    normalGunDamageValue: 0
+    description: 111
+    normalGunDamageValue: 111
+    laserGunDamageValue: 0
+    doubleGunDamageValue: 0
+    bigGunDamageValue: 0
+    normalGunAttackSpeedValue: 0
+    laserGunAttackSpeedValue: 0
+    doubleGunAttackSpeedValue: 0
+    bigGunAttackSpeedValue: 0
+    shipSpeedValue: 0
+    oreMiningBonus: 0
+  - image: {fileID: 21300000, guid: 9125c204f566db048a92ebcb64d9d14a, type: 3}
+    description: 222
+    normalGunDamageValue: 333
     laserGunDamageValue: 0
     doubleGunDamageValue: 3
     bigGunDamageValue: 0
@@ -62,20 +74,8 @@ MonoBehaviour:
     shipSpeedValue: 0
     oreMiningBonus: 0
   - image: {fileID: 21300000, guid: 9125c204f566db048a92ebcb64d9d14a, type: 3}
-    description: 2
-    normalGunDamageValue: 0
-    laserGunDamageValue: 0
-    doubleGunDamageValue: 3
-    bigGunDamageValue: 0
-    normalGunAttackSpeedValue: 0
-    laserGunAttackSpeedValue: 0
-    doubleGunAttackSpeedValue: 0
-    bigGunAttackSpeedValue: 0
-    shipSpeedValue: 0
-    oreMiningBonus: 0
-  - image: {fileID: 21300000, guid: 9125c204f566db048a92ebcb64d9d14a, type: 3}
-    description: 3
-    normalGunDamageValue: 0
+    description: 333
+    normalGunDamageValue: 333
     laserGunDamageValue: 0
     doubleGunDamageValue: 3
     bigGunDamageValue: 0

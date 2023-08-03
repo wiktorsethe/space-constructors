@@ -10,6 +10,7 @@ public class ShootingBigGun : MonoBehaviour
 
     [Header("Objects and List")]
     [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Animator shootAnimator;
     [SerializeField] private Transform firePoint;
     [Space(20f)]
 
@@ -29,6 +30,7 @@ public class ShootingBigGun : MonoBehaviour
     }
     void FireBullet()
     {
+        shootAnimator.SetTrigger("Play");
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         bullet.GetComponent<ShootingBullet>().target = target;
         bullet.GetComponent<ShootingBullet>().damage = 10 * playerStats.bigGunDamageValue;

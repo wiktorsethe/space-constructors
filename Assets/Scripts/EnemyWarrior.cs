@@ -63,6 +63,49 @@ public class EnemyWarrior : MonoBehaviour
 
         attackTimer += Time.deltaTime;
         float distance = Vector2.Distance(transform.position, player.transform.position);
+
+        if (distance < 3f)
+        {
+            if (attackTimer < 3f)
+            {
+                if (velocityX > 0 && facingRight)
+                {
+                    Flip();
+                }
+                if (velocityX < 0 && !facingRight)
+                {
+                    Flip();
+                }
+                //Vector3 vectorToTarget = player.transform.position - transform.position;
+                //transform.Find("EnemyRangerImage").transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget);
+            }
+
+            if (attackTimer >= 3f)
+            {
+                //FireBullet();
+                hpBar.SetHealth(5f);
+                attackTimer = 0f;
+            }
+        }
+        else if (distance >= 3f && distance < 30f)
+        {
+            //Vector3 vectorToTarget = player.transform.position - transform.position;
+            //transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime); //ciekawe rzeczy jak weümiemy .right
+            //transform.Find("EnemyRangerImage").transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget);
+            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
+
+            if (velocityX > 0 && facingRight)
+            {
+                Flip();
+            }
+            if (velocityX < 0 && !facingRight)
+            {
+                Flip();
+            }
+        }
+
+
+        /*
         if (distance < 30f && attackTimer >= 2.5f)
         {
             if (velocityX > 0 && facingRight)
@@ -77,7 +120,7 @@ public class EnemyWarrior : MonoBehaviour
             //transform.Find("EnemyWarriorImage").transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget); // rotacja do przegadania bo pewnie bedzie tylko L/R
             //transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime); //ciekawe rzeczy jak weümiemy .right
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
-        }
+        }*/
     }
     public void SetMaxHealth(int health)
     {

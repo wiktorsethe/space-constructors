@@ -10,6 +10,7 @@ public class ShootingDoubleGun : MonoBehaviour
 
     [Header("Objects and List")]
     [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Animator shootAnimator;
     [SerializeField] private Transform[] firePoints;
     [Space(20f)]
 
@@ -29,7 +30,8 @@ public class ShootingDoubleGun : MonoBehaviour
     }
     void FireBullet()
     {
-        for(int i=0; i<firePoints.Length; i++)
+        shootAnimator.SetTrigger("Play");
+        for (int i=0; i<firePoints.Length; i++)
         {
             GameObject bullet = Instantiate(bulletPrefab, firePoints[i].position, firePoints[i].rotation);
             bullet.GetComponent<ShootingBullet>().target = target;
