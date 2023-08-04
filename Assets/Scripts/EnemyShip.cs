@@ -17,7 +17,7 @@ public class EnemyShip : MonoBehaviour
     private float inTarget = 5;
     private float shootTimer = 0f;
     private float bulletSpeed = 10f;
-    private float moveSpeed = 2f;
+    public float moveSpeed = 2f;
     [Space(20f)]
     [Header("GameObjects and Rest")]
     private GameObject player;
@@ -96,6 +96,8 @@ public class EnemyShip : MonoBehaviour
             transform.Find("EnemyShipImage").transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget);
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
         }
+
+        
     }
     void FireBullet()
     {
@@ -122,6 +124,8 @@ public class EnemyShip : MonoBehaviour
         hideTimer = 0f;
         currentHealth -= 10;
         SetHealth();
+        moveSpeed = 0.5f; // popraw
+        StartCoroutine(ChangingSpeed());
         if (currentHealth <= 0)
         {
             expBar.SetExperience(experience);
@@ -140,5 +144,16 @@ public class EnemyShip : MonoBehaviour
     {
         var text = Instantiate(miningTextPrefab, transform.position, Quaternion.identity);
         text.GetComponent<TMP_Text>().text = amount.ToString();
+    }
+    IEnumerator ChangingSpeed()
+    {
+        yield return new WaitForSeconds(0.3f);
+
+        while (moveSpeed < 2f)
+        {
+            moveSpeed += 0.1f;
+            yield return new WaitForSeconds(0.1f);
+
+        }
     }
 }

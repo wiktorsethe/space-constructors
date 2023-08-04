@@ -8,11 +8,13 @@ public class ShootingBullet : MonoBehaviour
     private float destroyTimer = 0f;
     public float damage;
     private HpBar hpBar;
+    [SerializeField] GameObject shootParticles;
+    private CameraShake camShake;
 
     private void Start()
     {
         hpBar = GameObject.FindObjectOfType(typeof(HpBar)) as HpBar;
-
+        camShake = GameObject.FindObjectOfType(typeof(CameraShake)) as CameraShake;
     }
     private void Update()
     {
@@ -27,15 +29,20 @@ public class ShootingBullet : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ship") && target == "Ship")
         {
+            Instantiate(shootParticles, transform.position, Quaternion.identity);
+            camShake.ShakeCamera(0.2f, 0.5f, 2);
             hpBar.SetHealth(damage);
             Destroy(gameObject);
         }
         else if (collision.gameObject.CompareTag("Enemy") && target == "Enemy")
         {
+            Instantiate(shootParticles, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
         if (collision.gameObject.CompareTag("Player") && target == "Player")
         {
+            Instantiate(shootParticles, transform.position, Quaternion.identity);
+            camShake.ShakeCamera(0.2f, 0.5f, 2);
             hpBar.SetHealth(damage);
             Destroy(gameObject);
         }

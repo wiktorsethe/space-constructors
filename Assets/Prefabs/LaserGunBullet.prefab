@@ -122,6 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: 
   damage: 0
+  shootParticles: {fileID: 4456395838552135815, guid: c6dd3fc4905aba047a74f61c37cc81a7, type: 3}
 --- !u!70 &235491032500637108
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
