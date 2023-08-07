@@ -16,7 +16,7 @@ public class EnemyShaman : MonoBehaviour
     [SerializeField] private int gold;
     private float spawnTimer = 0f;
     private float moveSpeed = 2f;
-    private float inTarget = 7;
+    private float inTarget = 13;
     [Space(20f)]
     [Header("GameObjects and Rest")]
     private GameObject player;
@@ -24,6 +24,7 @@ public class EnemyShaman : MonoBehaviour
     [SerializeField] private GameObject enemyWarriorPrefab;
     private List<GameObject> minions = new List<GameObject>();
     [SerializeField] private GameObject miningTextPrefab;
+    [SerializeField] private Animator animator;
     private bool facingRight;
     private float previousX;
     [Space(20f)]
@@ -37,7 +38,6 @@ public class EnemyShaman : MonoBehaviour
     private int currentHealth;
     [SerializeField] private float Angle;
     private float hideTimer = 0f;
-
 
     private void Start()
     {
@@ -83,6 +83,9 @@ public class EnemyShaman : MonoBehaviour
             if(minions.Count == 0)
             {
                 SpawnMinions();
+                Invoke("EnableMinions", 0.4f);
+                animator.SetTrigger("Play");
+                spawnTimer = 0f;
             }
         }
     }
@@ -90,9 +93,17 @@ public class EnemyShaman : MonoBehaviour
     {
         for(int i=0; i<3; i++)
         {
-            minions.Add(Instantiate(enemyWarriorPrefab, spawnPoints[i].transform.position, Quaternion.identity));
+            GameObject minion = Instantiate(enemyWarriorPrefab, spawnPoints[i].transform.position, Quaternion.identity);
+            minions.Add(minion);
+            minion.SetActive(false);
         }
-        spawnTimer = 0f;
+    }
+    private void EnableMinions()
+    {
+        foreach(GameObject minion in minions)
+        {
+            minion.SetActive(true);
+        }
     }
     public void SetMaxHealth(int health)
     {

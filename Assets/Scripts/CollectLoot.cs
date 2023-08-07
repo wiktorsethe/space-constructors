@@ -32,7 +32,7 @@ public class CollectLoot : MonoBehaviour
         Vector3 reverseDirection = transform.position - player.transform.position;
         reverseDirection.Normalize();
         timer += Time.deltaTime;
-        if (timer <= 1f)
+        if (timer <= 0.5f)
         {
             transform.position += new Vector3(reverseDirection.x, reverseDirection.y, 0f) * speed * Time.deltaTime;
             speed -= 0.1f;

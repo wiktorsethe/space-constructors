@@ -26,27 +26,4 @@ public class EnemyCollisionDetect : MonoBehaviour
             }
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (transform.parent.tag == "EnemyWarrior")
-        {
-            if (collision.transform.tag == "Player")
-            {
-                transform.parent.GetComponent<EnemyWarrior>().attackTimer = 0f;
-            }
-        }
-    }
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (transform.parent.tag == "EnemyWarrior")
-        {
-            if (collision.transform.tag == "Player" && transform.parent.GetComponent<EnemyWarrior>().attackTimer > 2f)
-            {
-
-                transform.parent.GetComponent<EnemyWarrior>().hpBar.SetHealth(5f);
-                transform.parent.GetComponent<EnemyWarrior>().attackTimer = 0f;
-            }
-        }
-    }
-
 }

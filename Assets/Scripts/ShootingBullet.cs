@@ -42,7 +42,6 @@ public class ShootingBullet : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && target == "Player")
         {
             Instantiate(shootParticles, transform.position, Quaternion.identity);
-            camShake.ShakeCamera(0.2f, 0.5f, 2);
             hpBar.SetHealth(damage);
             Destroy(gameObject);
         }

@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6721387164028479201}
-  - component: {fileID: 690782106488443975}
+  - component: {fileID: 7823422370399353862}
   - component: {fileID: 5031180633385289877}
   - component: {fileID: 7128265960731214793}
-  - component: {fileID: 235491032500637108}
+  - component: {fileID: 1618523866379665153}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Bullet
@@ -28,14 +28,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5949201873329385209}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.82, y: -0.01, z: 0}
-  m_LocalScale: {x: 0.322, y: 0.322, z: 0.322}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &690782106488443975
+--- !u!212 &7823422370399353862
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 0.4, y: 2.06}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -122,8 +122,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: Ship
   damage: 0
---- !u!70 &235491032500637108
-CapsuleCollider2D:
+  shootParticles: {fileID: 4456395838552135815, guid: c6dd3fc4905aba047a74f61c37cc81a7, type: 3}
+--- !u!61 &1618523866379665153
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -136,5 +137,15 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.4, y: 2.06}
+    newSize: {x: 0.4, y: 2.06}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
   m_Size: {x: 0.17, y: 2}
-  m_Direction: 0
+  m_EdgeRadius: 0

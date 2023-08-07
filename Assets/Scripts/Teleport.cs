@@ -59,7 +59,7 @@ public class Teleport : MonoBehaviour
             {
                 collisionTime = Mathf.Sqrt(2f * distance / attractionForce);
             }
-            GetComponent<PlanetRotate>().rotatingSpeed = 3f;
+            GetComponent<PlanetRotate>().rotatingSpeed = 0f;
             int vibrato = (int)(attractionDistance - distance);
             Vector3 direction = transform.position - player.transform.position;
             player.GetComponent<Rigidbody2D>().AddForce(direction * attractionForce);
@@ -67,7 +67,7 @@ public class Teleport : MonoBehaviour
             float targetSize = mainCamera.orthographicSize + size.x;
             if (!sizeChanged)
             {
-                camSize.CamSize(targetSize, collisionTime);
+                camSize.CamSize(targetSize, collisionTime * 2);
                 sizeChanged = true;
                 player.GetComponent<ShipMovement>().movementJoystick.enabled = false;
             }

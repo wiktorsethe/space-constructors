@@ -21,6 +21,7 @@ public class EnemyWarrior : MonoBehaviour
     [Header("GameObjects and Rest")]
     private GameObject player;
     [SerializeField] private GameObject miningTextPrefab;
+    [SerializeField] private Animator animator;
     private bool facingRight;
     private float previousX;
     [Space(20f)]
@@ -64,7 +65,7 @@ public class EnemyWarrior : MonoBehaviour
         attackTimer += Time.deltaTime;
         float distance = Vector2.Distance(transform.position, player.transform.position);
 
-        if (distance < 3f)
+        if (distance < 5f)
         {
             if (attackTimer < 3f)
             {
@@ -83,11 +84,12 @@ public class EnemyWarrior : MonoBehaviour
             if (attackTimer >= 3f)
             {
                 //FireBullet();
+                animator.SetTrigger("Play");
                 hpBar.SetHealth(5f);
                 attackTimer = 0f;
             }
         }
-        else if (distance >= 3f && distance < 30f)
+        else if (distance >= 5f && distance < 30f)
         {
             //Vector3 vectorToTarget = player.transform.position - transform.position;
             //transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime); //ciekawe rzeczy jak weŸmiemy .right

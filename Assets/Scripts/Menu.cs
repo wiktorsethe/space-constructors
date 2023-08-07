@@ -93,7 +93,7 @@ public class Menu : MonoBehaviour
         {
             if(shipPartsDB.shipParts[i].amount > 0 && shipManager.activeConstructPoint.GetComponent<ConstructPoint>().shipPartType != shipPartsDB.shipParts[i].shipPartType)
             {
-                GameObject obj = Instantiate(shipPartMenuPrefab, constructMenu.transform.Find("Panel").transform);
+                GameObject obj = Instantiate(shipPartMenuPrefab, constructMenu.transform.Find("Scroll View").transform.Find("Panel").transform);
                 //obj.GetComponent<RectTransform>().DOAnchorPos(new Vector2(397f, 0f), 0.1f).SetUpdate(UpdateType.Normal, true);
                 obj.GetComponent<ShipPartMenu>().index = i;
                 obj.transform.Find("Image").GetComponent<Image>().sprite = shipPartsDB.shipParts[i].image;

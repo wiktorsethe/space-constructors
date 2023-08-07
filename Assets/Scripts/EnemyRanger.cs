@@ -17,15 +17,16 @@ public class EnemyRanger : MonoBehaviour
     private float moveSpeed = 2f;
     private float shootTimer = 0f;
     private float bulletSpeed = 10f;
-    private float inTarget = 7;
+    private float inTarget = 10;
     [Space(20f)]
     [Header("GameObjects and Rest")]
     private GameObject player;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject miningTextPrefab;
+    [SerializeField] private Animator animator;
     [SerializeField] private string target = "Player";
-    private bool facingRight;
+    private bool facingRight = false;
     private float previousX;
     [Space(20f)]
     [Header("Health System")]
@@ -56,34 +57,29 @@ public class EnemyRanger : MonoBehaviour
         fillBar.color = healthGradient.Evaluate(healthBar.normalizedValue);
         hideTimer += Time.deltaTime;
 
-        float velocityX = transform.position.x - previousX;
-        previousX = transform.position.x;
+        Vector3 direction = player.transform.position - transform.position;
+        if (direction.x > 0 && facingRight)
+        {
+            Flip();
+        }
+        if (direction.x < 0 && !facingRight)
+        {
+            Flip();
+        }
 
         if (hideTimer > 2f)
         {
             healthBarCanvas.SetActive(false);
         }
+
         float distance = Vector2.Distance(transform.position, player.transform.position);
         shootTimer += Time.deltaTime;
         if (distance < inTarget)
         {
-            if (shootTimer < 2f)
-            {
-                if (velocityX > 0 && facingRight)
-                {
-                    Flip();
-                }
-                if (velocityX < 0 && !facingRight)
-                {
-                    Flip();
-                }
-                //Vector3 vectorToTarget = player.transform.position - transform.position;
-                //transform.Find("EnemyRangerImage").transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget);
-            }
-
             if (shootTimer >= 3f)
             {
-                FireBullet();
+                Invoke("FireBullet", 0.4f);
+                animator.SetTrigger("Play");
                 shootTimer = 0f;
             }
         }
@@ -93,25 +89,30 @@ public class EnemyRanger : MonoBehaviour
             //transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime); //ciekawe rzeczy jak weŸmiemy .right
             //transform.Find("EnemyRangerImage").transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget);
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
-
-            if (velocityX > 0 && facingRight)
-            {
-                Flip();
-            }
-            if (velocityX < 0 && !facingRight)
-            {
-                Flip();
-            }
         }
+
     }
     void FireBullet()
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        bullet.GetComponent<ShootingBullet>().target = target;
+        bullet.GetComponent<ShootingBullet>().damage = 5f;
+
+
+        Vector3 direction = player.transform.position - firePoint.transform.position;
+        float rot = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
+        bullet.transform.rotation = Quaternion.Euler(0, 0, rot - 90);
+        rb.velocity = new Vector2(direction.x, direction.y).normalized * bulletSpeed;
+
+        
+        /*
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         bullet.GetComponent<ShootingBullet>().target = target;
         bullet.GetComponent<ShootingBullet>().damage = 5f;
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        Vector2 bulletVelocity = firePoint.up * bulletSpeed;
-        rb.velocity = bulletVelocity;
+        Vector2 bulletVelocity = player.transform.position * 0.5f;
+        rb.velocity = bulletVelocity;*/
     }
     public void SetMaxHealth(int health)
     {

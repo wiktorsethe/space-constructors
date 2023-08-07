@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 8792934401642765450}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.47, y: 0.01, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -103,7 +103,6 @@ MonoBehaviour:
   playerStats: {fileID: 11400000, guid: 284895b3224468a48aa2a763a688b966, type: 2}
   miningTextPrefab: {fileID: 8062151463999637536, guid: b9d2f93f3a98b4d4b8a1be849730c94f, type: 3}
   lootName: 
-  speed: 10
 --- !u!50 &7514952469481525847
 Rigidbody2D:
   serializedVersion: 4
