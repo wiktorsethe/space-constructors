@@ -2,28 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossEmptyState : StateMachineBehaviour
+public class BossFire2Anim : StateMachineBehaviour
 {
-    private int randInt;
+    private float timer;
+    private float shootTimer = 0f;
+    [SerializeField] private GameObject bulletPrefab;
+    private GameObject boss;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        randInt = Random.Range(0, 3);
+        boss = GameObject.Find("Boss");
     }
+
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (randInt == 0)
+        if (timer >= 4)
         {
-            animator.SetTrigger("Attack");
-        }
-        else if (randInt == 1)
-        {
+            timer = 0f;
+            boss.GetComponent<LuciusMaximus>().isFirstGunUsed = false;
+            boss.GetComponent<LuciusMaximus>().isSecondGunUsed = false;
             animator.SetTrigger("Idle");
         }
-        else if (randInt == 2)
+        else
         {
-            animator.SetTrigger("Attack2");
+            timer += Time.deltaTime;
+            shootTimer += Time.deltaTime;
+
+            if (shootTimer >= 0.5f)
+            {
+                boss.GetComponent<LuciusMaximus>().FireBullet(0);
+                boss.GetComponent<LuciusMaximus>().FireBullet(1);
+                shootTimer = 0f;
+            }
+            
         }
     }
 

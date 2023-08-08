@@ -41,7 +41,8 @@ public class LuciusMaximus : MonoBehaviour
     [Header("Other")] 
     [SerializeField] private int experience;
     [SerializeField] private int gold;
-
+    public Vector2 startingPos;
+    private bool isStartingPosSaved = false;
     private void Start()
     {
         expBar = GameObject.FindObjectOfType(typeof(ExpBar)) as ExpBar;
@@ -54,6 +55,11 @@ public class LuciusMaximus : MonoBehaviour
     }
     private void Update()
     {
+        if (!isStartingPosSaved)
+        {
+            startingPos = transform.position;
+            isStartingPosSaved = true;
+        }
         fillBar.color = healthGradient.Evaluate(healthBar.normalizedValue);
         timer += Time.deltaTime;
 

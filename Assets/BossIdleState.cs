@@ -7,6 +7,7 @@ public class BossIdleState : StateMachineBehaviour
     private float timer;
     public float minTime;
     public float maxTime;
+    private int randInt;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -19,7 +20,16 @@ public class BossIdleState : StateMachineBehaviour
     {
         if(timer <= 0)
         {
-            animator.SetTrigger("Attack");
+            randInt = Random.Range(0, 2);
+            if (randInt == 0)
+            {
+                animator.SetTrigger("Attack");
+            }
+            else if (randInt == 1)
+            {
+                animator.SetTrigger("Attack2");
+            }
+            
         }
         else
         {

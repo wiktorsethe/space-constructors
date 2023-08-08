@@ -2,36 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossEmptyState : StateMachineBehaviour
+public class BossResetAnim : StateMachineBehaviour
 {
-    private int randInt;
+    private Vector2 startingPos;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        randInt = Random.Range(0, 3);
+        startingPos = animator.GetComponent<LuciusMaximus>().startingPos;
     }
+
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (randInt == 0)
+        if (Vector2.Distance(animator.transform.position, startingPos) <= 0.01f)
         {
-            animator.SetTrigger("Attack");
+            animator.SetTrigger("Start");
         }
-        else if (randInt == 1)
+        else if (Vector2.Distance(animator.transform.position, startingPos) > 0.01f)
         {
-            animator.SetTrigger("Idle");
-        }
-        else if (randInt == 2)
-        {
-            animator.SetTrigger("Attack2");
+            Vector2 vectorToTarget = new Vector2(startingPos.x, startingPos.y);
+            animator.transform.position = Vector2.MoveTowards(animator.transform.position, vectorToTarget, 2f * Time.deltaTime);
         }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        
-    }
+    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //    
+    //}
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

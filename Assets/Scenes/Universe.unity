@@ -1307,6 +1307,8 @@ MonoBehaviour:
   firstGunShootTimer: 0
   secondGunShootTimer: 0
   timer: 0
+  isFirstGunUsed: 0
+  isSecondGunUsed: 0
   experience: 100
   gold: 1
 --- !u!58 &244446162
@@ -7945,7 +7947,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 81a8daacbd4053e4997c55531cf1b14b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.97197205, g: 0.6745283, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -9150,7 +9152,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c7a3f001b5523a4488b970c217869793, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.97197205, g: 0.6745283, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -9233,7 +9235,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c7a3f001b5523a4488b970c217869793, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.97197205, g: 0.6745283, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
