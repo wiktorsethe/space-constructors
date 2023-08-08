@@ -7,11 +7,10 @@ public class BossFire2Anim : StateMachineBehaviour
     private float timer;
     private float shootTimer = 0f;
     [SerializeField] private GameObject bulletPrefab;
-    private GameObject boss;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        boss = GameObject.Find("Boss");
+
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -20,8 +19,8 @@ public class BossFire2Anim : StateMachineBehaviour
         if (timer >= 4)
         {
             timer = 0f;
-            boss.GetComponent<LuciusMaximus>().isFirstGunUsed = false;
-            boss.GetComponent<LuciusMaximus>().isSecondGunUsed = false;
+            animator.GetComponent<LuciusMaximus>().isFirstGunUsed = false;
+            animator.GetComponent<LuciusMaximus>().isSecondGunUsed = false;
             animator.SetTrigger("Idle");
         }
         else
@@ -31,8 +30,8 @@ public class BossFire2Anim : StateMachineBehaviour
 
             if (shootTimer >= 0.5f)
             {
-                boss.GetComponent<LuciusMaximus>().FireBullet(0);
-                boss.GetComponent<LuciusMaximus>().FireBullet(1);
+                animator.GetComponent<LuciusMaximus>().FireBullet(0);
+                animator.GetComponent<LuciusMaximus>().FireBullet(1);
                 shootTimer = 0f;
             }
             

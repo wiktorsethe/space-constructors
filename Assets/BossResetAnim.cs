@@ -22,7 +22,7 @@ public class BossResetAnim : StateMachineBehaviour
         else if (Vector2.Distance(animator.transform.position, startingPos) > 0.01f)
         {
             Vector2 vectorToTarget = new Vector2(startingPos.x, startingPos.y);
-            animator.transform.position = Vector2.MoveTowards(animator.transform.position, vectorToTarget, 2f * Time.deltaTime);
+            animator.transform.position = Vector2.MoveTowards(animator.transform.position, vectorToTarget, 4f * Time.deltaTime);
         }
     }
 

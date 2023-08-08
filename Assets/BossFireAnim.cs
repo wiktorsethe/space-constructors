@@ -33,7 +33,7 @@ public class BossFireAnim : StateMachineBehaviour
             timer += Time.deltaTime;
 
             Vector2 vectorToTarget = new Vector2(player.transform.position.x, animator.transform.position.y);
-            animator.transform.position = Vector2.MoveTowards(animator.transform.position, vectorToTarget, 1f * Time.deltaTime);
+            animator.transform.position = Vector2.MoveTowards(animator.transform.position, vectorToTarget, 2f * Time.deltaTime);
 
             if ((int)timer % 2 == 0 && !animator.GetComponent<LuciusMaximus>().isFirstGunUsed)
             {

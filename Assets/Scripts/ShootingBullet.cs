@@ -8,7 +8,7 @@ public class ShootingBullet : MonoBehaviour
     private float destroyTimer = 0f;
     public float damage;
     private HpBar hpBar;
-    [SerializeField] GameObject shootParticles;
+    [SerializeField] private GameObject shootParticles;
     private CameraShake camShake;
 
     private void Start()

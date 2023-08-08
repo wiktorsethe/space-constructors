@@ -38,7 +38,7 @@ public class CameraSize : MonoBehaviour
                 float targetSize = objectWidth * 0.5f;
                 //mainCamera.orthographicSize = objectWidth * 0.5f;
                 DOTween.To(() => mainCamera.orthographicSize, x => mainCamera.orthographicSize = x, targetSize, 1f).SetUpdate(UpdateType.Normal, true);
-                if (targetSize <= 5f)
+                if (targetSize <= 9f)
                 {
                     DOTween.To(() => mainCamera.orthographicSize, x => mainCamera.orthographicSize = x, 5f, 1f).SetUpdate(UpdateType.Normal, true);
                 }
@@ -47,9 +47,9 @@ public class CameraSize : MonoBehaviour
             {
                 float targetSize = objectHeight * 0.5f;
                 DOTween.To(() => mainCamera.orthographicSize, x => mainCamera.orthographicSize = x, targetSize, 1f).SetUpdate(UpdateType.Normal, true);
-                if (targetSize <= 5f)
+                if (targetSize <= 9f)
                 {
-                    DOTween.To(() => mainCamera.orthographicSize, x => mainCamera.orthographicSize = x, 5f, 1f).SetUpdate(UpdateType.Normal, true);
+                    DOTween.To(() => mainCamera.orthographicSize, x => mainCamera.orthographicSize = x, 9f, 1f).SetUpdate(UpdateType.Normal, true);
                 }
             }
         }

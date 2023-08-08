@@ -26,14 +26,13 @@ public class LuciusMaximus : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private GameObject damageTextPrefab;
     [SerializeField] private Transform[] firePoints;
+    [SerializeField] private Animator animator;
+    [SerializeField] private GameObject destroyParticles;
     [Space(20f)]
 
     [Header("Shooting")]
     [SerializeField] private float bulletSpeed;
     [SerializeField] private string target;
-    public float firstGunShootTimer = 0;
-    public float secondGunShootTimer = 0;
-    public float timer = 0;
     public bool isFirstGunUsed = false;
     public bool isSecondGunUsed = false;
     [Space(20f)]
@@ -61,7 +60,6 @@ public class LuciusMaximus : MonoBehaviour
             isStartingPosSaved = true;
         }
         fillBar.color = healthGradient.Evaluate(healthBar.normalizedValue);
-        timer += Time.deltaTime;
 
         if (!healthBarCanvas.activeSelf)
         {
@@ -90,8 +88,9 @@ public class LuciusMaximus : MonoBehaviour
                 playerStats.gold += gold;
                 gameManager.goldEarned += gold;
                 gameManager.kills += 1;
-                //shootTimer = -10f;
-                //GetComponent<PolygonCollider2D>().enabled = false;
+                GetComponent<CircleCollider2D>().enabled = false;
+                animator.SetTrigger("Death");
+                Invoke("DestroyParticles", 1.9f);
                 GetComponent<LootBag>().InstantiateLoot(transform.position);
                 gameManager.bounds.DeactivateBariers();
                 gameManager.bounds.ActivatePlanets();
@@ -99,7 +98,7 @@ public class LuciusMaximus : MonoBehaviour
             }
             if (damageTextPrefab)
             {
-                ShowDamageText(10);
+                ShowDamageText((int)collision.GetComponent<ShootingBullet>().damage);
             }
         }
     }
@@ -108,33 +107,18 @@ public class LuciusMaximus : MonoBehaviour
         var text = Instantiate(damageTextPrefab, transform.position, Quaternion.identity);
         text.GetComponent<TMP_Text>().text = amount.ToString();
     }
-    private void FirstSpecialAttack()
-    {
-        if (firstGunShootTimer >= 1f)
-        {
-            FireBullet(0);
-            firstGunShootTimer = 0f;
-        }
-        if(secondGunShootTimer >= 3f)
-        {
-            FireBullet(1);
-            secondGunShootTimer = 0f;
-            timer = 0f;
-        }
-    }
     public void FireBullet(int i)
     {
-        /*
-        for (int i = 0; i < firePoints.Length; i++)
-        {
-            
-        }
-        */
+
         GameObject bullet = Instantiate(bulletPrefab, firePoints[i].position, firePoints[i].rotation);
         bullet.GetComponent<ShootingBullet>().target = target;
-        bullet.GetComponent<ShootingBullet>().damage = 15;
+        bullet.GetComponent<ShootingBullet>().damage = 5;
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         Vector2 bulletVelocity = firePoints[i].up * bulletSpeed;
         rb.velocity = bulletVelocity;
+    }
+    private void DestroyParticles()
+    {
+        Instantiate(destroyParticles, transform.position, Quaternion.identity);
     }
 }
