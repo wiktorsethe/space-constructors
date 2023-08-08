@@ -64,7 +64,6 @@ public class Boss : MonoBehaviour
         fillBar.color = healthGradient.Evaluate(healthBar.normalizedValue);
         specialActionTimer += Time.deltaTime;
         shootTimer += Time.deltaTime;
-
         if (specialActionTimer >= 3f && specialActionTimer < 7.5f)
         {
             Sequence rotationSequence = DOTween.Sequence();

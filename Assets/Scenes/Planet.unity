@@ -3101,7 +3101,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1859827758}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43f8a62d811e76442981c0dbb6c846ce, type: 3}
   m_Name: 
@@ -3340,15 +3340,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 410734719026743648, guid: 14907db974a0f7e4a8212f1e7299b14e, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.668
       objectReference: {fileID: 0}
     - target: {fileID: 410734719026743648, guid: 14907db974a0f7e4a8212f1e7299b14e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6827807731172849505, guid: 14907db974a0f7e4a8212f1e7299b14e, type: 3}
       propertyPath: m_Name
       value: EnemyRanger
+      objectReference: {fileID: 0}
+    - target: {fileID: 6827807731172849505, guid: 14907db974a0f7e4a8212f1e7299b14e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6827807731172849508, guid: 14907db974a0f7e4a8212f1e7299b14e, type: 3}
       propertyPath: m_RootOrder

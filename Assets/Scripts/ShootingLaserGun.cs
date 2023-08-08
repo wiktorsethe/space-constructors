@@ -51,7 +51,7 @@ public class ShootingLaserGun : MonoBehaviour
         shootAnimator.SetTrigger("Play");
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         bullet.GetComponent<ShootingBullet>().target = target;
-        bullet.GetComponent<ShootingBullet>().damage = 2 * playerStats.laserGunDamageValue;
+        bullet.GetComponent<ShootingBullet>().damage = playerStats.laserGunDamageValue;
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         Vector2 bulletVelocity = firePoint.up * bulletSpeed;
         rb.velocity = bulletVelocity;

@@ -35,7 +35,7 @@ public class ShootingDoubleGun : MonoBehaviour
         {
             GameObject bullet = Instantiate(bulletPrefab, firePoints[i].position, firePoints[i].rotation);
             bullet.GetComponent<ShootingBullet>().target = target;
-            bullet.GetComponent<ShootingBullet>().damage = 3 * playerStats.doubleGunDamageValue;
+            bullet.GetComponent<ShootingBullet>().damage = playerStats.doubleGunDamageValue;
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             Vector2 bulletVelocity = firePoints[i].up * bulletSpeed;
             rb.velocity = bulletVelocity;
