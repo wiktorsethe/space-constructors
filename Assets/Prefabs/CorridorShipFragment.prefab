@@ -305,10 +305,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6034497262203709622}
     m_Modifications:
-    - target: {fileID: 406641218820950976, guid: 039168ff0887d144eaf236cb8c7227bb, type: 3}
-      propertyPath: m_Radius
-      value: 0.125
-      objectReference: {fileID: 0}
     - target: {fileID: 1589688569447489830, guid: 039168ff0887d144eaf236cb8c7227bb, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -393,34 +389,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2739690927284687488, guid: 039168ff0887d144eaf236cb8c7227bb, type: 3}
-      propertyPath: cost
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 2739690927284687488, guid: 039168ff0887d144eaf236cb8c7227bb, type: 3}
-      propertyPath: shipPrefabList.Array.data[0]
-      value: 
-      objectReference: {fileID: 5953221920737725232}
-    - target: {fileID: 2739690927284687488, guid: 039168ff0887d144eaf236cb8c7227bb, type: 3}
-      propertyPath: shipPrefabList.Array.data[1]
-      value: 
-      objectReference: {fileID: 5953221920737725232, guid: 8c5c946de78166c43b50ddd344e0c1c4, type: 3}
-    - target: {fileID: 8661883830537309268, guid: 039168ff0887d144eaf236cb8c7227bb, type: 3}
-      propertyPath: shipPartType
-      value: corridor
-      objectReference: {fileID: 0}
-    - target: {fileID: 8661883830537309268, guid: 039168ff0887d144eaf236cb8c7227bb, type: 3}
-      propertyPath: shipPrefabList.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8661883830537309268, guid: 039168ff0887d144eaf236cb8c7227bb, type: 3}
-      propertyPath: shipPrefabList.Array.data[0]
-      value: 
-      objectReference: {fileID: 5953221920737725232}
-    - target: {fileID: 8661883830537309268, guid: 039168ff0887d144eaf236cb8c7227bb, type: 3}
-      propertyPath: shipPrefabList.Array.data[1]
-      value: 
-      objectReference: {fileID: 5953221920737725232, guid: 8c5c946de78166c43b50ddd344e0c1c4, type: 3}
     - target: {fileID: 8910757091375593749, guid: 039168ff0887d144eaf236cb8c7227bb, type: 3}
       propertyPath: m_Name
       value: ConstructPoint

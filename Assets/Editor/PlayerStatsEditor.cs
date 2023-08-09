@@ -26,6 +26,7 @@ public class PlayerStatsEditor : Editor
         playerStats.shipCurrentHealth = EditorGUILayout.FloatField("Ship Current Health", playerStats.shipCurrentHealth);
         playerStats.shipSpeedValue = EditorGUILayout.FloatField("Ship Speed", playerStats.shipSpeedValue);
         playerStats.shipGravity = EditorGUILayout.FloatField("Gravity", playerStats.shipGravity);
+        playerStats.oreMiningBonusValue = EditorGUILayout.FloatField("Ore Mining Bonus", playerStats.oreMiningBonusValue);
         playerStats.shipPosition = EditorGUILayout.Vector3Field("Ship Position", playerStats.shipPosition);
         //playerStats.shipSave = EditorGUILayout.ObjectField("Ship Save", playerStats.shipSave); 
         EditorGUILayout.Space();

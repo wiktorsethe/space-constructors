@@ -6,7 +6,7 @@ public class Boundaries : MonoBehaviour
 {
     private Camera mainCam;
     [SerializeField] private GameObject barier;
-    [SerializeField] private Transform[] spawnPoints;
+    public Transform[] spawnPoints;
     [SerializeField] private List<GameObject> bariers = new List<GameObject>();
     public GameObject[] planets;
     public void Check()

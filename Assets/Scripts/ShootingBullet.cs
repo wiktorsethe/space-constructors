@@ -5,23 +5,28 @@ using UnityEngine;
 public class ShootingBullet : MonoBehaviour
 {
     public string target;
-    private float destroyTimer = 0f;
     public float damage;
     private HpBar hpBar;
     [SerializeField] private GameObject shootParticles;
     private CameraShake camShake;
-
+    private Camera cam;
+    private Vector2 startingPos;
+    private float cameraHalfWidth;
     private void Start()
     {
         hpBar = GameObject.FindObjectOfType(typeof(HpBar)) as HpBar;
         camShake = GameObject.FindObjectOfType(typeof(CameraShake)) as CameraShake;
+        cam = Camera.main;
+        startingPos = transform.position;
+        cameraHalfWidth = cam.orthographicSize * cam.aspect;
+
     }
     private void Update()
     {
-        destroyTimer += Time.deltaTime;
-        if (destroyTimer >= 4f)
+        if(Vector2.Distance(startingPos, transform.position) > cameraHalfWidth)
         {
             Destroy(gameObject);
+
         }
     }
 

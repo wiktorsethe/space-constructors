@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public CameraFollow camFollow;
     public Boundaries bounds;
     public ObstacleSpawner[] obstacleSpawners;
+    private GameObject player;
     [Space(20f)]
 
     [Header("Variables")]
@@ -24,12 +25,14 @@ public class GameManager : MonoBehaviour
     public int goldEarned = 0;
     public TMP_Text sceneNameText;
     public string sceneName;
+    private Vector3 bossSize = new Vector3(5.29f, 8.04f, 0.2f);
     private void Start()
     {
         camSize = GameObject.FindObjectOfType(typeof(CameraSize)) as CameraSize;
         camFollow = GameObject.FindObjectOfType(typeof(CameraFollow)) as CameraFollow;
         bounds = GameObject.FindObjectOfType(typeof(Boundaries)) as Boundaries;
         menu = GameObject.FindObjectOfType(typeof(Menu)) as Menu;
+        player = GameObject.FindGameObjectWithTag("Player");
         obstacleSpawners = GameObject.FindObjectsOfType<ObstacleSpawner>();
         if (menu)
         {
@@ -66,9 +69,12 @@ public class GameManager : MonoBehaviour
         if(playerStats.level == 5 && SceneManager.GetActiveScene().name == "Universe" && !PlayerPrefs.HasKey("FirstBoss"))
         {
             menu.ActiveBossHealthBar();
-            Instantiate(bossPrefab, new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y + mainCamera.orthographicSize + 5f, 0f), Quaternion.identity);
             float newSize = mainCamera.orthographicSize * 3f;
+
             camSize.CamSize(newSize, 4f);
+
+            Invoke("SpawnBoss", 5f);
+
             camFollow.enabled = false;
             foreach(ObstacleSpawner script in obstacleSpawners)
             {
@@ -106,6 +112,35 @@ public class GameManager : MonoBehaviour
             foreach (ObstacleSpawner obsSpawn in obstacleSpawners)
             {
                 obsSpawn.spawnRate -= 0.1f;
+            }
+        }
+    }
+
+    private void SpawnBoss()
+    {
+
+        Renderer[] playerRenderers = player.GetComponentsInChildren<Renderer>();
+        if (playerRenderers.Length > 0)
+        {
+            Bounds combinedBounds = playerRenderers[0].bounds;
+            for (int i = 1; i < playerRenderers.Length; i++)
+            {
+                combinedBounds.Encapsulate(playerRenderers[i].bounds);
+            }
+            Vector3 size = combinedBounds.size;
+            Vector3 center = combinedBounds.center;
+
+            Vector3 gap = new Vector3(size.x / bossSize.x, size.y / bossSize.y, bossSize.z);
+
+            GameObject boss = Instantiate(bossPrefab, new Vector3(mainCamera.transform.position.x, bounds.spawnPoints[1].transform.position.y - bossSize.y * gap.y, 0f), Quaternion.identity);
+
+            if (gap.x <= gap.y)
+            {
+                boss.transform.localScale = new Vector3(gap.y, gap.y, boss.transform.localScale.z);
+            }
+            else
+            {
+                boss.transform.localScale = new Vector3(gap.x, gap.x, boss.transform.localScale.z);
             }
         }
     }

@@ -13,8 +13,7 @@ public class CameraSize : MonoBehaviour
     private void Start()
     {
         mainCamera = Camera.main;
-        ChangeCamSize();
-  
+        Invoke("ChangeCamSize", 1f);
     }
     public void ChangeCamSize()
     {
