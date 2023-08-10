@@ -19,6 +19,9 @@ public class Menu : MonoBehaviour
     private ShootingDoubleGun[] shootingDoubleGunList;
     public CardsDatabase cardsDB;
     public ShipPartsDatabase shipPartsDB;
+    private SwipeInConstructionMenu swipeInMenu;
+    private CameraSize camSize;
+    private Camera mainCam;
     [Space(20f)]
 
     [Header("Objects")]
@@ -48,6 +51,10 @@ public class Menu : MonoBehaviour
     private void Start()
     {
         shipManager = GameObject.FindObjectOfType(typeof(ShipManager)) as ShipManager;
+        swipeInMenu = GameObject.FindObjectOfType(typeof(SwipeInConstructionMenu)) as SwipeInConstructionMenu;
+        camSize = GameObject.FindObjectOfType(typeof(CameraSize)) as CameraSize;
+        mainCam = Camera.main;
+        swipeInMenu.enabled = false;
     }
     private void Update()
     {
@@ -106,8 +113,11 @@ public class Menu : MonoBehaviour
     }
     public void PauseMenu()
     {
+        swipeInMenu.enabled = true;
+        camSize.enabled = false;
+        DOTween.To(() => mainCam.orthographicSize, x => mainCam.orthographicSize = x, 4f, 1f).SetUpdate(UpdateType.Normal, true);
         shipManager.RotateToCenter();
-        shipManager.MoveObj();
+        //shipManager.MoveObj();
         Time.timeScale = 0f;
         pauseMenu.SetActive(true);
         gameMenu.SetActive(false);
@@ -121,11 +131,13 @@ public class Menu : MonoBehaviour
     }
     public void Resume()
     {
+        swipeInMenu.enabled = false;
+        camSize.enabled = true;
         constructMenu.SetActive(false);
         gameMenu.SetActive(true);
         pauseMenu.SetActive(false);
         gameOverMenu.SetActive(false);
-        shipManager.MoveObjBack();
+        //shipManager.MoveObjBack();
         constructPoints = GameObject.FindGameObjectsWithTag("ConstructPoint");
         Time.timeScale = 1f;
         for (int i = 0; i < constructPoints.Length; i++)

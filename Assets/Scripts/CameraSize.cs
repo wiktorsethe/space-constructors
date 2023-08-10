@@ -25,9 +25,9 @@ public class CameraSize : MonoBehaviour
         {
             Bounds parentBounds = CalculateParentBounds();
 
-            float objectHeight = parentBounds.size.y * 1.5f;
+            float objectHeight = parentBounds.size.y * 1.4f;
 
-            float objectWidth = parentBounds.size.x * 1.5f;
+            float objectWidth = parentBounds.size.x;
             float distance = (objectHeight / 2f) / Mathf.Tan(mainCamera.fieldOfView * 0.5f * Mathf.Deg2Rad);
 
 
@@ -44,7 +44,7 @@ public class CameraSize : MonoBehaviour
                 DOTween.To(() => mainCamera.orthographicSize, x => mainCamera.orthographicSize = x, targetSize, 1f).SetUpdate(UpdateType.Normal, true);
                 if (targetSize <= 9f)
                 {
-                    DOTween.To(() => mainCamera.orthographicSize, x => mainCamera.orthographicSize = x, 5f, 1f).SetUpdate(UpdateType.Normal, true);
+                    DOTween.To(() => mainCamera.orthographicSize, x => mainCamera.orthographicSize = x, 9f, 1f).SetUpdate(UpdateType.Normal, true);
                 }
             }
             else

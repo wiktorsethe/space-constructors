@@ -140,7 +140,7 @@ public class ShipManager : MonoBehaviour
             }
             Destroy(activeConstructPoint);
             menu.ExitConstructMenu();
-            camSize.ChangeCamSize();
+            //camSize.ChangeCamSize();
             playerStats.ore -= shipPartsDB.shipParts[index].oreCost;
             playerStats.screw -= shipPartsDB.shipParts[index].screwCost;
             shipPartsDB.shipParts[index].amount--;
@@ -159,6 +159,7 @@ public class ShipManager : MonoBehaviour
         Vector3 targetRotation = Vector3.zero;
         transform.DORotate(targetRotation, 0.6f).SetUpdate(UpdateType.Normal, true);
     }
+    /*
     public void MoveObj()
     {
         Vector3 targetPosition = new Vector3(player.transform.position.x + 3f, player.transform.position.y, player.transform.position.z);
@@ -169,6 +170,7 @@ public class ShipManager : MonoBehaviour
         Vector3 targetPosition = new Vector3(player.transform.position.x - 3f, player.transform.position.y, player.transform.position.z);
         transform.DOMove(targetPosition, 1f).SetUpdate(UpdateType.Normal, true);
     }
+    */
     public void AnimateGravityWarningText()
     {
         gravityWarningText.DOFade(1f, 1f).From(0f).OnComplete(() =>

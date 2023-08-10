@@ -12,5 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17da9d895f6dfe74e967795140b0ae5f, type: 3}
   m_Name: ShipProgress
   m_EditorClassIdentifier: 
-  shipParts: []
-  usedContstructPoints: []
+  shipParts:
+  - shipPartIndex: 0
+    position: {x: 2.25, y: 1.300003, z: 0}
+    rotation: {x: -0, y: -0, z: -0.5, w: 0.8660254}
+  - shipPartIndex: 1
+    position: {x: 4.0686493, y: 2.350006, z: 0}
+    rotation: {x: -0, y: -0, z: -0.5, w: 0.8660254}
+  - shipPartIndex: 0
+    position: {x: 8.744354, y: 2.4514465, z: 0}
+    rotation: {x: -0, y: -0, z: -0.8660254, w: 0.5}
+  - shipPartIndex: 1
+    position: {x: 10.563011, y: 1.4014435, z: 0}
+    rotation: {x: -0, y: -0, z: -0.8660254, w: 0.5}
+  usedContstructPoints:
+  - {x: -98.42107, y: 68.15144, z: -0.20140931}
+  - {x: -96.60242, y: 69.20145, z: -0.20140931}
+  - {x: -89.24383, y: 71.639, z: -0.20140931}
+  - {x: -87.42517, y: 70.589, z: -0.20140931}
