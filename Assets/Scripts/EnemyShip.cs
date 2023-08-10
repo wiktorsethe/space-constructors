@@ -14,7 +14,7 @@ public class EnemyShip : MonoBehaviour
     [Header("Variables")]
     [SerializeField] private int experience;
     [SerializeField] private int gold;
-    private float inTarget = 5;
+    private float inTarget = 8;
     private float shootTimer = 0f;
     private float bulletSpeed = 10f;
     public float moveSpeed = 2f;
@@ -133,6 +133,7 @@ public class EnemyShip : MonoBehaviour
             gameManager.goldEarned += gold;
             gameManager.kills += 1;
             shootTimer = -10f;
+            GetComponentInChildren<PolygonCollider2D>().enabled = false;
             Destroy(gameObject, 2f);
         }
         if (miningTextPrefab)

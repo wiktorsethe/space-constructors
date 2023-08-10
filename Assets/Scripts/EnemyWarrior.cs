@@ -8,7 +8,7 @@ public class EnemyWarrior : MonoBehaviour
 {
     [Header("Other Scripts")]
     private ExpBar expBar;
-    public HpBar hpBar;
+    private HpBar hpBar;
     private GameManager gameManager;
     public PlayerStats playerStats;
     [Space(20f)]
@@ -65,7 +65,7 @@ public class EnemyWarrior : MonoBehaviour
         attackTimer += Time.deltaTime;
         float distance = Vector2.Distance(transform.position, player.transform.position);
 
-        if (distance < 5f)
+        if (distance < 3f)
         {
             if (attackTimer < 3f)
             {
@@ -89,7 +89,7 @@ public class EnemyWarrior : MonoBehaviour
                 attackTimer = 0f;
             }
         }
-        else if (distance >= 5f && distance < 30f)
+        else if (distance >= 3f && distance < 30f)
         {
             //Vector3 vectorToTarget = player.transform.position - transform.position;
             //transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime); //ciekawe rzeczy jak weŸmiemy .right
@@ -147,6 +147,7 @@ public class EnemyWarrior : MonoBehaviour
             gameManager.goldEarned += gold;
             gameManager.kills += 1;
             Destroy(gameObject, 2f);
+            GetComponentInChildren<CapsuleCollider2D>().enabled = false;
             GetComponent<LootBag>().InstantiateLoot(transform.position);
         }
         if (miningTextPrefab)

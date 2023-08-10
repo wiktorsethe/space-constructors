@@ -13,7 +13,11 @@ public class CameraSize : MonoBehaviour
     private void Start()
     {
         mainCamera = Camera.main;
-        Invoke("ChangeCamSize", 1f);
+        //Invoke("ChangeCamSize", 1f);
+    }
+    private void Update()
+    {
+        ChangeCamSize();
     }
     public void ChangeCamSize()
     {
@@ -21,13 +25,14 @@ public class CameraSize : MonoBehaviour
         {
             Bounds parentBounds = CalculateParentBounds();
 
-            float objectHeight = parentBounds.size.y * 2f;
+            float objectHeight = parentBounds.size.y * 1.5f;
 
             float objectWidth = parentBounds.size.x * 1.5f;
             float distance = (objectHeight / 2f) / Mathf.Tan(mainCamera.fieldOfView * 0.5f * Mathf.Deg2Rad);
 
-            //Vector3 cameraPosition = shipCenter.position - mainCamera.transform.forward * distance;
-            //mainCamera.transform.position = cameraPosition;
+
+            Vector3 cameraPosition = parentBounds.center - mainCamera.transform.forward * distance;
+            mainCamera.transform.position = cameraPosition;
 
             float frustumHeight = 2f * distance * Mathf.Tan(mainCamera.fieldOfView * 0.5f * Mathf.Deg2Rad);
             float frustumWidth = frustumHeight * mainCamera.aspect;
