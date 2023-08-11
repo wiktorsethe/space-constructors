@@ -32,6 +32,7 @@ public class Menu : MonoBehaviour
     [SerializeField] private GameObject cardsMenu;
     [SerializeField] private GameObject bossHPBar;
     [SerializeField] private GameObject shipPartMenuPrefab;
+    [SerializeField] private GameObject cardsMenuText;
     [Space(20f)]
 
     [Header("Texts")]
@@ -55,6 +56,8 @@ public class Menu : MonoBehaviour
         camSize = GameObject.FindObjectOfType(typeof(CameraSize)) as CameraSize;
         mainCam = Camera.main;
         swipeInMenu.enabled = false;
+        cardsMenu.GetComponent<CanvasGroup>().alpha = 0f;
+        cardsMenu.GetComponent<CanvasGroup>().interactable = false;
     }
     private void Update()
     {
@@ -171,12 +174,23 @@ public class Menu : MonoBehaviour
     public void CardMenu()
     {
         Time.timeScale = 0f;
+        cardsMenuText.SetActive(true);
+        cardsMenu.GetComponentInChildren<HorizontalLayoutGroup>().enabled = true;
+        for (int i = 0; i < cards.Count;i++)
+        {
+            if (!cards[i].activeSelf)
+            {
+                cards[i].SetActive(true);
+            }
+        }
         cardsMenu.SetActive(true);
         constructMenu.SetActive(false);
         gameMenu.SetActive(false);
         pauseMenu.SetActive(false);
         gameOverMenu.SetActive(false);
-        for(int i=0; i<cards.Count; i++)
+        cardsMenu.GetComponent<CanvasGroup>().DOFade(1f, 1f).SetUpdate(UpdateType.Normal, true);
+        cardsMenu.GetComponent<CanvasGroup>().interactable = true;
+        for (int i=0; i<cards.Count; i++)
         {
             int randIndex = Random.Range(0, cardsDB.cards.Length);
             while (generatedCardsIndexes.Contains(randIndex))
@@ -203,12 +217,26 @@ public class Menu : MonoBehaviour
         playerStats.shipSpeedValue += generatedCards[i].shipSpeedValue;
         playerStats.oreMiningBonusValue = generatedCards[i].oreMiningBonus;
         generatedCards.Clear();
-        cardsMenu.SetActive(false);
-        constructMenu.SetActive(false);
-        gameMenu.SetActive(true);
-        pauseMenu.SetActive(false);
-        gameOverMenu.SetActive(false);
+        cardsMenuText.SetActive(false);
+        cardsMenu.GetComponentInChildren<HorizontalLayoutGroup>().enabled = false;
+        for(int j=0; j<cards.Count; j++)
+        {
+            if(j != i)
+            {
+                //Destroy(cards[j]);
+                cards[j].SetActive(false);
+            }
+        }
+        Vector3 centerOfCameraView = GetCenterOfCameraView();
+        Sequence sequence = DOTween.Sequence();
+        sequence.Append(cards[i].transform.DOMove(centerOfCameraView, 1f).SetUpdate(UpdateType.Normal, true));
+        sequence.AppendCallback(() =>
+        {
+            cardsMenu.GetComponent<CanvasGroup>().DOFade(0f, 2f).SetUpdate(UpdateType.Normal, true);
+        });
+        sequence.Play();
         Time.timeScale = 1f;
+        Invoke("HideCardMenu", 2f);
     }
     public void RefreshCard(int i)
     {
@@ -224,6 +252,14 @@ public class Menu : MonoBehaviour
         playerStats.refreshKey--;
         refreshes[i].GetComponent<Image>().enabled = false;
         refreshes[i].GetComponent<Button>().enabled = false;
+    }
+    private void HideCardMenu()
+    {
+        cardsMenu.SetActive(false);
+        constructMenu.SetActive(false);
+        gameMenu.SetActive(true);
+        pauseMenu.SetActive(false);
+        gameOverMenu.SetActive(false);
     }
     public void HideConstructPoints()
     {
@@ -241,5 +277,13 @@ public class Menu : MonoBehaviour
     public void DeactiveBossHealthBar()
     {
         bossHPBar.SetActive(false);
+    }
+    private Vector3 GetCenterOfCameraView()
+    {
+        Vector3 viewportCenter = new Vector3(0.5f, 0.5f, mainCam.nearClipPlane);
+
+        Vector3 worldCenter = mainCam.ViewportToWorldPoint(viewportCenter);
+
+        return worldCenter;
     }
 }

@@ -25,7 +25,7 @@ public class CameraSize : MonoBehaviour
         {
             Bounds parentBounds = CalculateParentBounds();
 
-            float objectHeight = parentBounds.size.y * 1.4f;
+            float objectHeight = parentBounds.size.y * 2f;
 
             float objectWidth = parentBounds.size.x;
             float distance = (objectHeight / 2f) / Mathf.Tan(mainCamera.fieldOfView * 0.5f * Mathf.Deg2Rad);

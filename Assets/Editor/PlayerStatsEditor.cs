@@ -39,8 +39,8 @@ public class PlayerStatsEditor : Editor
         GUILayout.Label("       GUNS ATTACK SPEED", EditorStyles.boldLabel);
         playerStats.normalGunAttackSpeedValue = EditorGUILayout.FloatField("Normal Gun Attack Speed", playerStats.normalGunAttackSpeedValue);
         playerStats.laserGunAttackSpeedValue = EditorGUILayout.FloatField("Laser Gun Attack Speed", playerStats.laserGunAttackSpeedValue);
-        playerStats.doubleGunAttackSpeedValue = EditorGUILayout.FloatField("Big Gun Attack Speed", playerStats.doubleGunAttackSpeedValue);
-        playerStats.bigGunAttackSpeedValue = EditorGUILayout.FloatField("Double Gun Attack Speed", playerStats.bigGunAttackSpeedValue);
+        playerStats.bigGunAttackSpeedValue = EditorGUILayout.FloatField("Big Gun Attack Speed", playerStats.bigGunAttackSpeedValue);
+        playerStats.doubleGunAttackSpeedValue = EditorGUILayout.FloatField("Double Gun Attack Speed", playerStats.doubleGunAttackSpeedValue);
         EditorGUILayout.Space();
         GUILayout.Label("       LEVEL", EditorStyles.boldLabel);
         playerStats.level = EditorGUILayout.IntField("Level", playerStats.level);

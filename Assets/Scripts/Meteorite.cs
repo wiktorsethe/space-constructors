@@ -25,6 +25,14 @@ public class Meteorite : MonoBehaviour
         playerShip = GameObject.FindGameObjectWithTag("Player").transform;
         mainCamera = Camera.main;
 
+        float cameraHeight = mainCamera.orthographicSize * 0.13f;
+        float cameraWidth = cameraHeight * mainCamera.aspect;
+
+        float scaleX = cameraWidth / transform.localScale.x;
+        float scaleY = cameraHeight / transform.localScale.y;
+
+        float objectScale = Mathf.Min(scaleX, scaleY);
+        transform.localScale = new Vector3(objectScale, objectScale, 1f);
     }
     private void Update()
     {

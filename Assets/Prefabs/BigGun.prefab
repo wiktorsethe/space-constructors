@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5390226548850925115}
   - component: {fileID: 3004275287727926668}
+  - component: {fileID: 5879740080364896454}
   m_Layer: 0
   m_Name: BigGun
   m_TagString: Untagged
@@ -53,6 +54,20 @@ MonoBehaviour:
   bulletSpeed: 5
   target: Enemy
   shootTimer: 0
+--- !u!114 &5879740080364896454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2566265039767232474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ab626b24757ddf4c9a2f979031c523f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  bulletPrefab: {fileID: 5949201873329385209, guid: 7b5cda1cc44f8634ba51874c6d2af430, type: 3}
 --- !u!1 &4340626013909713249
 GameObject:
   m_ObjectHideFlags: 0

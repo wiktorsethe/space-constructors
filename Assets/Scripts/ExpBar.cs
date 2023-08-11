@@ -104,7 +104,7 @@ public class ExpBar : MonoBehaviour
         hpBar.RegenerateHealth();
         GetExperience();
     }
-    void EnterCardMenu()
+    private void EnterCardMenu()
     {
         menu.CardMenu();
     }

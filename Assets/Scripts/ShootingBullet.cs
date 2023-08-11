@@ -20,13 +20,22 @@ public class ShootingBullet : MonoBehaviour
         startingPos = transform.position;
         cameraHalfWidth = cam.orthographicSize * cam.aspect;
 
+        float cameraHeight = cam.orthographicSize * 0.13f;
+        float cameraWidth = cameraHeight * cam.aspect;
+
+        float scaleX = cameraWidth / transform.localScale.x;
+        float scaleY = cameraHeight / transform.localScale.y;
+
+        float objectScale = Mathf.Min(scaleX, scaleY);
+        transform.localScale = new Vector3(objectScale, objectScale, 1f);
+
     }
     private void Update()
     {
         if(Vector2.Distance(startingPos, transform.position) > cameraHalfWidth)
         {
-            Destroy(gameObject);
-
+            //Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 
@@ -37,18 +46,18 @@ public class ShootingBullet : MonoBehaviour
             Instantiate(shootParticles, transform.position, Quaternion.identity);
             camShake.ShakeCamera(0.2f, 0.5f, 2);
             hpBar.SetHealth(damage);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
         else if (collision.gameObject.CompareTag("Enemy") && target == "Enemy")
         {
             Instantiate(shootParticles, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
         if (collision.gameObject.CompareTag("Player") && target == "Player")
         {
             Instantiate(shootParticles, transform.position, Quaternion.identity);
             hpBar.SetHealth(damage);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }
