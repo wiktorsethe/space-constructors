@@ -408,6 +408,7 @@ GameObject:
   - component: {fileID: 6827807731172849508}
   - component: {fileID: 6827807731172849507}
   - component: {fileID: 1806739916165891088}
+  - component: {fileID: 1837450772315202717}
   m_Layer: 0
   m_Name: EnemyRanger
   m_TagString: EnemyRanger
@@ -508,3 +509,17 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cb06786d15658b3449a9e67119a16e98, type: 2}
   - {fileID: 11400000, guid: 98d083ba7c649164a9486346349175dc, type: 2}
   - {fileID: 11400000, guid: 2aa24759b53d51f45abd6d46d68deeeb, type: 2}
+--- !u!114 &1837450772315202717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6827807731172849505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ab626b24757ddf4c9a2f979031c523f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  bulletPrefab: {fileID: 5949201873329385209, guid: 7e5f433180cf9b540b3abcc27fb2ff97, type: 3}

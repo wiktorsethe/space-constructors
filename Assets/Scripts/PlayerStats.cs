@@ -23,10 +23,15 @@ public class PlayerStats : ScriptableObject
     public float laserGunDamageValue;
     public float doubleGunDamageValue;
     public float bigGunDamageValue;
+    public float poisonGunFirstDamageValue;
+    public float poisonGunBetweenDamageValue;
     public float normalGunAttackSpeedValue;
     public float laserGunAttackSpeedValue;
     public float doubleGunAttackSpeedValue;
     public float bigGunAttackSpeedValue;
+    public float poisonGunFirstAttackSpeedValue;
+    public float poisonGunBetweenAttackSpeedValue;
+    public int poisonGunDurationValue;
     public float shipSpeedValue;
     public float oreMiningBonusValue;
     public Vector3 shipPosition;
@@ -59,10 +64,15 @@ public class PlayerStats : ScriptableObject
         laserGunDamageValue = 1;
         doubleGunDamageValue = 1;
         bigGunDamageValue = 1;
+        poisonGunFirstDamageValue = 4;
+        poisonGunBetweenDamageValue = 1;
         normalGunAttackSpeedValue = 4;
         laserGunAttackSpeedValue = 4;
         doubleGunAttackSpeedValue = 3;
         bigGunAttackSpeedValue = 6;
+        poisonGunFirstAttackSpeedValue = 8;
+        poisonGunBetweenAttackSpeedValue = 2;
+        poisonGunDurationValue = 3;
         oreMiningBonusValue = 1;
         shipPosition = new Vector3(0f, 0f, 0f);
         for (int i = 0; i < challenges.Length; i++)

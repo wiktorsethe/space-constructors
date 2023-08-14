@@ -38,9 +38,10 @@ public class ShootingDoubleGun : MonoBehaviour
         for (int i=0; i<firePoints.Length; i++)
         {
             GameObject bullet = objPool.GetPooledObject();
-            bullet.SetActive(true);
             bullet.transform.position = firePoints[i].position;
+            bullet.GetComponent<ShootingBullet>().startingPos = firePoints[i].position;
             bullet.transform.rotation = firePoints[i].rotation;
+            bullet.SetActive(true);
             bullet.GetComponent<ShootingBullet>().target = target;
             bullet.GetComponent<ShootingBullet>().damage = playerStats.doubleGunDamageValue;
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();

@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class ShootingBullet : MonoBehaviour
 {
+    public string type;
     public string target;
     public float damage;
     private HpBar hpBar;
     [SerializeField] private GameObject shootParticles;
     private CameraShake camShake;
     private Camera cam;
-    private Vector2 startingPos;
+    public Vector2 startingPos;
     private float cameraHalfWidth;
     private void Start()
     {
         hpBar = GameObject.FindObjectOfType(typeof(HpBar)) as HpBar;
         camShake = GameObject.FindObjectOfType(typeof(CameraShake)) as CameraShake;
         cam = Camera.main;
-        startingPos = transform.position;
         cameraHalfWidth = cam.orthographicSize * cam.aspect;
 
         float cameraHeight = cam.orthographicSize * 0.13f;
@@ -32,7 +32,7 @@ public class ShootingBullet : MonoBehaviour
     }
     private void Update()
     {
-        if(Vector2.Distance(startingPos, transform.position) > cameraHalfWidth)
+        if(Vector2.Distance(startingPos, transform.position) > cameraHalfWidth) // tu jest b³¹d kule sie nie pokazuja trzeba przerobiæ startingpos
         {
             //Destroy(gameObject);
             gameObject.SetActive(false);
@@ -45,7 +45,14 @@ public class ShootingBullet : MonoBehaviour
         {
             Instantiate(shootParticles, transform.position, Quaternion.identity);
             camShake.ShakeCamera(0.2f, 0.5f, 2);
-            hpBar.SetHealth(damage);
+            if(type == "PoisonBullet")
+            {
+                hpBar.StartPoison();
+            }
+            else if (type == "NormalBullet")
+            {
+                hpBar.SetHealth(damage);
+            }
             gameObject.SetActive(false);
         }
         else if (collision.gameObject.CompareTag("Enemy") && target == "Enemy")

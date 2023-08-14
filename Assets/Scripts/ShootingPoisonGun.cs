@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShootingBigGun : MonoBehaviour
+public class ShootingPoisonGun : MonoBehaviour
 {
     [Header("Other Scripts")]
     public PlayerStats playerStats;
@@ -25,7 +25,7 @@ public class ShootingBigGun : MonoBehaviour
     void Update()
     {
         shootTimer += Time.deltaTime;
-        if (shootTimer >= playerStats.bigGunAttackSpeedValue)
+        if (shootTimer >= playerStats.poisonGunFirstAttackSpeedValue)
         {
             FireBullet();
             shootTimer = 0f;
@@ -41,7 +41,7 @@ public class ShootingBigGun : MonoBehaviour
         bullet.transform.rotation = firePoint.rotation;
         bullet.SetActive(true);
         bullet.GetComponent<ShootingBullet>().target = target;
-        bullet.GetComponent<ShootingBullet>().damage = playerStats.bigGunDamageValue;
+        bullet.GetComponent<ShootingBullet>().damage = playerStats.poisonGunFirstDamageValue;
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         Vector2 bulletVelocity = firePoint.up * bulletSpeed;
         rb.velocity = bulletVelocity;

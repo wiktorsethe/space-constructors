@@ -10,6 +10,7 @@ public class EnemyShip : MonoBehaviour
     private ExpBar expBar;
     private GameManager gameManager;
     public PlayerStats playerStats;
+    private ObjectPool objPool;
     [Space(20f)]
     [Header("Variables")]
     [SerializeField] private int experience;
@@ -21,7 +22,6 @@ public class EnemyShip : MonoBehaviour
     [Space(20f)]
     [Header("GameObjects and Rest")]
     private GameObject player;
-    [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject miningTextPrefab;
     [SerializeField] private string target;
@@ -43,6 +43,7 @@ public class EnemyShip : MonoBehaviour
     {
         expBar = GameObject.FindObjectOfType(typeof(ExpBar)) as ExpBar;
         gameManager = GameObject.FindObjectOfType(typeof(GameManager)) as GameManager;
+        objPool = GetComponent<ObjectPool>();
         player = GameObject.FindGameObjectWithTag("Player");
         canvas.worldCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         currentHealth = maxHealth;
@@ -53,7 +54,7 @@ public class EnemyShip : MonoBehaviour
     {
         fillBar.color = healthGradient.Evaluate(healthBar.normalizedValue);
         hideTimer += Time.deltaTime;
-        if (hideTimer > 2f)
+        if (hideTimer > 3f)
         {
             healthBarCanvas.SetActive(false);
         }
@@ -97,11 +98,25 @@ public class EnemyShip : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
         }
 
-        
+
+        if (currentHealth <= 0)
+        {
+            expBar.SetExperience(experience);
+            playerStats.gold += gold;
+            gameManager.goldEarned += gold;
+            gameManager.kills += 1;
+            shootTimer = -10f;
+            GetComponentInChildren<PolygonCollider2D>().enabled = false;
+            Destroy(gameObject, 2f);
+        }
     }
     void FireBullet()
     {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        GameObject bullet = objPool.GetPooledObject();
+        bullet.transform.position = firePoint.position;
+        bullet.GetComponent<ShootingBullet>().startingPos = firePoint.position;
+        bullet.transform.rotation = firePoint.rotation;
+        bullet.SetActive(true);
         bullet.GetComponent<ShootingBullet>().target = target;
         bullet.GetComponent<ShootingBullet>().damage = 10;
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
@@ -118,27 +133,17 @@ public class EnemyShip : MonoBehaviour
     {
         DOTween.To(() => healthBar.value, x => healthBar.value = x, currentHealth, 1.5f);
     }
-    public void CollisionDetected()
+    public void CollisionDetected(int damage)
     {
         healthBarCanvas.SetActive(true);
         hideTimer = 0f;
-        currentHealth -= 10;
+        currentHealth -= damage;
         SetHealth();
         moveSpeed = 0.5f; // popraw
         StartCoroutine(ChangingSpeed());
-        if (currentHealth <= 0)
-        {
-            expBar.SetExperience(experience);
-            playerStats.gold += gold;
-            gameManager.goldEarned += gold;
-            gameManager.kills += 1;
-            shootTimer = -10f;
-            GetComponentInChildren<PolygonCollider2D>().enabled = false;
-            Destroy(gameObject, 2f);
-        }
         if (miningTextPrefab)
         {
-            ShowMiningText(10);
+            ShowMiningText(damage);
         }
     }
     private void ShowMiningText(int amount)
@@ -155,6 +160,20 @@ public class EnemyShip : MonoBehaviour
             moveSpeed += 0.1f;
             yield return new WaitForSeconds(0.1f);
 
+        }
+    }
+    public void StartPoison()
+    {
+        StartCoroutine("Poison");
+    }
+    IEnumerator Poison()
+    {
+        int t = 0;
+        while(t < playerStats.poisonGunDurationValue)
+        {
+            CollisionDetected((int)playerStats.poisonGunBetweenDamageValue);
+            t++;
+            yield return new WaitForSeconds(playerStats.poisonGunBetweenAttackSpeedValue);
         }
     }
 }

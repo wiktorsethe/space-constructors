@@ -35,12 +35,17 @@ public class PlayerStatsEditor : Editor
         playerStats.laserGunDamageValue = EditorGUILayout.FloatField("Laser Gun Damage", playerStats.laserGunDamageValue);
         playerStats.bigGunDamageValue = EditorGUILayout.FloatField("Big Gun Damage", playerStats.bigGunDamageValue);
         playerStats.doubleGunDamageValue = EditorGUILayout.FloatField("Double Gun Damage", playerStats.doubleGunDamageValue);
+        playerStats.poisonGunFirstDamageValue = EditorGUILayout.FloatField("Poison First Gun Damage", playerStats.poisonGunFirstDamageValue);
+        playerStats.poisonGunBetweenDamageValue = EditorGUILayout.FloatField("Poison Between Gun Damage", playerStats.poisonGunBetweenDamageValue);
         EditorGUILayout.Space();
-        GUILayout.Label("       GUNS ATTACK SPEED", EditorStyles.boldLabel);
+        GUILayout.Label("       GUNS ATTACK SPEED / DURATION", EditorStyles.boldLabel);
         playerStats.normalGunAttackSpeedValue = EditorGUILayout.FloatField("Normal Gun Attack Speed", playerStats.normalGunAttackSpeedValue);
         playerStats.laserGunAttackSpeedValue = EditorGUILayout.FloatField("Laser Gun Attack Speed", playerStats.laserGunAttackSpeedValue);
         playerStats.bigGunAttackSpeedValue = EditorGUILayout.FloatField("Big Gun Attack Speed", playerStats.bigGunAttackSpeedValue);
         playerStats.doubleGunAttackSpeedValue = EditorGUILayout.FloatField("Double Gun Attack Speed", playerStats.doubleGunAttackSpeedValue);
+        playerStats.poisonGunFirstAttackSpeedValue = EditorGUILayout.FloatField("Poison Gun Frist Attack Speed", playerStats.poisonGunFirstAttackSpeedValue);
+        playerStats.poisonGunBetweenAttackSpeedValue = EditorGUILayout.FloatField("Poison Gun Between Attack Speed", playerStats.poisonGunBetweenAttackSpeedValue);
+        playerStats.poisonGunDurationValue = EditorGUILayout.IntField("Poison Gun Duration", playerStats.poisonGunDurationValue);
         EditorGUILayout.Space();
         GUILayout.Label("       LEVEL", EditorStyles.boldLabel);
         playerStats.level = EditorGUILayout.IntField("Level", playerStats.level);

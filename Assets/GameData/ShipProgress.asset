@@ -12,49 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17da9d895f6dfe74e967795140b0ae5f, type: 3}
   m_Name: ShipProgress
   m_EditorClassIdentifier: 
-  shipParts:
-  - shipPartIndex: 0
-    position: {x: 2.25, y: 1.300003, z: 0}
-    rotation: {x: -0, y: -0, z: -0.5, w: 0.8660254}
-  - shipPartIndex: 0
-    position: {x: -2.25, y: 1.300003, z: 0}
-    rotation: {x: -0, y: -0, z: 0.5, w: 0.8660254}
-  - shipPartIndex: 0
-    position: {x: 2.25, y: -1.300003, z: 0}
-    rotation: {x: -0, y: -0, z: -0.86602545, w: 0.49999994}
-  - shipPartIndex: 1
-    position: {x: 4.0686493, y: -2.350006, z: 0}
-    rotation: {x: -0, y: -0, z: -0.86602545, w: 0.49999994}
-  - shipPartIndex: 0
-    position: {x: 6.492691, y: -1.1514511, z: 0}
-    rotation: {x: -0, y: -0, z: -0, w: 1}
-  - shipPartIndex: 1
-    position: {x: 6.492691, y: 0.94854736, z: 0}
-    rotation: {x: -0, y: -0, z: -0, w: 1}
-  - shipPartIndex: 0
-    position: {x: 4.242691, y: 5.048546, z: 0}
-    rotation: {x: -0, y: -0, z: 0.5, w: 0.8660254}
-  - shipPartIndex: 4
-    position: {x: 8.744354, y: -2.4514465, z: 0}
-    rotation: {x: -0, y: -0, z: -0.5, w: 0.8660253}
-  - shipPartIndex: 3
-    position: {x: 0, y: -2.5999985, z: 0}
-    rotation: {x: -0, y: -0, z: 1, w: 0}
-  - shipPartIndex: 4
-    position: {x: -4.0686493, y: 2.350006, z: 0}
-    rotation: {x: -0, y: -0, z: 0.5, w: 0.8660254}
-  - shipPartIndex: 5
-    position: {x: 8.742691, y: 2.4485474, z: 0}
-    rotation: {x: -0, y: -0, z: -0.86602545, w: 0.49999994}
-  usedContstructPoints:
-  - {x: -101.42107, y: 68.15144, z: -0.20140931}
-  - {x: -105.92107, y: 68.15144, z: -0.20140931}
-  - {x: -101.42107, y: 65.55144, z: -0.20140931}
-  - {x: -99.60242, y: 64.501434, z: -0.20140931}
-  - {x: -97.178375, y: 65.69999, z: -0.20140931}
-  - {x: -97.178375, y: 67.79999, z: -0.20140931}
-  - {x: -99.428375, y: 71.89999, z: -0.20140931}
-  - {x: -94.92671, y: 64.399994, z: -0.20140931}
-  - {x: -103.67107, y: 64.25144, z: -0.20140931}
-  - {x: -107.739716, y: 69.20145, z: -0.20140931}
-  - {x: -94.928375, y: 69.29999, z: -0.20140931}
+  shipParts: []
+  usedContstructPoints: []

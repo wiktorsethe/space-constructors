@@ -5,9 +5,9 @@ using UnityEngine;
 public class WalkerShooting : MonoBehaviour
 {
     [Header("Objects and List")]
-    [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject[] enemies;
+    private ObjectPool objPool;
     //public GameObject activeEnemy;
     private float distance;
     [Space(20f)]
@@ -18,6 +18,10 @@ public class WalkerShooting : MonoBehaviour
     private float shootTimer = 0f;
     private float attractDistance = 10f;
 
+    private void Start()
+    {
+        objPool = GetComponent<ObjectPool>();
+    }
     void Update()
     {
         shootTimer += Time.deltaTime;
@@ -51,7 +55,11 @@ public class WalkerShooting : MonoBehaviour
 
     void FireBullet()
     {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        GameObject bullet = objPool.GetPooledObject();
+        bullet.transform.position = firePoint.position;
+        bullet.GetComponent<ShootingBullet>().startingPos = firePoint.position;
+        bullet.transform.rotation = firePoint.rotation;
+        bullet.SetActive(true);
         bullet.GetComponent<ShootingBullet>().target = target;
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         Vector2 bulletVelocity = firePoint.up * bulletSpeed;

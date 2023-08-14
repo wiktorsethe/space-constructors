@@ -54,9 +54,10 @@ public class ShootingLaserGun : MonoBehaviour
     {
         shootAnimator.SetTrigger("Play");
         GameObject bullet = objPool.GetPooledObject();
-        bullet.SetActive(true);
         bullet.transform.position = firePoint.position;
+        bullet.GetComponent<ShootingBullet>().startingPos = firePoint.position;
         bullet.transform.rotation = firePoint.rotation;
+        bullet.SetActive(true);
         bullet.GetComponent<ShootingBullet>().target = target;
         bullet.GetComponent<ShootingBullet>().damage = playerStats.laserGunDamageValue;
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();

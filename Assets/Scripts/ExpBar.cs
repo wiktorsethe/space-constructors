@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using DG.Tweening;
 public class ExpBar : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class ExpBar : MonoBehaviour
     private Menu menu;
     [Space(20f)]
     [Header("Other")]
+    [SerializeField] private TMP_Text expText;
     [SerializeField] private Slider expBar;
     
     private void Start()
@@ -30,62 +32,77 @@ public class ExpBar : MonoBehaviour
     {
         if (playerStats.level == 1)
         {
+            expText.text = "Lvl 1";
             expBar.maxValue = 200;
         }
         else if (playerStats.level == 2)
         {
+            expText.text = "Lvl 2";
             expBar.maxValue = 350;
         }
         else if (playerStats.level == 3)
         {
+            expText.text = "Lvl 3";
             expBar.maxValue = 600;
         }
         else if (playerStats.level == 4)
         {
+            expText.text = "Lvl 4";
             expBar.maxValue = 900;
         }
         else if (playerStats.level == 5)
         {
+            expText.text = "Lvl 5";
             expBar.maxValue = 1350;
         }
         else if (playerStats.level == 6)
         {
+            expText.text = "Lvl 6";
             expBar.maxValue = 1900;
         }
         else if (playerStats.level == 7)
         {
+            expText.text = "Lvl 7";
             expBar.maxValue = 2500;
         }
         else if (playerStats.level == 8)
         {
+            expText.text = "Lvl 8";
             expBar.maxValue = 3150;
         }
         else if (playerStats.level == 9)
         {
+            expText.text = "Lvl 9";
             expBar.maxValue = 3900;
         }
         else if (playerStats.level == 10)
         {
+            expText.text = "Lvl 10";
             expBar.maxValue = 4700;
         }
         else if (playerStats.level == 11)
         {
+            expText.text = "Lvl 11";
             expBar.maxValue = 5700;
         }
         else if (playerStats.level == 12)
         {
+            expText.text = "Lvl 12";
             expBar.maxValue = 6850;
         }
         else if (playerStats.level == 13)
         {
+            expText.text = "Lvl 13";
             expBar.maxValue = 8300;
         }
         else if (playerStats.level == 14)
         {
+            expText.text = "Lvl 14";
             expBar.maxValue = 10900;
         }
         else if (playerStats.level == 15)
         {
+            expText.text = "Lvl 15";
             expBar.maxValue = 13000;
         }
         expBar.value = playerStats.experience;

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5877223503080307285}
   - component: {fileID: 5877223503080307304}
   - component: {fileID: 5877223503080307305}
+  - component: {fileID: 5384276506095333489}
   m_Layer: 0
   m_Name: Walker
   m_TagString: Player
@@ -138,7 +139,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1602a078cf7b0340b1c63a59cbe03cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 5949201873329385209, guid: fcc211509cfc5ed4083bfec3ab4eca73, type: 3}
   firePoint: {fileID: 5877223503973916250}
   enemies: []
   bulletSpeed: 10
@@ -169,6 +169,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &5384276506095333489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5877223503080307287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ab626b24757ddf4c9a2f979031c523f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  bulletPrefab: {fileID: 5949201873329385209, guid: fcc211509cfc5ed4083bfec3ab4eca73, type: 3}
 --- !u!1 &5877223503973916229
 GameObject:
   m_ObjectHideFlags: 0

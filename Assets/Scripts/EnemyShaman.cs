@@ -26,7 +26,6 @@ public class EnemyShaman : MonoBehaviour
     [SerializeField] private GameObject miningTextPrefab;
     [SerializeField] private Animator animator;
     private bool facingRight;
-    private float previousX;
     [Space(20f)]
     [Header("Health System")]
     [SerializeField] private Canvas canvas;
@@ -55,8 +54,15 @@ public class EnemyShaman : MonoBehaviour
         fillBar.color = healthGradient.Evaluate(healthBar.normalizedValue);
         hideTimer += Time.deltaTime;
 
-        float velocityX = transform.position.x - previousX;
-        previousX = transform.position.x;
+        Vector3 direction = player.transform.position - transform.position;
+        if (direction.x > 0 && facingRight)
+        {
+            Flip();
+        }
+        if (direction.x < 0 && !facingRight)
+        {
+            Flip();
+        }
 
         if (hideTimer > 2f)
         {
@@ -66,14 +72,6 @@ public class EnemyShaman : MonoBehaviour
         float distance = Vector2.Distance(transform.position, player.transform.position);
         if (distance >= (inTarget - 1f) && distance < 30f && spawnTimer >= 2.5f)
         {
-            if (velocityX > 0 && facingRight)
-            {
-                Flip();
-            }
-            if (velocityX < 0 && !facingRight)
-            {
-                Flip();
-            }
             //Vector3 vectorToTarget = player.transform.position - transform.position;
             //transform.Find("EnemyShamanImage").transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget); // rotacja do przegadania bo pewnie bedzie tylko L/R
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime);

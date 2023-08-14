@@ -10,6 +10,7 @@ public class EnemyRanger : MonoBehaviour
     private ExpBar expBar;
     private GameManager gameManager;
     public PlayerStats playerStats;
+    private ObjectPool objPool;
     [Space(20f)]
     [Header("Variables")]
     [SerializeField] private int experience;
@@ -21,13 +22,11 @@ public class EnemyRanger : MonoBehaviour
     [Space(20f)]
     [Header("GameObjects and Rest")]
     private GameObject player;
-    [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject miningTextPrefab;
     [SerializeField] private Animator animator;
     [SerializeField] private string target = "Player";
     private bool facingRight = false;
-    private float previousX;
     [Space(20f)]
     [Header("Health System")]
     [SerializeField] private Canvas canvas;
@@ -46,7 +45,7 @@ public class EnemyRanger : MonoBehaviour
         expBar = GameObject.FindObjectOfType(typeof(ExpBar)) as ExpBar;
         gameManager = GameObject.FindObjectOfType(typeof(GameManager)) as GameManager;
         player = GameObject.FindGameObjectWithTag("Player");
-
+        objPool = GetComponent<ObjectPool>();
         canvas.worldCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         currentHealth = maxHealth;
         SetMaxHealth(maxHealth);
@@ -94,7 +93,11 @@ public class EnemyRanger : MonoBehaviour
     }
     void FireBullet()
     {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        GameObject bullet = objPool.GetPooledObject();
+        bullet.transform.position = firePoint.position;
+        bullet.GetComponent<ShootingBullet>().startingPos = firePoint.position;
+        bullet.transform.rotation = firePoint.rotation;
+        bullet.SetActive(true);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         bullet.GetComponent<ShootingBullet>().target = target;
         bullet.GetComponent<ShootingBullet>().damage = 5f;

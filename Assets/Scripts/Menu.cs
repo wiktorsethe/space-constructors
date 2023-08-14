@@ -12,6 +12,7 @@ public class Menu : MonoBehaviour
 {
     [Header("Other Scripts")]
     private ShipManager shipManager;
+    private ShipMovement shipMovement;
     public PlayerStats playerStats;
     private ShootingNormalGun[] shootingNormalGunList;
     private ShootingLaserGun[] shootingLaserGunList;
@@ -40,6 +41,8 @@ public class Menu : MonoBehaviour
     [SerializeField] private TMP_Text mostKillsText;
     [SerializeField] private TMP_Text mostGoldEarnedText;
     [SerializeField] private TMP_Text goldText;
+    [SerializeField] private TMP_Text screwText;
+    [SerializeField] private TMP_Text oreText;
     [Space(20f)]
 
     [Header("Lists")]
@@ -52,6 +55,7 @@ public class Menu : MonoBehaviour
     private void Start()
     {
         shipManager = GameObject.FindObjectOfType(typeof(ShipManager)) as ShipManager;
+        shipMovement = GameObject.FindObjectOfType(typeof(ShipMovement)) as ShipMovement;
         swipeInMenu = GameObject.FindObjectOfType(typeof(SwipeInConstructionMenu)) as SwipeInConstructionMenu;
         camSize = GameObject.FindObjectOfType(typeof(CameraSize)) as CameraSize;
         mainCam = Camera.main;
@@ -63,6 +67,8 @@ public class Menu : MonoBehaviour
     {
         //shipManager = GameObject.FindObjectOfType(typeof(ShipManager)) as ShipManager;
         goldText.text = "Gold: " + playerStats.gold.ToString();
+        screwText.text = "Screws: " + playerStats.screw.ToString();
+        oreText.text = "Ores: " + playerStats.ore.ToString();
         if (playerStats.refreshKey <= 0)
         {
             foreach(GameObject refresh in refreshes)
@@ -174,6 +180,7 @@ public class Menu : MonoBehaviour
     public void CardMenu()
     {
         Time.timeScale = 0f;
+        shipMovement.enabled = false;
         cardsMenuText.SetActive(true);
         cardsMenu.GetComponentInChildren<HorizontalLayoutGroup>().enabled = true;
         for (int i = 0; i < cards.Count;i++)
@@ -227,15 +234,16 @@ public class Menu : MonoBehaviour
                 cards[j].SetActive(false);
             }
         }
-        Vector3 centerOfCameraView = GetCenterOfCameraView();
+        Vector2 centerOfCameraView = GetCenterOfCameraView();
         Sequence sequence = DOTween.Sequence();
-        sequence.Append(cards[i].transform.DOMove(centerOfCameraView, 1f).SetUpdate(UpdateType.Normal, true));
+        sequence.Append(cards[i].transform.DOMove(new Vector2(centerOfCameraView.x, centerOfCameraView.y), 1f).SetUpdate(UpdateType.Normal, true));
         sequence.AppendCallback(() =>
         {
             cardsMenu.GetComponent<CanvasGroup>().DOFade(0f, 2f).SetUpdate(UpdateType.Normal, true);
         });
         sequence.Play();
         Time.timeScale = 1f;
+        shipMovement.enabled = true;
         Invoke("HideCardMenu", 2f);
     }
     public void RefreshCard(int i)
@@ -278,11 +286,11 @@ public class Menu : MonoBehaviour
     {
         bossHPBar.SetActive(false);
     }
-    private Vector3 GetCenterOfCameraView()
+    private Vector2 GetCenterOfCameraView()
     {
-        Vector3 viewportCenter = new Vector3(0.5f, 0.5f, mainCam.nearClipPlane);
+        Vector2 viewportCenter = new Vector2(0.5f, 0.5f);
 
-        Vector3 worldCenter = mainCam.ViewportToWorldPoint(viewportCenter);
+        Vector2 worldCenter = mainCam.ViewportToWorldPoint(viewportCenter);
 
         return worldCenter;
     }
