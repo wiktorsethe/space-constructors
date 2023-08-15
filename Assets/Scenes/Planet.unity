@@ -449,6 +449,71 @@ RectTransform:
   m_AnchoredPosition: {x: 350, y: -400}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &143602915
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6282078967647910801, guid: be1271b06d2e2a6489030a0a60eb0cfb, type: 3}
+      propertyPath: m_Name
+      value: EnemyShaman
+      objectReference: {fileID: 0}
+    - target: {fileID: 6282078967647910803, guid: be1271b06d2e2a6489030a0a60eb0cfb, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6282078967647910803, guid: be1271b06d2e2a6489030a0a60eb0cfb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 6282078967647910803, guid: be1271b06d2e2a6489030a0a60eb0cfb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -10.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6282078967647910803, guid: be1271b06d2e2a6489030a0a60eb0cfb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6282078967647910803, guid: be1271b06d2e2a6489030a0a60eb0cfb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6282078967647910803, guid: be1271b06d2e2a6489030a0a60eb0cfb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6282078967647910803, guid: be1271b06d2e2a6489030a0a60eb0cfb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6282078967647910803, guid: be1271b06d2e2a6489030a0a60eb0cfb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6282078967647910803, guid: be1271b06d2e2a6489030a0a60eb0cfb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6282078967647910803, guid: be1271b06d2e2a6489030a0a60eb0cfb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6282078967647910803, guid: be1271b06d2e2a6489030a0a60eb0cfb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6282078967857492209, guid: be1271b06d2e2a6489030a0a60eb0cfb, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6282078967857492209, guid: be1271b06d2e2a6489030a0a60eb0cfb, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: be1271b06d2e2a6489030a0a60eb0cfb, type: 3}
 --- !u!1 &281241045
 GameObject:
   m_ObjectHideFlags: 0
@@ -2416,15 +2481,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 410734719026743648, guid: 14907db974a0f7e4a8212f1e7299b14e, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.668
       objectReference: {fileID: 0}
     - target: {fileID: 410734719026743648, guid: 14907db974a0f7e4a8212f1e7299b14e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6827807731172849505, guid: 14907db974a0f7e4a8212f1e7299b14e, type: 3}
       propertyPath: m_Name
       value: EnemyRanger
+      objectReference: {fileID: 0}
+    - target: {fileID: 6827807731172849505, guid: 14907db974a0f7e4a8212f1e7299b14e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6827807731172849508, guid: 14907db974a0f7e4a8212f1e7299b14e, type: 3}
       propertyPath: m_RootOrder
@@ -3126,6 +3195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats: {fileID: 11400000, guid: 284895b3224468a48aa2a763a688b966, type: 2}
+  expText: {fileID: 0}
   expBar: {fileID: 1430878258}
 --- !u!114 &1859827764
 MonoBehaviour:
@@ -3140,6 +3210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats: {fileID: 11400000, guid: 284895b3224468a48aa2a763a688b966, type: 2}
+  hpText: {fileID: 0}
   hpBar: {fileID: 454995186}
 --- !u!114 &1859827765
 MonoBehaviour:

@@ -45,7 +45,8 @@ public class Meteorite : MonoBehaviour
         transform.Translate(Vector3.up * speed * Time.deltaTime);
         if (IsObjectOutsideScreen())
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            hasDirection = false;
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -53,7 +54,8 @@ public class Meteorite : MonoBehaviour
         if (collision.transform.CompareTag("Player"))
         {
             hpBar.SetHealth(30f);
-            Destroy(gameObject);
+            hasDirection = false;
+            gameObject.SetActive(false);
         }
     }
     private bool IsObjectOutsideScreen()
