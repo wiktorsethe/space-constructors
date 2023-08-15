@@ -115,6 +115,8 @@ public class EnemyWarrior : MonoBehaviour
     }
     public void SetMaxHealth(int health)
     {
+        currentHealth = health;
+        maxHealth = health;
         healthBar.maxValue = health;
         healthBar.value = health;
         fillBar.color = healthGradient.Evaluate(1f);
@@ -131,12 +133,12 @@ public class EnemyWarrior : MonoBehaviour
         SetHealth();
         if (currentHealth <= 0)
         {
+            SetMaxHealth(maxHealth);
             expBar.SetExperience(experience);
             playerStats.gold += gold;
             gameManager.goldEarned += gold;
             gameManager.kills += 1;
-            Destroy(gameObject, 2f);
-            GetComponentInChildren<CapsuleCollider2D>().enabled = false;
+            gameObject.SetActive(false);
             GetComponent<LootBag>().InstantiateLoot(transform.position);
         }
         if (miningTextPrefab)

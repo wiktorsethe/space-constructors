@@ -27,6 +27,14 @@ public class ExpBar : MonoBehaviour
         {
             StartNewLevel();
         }
+        if(PlayerPrefs.GetString("IsLevelUp") == "true")
+        {
+            if (menu)
+            {
+                Invoke("EnterCardMenu", 2f);
+            }
+            PlayerPrefs.DeleteKey("IsLevelUp");
+        }
     }
     public void GetExperience()
     {
@@ -123,6 +131,14 @@ public class ExpBar : MonoBehaviour
     }
     private void EnterCardMenu()
     {
-        menu.CardMenu();
+        if (menu)
+        {
+            menu.CardMenu();
+
+        }
+        else
+        {
+            PlayerPrefs.SetString("IsLevelUp", "true");
+        }
     }
 }

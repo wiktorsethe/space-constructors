@@ -120,9 +120,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac4d2c3cc48d8c14fbfdda6ce4496427, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: NormalBullet
   target: Ship
   damage: 0
   shootParticles: {fileID: 4456395838552135815, guid: c6dd3fc4905aba047a74f61c37cc81a7, type: 3}
+  startingPos: {x: 0, y: 0}
 --- !u!70 &235491032500637108
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

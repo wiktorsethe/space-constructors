@@ -119,6 +119,8 @@ public class EnemyRanger : MonoBehaviour
     }
     public void SetMaxHealth(int health)
     {
+        currentHealth = health;
+        maxHealth = health;
         healthBar.maxValue = health;
         healthBar.value = health;
         fillBar.color = healthGradient.Evaluate(1f);
@@ -135,14 +137,14 @@ public class EnemyRanger : MonoBehaviour
         SetHealth();
         if (currentHealth <= 0)
         {
+            SetMaxHealth(maxHealth);
             expBar.SetExperience(experience);
             playerStats.gold += gold;
             gameManager.goldEarned += gold;
             gameManager.kills += 1;
             shootTimer = -10f;
-            GetComponentInChildren<CapsuleCollider2D>().enabled = false;
             GetComponent<LootBag>().InstantiateLoot(transform.position);
-            Destroy(gameObject, 2f);
+            gameObject.SetActive(false);
         }
         if (miningTextPrefab)
         {

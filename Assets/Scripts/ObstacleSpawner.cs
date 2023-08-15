@@ -23,6 +23,7 @@ public class ObstacleSpawner : MonoBehaviour
             int randSpawnPoint = Random.Range(0, spawnPoints.Length);
             obj.transform.position = spawnPoints[randSpawnPoint].transform.position;
             obj.transform.rotation = Quaternion.identity;
+            
             obj.SetActive(true);
             spawnTimer = 0f;
         }

@@ -46,7 +46,6 @@ public class EnemyShip : MonoBehaviour
         objPool = GetComponent<ObjectPool>();
         player = GameObject.FindGameObjectWithTag("Player");
         canvas.worldCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
-        currentHealth = maxHealth;
         SetMaxHealth(maxHealth);
         healthBarCanvas.SetActive(false);
     }
@@ -101,13 +100,14 @@ public class EnemyShip : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            SetMaxHealth(maxHealth);
+            moveSpeed = 2f;
             expBar.SetExperience(experience);
             playerStats.gold += gold;
             gameManager.goldEarned += gold;
             gameManager.kills += 1;
             shootTimer = -10f;
-            GetComponentInChildren<PolygonCollider2D>().enabled = false;
-            Destroy(gameObject, 2f);
+            gameObject.SetActive(false);
         }
     }
     void FireBullet()
@@ -125,6 +125,8 @@ public class EnemyShip : MonoBehaviour
     }
     public void SetMaxHealth(int health)
     {
+        currentHealth = health;
+        maxHealth = health;
         healthBar.maxValue = health;
         healthBar.value = health;
         fillBar.color = healthGradient.Evaluate(1f);
