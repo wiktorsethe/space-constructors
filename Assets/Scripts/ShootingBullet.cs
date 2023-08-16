@@ -53,6 +53,10 @@ public class ShootingBullet : MonoBehaviour
             {
                 hpBar.SetHealth(damage);
             }
+            if (type == "FlameBullet")
+            {
+                hpBar.StartFlame();
+            }
             gameObject.SetActive(false);
         }
         else if (collision.gameObject.CompareTag("Enemy") && target == "Enemy")

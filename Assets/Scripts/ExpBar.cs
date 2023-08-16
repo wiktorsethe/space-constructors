@@ -32,8 +32,9 @@ public class ExpBar : MonoBehaviour
             if (menu)
             {
                 Invoke("EnterCardMenu", 2f);
+                PlayerPrefs.DeleteKey("IsLevelUp");
+
             }
-            PlayerPrefs.DeleteKey("IsLevelUp");
         }
     }
     public void GetExperience()

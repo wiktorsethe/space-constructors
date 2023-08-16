@@ -23,15 +23,21 @@ public class PlayerStats : ScriptableObject
     public float laserGunDamageValue;
     public float doubleGunDamageValue;
     public float bigGunDamageValue;
-    public float poisonGunFirstDamageValue;
+    public float poisonGunCollisionDamageValue;
     public float poisonGunBetweenDamageValue;
+    public float flameGunCollisionDamageValue;
+    public float flameGunBetweenDamageValue;
+
     public float normalGunAttackSpeedValue;
     public float laserGunAttackSpeedValue;
     public float doubleGunAttackSpeedValue;
     public float bigGunAttackSpeedValue;
-    public float poisonGunFirstAttackSpeedValue;
+    public float poisonGunCollisionAttackSpeedValue;
     public float poisonGunBetweenAttackSpeedValue;
     public int poisonGunDurationValue;
+    public float flameGunCollisionAttackSpeedValue;
+    public float flameGunDurationValue;
+
     public float shipSpeedValue;
     public float oreMiningBonusValue;
     public Vector3 shipPosition;
@@ -60,19 +66,23 @@ public class PlayerStats : ScriptableObject
         todayMostKills = 0;
         mostGoldEarned = 0;
         todayMostGoldEarned = 0;
-        normalGunDamageValue = 1;
-        laserGunDamageValue = 1;
-        doubleGunDamageValue = 1;
-        bigGunDamageValue = 1;
-        poisonGunFirstDamageValue = 4;
+        normalGunDamageValue = 3;
+        laserGunDamageValue = 2;
+        doubleGunDamageValue = 2;
+        bigGunDamageValue = 5;
+        poisonGunCollisionDamageValue = 4;
         poisonGunBetweenDamageValue = 1;
+        flameGunCollisionDamageValue = 4;
+        flameGunBetweenDamageValue = 1;
         normalGunAttackSpeedValue = 4;
         laserGunAttackSpeedValue = 4;
         doubleGunAttackSpeedValue = 3;
         bigGunAttackSpeedValue = 6;
-        poisonGunFirstAttackSpeedValue = 8;
+        poisonGunCollisionAttackSpeedValue = 8;
         poisonGunBetweenAttackSpeedValue = 2;
         poisonGunDurationValue = 3;
+        flameGunCollisionAttackSpeedValue = 8;
+        flameGunDurationValue = 2;
         oreMiningBonusValue = 1;
         shipPosition = new Vector3(0f, 0f, 0f);
         for (int i = 0; i < challenges.Length; i++)

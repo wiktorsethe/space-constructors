@@ -69,3 +69,10 @@ MonoBehaviour:
     screwCost: 0
     gravityBonus: 0
     shipPartType: poisonGun
+  - image: {fileID: 21300000, guid: 988e1067f6b43c347b9166efba29fcaa, type: 3}
+    shipPart: {fileID: 6998996897852225894, guid: 334fc0e7fb433be47950416f5f6f2783, type: 3}
+    amount: 189
+    oreCost: 0
+    screwCost: 0
+    gravityBonus: 0
+    shipPartType: flameGun

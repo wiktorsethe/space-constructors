@@ -38,7 +38,6 @@ public class EnemyShip : MonoBehaviour
     private int currentHealth;
     [SerializeField] private float Angle;
     private float hideTimer = 0f;
-
     private void Start()
     {
         expBar = GameObject.FindObjectOfType(typeof(ExpBar)) as ExpBar;
@@ -176,6 +175,20 @@ public class EnemyShip : MonoBehaviour
             CollisionDetected((int)playerStats.poisonGunBetweenDamageValue);
             t++;
             yield return new WaitForSeconds(playerStats.poisonGunBetweenAttackSpeedValue);
+        }
+    }
+    public void StartFlame()
+    {
+        StartCoroutine("Flame");
+    }
+    IEnumerator Flame()
+    {
+        float elapsedTime = 0f;
+        while (elapsedTime <= playerStats.flameGunDurationValue)
+        {
+            CollisionDetected((int)playerStats.flameGunBetweenDamageValue);
+            yield return new WaitForSeconds(0.5f);
+            elapsedTime += 0.5f;
         }
     }
 }

@@ -77,4 +77,18 @@ public class HpBar : MonoBehaviour
             yield return new WaitForSeconds(2f);
         }
     }
+    public void StartFlame()
+    {
+        StartCoroutine("Flame");
+    }
+    private IEnumerator Flame()
+    {
+        float elapsedTime = 0f;
+        while (elapsedTime <= playerStats.flameGunDurationValue)
+        {
+            SetHealth(1);
+            yield return new WaitForSeconds(0.5f);
+            elapsedTime += 0.5f;
+        }
+    }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShootingPoisonGun : MonoBehaviour
+public class ShootingFlameGun : MonoBehaviour
 {
     [Header("Other Scripts")]
     public PlayerStats playerStats;
