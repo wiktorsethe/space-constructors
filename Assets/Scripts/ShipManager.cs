@@ -81,47 +81,51 @@ public class ShipManager : MonoBehaviour
             }
         }
 
-        if (Vector3.Distance(choosenTarget.transform.position, transform.position) <= distanceThreshold)
+        if(targets.Length > 0)
         {
-            Vector3 direction = (choosenTarget.transform.position - transform.position).normalized;
-            //Debug.DrawRay(transform.position, direction * 10f, Color.red);
-            if (!arrow)
+            if (Vector3.Distance(choosenTarget.transform.position, transform.position) <= distanceThreshold)
             {
-                arrow = Instantiate(arrowPrefab, transform);
-            }
-            arrow.transform.position = transform.position + direction * arrowDistance;
+                Vector3 direction = (choosenTarget.transform.position - transform.position).normalized;
+                //Debug.DrawRay(transform.position, direction * 10f, Color.red);
+                if (!arrow)
+                {
+                    arrow = Instantiate(arrowPrefab, transform);
+                }
+                arrow.transform.position = transform.position + direction * arrowDistance;
 
-            Vector3 targetDir = direction;
-            targetDir.z = 0f;
-            arrow.transform.rotation = Quaternion.LookRotation(Vector3.forward, targetDir);
-            if (!animate)
-            {
-                AnimateGravityWarningText();
-                animate = true;
-            }
+                Vector3 targetDir = direction;
+                targetDir.z = 0f;
+                arrow.transform.rotation = Quaternion.LookRotation(Vector3.forward, targetDir);
+                if (!animate)
+                {
+                    AnimateGravityWarningText();
+                    animate = true;
+                }
 
 
-            if (playerStats.shipGravity > choosenTarget.GetComponent<Teleport>().gravity + 10)
-            {
-                Color col = new Color(0.3f, 1f, 0);
-                arrow.GetComponent<SpriteRenderer>().color = col;
+                if (playerStats.shipGravity > choosenTarget.GetComponent<Teleport>().gravity + 10)
+                {
+                    Color col = new Color(0.3f, 1f, 0);
+                    arrow.GetComponent<SpriteRenderer>().color = col;
+                }
+                else if (playerStats.shipGravity <= choosenTarget.GetComponent<Teleport>().gravity + 10 && playerStats.shipGravity == choosenTarget.GetComponent<Teleport>().gravity)
+                {
+                    Color col = new Color(1f, 0.7f, 0);
+                    arrow.GetComponent<SpriteRenderer>().color = col;
+                }
+                else if (playerStats.shipGravity < choosenTarget.GetComponent<Teleport>().gravity)
+                {
+                    Color col = new Color(1f, 0.1f, 0);
+                    arrow.GetComponent<SpriteRenderer>().color = col;
+                }
             }
-            else if (playerStats.shipGravity <= choosenTarget.GetComponent<Teleport>().gravity + 10 && playerStats.shipGravity == choosenTarget.GetComponent<Teleport>().gravity)
+            else if (Vector3.Distance(choosenTarget.transform.position, transform.position) > distanceThreshold && arrow != null)
             {
-                Color col = new Color(1f, 0.7f, 0);
-                arrow.GetComponent<SpriteRenderer>().color = col;
-            }
-            else if (playerStats.shipGravity < choosenTarget.GetComponent<Teleport>().gravity)
-            {
-                Color col = new Color(1f, 0.1f, 0);
-                arrow.GetComponent<SpriteRenderer>().color = col;
+                Destroy(arrow);
+                arrow = null;
             }
         }
-        else if (Vector3.Distance(choosenTarget.transform.position, transform.position) > distanceThreshold && arrow != null)
-        {
-            Destroy(arrow);
-            arrow = null;
-        }
+        
     }
     public void NewPart(int index)
     {

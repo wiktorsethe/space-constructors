@@ -2,25 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossFireAnim : StateMachineBehaviour
+public class BossCatchAnim : StateMachineBehaviour
 {
-    private float timer;
-    public float minTime;
-    public float maxTime;
-    public float choosenTime;
-    [SerializeField] private GameObject bulletPrefab;
     private GameObject player;
+    [SerializeField] private PlayerStats playerStats;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        choosenTime = Random.Range(minTime, maxTime);
+        //choosenTime = Random.Range(minTime, maxTime);
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (animator.transform.position.x != player.transform.position.x)
+        {
+            Vector2 vectorToTarget = new Vector2(player.transform.position.x, animator.transform.position.y);
+            animator.transform.position = Vector2.MoveTowards(animator.transform.position, vectorToTarget, (playerStats.shipSpeedValue * 1.5f) * Time.deltaTime);
+        }
+
+        float distance = Mathf.Abs(animator.transform.position.x - player.transform.position.x);
+        if (distance <= 0.05f)
+        {
+            animator.SetTrigger("Attack");
+        }
+
+
+        /*
         if (timer >= choosenTime)
         {
             timer = 0f;
@@ -35,20 +45,9 @@ public class BossFireAnim : StateMachineBehaviour
             Vector2 vectorToTarget = new Vector2(player.transform.position.x, animator.transform.position.y);
             animator.transform.position = Vector2.MoveTowards(animator.transform.position, vectorToTarget, 2f * Time.deltaTime);
 
-            if ((int)timer % 2 == 0 && !animator.GetComponent<LuciusMaximus>().isFirstGunUsed)
-            {
-                animator.GetComponent<LuciusMaximus>().FireBullet(0);
-                animator.GetComponent<LuciusMaximus>().isFirstGunUsed = true;
-                animator.GetComponent<LuciusMaximus>().isSecondGunUsed = false;
-            }
-            else if((int)timer % 2 == 1 && !animator.GetComponent<LuciusMaximus>().isSecondGunUsed)
-            {
-                animator.GetComponent<LuciusMaximus>().FireBullet(1);
-                animator.GetComponent<LuciusMaximus>().isFirstGunUsed = false;
-                animator.GetComponent<LuciusMaximus>().isSecondGunUsed = true;
-            }
+            
         }
-
+        */
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

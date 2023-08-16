@@ -11,6 +11,7 @@ public class LuciusMaximus : MonoBehaviour
     public PlayerStats playerStats;
     private ExpBar expBar;
     private GameManager gameManager;
+    private ObjectPool objPool;
     [Space(20f)]
 
     [Header("Health System")]
@@ -23,7 +24,6 @@ public class LuciusMaximus : MonoBehaviour
     [Space(20f)]
 
     [Header("Other GameObjects")]
-    [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private GameObject damageTextPrefab;
     [SerializeField] private Transform[] firePoints;
     [SerializeField] private Animator animator;
@@ -47,6 +47,7 @@ public class LuciusMaximus : MonoBehaviour
         expBar = GameObject.FindObjectOfType(typeof(ExpBar)) as ExpBar;
         gameManager = GameObject.FindObjectOfType(typeof(GameManager)) as GameManager;
         healthBarCanvas = GameObject.Find("BossHPBar");
+        objPool = GetComponent<ObjectPool>();
         healthBar = GameObject.Find("BossHPBar").GetComponent<Slider>();
         fillBar = GameObject.Find("BossHPBar").GetComponentInChildren<Image>();
         currentHealth = maxHealth;
@@ -109,8 +110,11 @@ public class LuciusMaximus : MonoBehaviour
     }
     public void FireBullet(int i)
     {
-
-        GameObject bullet = Instantiate(bulletPrefab, firePoints[i].position, firePoints[i].rotation);
+        GameObject bullet = objPool.GetPooledObject();
+        bullet.transform.position = firePoints[i].position;
+        bullet.GetComponent<ShootingBullet>().startingPos = firePoints[i].position;
+        bullet.transform.rotation = firePoints[i].rotation;
+        bullet.SetActive(true);
         bullet.GetComponent<ShootingBullet>().target = target;
         bullet.GetComponent<ShootingBullet>().damage = 5;
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();

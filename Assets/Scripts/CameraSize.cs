@@ -13,12 +13,9 @@ public class CameraSize : MonoBehaviour
     private void Start()
     {
         mainCamera = Camera.main;
-        //Invoke("ChangeCamSize", 1f);
-    }
-    private void Update()
-    {
         ChangeCamSize();
     }
+    
     public void ChangeCamSize()
     {
         if (parentObject != null)
@@ -32,7 +29,7 @@ public class CameraSize : MonoBehaviour
 
 
             Vector3 cameraPosition = parentBounds.center - mainCamera.transform.forward * distance;
-            mainCamera.transform.position = cameraPosition;
+            //mainCamera.transform.position = cameraPosition;
 
             float frustumHeight = 2f * distance * Mathf.Tan(mainCamera.fieldOfView * 0.5f * Mathf.Deg2Rad);
             float frustumWidth = frustumHeight * mainCamera.aspect;

@@ -2,28 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossEmptyState : StateMachineBehaviour
+public class BossFireAnim : StateMachineBehaviour
 {
-    private int randInt;
+    private float timer;
+    public float minTime;
+    public float maxTime;
+    public float choosenTime;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        randInt = Random.Range(0, 3);
+        choosenTime = Random.Range(minTime, maxTime);
     }
+
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (randInt == 0)
+        if (timer >= choosenTime)
         {
-            animator.SetTrigger("Catch");
+            timer = 0f;
+            animator.GetComponent<LuciusMaximus>().isFirstGunUsed = false;
+            animator.GetComponent<LuciusMaximus>().isSecondGunUsed = false;
+            animator.SetTrigger("Reset");
         }
-        else if (randInt == 1)
+        else
         {
-            animator.SetTrigger("Idle");
-        }
-        else if (randInt == 2)
-        {
-            animator.SetTrigger("Attack2");
+            timer += Time.deltaTime;
+
+            if ((int)timer % 2 == 0 && !animator.GetComponent<LuciusMaximus>().isFirstGunUsed)
+            {
+                animator.GetComponent<LuciusMaximus>().FireBullet(0);
+                animator.GetComponent<LuciusMaximus>().isFirstGunUsed = true;
+                animator.GetComponent<LuciusMaximus>().isSecondGunUsed = false;
+            }
+            else if ((int)timer % 2 == 1 && !animator.GetComponent<LuciusMaximus>().isSecondGunUsed)
+            {
+                animator.GetComponent<LuciusMaximus>().FireBullet(1);
+                animator.GetComponent<LuciusMaximus>().isFirstGunUsed = false;
+                animator.GetComponent<LuciusMaximus>().isSecondGunUsed = true;
+            }
         }
     }
 
