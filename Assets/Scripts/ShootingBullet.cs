@@ -13,6 +13,7 @@ public class ShootingBullet : MonoBehaviour
     private Camera cam;
     public Vector2 startingPos;
     private float cameraHalfWidth;
+    public bool isBombGunShoot = false;
     private void Start()
     {
         hpBar = GameObject.FindObjectOfType(typeof(HpBar)) as HpBar;
@@ -37,6 +38,48 @@ public class ShootingBullet : MonoBehaviour
             //Destroy(gameObject);
             gameObject.SetActive(false);
         }
+        if (type == "BombBullet" && !isBombGunShoot)
+        {
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 4f);
+            foreach(Collider2D col in colliders)
+            {
+                if (col.GetComponentInParent<EnemyShip>() != null && col.tag == target) { col.GetComponentInParent<EnemyShip>().CollisionDetected((int)damage); gameObject.SetActive(false); }
+                if (col.tag == "Ship" && col.tag == target) { hpBar.SetHealth(10); gameObject.SetActive(false); }
+            }
+            isBombGunShoot = true;
+            
+        }
+        
+        /*
+        if (type == "BombBullet" && target == "Ship")
+        {
+            objectsList = GameObject.FindGameObjectsWithTag("Ship");
+            foreach(GameObject obj in objectsList)
+            {
+                if(Vector2.Distance(transform.position, obj.transform.position) <= 2f)
+                {
+                    //Instantiate(shootParticles, transform.position, Quaternion.identity);
+                    //camShake.ShakeCamera(0.2f, 0.5f, 2);
+                    //hpBar.SetHealth(damage);
+                    //gameObject.SetActive(false);
+
+                }
+            }
+        }
+        else if (type == "BombBullet" && target == "Enemy")
+        {
+            Debug.Log(type);
+
+            objectsList = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject obj in objectsList)
+            {
+                if (Vector2.Distance(transform.position, obj.transform.position) <= 2f)
+                {
+                    Instantiate(shootParticles, transform.position, Quaternion.identity);
+                    gameObject.SetActive(false);
+                }
+            }
+        }*/
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

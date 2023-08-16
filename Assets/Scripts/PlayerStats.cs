@@ -19,6 +19,7 @@ public class PlayerStats : ScriptableObject
     public float shipGravity;
     public int ore;
     public int screw;
+
     public float normalGunDamageValue;
     public float laserGunDamageValue;
     public float doubleGunDamageValue;
@@ -27,6 +28,7 @@ public class PlayerStats : ScriptableObject
     public float poisonGunBetweenDamageValue;
     public float flameGunCollisionDamageValue;
     public float flameGunBetweenDamageValue;
+    public float bombGunDamageValue;
 
     public float normalGunAttackSpeedValue;
     public float laserGunAttackSpeedValue;
@@ -37,6 +39,7 @@ public class PlayerStats : ScriptableObject
     public int poisonGunDurationValue;
     public float flameGunCollisionAttackSpeedValue;
     public float flameGunDurationValue;
+    public float bombGunAttackSpeedValue;
 
     public float shipSpeedValue;
     public float oreMiningBonusValue;
@@ -66,6 +69,7 @@ public class PlayerStats : ScriptableObject
         todayMostKills = 0;
         mostGoldEarned = 0;
         todayMostGoldEarned = 0;
+
         normalGunDamageValue = 3;
         laserGunDamageValue = 2;
         doubleGunDamageValue = 2;
@@ -74,6 +78,8 @@ public class PlayerStats : ScriptableObject
         poisonGunBetweenDamageValue = 1;
         flameGunCollisionDamageValue = 4;
         flameGunBetweenDamageValue = 1;
+        bombGunDamageValue = 7;
+
         normalGunAttackSpeedValue = 4;
         laserGunAttackSpeedValue = 4;
         doubleGunAttackSpeedValue = 3;
@@ -83,6 +89,8 @@ public class PlayerStats : ScriptableObject
         poisonGunDurationValue = 3;
         flameGunCollisionAttackSpeedValue = 8;
         flameGunDurationValue = 2;
+        bombGunAttackSpeedValue = 7;
+
         oreMiningBonusValue = 1;
         shipPosition = new Vector3(0f, 0f, 0f);
         for (int i = 0; i < challenges.Length; i++)

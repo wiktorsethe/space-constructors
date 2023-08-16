@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 690782106488443975}
   - component: {fileID: 5031180633385289877}
   - component: {fileID: 7128265960731214793}
-  - component: {fileID: 235491032500637108}
+  - component: {fileID: 7796274511555379519}
   m_Layer: 0
-  m_Name: LaserGunBullet
+  m_Name: BombGunBullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5949201873329385209}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.82, y: -0.01, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 43a741105f8f3f743a8ac759ea1e67a8, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 8a57d0a4ddd01e541ae0f8bed924e183, type: 3}
+  m_Color: {r: 0.3679245, g: 0.3679245, b: 0.3679245, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -120,13 +120,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac4d2c3cc48d8c14fbfdda6ce4496427, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: NormalBullet
+  type: BombBullet
   target: 
   damage: 0
   shootParticles: {fileID: 4456395838552135815, guid: c6dd3fc4905aba047a74f61c37cc81a7, type: 3}
   startingPos: {x: 0, y: 0}
---- !u!70 &235491032500637108
-CapsuleCollider2D:
+--- !u!58 &7796274511555379519
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -139,5 +139,5 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.2, y: 0.66}
-  m_Direction: 0
+  serializedVersion: 2
+  m_Radius: 0.2

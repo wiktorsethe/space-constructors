@@ -35,7 +35,7 @@ public class EnemyShip : MonoBehaviour
     [SerializeField] private Gradient healthGradient;
     [SerializeField] private Image fillBar;
     [SerializeField] private int maxHealth;
-    private int currentHealth;
+    public int currentHealth;
     [SerializeField] private float Angle;
     private float hideTimer = 0f;
     private void Start()

@@ -42,6 +42,7 @@ public class LuciusMaximus : MonoBehaviour
     [SerializeField] private int gold;
     public Vector2 startingPos;
     private bool isStartingPosSaved = false;
+    private bool isDeath = false;
     private void Start()
     {
         expBar = GameObject.FindObjectOfType(typeof(ExpBar)) as ExpBar;
@@ -66,6 +67,22 @@ public class LuciusMaximus : MonoBehaviour
         {
             healthBarCanvas.SetActive(true);
         }
+
+        if (currentHealth <= 0 && !isDeath)
+        {
+            isDeath = true;
+            expBar.SetExperience(experience);
+            playerStats.gold += gold;
+            gameManager.goldEarned += gold;
+            gameManager.kills += 1;
+            GetComponent<CircleCollider2D>().enabled = false;
+            animator.SetTrigger("Death");
+            Invoke("DestroyParticles", 1.9f);
+            GetComponent<LootBag>().InstantiateLoot(transform.position);
+            gameManager.bounds.DeactivateBariers();
+            gameManager.bounds.ActivatePlanets();
+            Destroy(gameObject, 2f);
+        }
     }
     public void SetMaxHealth(int health)
     {
@@ -79,28 +96,17 @@ public class LuciusMaximus : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Bullet")
+        if (collision.GetComponent<ShootingBullet>().type == "NormalBullet")
         {
-            currentHealth -= (int)collision.GetComponent<ShootingBullet>().damage;
-            SetHealth();
-            if (currentHealth <= 0)
-            {
-                expBar.SetExperience(experience);
-                playerStats.gold += gold;
-                gameManager.goldEarned += gold;
-                gameManager.kills += 1;
-                GetComponent<CircleCollider2D>().enabled = false;
-                animator.SetTrigger("Death");
-                Invoke("DestroyParticles", 1.9f);
-                GetComponent<LootBag>().InstantiateLoot(transform.position);
-                gameManager.bounds.DeactivateBariers();
-                gameManager.bounds.ActivatePlanets();
-                Destroy(gameObject, 2f);
-            }
-            if (damageTextPrefab)
-            {
-                ShowDamageText((int)collision.GetComponent<ShootingBullet>().damage);
-            }
+            CollisionDetected((int)collision.GetComponent<ShootingBullet>().damage);
+        }
+        if (collision.GetComponent<ShootingBullet>().type == "PoisonBullet")
+        {
+            StartPoison();
+        }
+        if (collision.GetComponent<ShootingBullet>().type == "FlameBullet")
+        {
+            StartFlame();
         }
     }
     private void ShowDamageText(int amount)
@@ -124,5 +130,42 @@ public class LuciusMaximus : MonoBehaviour
     private void DestroyParticles()
     {
         Instantiate(destroyParticles, transform.position, Quaternion.identity);
+    }
+    public void CollisionDetected(int damage)
+    {
+        currentHealth -= damage;
+        SetHealth();
+        if (damageTextPrefab)
+        {
+            ShowDamageText(damage);
+        }
+    }
+    public void StartPoison()
+    {
+        StartCoroutine("Poison");
+    }
+    IEnumerator Poison()
+    {
+        int t = 0;
+        while (t < playerStats.poisonGunDurationValue)
+        {
+            CollisionDetected((int)playerStats.poisonGunBetweenDamageValue);
+            t++;
+            yield return new WaitForSeconds(playerStats.poisonGunBetweenAttackSpeedValue);
+        }
+    }
+    public void StartFlame()
+    {
+        StartCoroutine("Flame");
+    }
+    IEnumerator Flame()
+    {
+        float elapsedTime = 0f;
+        while (elapsedTime <= playerStats.flameGunDurationValue)
+        {
+            CollisionDetected((int)playerStats.flameGunBetweenDamageValue);
+            yield return new WaitForSeconds(0.5f);
+            elapsedTime += 0.5f;
+        }
     }
 }
