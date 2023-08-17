@@ -66,7 +66,6 @@ public class ShootingBombBullet : MonoBehaviour
                 //if (col.tag == "Ship" && col.tag == target) { hpBar.SetHealth(10); gameObject.SetActive(false); }
             }
             rb.velocity -= rb.velocity.normalized * new Vector2(distanceX, distanceY).magnitude * 0.7f * Time.deltaTime;
-            Debug.Log(rb.velocity.magnitude);
             if (rb.velocity.magnitude <= 0.005f)
             {
                 rb.velocity = Vector2.zero;

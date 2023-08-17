@@ -46,10 +46,13 @@ public class ShipManager : MonoBehaviour
             GameObject[] targets = GameObject.FindGameObjectsWithTag("ConstructPoint");
             for (int i = 0; i < targets.Length; i++)
             {
-                foreach (Vector3 shipPartPos in shipProgress.usedContstructPoints)
+                Debug.Log("1");
+                foreach (Vector2 shipPartPos in shipProgress.usedContstructPoints)
                 {
-                    if (targets[i].transform.position == shipPartPos)
+                    Debug.Log("2");
+                    if ((Vector2)targets[i].transform.position == shipPartPos)
                     {
+                        Debug.Log("3");
                         Destroy(targets[i].gameObject);
                     }
                 }
@@ -154,7 +157,7 @@ public class ShipManager : MonoBehaviour
             newShipPart.position = shipPart.transform.localPosition;
             newShipPart.rotation = activeConstructPoint.transform.rotation;
             shipProgress.shipParts.Add(newShipPart);
-            shipProgress.usedContstructPoints.Add(new Vector3(activeConstructPoint.transform.position.x - 3f, activeConstructPoint.transform.position.y, activeConstructPoint.transform.position.z));
+            shipProgress.usedContstructPoints.Add(new Vector2(activeConstructPoint.transform.localPosition.x, activeConstructPoint.transform.localPosition.y));
         }
 
     }

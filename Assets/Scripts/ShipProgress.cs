@@ -6,7 +6,7 @@ using UnityEngine;
 public class ShipProgress : ScriptableObject
 {
     public List<ShipPartInScene> shipParts = new List<ShipPartInScene>();
-    public List<Vector3> usedContstructPoints = new List<Vector3>();
+    public List<Vector2> usedContstructPoints = new List<Vector2>();
     public void Reset()
     {
         shipParts.Clear();
