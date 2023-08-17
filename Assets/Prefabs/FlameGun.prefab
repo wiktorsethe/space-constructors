@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooledObjects: []
-  prefabs:
-  - {fileID: 4316347921073165664, guid: 097fd9bc912def44aad69ba988b482c0, type: 3}
+  prefab: {fileID: 4316347921073165664, guid: 097fd9bc912def44aad69ba988b482c0, type: 3}
+  type: 
 --- !u!114 &3430623351027292944
 MonoBehaviour:
   m_ObjectHideFlags: 0

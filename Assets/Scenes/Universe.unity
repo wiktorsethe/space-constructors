@@ -9223,6 +9223,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2062512602872786545, guid: 4a8cc43fa0e130f4e9f3757b7ecb99d6, type: 3}
+      propertyPath: type
+      value: bullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 3456677701789160090, guid: 4a8cc43fa0e130f4e9f3757b7ecb99d6, type: 3}
+      propertyPath: type
+      value: particle
+      objectReference: {fileID: 0}
     - target: {fileID: 4783588202239419621, guid: 4a8cc43fa0e130f4e9f3757b7ecb99d6, type: 3}
       propertyPath: m_RootOrder
       value: 5

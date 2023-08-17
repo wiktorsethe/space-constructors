@@ -44,7 +44,7 @@ public class ShootingBullet : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ship") && target == "Ship")
         {
-            GameObject particle = GetComponent<ObjectPool>().GetPooledObject(0);
+            GameObject particle = GetComponent<ObjectPool>().GetPooledObject();
             particle.transform.position = transform.position;
             particle.SetActive(true);
 
@@ -67,7 +67,7 @@ public class ShootingBullet : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Enemy") && target == "Enemy")
         {
-            GameObject particle = GetComponent<ObjectPool>().GetPooledObject(0);
+            GameObject particle = GetComponent<ObjectPool>().GetPooledObject();
             particle.transform.position = transform.position;
             particle.SetActive(true);
 
@@ -76,7 +76,7 @@ public class ShootingBullet : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Player") && target == "Player")
         {
-            GameObject particle = GetComponent<ObjectPool>().GetPooledObject(0);
+            GameObject particle = GetComponent<ObjectPool>().GetPooledObject();
             particle.transform.position = transform.position;
             particle.SetActive(true);
             hpBar.SetHealth(damage);

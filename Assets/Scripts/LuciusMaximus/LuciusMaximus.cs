@@ -116,7 +116,7 @@ public class LuciusMaximus : MonoBehaviour
     }
     public void FireBullet(int i)
     {
-        GameObject bullet = objPool.GetPooledObject(0);
+        GameObject bullet = objPool.GetPooledObject();
         bullet.transform.position = firePoints[i].position;
         bullet.GetComponent<ShootingBullet>().startingPos = firePoints[i].position;
         bullet.transform.rotation = firePoints[i].rotation;

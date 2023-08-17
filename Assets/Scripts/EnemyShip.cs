@@ -39,11 +39,15 @@ public class EnemyShip : MonoBehaviour
     [SerializeField] private float Angle;
     private float hideTimer = 0f;
     private bool isFlameStarted = false;
+    private GameObject particle;
+    private ObjectPool[] objPools;
+
     private void Start()
     {
         expBar = GameObject.FindObjectOfType(typeof(ExpBar)) as ExpBar;
         gameManager = GameObject.FindObjectOfType(typeof(GameManager)) as GameManager;
         player = GameObject.FindGameObjectWithTag("Player");
+        objPools = GetComponents<ObjectPool>();
         canvas.worldCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         SetMaxHealth(maxHealth);
         healthBarCanvas.SetActive(false);
@@ -111,16 +115,23 @@ public class EnemyShip : MonoBehaviour
     }
     void FireBullet()
     {
-        GameObject bullet = GetComponent<ObjectPool>().GetPooledObject(0);
-        bullet.transform.position = firePoint.position;
-        bullet.GetComponent<ShootingBullet>().startingPos = firePoint.position;
-        bullet.transform.rotation = firePoint.rotation;
-        bullet.SetActive(true);
-        bullet.GetComponent<ShootingBullet>().target = target;
-        bullet.GetComponent<ShootingBullet>().damage = 10;
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        Vector2 bulletVelocity = firePoint.up * bulletSpeed;
-        rb.velocity = bulletVelocity;
+        foreach (ObjectPool script in objPools)
+        {
+            if (script.type == "bullet")
+            {
+                GameObject bullet = script.GetPooledObject();
+                bullet.transform.position = firePoint.position;
+                bullet.GetComponent<ShootingBullet>().startingPos = firePoint.position;
+                bullet.transform.rotation = firePoint.rotation;
+                bullet.SetActive(true);
+                bullet.GetComponent<ShootingBullet>().target = target;
+                bullet.GetComponent<ShootingBullet>().damage = 10;
+                Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+                Vector2 bulletVelocity = firePoint.up * bulletSpeed;
+                rb.velocity = bulletVelocity;
+                Debug.Log("1");
+            }
+        }
     }
     public void SetMaxHealth(int health)
     {
@@ -188,9 +199,17 @@ public class EnemyShip : MonoBehaviour
     IEnumerator Flame()
     {
         float elapsedTime = 0f;
-        GameObject particle = GetComponent<ObjectPool>().GetPooledObject(1);
-        particle.transform.position = transform.position;
-        particle.SetActive(true);
+        foreach (ObjectPool script in objPools)
+        {
+            if(script.type == "particle")
+            {
+                Debug.Log("2");
+                particle = script.GetPooledObject(); //tu cos nie gra
+                particle.transform.parent = transform;
+                particle.SetActive(true);
+                particle.transform.position = transform.position;
+            }
+        }
         while (elapsedTime <= playerStats.flameGunDurationValue)
         {
             yield return new WaitForSeconds(0.5f);

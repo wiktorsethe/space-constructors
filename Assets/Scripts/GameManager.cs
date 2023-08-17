@@ -99,7 +99,7 @@ public class GameManager : MonoBehaviour
         {
             if (!obj.GetComponent<ParticleSystem>().IsAlive())
             {
-                //obj.gameObject.SetActive(false);
+                obj.gameObject.SetActive(false);
             }
         }
     }

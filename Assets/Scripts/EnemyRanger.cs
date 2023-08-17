@@ -93,7 +93,7 @@ public class EnemyRanger : MonoBehaviour
     }
     void FireBullet()
     {
-        GameObject bullet = objPool.GetPooledObject(0);
+        GameObject bullet = objPool.GetPooledObject();
         bullet.transform.position = firePoint.position;
         bullet.GetComponent<ShootingBullet>().startingPos = firePoint.position;
         bullet.transform.rotation = firePoint.rotation;
