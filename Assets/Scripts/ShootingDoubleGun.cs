@@ -37,7 +37,7 @@ public class ShootingDoubleGun : MonoBehaviour
         shootAnimator.SetTrigger("Play");
         for (int i=0; i<firePoints.Length; i++)
         {
-            GameObject bullet = objPool.GetPooledObject();
+            GameObject bullet = objPool.GetPooledObject(0);
             bullet.transform.position = firePoints[i].position;
             bullet.GetComponent<ShootingBullet>().startingPos = firePoints[i].position;
             bullet.transform.rotation = firePoints[i].rotation;

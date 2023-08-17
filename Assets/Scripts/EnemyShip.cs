@@ -10,7 +10,6 @@ public class EnemyShip : MonoBehaviour
     private ExpBar expBar;
     private GameManager gameManager;
     public PlayerStats playerStats;
-    private ObjectPool objPool;
     [Space(20f)]
     [Header("Variables")]
     [SerializeField] private int experience;
@@ -44,7 +43,6 @@ public class EnemyShip : MonoBehaviour
     {
         expBar = GameObject.FindObjectOfType(typeof(ExpBar)) as ExpBar;
         gameManager = GameObject.FindObjectOfType(typeof(GameManager)) as GameManager;
-        objPool = GetComponent<ObjectPool>();
         player = GameObject.FindGameObjectWithTag("Player");
         canvas.worldCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         SetMaxHealth(maxHealth);
@@ -113,7 +111,7 @@ public class EnemyShip : MonoBehaviour
     }
     void FireBullet()
     {
-        GameObject bullet = objPool.GetPooledObject();
+        GameObject bullet = GetComponent<ObjectPool>().GetPooledObject(0);
         bullet.transform.position = firePoint.position;
         bullet.GetComponent<ShootingBullet>().startingPos = firePoint.position;
         bullet.transform.rotation = firePoint.rotation;
@@ -190,8 +188,9 @@ public class EnemyShip : MonoBehaviour
     IEnumerator Flame()
     {
         float elapsedTime = 0f;
-        Instantiate(flameParticles, transform);
-
+        GameObject particle = GetComponent<ObjectPool>().GetPooledObject(1);
+        particle.transform.position = transform.position;
+        particle.SetActive(true);
         while (elapsedTime <= playerStats.flameGunDurationValue)
         {
             yield return new WaitForSeconds(0.5f);
@@ -200,6 +199,7 @@ public class EnemyShip : MonoBehaviour
             if(elapsedTime >= playerStats.flameGunDurationValue)
             {
                 isFlameStarted = false;
+                particle.SetActive(false);
             }
         }
     }

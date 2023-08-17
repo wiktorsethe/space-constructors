@@ -8,12 +8,12 @@ public class ShootingBullet : MonoBehaviour
     public string target;
     public float damage;
     private HpBar hpBar;
-    [SerializeField] private GameObject shootParticles;
     private CameraShake camShake;
     private Camera cam;
     public Vector2 startingPos;
     private float cameraHalfWidth;
     public bool isBombGunShoot = false;
+
     private void Start()
     {
         hpBar = GameObject.FindObjectOfType(typeof(HpBar)) as HpBar;
@@ -36,15 +36,19 @@ public class ShootingBullet : MonoBehaviour
         if(Vector2.Distance(startingPos, transform.position) > cameraHalfWidth) // tu jest b³¹d kule sie nie pokazuja trzeba przerobiæ startingpos
         {
             gameObject.SetActive(false);
+            
         }
-        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Ship") && target == "Ship")
         {
-            Instantiate(shootParticles, transform.position, Quaternion.identity);
+            GameObject particle = GetComponent<ObjectPool>().GetPooledObject(0);
+            particle.transform.position = transform.position;
+            particle.SetActive(true);
+
+            //Instantiate(shootParticles, transform.position, Quaternion.identity);
             camShake.ShakeCamera(0.2f, 0.5f, 2);
             if(type == "PoisonBullet")
             {
@@ -59,15 +63,22 @@ public class ShootingBullet : MonoBehaviour
                 hpBar.StartFlame();
             }
             gameObject.SetActive(false);
+            
         }
         else if (collision.gameObject.CompareTag("Enemy") && target == "Enemy")
         {
-            Instantiate(shootParticles, transform.position, Quaternion.identity);
+            GameObject particle = GetComponent<ObjectPool>().GetPooledObject(0);
+            particle.transform.position = transform.position;
+            particle.SetActive(true);
+
+            //Instantiate(shootParticles, transform.position, Quaternion.identity);
             gameObject.SetActive(false);
         }
         if (collision.gameObject.CompareTag("Player") && target == "Player")
         {
-            Instantiate(shootParticles, transform.position, Quaternion.identity);
+            GameObject particle = GetComponent<ObjectPool>().GetPooledObject(0);
+            particle.transform.position = transform.position;
+            particle.SetActive(true);
             hpBar.SetHealth(damage);
             gameObject.SetActive(false);
         }

@@ -93,6 +93,15 @@ public class GameManager : MonoBehaviour
             }
             PlayerPrefs.SetString("FirstBoss", "True");
         }
+
+        ParticleSystem[] particles = FindObjectsOfType<ParticleSystem>();
+        foreach (ParticleSystem obj in particles)
+        {
+            if (!obj.GetComponent<ParticleSystem>().IsAlive())
+            {
+                //obj.gameObject.SetActive(false);
+            }
+        }
     }
 
     private void FadeInSceneNameText()

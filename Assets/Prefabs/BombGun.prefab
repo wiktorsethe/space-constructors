@@ -185,7 +185,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooledObjects: []
-  bulletPrefab: {fileID: 5949201873329385209, guid: 948efb3ad2a29404691c338fdbfcd85b, type: 3}
+  prefabs:
+  - {fileID: 5949201873329385209, guid: 948efb3ad2a29404691c338fdbfcd85b, type: 3}
 --- !u!114 &4777617023678110374
 MonoBehaviour:
   m_ObjectHideFlags: 0

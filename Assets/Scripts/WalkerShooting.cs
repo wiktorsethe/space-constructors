@@ -55,7 +55,7 @@ public class WalkerShooting : MonoBehaviour
 
     void FireBullet()
     {
-        GameObject bullet = objPool.GetPooledObject();
+        GameObject bullet = objPool.GetPooledObject(0);
         bullet.transform.position = firePoint.position;
         bullet.GetComponent<ShootingBullet>().startingPos = firePoint.position;
         bullet.transform.rotation = firePoint.rotation;

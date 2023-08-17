@@ -48,7 +48,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats: {fileID: 11400000, guid: 284895b3224468a48aa2a763a688b966, type: 2}
-  bulletPrefab: {fileID: 5949201873329385209, guid: 7b5cda1cc44f8634ba51874c6d2af430, type: 3}
   shootAnimator: {fileID: 9000904623521609824}
   firePoint: {fileID: 4340626013909713248}
   bulletSpeed: 5
@@ -67,7 +66,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooledObjects: []
-  bulletPrefab: {fileID: 5949201873329385209, guid: 7b5cda1cc44f8634ba51874c6d2af430, type: 3}
+  prefabs:
+  - {fileID: 5949201873329385209, guid: 7b5cda1cc44f8634ba51874c6d2af430, type: 3}
 --- !u!1 &4340626013909713249
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> pooledObjects = new List<GameObject>();
-    [SerializeField] private GameObject bulletPrefab;
+    public List<GameObject> pooledObjects = new List<GameObject>();
+    [SerializeField] private GameObject[] prefabs;
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < 1; i++)
+        for (int i = 0; i < prefabs.Length; i++)
         {
-            InstantiateObject();
+            InstantiateObject(i);
         }
     }
 
-    public GameObject GetPooledObject()
+    public GameObject GetPooledObject(int i)
     {
         bool active = false;
         foreach (GameObject obj in pooledObjects)
@@ -32,25 +32,25 @@ public class ObjectPool : MonoBehaviour
 
         if (active)
         {
-            InstantiateObject();
+            InstantiateObject(i);
         }
 
         Next:
-        for (int i=0; i<pooledObjects.Count; i++)
+        for (int j=0; i<pooledObjects.Count; j++)
         {
-            if (!pooledObjects[i].activeInHierarchy)
+            if (!pooledObjects[j].activeInHierarchy)
             {
-                return pooledObjects[i];
+                return pooledObjects[j];
             }
         }
 
 
         return null;
     }
-    private void InstantiateObject()
+    private void InstantiateObject(int i)
     {
-        GameObject bullet = Instantiate(bulletPrefab);
-        bullet.SetActive(false);
-        pooledObjects.Add(bullet);
+        GameObject obj = Instantiate(prefabs[i]);
+        obj.SetActive(false);
+        pooledObjects.Add(obj);
     }
 }

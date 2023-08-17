@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5031180633385289877}
   - component: {fileID: 7128265960731214793}
   - component: {fileID: 235491032500637108}
+  - component: {fileID: 5049623565713345235}
   m_Layer: 0
   m_Name: NormalGunBullet
   m_TagString: Bullet
@@ -125,6 +126,7 @@ MonoBehaviour:
   damage: 0
   shootParticles: {fileID: 4456395838552135815, guid: c6dd3fc4905aba047a74f61c37cc81a7, type: 3}
   startingPos: {x: 0, y: 0}
+  isBombGunShoot: 0
 --- !u!70 &235491032500637108
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -141,3 +143,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.18, y: 0.7}
   m_Direction: 0
+--- !u!114 &5049623565713345235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5949201873329385209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ab626b24757ddf4c9a2f979031c523f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  prefabs:
+  - {fileID: 4456395838552135815, guid: c6dd3fc4905aba047a74f61c37cc81a7, type: 3}
