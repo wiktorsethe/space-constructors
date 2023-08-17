@@ -25,7 +25,7 @@ public class ShootingFlameGun : MonoBehaviour
     void Update()
     {
         shootTimer += Time.deltaTime;
-        if (shootTimer >= playerStats.poisonGunCollisionAttackSpeedValue)
+        if (shootTimer >= playerStats.flameGunCollisionAttackSpeedValue)
         {
             FireBullet();
             shootTimer = 0f;
@@ -41,7 +41,7 @@ public class ShootingFlameGun : MonoBehaviour
         bullet.transform.rotation = firePoint.rotation;
         bullet.SetActive(true);
         bullet.GetComponent<ShootingBullet>().target = target;
-        bullet.GetComponent<ShootingBullet>().damage = playerStats.poisonGunCollisionDamageValue;
+        bullet.GetComponent<ShootingBullet>().damage = playerStats.flameGunCollisionDamageValue;
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         Vector2 bulletVelocity = firePoint.up * bulletSpeed;
         rb.velocity = bulletVelocity;

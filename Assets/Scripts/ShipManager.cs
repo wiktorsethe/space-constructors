@@ -46,13 +46,10 @@ public class ShipManager : MonoBehaviour
             GameObject[] targets = GameObject.FindGameObjectsWithTag("ConstructPoint");
             for (int i = 0; i < targets.Length; i++)
             {
-                Debug.Log("1");
                 foreach (Vector2 shipPartPos in shipProgress.usedContstructPoints)
                 {
-                    Debug.Log("2");
                     if ((Vector2)targets[i].transform.position == shipPartPos)
                     {
-                        Debug.Log("3");
                         Destroy(targets[i].gameObject);
                     }
                 }

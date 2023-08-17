@@ -35,40 +35,9 @@ public class ShootingBullet : MonoBehaviour
     {
         if(Vector2.Distance(startingPos, transform.position) > cameraHalfWidth) // tu jest b³¹d kule sie nie pokazuja trzeba przerobiæ startingpos
         {
-            //Destroy(gameObject);
             gameObject.SetActive(false);
         }
         
-        /*
-        if (type == "BombBullet" && target == "Ship")
-        {
-            objectsList = GameObject.FindGameObjectsWithTag("Ship");
-            foreach(GameObject obj in objectsList)
-            {
-                if(Vector2.Distance(transform.position, obj.transform.position) <= 2f)
-                {
-                    //Instantiate(shootParticles, transform.position, Quaternion.identity);
-                    //camShake.ShakeCamera(0.2f, 0.5f, 2);
-                    //hpBar.SetHealth(damage);
-                    //gameObject.SetActive(false);
-
-                }
-            }
-        }
-        else if (type == "BombBullet" && target == "Enemy")
-        {
-            Debug.Log(type);
-
-            objectsList = GameObject.FindGameObjectsWithTag("Enemy");
-            foreach (GameObject obj in objectsList)
-            {
-                if (Vector2.Distance(transform.position, obj.transform.position) <= 2f)
-                {
-                    Instantiate(shootParticles, transform.position, Quaternion.identity);
-                    gameObject.SetActive(false);
-                }
-            }
-        }*/
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

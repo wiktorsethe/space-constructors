@@ -282,6 +282,7 @@ MonoBehaviour:
   moveSpeed: 2
   firePoint: {fileID: 4783588203602888335}
   miningTextPrefab: {fileID: 8062151463999637536, guid: b9d2f93f3a98b4d4b8a1be849730c94f, type: 3}
+  flameParticles: {fileID: 7865696556722488135, guid: a9f1b9c626b61854cae1e5b0214bfbf9, type: 3}
   target: Ship
   canvas: {fileID: 1062153021825182126}
   healthBarCanvas: {fileID: 1062153021825182123}
@@ -317,6 +318,7 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   fillBar: {fileID: 1062153021001302561}
   maxHealth: 10
+  currentHealth: 0
   Angle: 5
 --- !u!114 &2062512602872786545
 MonoBehaviour:

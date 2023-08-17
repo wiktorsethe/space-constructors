@@ -24,6 +24,7 @@ public class EnemyShip : MonoBehaviour
     private GameObject player;
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject miningTextPrefab;
+    [SerializeField] private GameObject flameParticles;
     [SerializeField] private string target;
     private GameObject[] objectsList;
     private float distance;
@@ -38,6 +39,7 @@ public class EnemyShip : MonoBehaviour
     public int currentHealth;
     [SerializeField] private float Angle;
     private float hideTimer = 0f;
+    private bool isFlameStarted = false;
     private void Start()
     {
         expBar = GameObject.FindObjectOfType(typeof(ExpBar)) as ExpBar;
@@ -179,16 +181,26 @@ public class EnemyShip : MonoBehaviour
     }
     public void StartFlame()
     {
-        StartCoroutine("Flame");
+        if (!isFlameStarted)
+        {
+            isFlameStarted = true;
+            StartCoroutine("Flame");
+        }
     }
     IEnumerator Flame()
     {
         float elapsedTime = 0f;
+        Instantiate(flameParticles, transform);
+
         while (elapsedTime <= playerStats.flameGunDurationValue)
         {
-            CollisionDetected((int)playerStats.flameGunBetweenDamageValue);
             yield return new WaitForSeconds(0.5f);
+            CollisionDetected((int)playerStats.flameGunBetweenDamageValue);
             elapsedTime += 0.5f;
+            if(elapsedTime >= playerStats.flameGunDurationValue)
+            {
+                isFlameStarted = false;
+            }
         }
     }
 }

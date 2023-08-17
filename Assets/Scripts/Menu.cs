@@ -142,6 +142,7 @@ public class Menu : MonoBehaviour
     {
         swipeInMenu.enabled = false;
         camSize.enabled = true;
+        camSize.ChangeCamSize();
         constructMenu.SetActive(false);
         gameMenu.SetActive(true);
         pauseMenu.SetActive(false);
