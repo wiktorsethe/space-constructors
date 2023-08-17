@@ -38,17 +38,6 @@ public class ShootingBullet : MonoBehaviour
             //Destroy(gameObject);
             gameObject.SetActive(false);
         }
-        if (type == "BombBullet" && !isBombGunShoot)
-        {
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 4f);
-            foreach(Collider2D col in colliders)
-            {
-                if (col.GetComponentInParent<EnemyShip>() != null && col.tag == target) { col.GetComponentInParent<EnemyShip>().CollisionDetected((int)damage); gameObject.SetActive(false); }
-                if (col.tag == "Ship" && col.tag == target) { hpBar.SetHealth(10); gameObject.SetActive(false); }
-            }
-            isBombGunShoot = true;
-            
-        }
         
         /*
         if (type == "BombBullet" && target == "Ship")

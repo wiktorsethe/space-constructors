@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 6721387164028479201}
   - component: {fileID: 690782106488443975}
   - component: {fileID: 5031180633385289877}
-  - component: {fileID: 7128265960731214793}
   - component: {fileID: 7796274511555379519}
+  - component: {fileID: 3968233696464215419}
   m_Layer: 0
   m_Name: BombGunBullet
   m_TagString: Bullet
@@ -108,23 +108,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &7128265960731214793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5949201873329385209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac4d2c3cc48d8c14fbfdda6ce4496427, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: BombBullet
-  target: 
-  damage: 0
-  shootParticles: {fileID: 4456395838552135815, guid: c6dd3fc4905aba047a74f61c37cc81a7, type: 3}
-  startingPos: {x: 0, y: 0}
 --- !u!58 &7796274511555379519
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -141,3 +124,22 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.2
+--- !u!114 &3968233696464215419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5949201873329385209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6535361a664e6c5488f353179f6c962c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: BombBullet
+  target: 
+  damage: 0
+  bombParticles: {fileID: 8215814455686169806, guid: 7fc0170e1cf02b041b13b15824bf36ba, type: 3}
+  startingPos: {x: 0, y: 0}
+  isBombGunShoot: 0
+  speed: 5

@@ -37,12 +37,12 @@ public class ShootingBombGun : MonoBehaviour
         shootAnimator.SetTrigger("Play");
         GameObject bullet = objPool.GetPooledObject();
         bullet.transform.position = firePoint.position;
-        bullet.GetComponent<ShootingBullet>().startingPos = firePoint.position;
+        bullet.GetComponent<ShootingBombBullet>().startingPos = firePoint.position;
         bullet.transform.rotation = firePoint.rotation;
         bullet.SetActive(true);
-        bullet.GetComponent<ShootingBullet>().target = target;
-        bullet.GetComponent<ShootingBullet>().damage = playerStats.bombGunDamageValue;
-        bullet.GetComponent<ShootingBullet>().isBombGunShoot = false;
+        bullet.GetComponent<ShootingBombBullet>().target = target;
+        bullet.GetComponent<ShootingBombBullet>().damage = playerStats.bombGunDamageValue;
+        bullet.GetComponent<ShootingBombBullet>().isBombGunShoot = false;
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         Vector2 bulletVelocity = firePoint.up * bulletSpeed;
         rb.velocity = bulletVelocity;
