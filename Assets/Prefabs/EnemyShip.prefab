@@ -241,6 +241,7 @@ GameObject:
   - component: {fileID: 4783588202239419642}
   - component: {fileID: 2062512602872786545}
   - component: {fileID: 3456677701789160090}
+  - component: {fileID: 3199066431157988986}
   m_Layer: 0
   m_Name: EnemyShip
   m_TagString: EnemyShip
@@ -335,7 +336,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pooledObjects: []
   prefab: {fileID: 5949201873329385209, guid: fcc211509cfc5ed4083bfec3ab4eca73, type: 3}
-  type: 1
+  type: bullet
 --- !u!114 &3456677701789160090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,7 +351,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pooledObjects: []
   prefab: {fileID: 7865696556722488135, guid: a9f1b9c626b61854cae1e5b0214bfbf9, type: 3}
-  type: 2
+  type: flameParticle
+--- !u!114 &3199066431157988986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4783588202239419623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ab626b24757ddf4c9a2f979031c523f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  prefab: {fileID: 8196710097868671365, guid: 3218894ae1527da488d6aa48a8fda925, type: 3}
+  type: poisonParticle
 --- !u!1 &4783588202302957002
 GameObject:
   m_ObjectHideFlags: 0

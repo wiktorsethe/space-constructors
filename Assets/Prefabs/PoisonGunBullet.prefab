@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3223214097217385228}
   - component: {fileID: 7651002091196954157}
   - component: {fileID: 6080196722110144020}
+  - component: {fileID: 1453124955381507358}
   m_Layer: 0
   m_Name: PoisonGunBullet
   m_TagString: Bullet
@@ -139,4 +140,20 @@ MonoBehaviour:
   type: PoisonBullet
   target: 
   damage: 0
-  shootParticles: {fileID: 4456395838552135815, guid: c6dd3fc4905aba047a74f61c37cc81a7, type: 3}
+  startingPos: {x: 0, y: 0}
+  isBombGunShoot: 0
+--- !u!114 &1453124955381507358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4316347921073165664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ab626b24757ddf4c9a2f979031c523f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  prefab: {fileID: 4456395838552135815, guid: c6dd3fc4905aba047a74f61c37cc81a7, type: 3}
+  type: 

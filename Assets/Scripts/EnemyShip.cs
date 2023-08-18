@@ -39,7 +39,9 @@ public class EnemyShip : MonoBehaviour
     [SerializeField] private float Angle;
     private float hideTimer = 0f;
     private bool isFlameStarted = false;
-    private GameObject particle;
+    private bool isPoisonStarted = false;
+    private GameObject flameParticle;
+    private GameObject poisonParticle;
     private ObjectPool[] objPools;
 
     private void Start()
@@ -112,6 +114,25 @@ public class EnemyShip : MonoBehaviour
             shootTimer = -10f;
             gameObject.SetActive(false);
         }
+
+
+        if(flameParticle != null)
+        {
+            if (!flameParticle.GetComponent<ParticleSystem>().IsAlive())
+            {
+                isFlameStarted = false;
+                flameParticle.SetActive(false);
+            }
+        }
+
+        if (poisonParticle != null)
+        {
+            if (!poisonParticle.GetComponent<ParticleSystem>().IsAlive())
+            {
+                isPoisonStarted = false;
+                poisonParticle.SetActive(false);
+            }
+        }
     }
     void FireBullet()
     {
@@ -129,7 +150,6 @@ public class EnemyShip : MonoBehaviour
                 Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
                 Vector2 bulletVelocity = firePoint.up * bulletSpeed;
                 rb.velocity = bulletVelocity;
-                Debug.Log("1");
             }
         }
     }
@@ -176,15 +196,32 @@ public class EnemyShip : MonoBehaviour
     }
     public void StartPoison()
     {
-        StartCoroutine("Poison");
+        if (!isPoisonStarted)
+        {
+            isPoisonStarted = true;
+            StartCoroutine("Poison");
+
+        }
     }
     IEnumerator Poison()
     {
-        int t = 0;
-        while(t < playerStats.poisonGunDurationValue)
+        float elapsedTime = 0f;
+        foreach (ObjectPool script in objPools)
+        {
+            if (script.type == "poisonParticle")
+            {
+                poisonParticle = script.GetPooledObject();
+                poisonParticle.transform.parent = transform;
+                ParticleSystem.MainModule main = poisonParticle.GetComponent<ParticleSystem>().main;
+                main.duration = playerStats.poisonGunDurationValue;
+                poisonParticle.SetActive(true);
+                poisonParticle.transform.position = transform.position;
+            }
+        }
+        while (elapsedTime <= playerStats.poisonGunDurationValue)
         {
             CollisionDetected((int)playerStats.poisonGunBetweenDamageValue);
-            t++;
+            elapsedTime += playerStats.poisonGunBetweenAttackSpeedValue;
             yield return new WaitForSeconds(playerStats.poisonGunBetweenAttackSpeedValue);
         }
     }
@@ -201,13 +238,14 @@ public class EnemyShip : MonoBehaviour
         float elapsedTime = 0f;
         foreach (ObjectPool script in objPools)
         {
-            if(script.type == "particle")
+            if(script.type == "flameParticle")
             {
-                Debug.Log("2");
-                particle = script.GetPooledObject(); //tu cos nie gra
-                particle.transform.parent = transform;
-                particle.SetActive(true);
-                particle.transform.position = transform.position;
+                flameParticle = script.GetPooledObject(); //tu cos nie gra
+                flameParticle.transform.parent = transform;
+                ParticleSystem.MainModule main = flameParticle.GetComponent<ParticleSystem>().main;
+                main.duration = playerStats.flameGunDurationValue;
+                flameParticle.SetActive(true);
+                flameParticle.transform.position = transform.position;
             }
         }
         while (elapsedTime <= playerStats.flameGunDurationValue)
@@ -215,11 +253,6 @@ public class EnemyShip : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             CollisionDetected((int)playerStats.flameGunBetweenDamageValue);
             elapsedTime += 0.5f;
-            if(elapsedTime >= playerStats.flameGunDurationValue)
-            {
-                isFlameStarted = false;
-                particle.SetActive(false);
-            }
         }
     }
 }
