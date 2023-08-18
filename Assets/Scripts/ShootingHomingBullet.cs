@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShootingBullet : MonoBehaviour
+public class ShootingHomingBullet : MonoBehaviour
 {
-    public string type;
+    public string type = "NormalBullet";
+    public Transform targetT;
+    private float speed = 10;
+    private float rotateSpeed = 200;
+    private Rigidbody2D rb;
     public string target;
     public float damage;
     private HpBar hpBar;
@@ -12,11 +16,6 @@ public class ShootingBullet : MonoBehaviour
     private Camera cam;
     public Vector2 startingPos;
     private float cameraHalfWidth;
-    public bool isBombGunShoot = false;
-    private Rigidbody2D rb;
-    public Transform targetT;
-    private float speed = 10;
-    private float rotateSpeed = 200;
 
     private void Start()
     {
@@ -37,22 +36,18 @@ public class ShootingBullet : MonoBehaviour
     }
     private void Update()
     {
-        if (type == "HomingBullet")
-        {
-            Vector2 direction = (Vector2)targetT.position - (Vector2)transform.position;
-            direction.Normalize();
-            float rotateAmount = Vector3.Cross(direction, transform.up).z;
-            rb.angularVelocity = -rotateAmount * rotateSpeed;
-            rb.velocity = transform.up * speed;
-        }
+        Vector2 direction = (Vector2)targetT.position - (Vector2)transform.position;
+        direction.Normalize();
+        float rotateAmount = Vector3.Cross(direction, transform.up).z;
+        rb.angularVelocity = -rotateAmount * rotateSpeed;
+        rb.velocity = transform.up * speed;
 
-        if (Vector2.Distance(startingPos, transform.position) > cameraHalfWidth) // tu jest b³¹d kule sie nie pokazuja trzeba przerobiæ startingpos
+        if (Vector2.Distance(startingPos, transform.position) > cameraHalfWidth)
         {
             gameObject.SetActive(false);
-            
+
         }
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Ship") && target == "Ship")
@@ -60,23 +55,10 @@ public class ShootingBullet : MonoBehaviour
             GameObject particle = GetComponent<ObjectPool>().GetPooledObject();
             particle.transform.position = transform.position;
             particle.SetActive(true);
-
-            //Instantiate(shootParticles, transform.position, Quaternion.identity);
             camShake.ShakeCamera(0.2f, 0.5f, 2);
-            if(type == "PoisonBullet")
-            {
-                hpBar.StartPoison();
-            }
-            else if (type == "NormalBullet" || type == "HomingBullet")
-            {
-                hpBar.SetHealth(damage);
-            }
-            if (type == "FlameBullet")
-            {
-                hpBar.StartFlame();
-            }
+            hpBar.SetHealth(damage);
             gameObject.SetActive(false);
-            
+
         }
         else if (collision.gameObject.CompareTag("Enemy") && target == "Enemy")
         {

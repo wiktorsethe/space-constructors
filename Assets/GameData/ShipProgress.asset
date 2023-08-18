@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: ShipProgress
   m_EditorClassIdentifier: 
   shipParts:
-  - shipPartIndex: 7
-    position: {x: 0, y: -2.600006, z: 0}
+  - shipPartIndex: 10
+    position: {x: 0, y: -2.6, z: 0}
     rotation: {x: -0, y: -0, z: 1, w: 0}
   usedContstructPoints:
   - {x: 0, y: -2.6}

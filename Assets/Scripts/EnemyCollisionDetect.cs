@@ -27,7 +27,7 @@ public class EnemyCollisionDetect : MonoBehaviour
                     transform.parent.GetComponent<EnemyShip>().StartPoison();
 
                 }
-                if (collision.GetComponent<ShootingBullet>().type == "NormalBullet")
+                if (collision.GetComponent<ShootingBullet>().type == "NormalBullet" || collision.GetComponent<ShootingBullet>().type == "HomingBullet")
                 {
                     transform.parent.GetComponent<EnemyShip>().CollisionDetected((int)collision.GetComponent<ShootingBullet>().damage);
                 }
@@ -35,6 +35,7 @@ public class EnemyCollisionDetect : MonoBehaviour
                 {
                     transform.parent.GetComponent<EnemyShip>().StartFlame();
                 }
+                
             }
         }
     }

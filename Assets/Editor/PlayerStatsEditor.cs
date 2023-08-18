@@ -39,6 +39,7 @@ public class PlayerStatsEditor : Editor
         playerStats.poisonGunBetweenDamageValue = EditorGUILayout.FloatField("Poison Between Gun Damage", playerStats.poisonGunBetweenDamageValue);
         playerStats.flameGunCollisionDamageValue = EditorGUILayout.FloatField("Flame Collision Gun Damage", playerStats.flameGunCollisionDamageValue);
         playerStats.bombGunDamageValue = EditorGUILayout.FloatField("Bomb Gun Damage", playerStats.bombGunDamageValue);
+        playerStats.homingGunDamageValue = EditorGUILayout.FloatField("Homing Gun Damage", playerStats.homingGunDamageValue);
         EditorGUILayout.Space();
         GUILayout.Label("       GUNS ATTACK SPEED / DURATION", EditorStyles.boldLabel);
         playerStats.normalGunAttackSpeedValue = EditorGUILayout.FloatField("Normal Gun Attack Speed", playerStats.normalGunAttackSpeedValue);
@@ -51,6 +52,7 @@ public class PlayerStatsEditor : Editor
         playerStats.flameGunCollisionAttackSpeedValue = EditorGUILayout.FloatField("Flame Gun Collision Attack Speed", playerStats.flameGunCollisionAttackSpeedValue);
         playerStats.flameGunDurationValue = EditorGUILayout.FloatField("Flame Gun Duration", playerStats.flameGunDurationValue);
         playerStats.bombGunAttackSpeedValue = EditorGUILayout.FloatField("Bomb Gun Attack Speed", playerStats.bombGunAttackSpeedValue);
+        playerStats.homingGunAttackSpeedValue = EditorGUILayout.FloatField("Homing Gun Attack Speed", playerStats.homingGunAttackSpeedValue);
         EditorGUILayout.Space();
         GUILayout.Label("       LEVEL", EditorStyles.boldLabel);
         playerStats.level = EditorGUILayout.IntField("Level", playerStats.level);
