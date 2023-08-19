@@ -90,3 +90,10 @@ MonoBehaviour:
     screwCost: 0
     gravityBonus: 0
     shipPartType: homingGun
+  - image: {fileID: 21300000, guid: 988e1067f6b43c347b9166efba29fcaa, type: 3}
+    shipPart: {fileID: 1411379949368553517, guid: c6715361e069a7a4f9c3046f3b8aa21d, type: 3}
+    amount: 187
+    oreCost: 0
+    screwCost: 0
+    gravityBonus: 0
+    shipPartType: stunningGun

@@ -30,6 +30,7 @@ public class PlayerStats : ScriptableObject
     public float flameGunBetweenDamageValue;
     public float bombGunDamageValue;
     public float homingGunDamageValue;
+    public float stunningGunDamageValue;
 
     public float normalGunAttackSpeedValue;
     public float laserGunAttackSpeedValue;
@@ -42,6 +43,7 @@ public class PlayerStats : ScriptableObject
     public float flameGunDurationValue;
     public float bombGunAttackSpeedValue;
     public float homingGunAttackSpeedValue;
+    public float stunningGunAttackSpeedValue;
 
     public float shipSpeedValue;
     public float oreMiningBonusValue;
@@ -82,6 +84,7 @@ public class PlayerStats : ScriptableObject
         flameGunBetweenDamageValue = 1;
         bombGunDamageValue = 7;
         homingGunDamageValue = 4;
+        stunningGunDamageValue = 0;
 
         normalGunAttackSpeedValue = 4;
         laserGunAttackSpeedValue = 4;
@@ -94,6 +97,7 @@ public class PlayerStats : ScriptableObject
         flameGunDurationValue = 2;
         bombGunAttackSpeedValue = 7;
         homingGunAttackSpeedValue = 3;
+        stunningGunAttackSpeedValue = 8;
 
         oreMiningBonusValue = 1;
         shipPosition = new Vector3(0f, 0f, 0f);

@@ -35,7 +35,10 @@ public class EnemyCollisionDetect : MonoBehaviour
                 {
                     transform.parent.GetComponent<EnemyShip>().StartFlame();
                 }
-                
+                if(collision.GetComponent<ShootingBullet>().type == "StunningBullet")
+                {
+                    transform.parent.GetComponent<EnemyShip>().moveSpeed = 0f;
+                }
             }
         }
     }
