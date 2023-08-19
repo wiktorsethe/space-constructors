@@ -44,6 +44,7 @@ public class PlayerStats : ScriptableObject
     public float bombGunAttackSpeedValue;
     public float homingGunAttackSpeedValue;
     public float stunningGunAttackSpeedValue;
+    public float stunDurationValue;
 
     public float shipSpeedValue;
     public float oreMiningBonusValue;
@@ -98,6 +99,7 @@ public class PlayerStats : ScriptableObject
         bombGunAttackSpeedValue = 7;
         homingGunAttackSpeedValue = 3;
         stunningGunAttackSpeedValue = 8;
+        stunDurationValue = 2;
 
         oreMiningBonusValue = 1;
         shipPosition = new Vector3(0f, 0f, 0f);

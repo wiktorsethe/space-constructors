@@ -55,6 +55,7 @@ public class PlayerStatsEditor : Editor
         playerStats.bombGunAttackSpeedValue = EditorGUILayout.FloatField("Bomb Gun Attack Speed", playerStats.bombGunAttackSpeedValue);
         playerStats.homingGunAttackSpeedValue = EditorGUILayout.FloatField("Homing Gun Attack Speed", playerStats.homingGunAttackSpeedValue);
         playerStats.stunningGunAttackSpeedValue = EditorGUILayout.FloatField("Stunning Gun Attack Speed", playerStats.stunningGunAttackSpeedValue);
+        playerStats.stunDurationValue = EditorGUILayout.FloatField("Stun Duration", playerStats.stunDurationValue);
         EditorGUILayout.Space();
         GUILayout.Label("       LEVEL", EditorStyles.boldLabel);
         playerStats.level = EditorGUILayout.IntField("Level", playerStats.level);

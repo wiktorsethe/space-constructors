@@ -37,7 +37,7 @@ public class EnemyCollisionDetect : MonoBehaviour
                 }
                 if(collision.GetComponent<ShootingBullet>().type == "StunningBullet")
                 {
-                    transform.parent.GetComponent<EnemyShip>().moveSpeed = 0f;
+                    transform.parent.GetComponent<EnemyShip>().StartStun();
                 }
             }
         }

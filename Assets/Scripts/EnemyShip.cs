@@ -255,4 +255,20 @@ public class EnemyShip : MonoBehaviour
             elapsedTime += 0.5f;
         }
     }
+    public void StartStun()
+    {
+        StartCoroutine("Stun");
+    }
+    IEnumerator Stun()
+    {
+        moveSpeed = 0f;
+        yield return new WaitForSeconds(playerStats.stunDurationValue);
+
+        while (moveSpeed < 2f)
+        {
+            moveSpeed += 0.1f;
+            yield return new WaitForSeconds(0.1f);
+
+        }
+    }
 }
