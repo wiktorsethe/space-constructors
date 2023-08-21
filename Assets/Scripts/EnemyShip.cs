@@ -262,11 +262,13 @@ public class EnemyShip : MonoBehaviour
     IEnumerator Stun()
     {
         moveSpeed = 0f;
+        shootTimer = -1000f;
         yield return new WaitForSeconds(playerStats.stunDurationValue);
 
         while (moveSpeed < 2f)
         {
             moveSpeed += 0.1f;
+            shootTimer = 0f;
             yield return new WaitForSeconds(0.1f);
 
         }

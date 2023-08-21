@@ -55,14 +55,13 @@ public class ShootingBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        GameObject particle = GetComponent<ObjectPool>().GetPooledObject();
         if (collision.gameObject.CompareTag("Ship") && target == "Ship")
         {
-            GameObject particle = GetComponent<ObjectPool>().GetPooledObject();
             particle.transform.position = transform.position;
             particle.SetActive(true);
-
-            //Instantiate(shootParticles, transform.position, Quaternion.identity);
             camShake.ShakeCamera(0.2f, 0.5f, 2);
+
             if(type == "PoisonBullet")
             {
                 hpBar.StartPoison();
@@ -80,14 +79,15 @@ public class ShootingBullet : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Enemy") && target == "Enemy")
         {
-            GameObject particle = GetComponent<ObjectPool>().GetPooledObject();
             particle.transform.position = transform.position;
             particle.SetActive(true);
-            gameObject.SetActive(false);
+            if(type != "StunningBullet")
+            {
+                gameObject.SetActive(false);
+            }
         }
         if (collision.gameObject.CompareTag("Player") && target == "Player")
         {
-            GameObject particle = GetComponent<ObjectPool>().GetPooledObject();
             particle.transform.position = transform.position;
             particle.SetActive(true);
             hpBar.SetHealth(damage);

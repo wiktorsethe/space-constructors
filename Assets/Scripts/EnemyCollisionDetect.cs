@@ -25,7 +25,6 @@ public class EnemyCollisionDetect : MonoBehaviour
                 if(collision.GetComponent<ShootingBullet>().type == "PoisonBullet")
                 {
                     transform.parent.GetComponent<EnemyShip>().StartPoison();
-
                 }
                 if (collision.GetComponent<ShootingBullet>().type == "NormalBullet" || collision.GetComponent<ShootingBullet>().type == "HomingBullet")
                 {
