@@ -2,36 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyDashStartState : StateMachineBehaviour
+public class EnemyDashAttackState : StateMachineBehaviour
 {
     private GameObject ship;
-    private float timer = 0f;
     [SerializeField] private PlayerStats playerStats;
+    private HpBar hpBar;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         ship = animator.GetComponent<EnemyDash>().FindClosestObject();
-        timer = 0f;
+        hpBar = GameObject.FindObjectOfType(typeof(HpBar)) as HpBar;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        timer += Time.deltaTime;
-        if (Vector2.Distance(animator.transform.position, ship.transform.position) > 15f)
+        if(Vector2.Distance(animator.transform.position, ship.transform.position) > 5f)
         {
-            if(timer < 4f)
-            {
-                animator.transform.position = Vector2.MoveTowards(animator.transform.position, ship.transform.position, 5f * Time.deltaTime);
-            }
-            else if(timer >= 4f)
-            {
-                animator.transform.position = Vector2.MoveTowards(animator.transform.position, ship.transform.position, (playerStats.shipSpeedValue * 1.5f) * Time.deltaTime);
-            }
+            //Vector3 vectorToTarget = ship.transform.position - animator.transform.position;
+            //animator.transform.Find("EnemyShipImage").transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget);
+            animator.transform.position = Vector2.MoveTowards(animator.transform.position, ship.transform.position, playerStats.shipSpeedValue * 2f * Time.deltaTime);
         }
-        else if (Vector2.Distance(animator.transform.position, ship.transform.position) <= 15f)
+        else if(Vector2.Distance(animator.transform.position, ship.transform.position) <= 5f)
         {
-            animator.SetTrigger("Attack");
+            hpBar.SetHealth(5);
+            animator.SetTrigger("Reset");
         }
     }
 

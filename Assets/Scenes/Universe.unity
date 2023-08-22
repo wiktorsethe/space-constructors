@@ -9462,7 +9462,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.668, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -9691,7 +9691,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.668, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -10070,40 +10070,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd2c8a3ce0276334d919717f66bede0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!60 &4783588201956422868
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4783588201956422870}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.65, y: 4.39}
-    newSize: {x: 1, y: 0.8828125}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.5764637, y: 1.9918008}
-      - {x: -2.7077713, y: 0.19632769}
-      - {x: -1.2583137, y: -0.6723213}
-      - {x: -0.6967144, y: -1.7931585}
-      - {x: -0.0030503273, y: -2.1061153}
-      - {x: 0.6624975, y: -1.7776632}
-      - {x: 1.2434769, y: -0.6956644}
-      - {x: 2.7031431, y: 0.19282055}
-      - {x: 0.61390495, y: 1.9971304}
 --- !u!212 &4783588201956422869
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10145,7 +10111,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 53f9ecbf968ca034f88b888b9ecab343, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ad95990b8baa67d478f0a2ce44739dc5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 1
@@ -10166,7 +10132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4783588201956422871}
   - component: {fileID: 4783588201956422869}
-  - component: {fileID: 4783588201956422868}
+  - component: {fileID: 4783588201956422872}
   - component: {fileID: 4493871323636883267}
   m_Layer: 0
   m_Name: EnemyShipImage
@@ -10191,6 +10157,37 @@ Transform:
   m_Father: {fileID: 4783588202023892473}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &4783588201956422872
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4783588201956422870}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.68, y: 5.05}
+    newSize: {x: 1, y: 0.8828125}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.02299467, y: 2.488492}
+      - {x: -2.159181, y: 1.2852912}
+      - {x: -2.159181, y: -1.2556674}
+      - {x: -0.008645954, y: -2.4850383}
+      - {x: 2.1295586, y: -1.2704793}
+      - {x: 2.1443694, y: 1.3001031}
 --- !u!114 &4783588202023892454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10208,8 +10205,7 @@ MonoBehaviour:
   gold: 100
   moveSpeed: 2
   firePoint: {fileID: 4783588203882289043}
-  miningTextPrefab: {fileID: 8062151463999637536, guid: b9d2f93f3a98b4d4b8a1be849730c94f, type: 3}
-  flameParticles: {fileID: 7865696556722488135, guid: a9f1b9c626b61854cae1e5b0214bfbf9, type: 3}
+  damageTextPrefab: {fileID: 0}
   target: Ship
   canvas: {fileID: 1062153021601331378}
   healthBarCanvas: {fileID: 1062153021601331383}
@@ -10246,7 +10242,8 @@ MonoBehaviour:
   fillBar: {fileID: 1062153021351056189}
   maxHealth: 10
   currentHealth: 0
-  Angle: 5
+  animator: {fileID: 4783588202023892476}
+  retreatVector: {x: 0, y: 0}
 --- !u!4 &4783588202023892473
 Transform:
   m_ObjectHideFlags: 0
@@ -10277,13 +10274,35 @@ GameObject:
   - component: {fileID: 2062512602514685805}
   - component: {fileID: 3456677701441602438}
   - component: {fileID: 3199066431481495398}
+  - component: {fileID: 4783588202023892476}
   m_Layer: 0
   m_Name: EnemyShip
   m_TagString: EnemyShip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
+--- !u!95 &4783588202023892476
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4783588202023892475}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4a20d7af5e187a84a9af5f4f2f59aa43, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 1
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4783588203882289042
 GameObject:
   m_ObjectHideFlags: 0
@@ -10308,7 +10327,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4783588203882289042}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10452,9 +10471,7 @@ MonoBehaviour:
   gold: 100
   moveSpeed: 7
   firePoint: {fileID: 5115922439347573963}
-  miningTextPrefab: {fileID: 8062151463999637536, guid: b9d2f93f3a98b4d4b8a1be849730c94f, type: 3}
-  flameParticles: {fileID: 0}
-  animator: {fileID: 5115922437984630439}
+  damageTextPrefab: {fileID: 0}
   target: Ship
   canvas: {fileID: 729678735913237482}
   healthBarCanvas: {fileID: 729678735913237487}
@@ -10491,7 +10508,8 @@ MonoBehaviour:
   fillBar: {fileID: 729678735092535397}
   maxHealth: 10
   currentHealth: 0
-  Angle: 5
+  animator: {fileID: 5115922437984630439}
+  retreatVector: {x: 0, y: 0}
 --- !u!4 &5115922437984630433
 Transform:
   m_ObjectHideFlags: 0
@@ -10530,7 +10548,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &5115922437984630436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10588,7 +10606,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 4bbc31d859bd002418176b47c6c1ba8f, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 1
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0

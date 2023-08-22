@@ -2,25 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyDashResetState : StateMachineBehaviour
+public class EnemyShipAttackState : StateMachineBehaviour
 {
+    private GameObject ship;
     private float timer = 0f;
-    private CameraShake camShake;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        ship = animator.GetComponent<EnemyShip>().FindClosestObject();
         timer = 0f;
-        camShake = GameObject.FindObjectOfType(typeof(CameraShake)) as CameraShake;
-        camShake.ShakeCamera(2f, 0.5f, 3);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         timer += Time.deltaTime;
-        if (timer > 2f)
+        if (Vector2.Distance(animator.transform.position, ship.transform.position) > 10f)
         {
-            animator.SetTrigger("Retreat");
+            animator.SetTrigger("Start");
+        }
+        else if (Vector2.Distance(animator.transform.position, ship.transform.position) <= 10f)
+        {
+            if(timer >= 3f)
+            {
+                animator.transform.GetComponent<EnemyShip>().FireBullet();
+                timer = 0f;
+            }
         }
     }
 

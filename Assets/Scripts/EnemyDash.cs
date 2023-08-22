@@ -14,20 +14,13 @@ public class EnemyDash : MonoBehaviour
     [Header("Variables")]
     [SerializeField] private int experience;
     [SerializeField] private int gold;
-    private float inTarget = 8;
-    private float shootTimer = 0f;
     private float bulletSpeed = 10f;
     public float moveSpeed = 2f;
     [Space(20f)]
     [Header("GameObjects and Rest")]
-    private GameObject player;
     [SerializeField] private Transform firePoint;
-    [SerializeField] private GameObject miningTextPrefab;
-    [SerializeField] private GameObject flameParticles;
-    public Animator animator;
+    [SerializeField] private GameObject damageTextPrefab;
     [SerializeField] private string target;
-    private GameObject[] objectsList;
-    private float distance;
     [Space(20f)]
     [Header("Health System")]
     [SerializeField] private Canvas canvas;
@@ -37,19 +30,20 @@ public class EnemyDash : MonoBehaviour
     [SerializeField] private Image fillBar;
     [SerializeField] private int maxHealth;
     public int currentHealth;
-    [SerializeField] private float Angle;
     private float hideTimer = 0f;
+    [Space(20f)]
+    [Header("Particles and animator staff")]
+    public Animator animator;
     private bool isFlameStarted = false;
     private bool isPoisonStarted = false;
     private GameObject flameParticle;
     private GameObject poisonParticle;
     private ObjectPool[] objPools;
-
+    public Vector2 retreatVector;
     private void Start()
     {
         expBar = GameObject.FindObjectOfType(typeof(ExpBar)) as ExpBar;
         gameManager = GameObject.FindObjectOfType(typeof(GameManager)) as GameManager;
-        player = GameObject.FindGameObjectWithTag("Player");
         objPools = GetComponents<ObjectPool>();
         canvas.worldCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         SetMaxHealth(maxHealth);
@@ -72,7 +66,6 @@ public class EnemyDash : MonoBehaviour
             playerStats.gold += gold;
             gameManager.goldEarned += gold;
             gameManager.kills += 1;
-            shootTimer = -10f;
             gameObject.SetActive(false);
         }
 
@@ -94,8 +87,9 @@ public class EnemyDash : MonoBehaviour
                 poisonParticle.SetActive(false);
             }
         }
+        ChangeRotation();
     }
-    void FireBullet()
+    public void FireBullet()
     {
         foreach (ObjectPool script in objPools)
         {
@@ -113,6 +107,12 @@ public class EnemyDash : MonoBehaviour
                 rb.velocity = bulletVelocity;
             }
         }
+    }
+    public void ChangeRotation()
+    {
+        GameObject ship = FindClosestObject();
+        Vector3 vectorToTarget = ship.transform.position - animator.transform.position;
+        animator.transform.Find("EnemyShipImage").transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget);
     }
     public void SetMaxHealth(int health)
     {
@@ -132,16 +132,16 @@ public class EnemyDash : MonoBehaviour
         hideTimer = 0f;
         currentHealth -= damage;
         SetHealth();
-        moveSpeed = 0.5f; // popraw
+        moveSpeed = 0.5f;
         StartCoroutine(ChangingSpeed());
-        if (miningTextPrefab)
+        if (damageTextPrefab)
         {
-            ShowMiningText(damage);
+            ShowDamageText(damage);
         }
     }
-    private void ShowMiningText(int amount)
+    private void ShowDamageText(int amount)
     {
-        var text = Instantiate(miningTextPrefab, transform.position, Quaternion.identity);
+        var text = Instantiate(damageTextPrefab, transform.position, Quaternion.identity);
         text.GetComponent<TMP_Text>().text = amount.ToString();
     }
     IEnumerator ChangingSpeed()
@@ -223,13 +223,11 @@ public class EnemyDash : MonoBehaviour
     IEnumerator Stun()
     {
         moveSpeed = 0f;
-        shootTimer = -1000f;
         yield return new WaitForSeconds(playerStats.stunDurationValue);
 
         while (moveSpeed < 2f)
         {
             moveSpeed += 0.1f;
-            shootTimer = 0f;
             yield return new WaitForSeconds(0.1f);
 
         }

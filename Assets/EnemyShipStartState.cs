@@ -2,29 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyDashRetreatState : StateMachineBehaviour
+public class EnemyShipStartState : StateMachineBehaviour
 {
     private GameObject ship;
-    private Vector2 target;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        ship = animator.GetComponent<EnemyDash>().FindClosestObject();
-        target = animator.transform.position - ship.transform.position;
-        target.Normalize();
+        ship = animator.GetComponent<EnemyShip>().FindClosestObject();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.transform.position = Vector2.MoveTowards(animator.transform.position, target, 5f * Time.deltaTime);
-        Debug.Log(Vector2.Distance(animator.transform.position, ship.transform.position));
-
-        if (Vector2.Distance(animator.transform.position, ship.transform.position) > 12f)
+        if (Vector2.Distance(animator.transform.position, ship.transform.position) > 10f)
         {
-            animator.SetTrigger("Start");
+            animator.transform.position = Vector2.MoveTowards(animator.transform.position, ship.transform.position, 2f * Time.deltaTime);
         }
-        
+        else if (Vector2.Distance(animator.transform.position, ship.transform.position) <= 10f)
+        {
+            animator.SetTrigger("Attack");
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
