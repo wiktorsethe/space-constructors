@@ -2,33 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyShipAttackState : StateMachineBehaviour
+public class EmperorChefrenAttack2State : StateMachineBehaviour
 {
-    private GameObject ship;
-    private float timer = 0f;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        ship = animator.GetComponent<EnemyShip>().FindClosestObject();
-        timer = 0f;
+        
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        timer += Time.deltaTime;
-        if (Vector2.Distance(animator.transform.position, ship.transform.position) > 10f)
-        {
-            animator.SetTrigger("Start");
-        }
-        else if (Vector2.Distance(animator.transform.position, ship.transform.position) <= 10f)
-        {
-            if(timer >= 3f)
-            {
-                animator.transform.GetComponent<EnemyShip>().FireBullet();
-                timer = 0f;
-            }
-        }
+        
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

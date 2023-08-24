@@ -8,8 +8,8 @@ public class EnemyDashStartState : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        ship = animator.GetComponent<EnemyDash>().FindClosestObject();
-        animator.transform.GetComponent<EnemyDash>().retreatVector = Vector2.zero;
+        ship = animator.GetComponent<EnemyShip>().FindClosestObject();
+        animator.transform.GetComponent<EnemyShip>().retreatVector = Vector2.zero;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

@@ -2,33 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyDashRetreatState : StateMachineBehaviour
+public class EnemyShipAttackState : StateMachineBehaviour
 {
     private GameObject ship;
+    private float timer = 0f;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         ship = animator.GetComponent<EnemyShip>().FindClosestObject();
-        animator.transform.GetComponent<EnemyShip>().retreatVector = animator.transform.position - ship.transform.position;
-        animator.transform.GetComponent<EnemyShip>().retreatVector.Normalize();
+        timer = 0f;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.transform.position = Vector2.MoveTowards(animator.transform.position, animator.transform.GetComponent<EnemyShip>().retreatVector, 5f * Time.deltaTime);
-
-        if (Vector2.Distance(animator.transform.position, ship.transform.position) > 12f)
+        animator.GetComponent<EmperorChefren>().ChangeRotation();
+        timer += Time.deltaTime;
+        if (Vector2.Distance(animator.transform.position, ship.transform.position) > 10f)
         {
             animator.SetTrigger("Start");
         }
-        
+        else if (Vector2.Distance(animator.transform.position, ship.transform.position) <= 10f)
+        {
+            if(timer >= 3f)
+            {
+                animator.transform.GetComponent<EnemyShip>().FireBullet();
+                timer = 0f;
+            }
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
+        
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

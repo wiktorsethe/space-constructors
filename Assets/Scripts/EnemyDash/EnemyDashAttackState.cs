@@ -10,7 +10,7 @@ public class EnemyDashAttackState : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        ship = animator.GetComponent<EnemyDash>().FindClosestObject();
+        ship = animator.GetComponent<EnemyShip>().FindClosestObject();
         hpBar = GameObject.FindObjectOfType(typeof(HpBar)) as HpBar;
     }
 
@@ -25,6 +25,7 @@ public class EnemyDashAttackState : StateMachineBehaviour
         }
         else if(Vector2.Distance(animator.transform.position, ship.transform.position) <= 5f)
         {
+            animator.GetComponent<EnemyShip>().Dash();
             hpBar.SetHealth(5);
             animator.SetTrigger("Reset");
         }

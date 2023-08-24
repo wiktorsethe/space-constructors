@@ -18,6 +18,7 @@ TagManager:
   - Terrain
   - Meteorite
   - PoisonBullet
+  - EnemyFlame
   layers:
   - Default
   - TransparentFX

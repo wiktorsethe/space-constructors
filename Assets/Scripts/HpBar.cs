@@ -132,13 +132,13 @@ public class HpBar : MonoBehaviour
                 flameParticle = script.GetPooledObject(); //tu cos nie gra
                 flameParticle.transform.parent = player.transform;
                 ParticleSystem.MainModule main = flameParticle.GetComponent<ParticleSystem>().main;
-                main.duration = playerStats.flameGunDurationValue;
+                main.duration = 3;
                 flameParticle.SetActive(true);
                 flameParticle.transform.position = player.transform.position;
                 isFlameStarted = true;
             }
         }
-        while (elapsedTime <= playerStats.flameGunDurationValue)
+        while (elapsedTime <= 3)
         {
             SetHealth(1);
             yield return new WaitForSeconds(0.5f);

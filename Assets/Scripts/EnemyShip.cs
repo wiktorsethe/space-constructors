@@ -38,6 +38,7 @@ public class EnemyShip : MonoBehaviour
     private bool isPoisonStarted = false;
     private GameObject flameParticle;
     private GameObject poisonParticle;
+    private GameObject dashParticle;
     private ObjectPool[] objPools;
     public Vector2 retreatVector;
     private void Start()
@@ -85,6 +86,14 @@ public class EnemyShip : MonoBehaviour
             {
                 isPoisonStarted = false;
                 poisonParticle.SetActive(false);
+            }
+        }
+
+        if (dashParticle != null)
+        {
+            if (!dashParticle.GetComponent<ParticleSystem>().IsAlive())
+            {
+                dashParticle.SetActive(false);
             }
         }
         ChangeRotation();
@@ -254,6 +263,19 @@ public class EnemyShip : MonoBehaviour
         }
 
         return closestObject;
+    }
+    public void Dash()
+    {
+        foreach (ObjectPool script in objPools)
+        {
+            if (script.type == "dashParticle")
+            {
+                dashParticle = script.GetPooledObject();
+                dashParticle.transform.parent = transform;
+                dashParticle.SetActive(true);
+                dashParticle.transform.position = firePoint.transform.position;
+            }
+        }
     }
 
     /*
