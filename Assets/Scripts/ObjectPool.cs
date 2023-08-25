@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> pooledObjects = new List<GameObject>();
+    public List<GameObject> pooledObjects = new List<GameObject>();
     [SerializeField] private GameObject prefab;
     public string type;
     // Start is called before the first frame update

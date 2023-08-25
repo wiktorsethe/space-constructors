@@ -1,28 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class EmperorChefrenStartingPosState : StateMachineBehaviour
+public class EmperorChefrenAttack2State : StateMachineBehaviour
 {
-    private Vector2 startingPos;
+    private float timer = 0f;
+    private bool isAttacked = false;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        startingPos = animator.GetComponent<EmperorChefren>().startingPos;
-
+        timer = 0f;
+        isAttacked = false;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (Vector2.Distance(animator.transform.position, startingPos) <= 0.01f)
+        timer += Time.deltaTime;
+        
+        if (timer >= 0.5f && !isAttacked)
         {
-            animator.SetTrigger("Attack2");
+            animator.GetComponent<EmperorChefren>().Attack2(20);
+            isAttacked = true;
+            animator.SetTrigger("Attack1");
         }
-        else if (Vector2.Distance(animator.transform.position, startingPos) > 0.01f)
-        {
-            animator.transform.position = Vector2.MoveTowards(animator.transform.position, startingPos, 2f * Time.deltaTime);
-        }
+
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
@@ -30,7 +31,6 @@ public class EmperorChefrenStartingPosState : StateMachineBehaviour
     {
         
     }
-
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{

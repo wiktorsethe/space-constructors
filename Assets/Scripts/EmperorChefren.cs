@@ -44,10 +44,12 @@ public class EmperorChefren : MonoBehaviour
     public Vector2 startingPos;
     private bool isStartingPosSaved = false;
     private bool isDeath = false;
+    private bool isHalfDeath = false;
     private bool isFlameStarted = false;
     private bool isPoisonStarted = false;
     private GameObject flameParticle;
     private GameObject poisonParticle;
+    private bool arePillarsEnabled = false;
     private void Start()
     {
         expBar = GameObject.FindObjectOfType(typeof(ExpBar)) as ExpBar;
@@ -89,6 +91,28 @@ public class EmperorChefren : MonoBehaviour
             gameManager.bounds.DeactivateBariers();
             gameManager.bounds.ActivatePlanets();
             Destroy(gameObject, 2f);
+            foreach (ObjectPool script in objPools)
+            {
+                for (int i = 0; i < script.pooledObjects.Count; i++)
+                {
+                    Destroy(script.pooledObjects[i].gameObject);
+                }
+            }
+        }
+
+        if(currentHealth <= maxHealth * 0.5f && !isHalfDeath)
+        {
+            isHalfDeath = true;
+            animator.SetTrigger("Fillars");
+        }
+
+        if(isHalfDeath && arePillarsEnabled)
+        {
+            GameObject[] pillars = GameObject.FindGameObjectsWithTag("Pillar");
+            if(pillars.Length == 0)
+            {
+                arePillarsEnabled = false;
+            }
         }
 
         if (flameParticle != null)
@@ -121,17 +145,27 @@ public class EmperorChefren : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<ShootingBullet>().type == "NormalBullet")
+        if (!arePillarsEnabled)
         {
-            CollisionDetected((int)collision.GetComponent<ShootingBullet>().damage);
+            if (collision.GetComponent<ShootingBullet>().type == "NormalBullet")
+            {
+                CollisionDetected((int)collision.GetComponent<ShootingBullet>().damage);
+            }
+            if (collision.GetComponent<ShootingBullet>().type == "PoisonBullet")
+            {
+                StartPoison();
+            }
+            if (collision.GetComponent<ShootingBullet>().type == "FlameBullet")
+            {
+                StartFlame();
+            }
         }
-        if (collision.GetComponent<ShootingBullet>().type == "PoisonBullet")
+        else
         {
-            StartPoison();
-        }
-        if (collision.GetComponent<ShootingBullet>().type == "FlameBullet")
-        {
-            StartFlame();
+            if (damageTextPrefab)
+            {
+                ShowDamageText(0);
+            }
         }
     }
     private void ShowDamageText(int amount)
@@ -262,9 +296,8 @@ public class EmperorChefren : MonoBehaviour
     }
     public void Attack2(int amount)
     {
-        camShake.ShakeCamera(1f, 4f, 3);
-
-        for(int i=0; i<amount; i++)
+        camShake.ShakeCamera(0.4f, 1f, 4);
+        for (int i=0; i<amount; i++)
         {
             Vector3 randomPoint = GetRandomPointInCameraView();
             foreach (ObjectPool script in objPools)
@@ -272,7 +305,9 @@ public class EmperorChefren : MonoBehaviour
                 if (script.type == "poisonWallParticle")
                 {
                     // to trzeba dokoñczyæ
-
+                    GameObject poisonWall = script.GetPooledObject();
+                    poisonWall.SetActive(true);
+                    poisonWall.transform.position = randomPoint;
                 }
             }
         }
@@ -297,5 +332,85 @@ public class EmperorChefren : MonoBehaviour
         Rect bounds = new Rect(bottomLeft.x, bottomLeft.y, topRight.x - bottomLeft.x, topRight.y - bottomLeft.y);
 
         return bounds;
+    }
+
+    public void Pillars()
+    {
+        arePillarsEnabled = true;
+        foreach (ObjectPool script in objPools)
+        {
+            if (script.type == "pillar")
+            {
+                for(int i=0; i<4; i++)
+                {
+                    GameObject pillar = script.GetPooledObject();
+                    if(i == 0)
+                    {
+                        pillar.transform.position = GetLeftUpPointInCameraView(pillar);
+                    }
+                    else if (i == 1)
+                    {
+                        pillar.transform.position = GetRightUpPointInCameraView(pillar);
+                    }
+                    else if (i == 2)
+                    {
+                        pillar.transform.position = GetLeftDownPointInCameraView(pillar);
+                    }
+                    else if (i == 3)
+                    {
+                        pillar.transform.position = GetRightDownPointInCameraView(pillar);
+                    }
+                    pillar.SetActive(true);
+                }
+            }
+        }
+    }
+    Vector3 GetLeftUpPointInCameraView(GameObject pillarObject)
+    {
+        Rect cameraBounds = GetCameraBounds(Camera.main);
+        Vector3 filarSize = pillarObject.GetComponent<Renderer>().bounds.size;
+
+        float x = cameraBounds.xMin + filarSize.x + 5f;
+        float y = cameraBounds.yMax - filarSize.y - 3f;
+
+        Vector3 point = new Vector3(x, y, 0f);
+
+        return point;
+    }
+    Vector3 GetRightUpPointInCameraView(GameObject pillarObject)
+    {
+        Rect cameraBounds = GetCameraBounds(Camera.main);
+        Vector3 filarSize = pillarObject.GetComponent<Renderer>().bounds.size;
+
+        float x = cameraBounds.xMax - filarSize.x - 5f;
+        float y = cameraBounds.yMax - filarSize.y - 3f;
+
+        Vector3 point = new Vector3(x, y, 0f);
+
+        return point;
+    }
+    Vector3 GetLeftDownPointInCameraView(GameObject pillarObject)
+    {
+        Rect cameraBounds = GetCameraBounds(Camera.main);
+        Vector3 filarSize = pillarObject.GetComponent<Renderer>().bounds.size;
+
+        float x = cameraBounds.xMin + filarSize.x + 5f;
+        float y = cameraBounds.yMin + filarSize.y + 3f;
+
+        Vector3 point = new Vector3(x, y, 0f);
+
+        return point;
+    }
+    Vector3 GetRightDownPointInCameraView(GameObject pillarObject)
+    {
+        Rect cameraBounds = GetCameraBounds(Camera.main);
+        Vector3 filarSize = pillarObject.GetComponent<Renderer>().bounds.size;
+
+        float x = cameraBounds.xMax - filarSize.x - 5f;
+        float y = cameraBounds.yMin + filarSize.y + 3f;
+
+        Vector3 point = new Vector3(x, y, 0f);
+
+        return point;
     }
 }

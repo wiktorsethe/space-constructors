@@ -8,7 +8,7 @@ public class EmperorChefrenStartState : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        randInt = Random.Range(0, 2);
+        randInt = Random.Range(1, 2);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -16,7 +16,7 @@ public class EmperorChefrenStartState : StateMachineBehaviour
     {
         if (randInt == 0)
         {
-            animator.SetTrigger("Movement");
+            animator.SetTrigger("Attack1");
         }
         else if (randInt == 1)
         {

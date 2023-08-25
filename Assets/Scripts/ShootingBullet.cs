@@ -86,11 +86,17 @@ public class ShootingBullet : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
-        if (collision.gameObject.CompareTag("Player") && target == "Player")
+        else if (collision.gameObject.CompareTag("Player") && target == "Player")
         {
             particle.transform.position = transform.position;
             particle.SetActive(true);
             hpBar.SetHealth(damage);
+            gameObject.SetActive(false);
+        }
+        else if (collision.gameObject.CompareTag("Pillar") && target == "Enemy")
+        {
+            particle.transform.position = transform.position;
+            particle.SetActive(true);
             gameObject.SetActive(false);
         }
     }

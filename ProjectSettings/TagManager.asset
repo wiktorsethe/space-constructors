@@ -19,6 +19,7 @@ TagManager:
   - Meteorite
   - PoisonBullet
   - EnemyFlame
+  - Pillar
   layers:
   - Default
   - TransparentFX

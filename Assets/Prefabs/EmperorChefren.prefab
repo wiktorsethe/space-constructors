@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2448278949484427395}
   - component: {fileID: 3535207490820141583}
   - component: {fileID: 5689905761498637468}
+  - component: {fileID: 7742894548011823556}
   m_Layer: 0
   m_Name: EmperorChefren
   m_TagString: Enemy
@@ -106,7 +107,7 @@ MonoBehaviour:
   - {fileID: 4929068417347493381}
   animator: {fileID: 2448278949484427395}
   destroyParticles: {fileID: 5750636412268111920, guid: 5a3b3b77bbf61d5468325aef9d20a9d2, type: 3}
-  bulletSpeed: 6
+  bulletSpeed: 10
   target: Ship
   isFirstGunUsed: 0
   isSecondGunUsed: 0
@@ -163,7 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pooledObjects: []
   prefab: {fileID: 4316347921073165664, guid: 8a3637c05c65df141a93363d4f15138e, type: 3}
-  type: PoisonBullet
+  type: bullet
 --- !u!114 &5689905761498637468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,8 +178,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooledObjects: []
-  prefab: {fileID: 0}
-  type: 
+  prefab: {fileID: 2528625802582895777, guid: 17d8ecac68372f944b9bcf154a874981, type: 3}
+  type: poisonWallParticle
+--- !u!114 &7742894548011823556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2448278949484427416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ab626b24757ddf4c9a2f979031c523f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  prefab: {fileID: 4256817705930021208, guid: e80c2875310844c4e8e36494bf84a1cc, type: 3}
+  type: pillar
 --- !u!1 &2448278950008152016
 GameObject:
   m_ObjectHideFlags: 0
