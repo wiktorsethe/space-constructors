@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 3535207490820141583}
   - component: {fileID: 5689905761498637468}
   - component: {fileID: 7742894548011823556}
+  - component: {fileID: 285821912043512854}
+  - component: {fileID: 8584752577428891968}
   m_Layer: 0
   m_Name: EmperorChefren
   m_TagString: Enemy
@@ -195,6 +197,36 @@ MonoBehaviour:
   pooledObjects: []
   prefab: {fileID: 4256817705930021208, guid: e80c2875310844c4e8e36494bf84a1cc, type: 3}
   type: pillar
+--- !u!114 &285821912043512854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2448278949484427416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ab626b24757ddf4c9a2f979031c523f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  prefab: {fileID: 7865696556722488135, guid: a9f1b9c626b61854cae1e5b0214bfbf9, type: 3}
+  type: flameParticle
+--- !u!114 &8584752577428891968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2448278949484427416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ab626b24757ddf4c9a2f979031c523f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  prefab: {fileID: 8196710097868671365, guid: 3218894ae1527da488d6aa48a8fda925, type: 3}
+  type: poisonParticle
 --- !u!1 &2448278950008152016
 GameObject:
   m_ObjectHideFlags: 0
