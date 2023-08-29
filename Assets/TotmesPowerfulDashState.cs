@@ -6,29 +6,39 @@ public class TotmesPowerfulDashState : StateMachineBehaviour
 {
     [SerializeField] private PlayerStats playerStats;
     Vector2 dashPos;
+    private bool isAdded = false;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        isAdded = false;
         dashPos = animator.GetComponent<TotmesPowerful>().GetRandomPointInCameraView();
 
-        Color initialColor = animator.GetComponentInChildren<SpriteRenderer>().color;
-        Color targetColor = new Color(initialColor.r, initialColor.g, initialColor.b, 0.2f);
-        animator.GetComponentInChildren<SpriteRenderer>().DOColor(targetColor, 1f);
+        SpriteRenderer[] sprites = animator.GetComponentsInChildren<SpriteRenderer>();
+        foreach(SpriteRenderer sprite in sprites)
+        {
+            Color initialColor = sprite.color;
+            Color targetColor = new Color(initialColor.r, initialColor.g, initialColor.b, 0.2f);
+            sprite.DOColor(targetColor, 1f);
+        }
         animator.GetComponent<Collider2D>().enabled = false;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        animator.GetComponent<TotmesPowerful>().ChangeRotation();
+
         if (Vector2.Distance(animator.transform.position, dashPos) > 0.05f)
         {
             //Vector3 vectorToTarget = ship.transform.position - animator.transform.position;
             //animator.transform.Find("EnemyShipImage").transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget);
-            animator.transform.position = Vector2.MoveTowards(animator.transform.position, dashPos, playerStats.shipSpeedValue * 2f * Time.deltaTime);
+            animator.transform.position = Vector2.MoveTowards(animator.transform.position, dashPos, 60f * Time.deltaTime);
         }
-        else if (Vector2.Distance(animator.transform.position, dashPos) <= 0.05f)
+        else if (Vector2.Distance(animator.transform.position, dashPos) <= 0.05f && !isAdded)
         {
-            //animator.SetTrigger("");
+            isAdded = true;
+            PlayerPrefs.SetInt("AmountOfDash", PlayerPrefs.GetInt("AmountOfDash") + 1);
+            animator.SetTrigger("DashAttack");
         }
     }
 

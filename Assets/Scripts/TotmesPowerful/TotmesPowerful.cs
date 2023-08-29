@@ -49,7 +49,10 @@ public class TotmesPowerful : MonoBehaviour
     private bool isPoisonStarted = false;
     private GameObject flameParticle;
     private GameObject poisonParticle;
+    private GameObject flameThrowerParticle;
     private bool arePillarsEnabled = false;
+    public Vector2 currentCorner;
+    public Vector2 nextCorner;
     private void Start()
     {
         expBar = GameObject.FindObjectOfType(typeof(ExpBar)) as ExpBar;
@@ -272,6 +275,10 @@ public class TotmesPowerful : MonoBehaviour
         Vector3 vectorToTarget = ship.transform.position - animator.transform.position;
         animator.transform.Find("BossMain").transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget);
     }
+    public void ChangeRotBorder(Quaternion rot)
+    {
+        animator.transform.Find("BossMain").transform.rotation = Quaternion.Slerp(animator.transform.Find("BossMain").transform.rotation, rot, 5f * Time.deltaTime);
+    }
     public GameObject FindClosestObject()
     {
         GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag("Ship");
@@ -295,24 +302,6 @@ public class TotmesPowerful : MonoBehaviour
 
         return closestObject;
     }
-    public void Attack2(int amount)
-    {
-        camShake.ShakeCamera(0.4f, 1f, 4);
-        for (int i = 0; i < amount; i++)
-        {
-            Vector3 randomPoint = GetRandomPointInCameraView();
-            foreach (ObjectPool script in objPools)
-            {
-                if (script.type == "poisonWallParticle")
-                {
-                    // to trzeba dokoñczyæ
-                    GameObject poisonWall = script.GetPooledObject();
-                    poisonWall.SetActive(true);
-                    poisonWall.transform.position = randomPoint;
-                }
-            }
-        }
-    }
     public Vector3 GetRandomPointInCameraView()
     {
         Rect cameraBounds = GetCameraBounds(mainCam);
@@ -321,6 +310,70 @@ public class TotmesPowerful : MonoBehaviour
         float randomY = Random.Range(cameraBounds.yMin, cameraBounds.yMax);
 
         Vector3 randomPoint = new Vector3(randomX, randomY, 0f);
+
+        return randomPoint;
+    }
+    public Vector3 GetNextCorner(int prevBorder)
+    {
+        Vector3 randomPoint = Vector3.zero;
+
+        // Get camera information
+        float cameraHeight = 2f * mainCam.orthographicSize;
+        float cameraWidth = cameraHeight * mainCam.aspect;
+
+        // Calculate random point on the border
+        switch (prevBorder)
+        {
+            case 0: // Top-left corner
+                randomPoint = new Vector3(cameraWidth * 0.45f, cameraHeight * 0.4f, 0);
+                break;
+            case 1: // Top-right corner
+                randomPoint = new Vector3(-cameraWidth * 0.45f, cameraHeight * 0.4f, 0);
+                break;
+            case 2: // Bottom-left corner
+                randomPoint = new Vector3(cameraWidth * 0.45f, -cameraHeight * 0.4f, 0);
+                break;
+            case 3: // Bottom-right corner
+                randomPoint = new Vector3(-cameraWidth * 0.45f, -cameraHeight * 0.4f, 0);
+                break;
+        }
+
+        // Convert to world space
+        randomPoint = mainCam.transform.position + mainCam.transform.TransformVector(randomPoint);
+
+        return randomPoint;
+    }
+    public Vector3 GetRandomPointOnBorder(int randomBorder)
+    {
+        Vector3 randomPoint = Vector3.zero;
+
+        // Get camera information
+        float cameraHeight = 2f * mainCam.orthographicSize;
+        float cameraWidth = cameraHeight * mainCam.aspect;
+
+        // Calculate random point on the border
+        switch (randomBorder)
+        {
+            case 0: // Top-left corner
+                randomPoint = new Vector3(-cameraWidth * 0.45f, cameraHeight * 0.4f, 0);
+                nextCorner = GetNextCorner(0);
+                break;
+            case 1: // Top-right corner
+                randomPoint = new Vector3(cameraWidth * 0.45f, cameraHeight * 0.4f, 0);
+                nextCorner = GetNextCorner(1);
+                break;
+            case 2: // Bottom-left corner
+                randomPoint = new Vector3(-cameraWidth * 0.45f, -cameraHeight * 0.4f, 0);
+                nextCorner = GetNextCorner(2);
+                break;
+            case 3: // Bottom-right corner
+                randomPoint = new Vector3(cameraWidth * 0.45f, -cameraHeight * 0.4f, 0);
+                nextCorner = GetNextCorner(3);
+                break;
+        }
+
+        // Convert to world space
+        randomPoint = mainCam.transform.position + mainCam.transform.TransformVector(randomPoint);
 
         return randomPoint;
     }
@@ -349,5 +402,24 @@ public class TotmesPowerful : MonoBehaviour
             }
         }
     }
-
+    public void FlameThrower()
+    {
+        foreach (ObjectPool script in objPools)
+        {
+            if (script.type == "flameThrowerParticle")
+            {
+                flameThrowerParticle = script.GetPooledObject(); //tu cos nie gra
+                flameThrowerParticle.transform.parent = transform.Find("BossMain").transform;
+                ParticleSystem.MainModule main = flameThrowerParticle.GetComponent<ParticleSystem>().main;
+                main.loop = true;
+                float cameraHeight = mainCam.orthographicSize * 0.2f;
+                float cameraWidth = cameraHeight * mainCam.aspect;
+                main.startLifetime = cameraWidth / 2;
+                main.duration = cameraWidth;
+                flameThrowerParticle.SetActive(true);
+                flameThrowerParticle.transform.position = transform.position;
+                flameThrowerParticle.transform.rotation = transform.Find("BossMain").transform.rotation;
+            }
+        }
+    }
 }
