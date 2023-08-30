@@ -2,38 +2,53 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TotmesPowerfulStartState : StateMachineBehaviour
+public class MadMenesAttackState : StateMachineBehaviour
 {
-    private int randInt;
+    private float timer = 0f;
+    private float shootTimer = 0f;
+    private float minTimer = 10f;
+    private float maxTimer = 17f;
+    private float currentTimerStomp;
+    private GameObject ship;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        randInt = Random.Range(0, 10);
+        timer = 0f;
+        shootTimer = 0f;
+        currentTimerStomp = Random.Range(minTimer, maxTimer);
+        ship = animator.GetComponent<MadMenes>().FindClosestObject();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (randInt >= 0 && randInt < 5)
+        timer += Time.deltaTime;
+        shootTimer += Time.deltaTime;
+        animator.GetComponent<MadMenes>().ChangeRotation();
+
+        if (shootTimer >= 4f)
         {
-            animator.SetTrigger("Attack1");
+            animator.GetComponent<MadMenes>().FireBullet(0);
+            animator.GetComponent<MadMenes>().FireBullet(1);
+            shootTimer = 0f;
         }
-        else if (randInt >= 5 && randInt < 7)
+
+        if (Vector2.Distance(animator.transform.position, ship.transform.position) > 10f)
         {
-            animator.SetTrigger("Dash");
-            PlayerPrefs.SetInt("AmountOfDash", 0);
+            animator.transform.position = Vector2.MoveTowards(animator.transform.position, ship.transform.position, 4f * Time.deltaTime);
         }
-        else if(randInt >=7)
+
+        if (timer >= currentTimerStomp)
         {
-            animator.SetTrigger("SpecialPos");
+            animator.SetTrigger("Start");
         }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-
-    }
+    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //    
+    //}
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

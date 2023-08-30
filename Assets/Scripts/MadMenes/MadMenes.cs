@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
-public class TotmesPowerful : MonoBehaviour
+public class MadMenes : MonoBehaviour
 {
     [Header("Other Scripts")]
     public PlayerStats playerStats;
@@ -51,7 +51,8 @@ public class TotmesPowerful : MonoBehaviour
     private GameObject flameParticle;
     private GameObject poisonParticle;
     private GameObject flameThrowerParticle;
-    private bool arePillarsEnabled = false;
+    private GameObject[] phantomMinions;
+    private bool areMinionsEnabled = false;
     public Vector2 nextCorner;
     private void Start()
     {
@@ -111,12 +112,12 @@ public class TotmesPowerful : MonoBehaviour
             animator.SetTrigger("Totems");
         }
 
-        if (isHalfDeath && arePillarsEnabled)
+        if (isHalfDeath && areMinionsEnabled)
         {
             GameObject[] pillars = GameObject.FindGameObjectsWithTag("Pillar");
             if (pillars.Length == 0)
             {
-                arePillarsEnabled = false;
+                areMinionsEnabled = false;
             }
         }
 
@@ -150,7 +151,7 @@ public class TotmesPowerful : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!arePillarsEnabled)
+        if (!areMinionsEnabled)
         {
             if (collision.GetComponent<ShootingBullet>().type == "NormalBullet")
             {
@@ -394,7 +395,7 @@ public class TotmesPowerful : MonoBehaviour
         {
             if (script.type == "fireTotemParticle")
             {
-                for(int i=0; i<2; i++)
+                for (int i = 0; i < 2; i++)
                 {
                     GameObject fireTotem = script.GetPooledObject();
                     fireTotem.SetActive(true);
@@ -432,5 +433,98 @@ public class TotmesPowerful : MonoBehaviour
     {
         Bounds parentBounds = camSize.CalculateParentBounds();
         return parentBounds.size.x;
+    }
+    public void SpawnPhantoms()
+    {
+        areMinionsEnabled = true;
+        foreach (ObjectPool script in objPools)
+        {
+            if (script.type == "phantomMinion")
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    GameObject phantom = script.GetPooledObject();
+                    if (i == 0)
+                    {
+                        phantom.transform.position = GetLeftUpPointInCameraView(phantom);
+                    }
+                    else if (i == 1)
+                    {
+                        phantom.transform.position = GetRightUpPointInCameraView(phantom);
+                    }
+                    else if (i == 2)
+                    {
+                        phantom.transform.position = GetLeftDownPointInCameraView(phantom);
+                    }
+                    else if (i == 3)
+                    {
+                        phantom.transform.position = GetRightDownPointInCameraView(phantom);
+                    }
+                    phantom.SetActive(true);
+                }
+            }
+        }
+    }
+    Vector3 GetLeftUpPointInCameraView(GameObject pillarObject)
+    {
+        Rect cameraBounds = GetCameraBounds(Camera.main);
+        Vector3 filarSize = pillarObject.GetComponent<Renderer>().bounds.size;
+
+        float x = cameraBounds.xMin + filarSize.x + 5f;
+        float y = cameraBounds.yMax - filarSize.y - 3f;
+
+        Vector3 point = new Vector3(x, y, 0f);
+
+        return point;
+    }
+    Vector3 GetRightUpPointInCameraView(GameObject pillarObject)
+    {
+        Rect cameraBounds = GetCameraBounds(Camera.main);
+        Vector3 filarSize = pillarObject.GetComponent<Renderer>().bounds.size;
+
+        float x = cameraBounds.xMax - filarSize.x - 5f;
+        float y = cameraBounds.yMax - filarSize.y - 3f;
+
+        Vector3 point = new Vector3(x, y, 0f);
+
+        return point;
+    }
+    Vector3 GetLeftDownPointInCameraView(GameObject pillarObject)
+    {
+        Rect cameraBounds = GetCameraBounds(Camera.main);
+        Vector3 filarSize = pillarObject.GetComponent<Renderer>().bounds.size;
+
+        float x = cameraBounds.xMin + filarSize.x + 5f;
+        float y = cameraBounds.yMin + filarSize.y + 3f;
+
+        Vector3 point = new Vector3(x, y, 0f);
+
+        return point;
+    }
+    Vector3 GetRightDownPointInCameraView(GameObject pillarObject)
+    {
+        Rect cameraBounds = GetCameraBounds(Camera.main);
+        Vector3 filarSize = pillarObject.GetComponent<Renderer>().bounds.size;
+
+        float x = cameraBounds.xMax - filarSize.x - 5f;
+        float y = cameraBounds.yMin + filarSize.y + 3f;
+
+        Vector3 point = new Vector3(x, y, 0f);
+
+        return point;
+    }
+    public void DespawnPhantoms()
+    {
+        areMinionsEnabled = false;
+        foreach (ObjectPool script in objPools)
+        {
+            if (script.type == "phantomMinion")
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    script.pooledObjects[i].SetActive(false);
+                }
+            }
+        }
     }
 }

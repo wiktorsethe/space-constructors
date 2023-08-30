@@ -6254,7 +6254,7 @@ MonoBehaviour:
   mainCamera: {fileID: 519420031}
   playerStats: {fileID: 11400000, guid: 284895b3224468a48aa2a763a688b966, type: 2}
   menu: {fileID: 0}
-  bossPrefab: {fileID: 6820920711509912107, guid: 97f0de97c06699e4e9437af012dd9d7e, type: 3}
+  bossPrefab: {fileID: 8921894731027102837, guid: 4b648158368460e48a1b1a4c0839d329, type: 3}
   camSize: {fileID: 0}
   camFollow: {fileID: 0}
   bounds: {fileID: 0}

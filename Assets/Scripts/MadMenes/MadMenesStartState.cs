@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TotmesPowerfulStartState : StateMachineBehaviour
+public class MadMenesStartState : StateMachineBehaviour
 {
     private int randInt;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        randInt = Random.Range(0, 10);
+        randInt = Random.Range(5, 7);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -16,24 +16,23 @@ public class TotmesPowerfulStartState : StateMachineBehaviour
     {
         if (randInt >= 0 && randInt < 5)
         {
-            animator.SetTrigger("Attack1");
+            animator.SetTrigger("Attack");
         }
         else if (randInt >= 5 && randInt < 7)
         {
-            animator.SetTrigger("Dash");
-            PlayerPrefs.SetInt("AmountOfDash", 0);
+            animator.SetTrigger("PhantomStart");
         }
-        else if(randInt >=7)
+        else if (randInt >= 7)
         {
             animator.SetTrigger("SpecialPos");
         }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-
-    }
+    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //    
+    //}
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
