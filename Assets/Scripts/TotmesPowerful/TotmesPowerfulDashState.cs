@@ -7,11 +7,11 @@ public class TotmesPowerfulDashState : StateMachineBehaviour
     [SerializeField] private PlayerStats playerStats;
     Vector2 dashPos;
     private bool isAdded = false;
+    private float playerSize;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         isAdded = false;
-        dashPos = animator.GetComponent<TotmesPowerful>().GetRandomPointInCameraView();
 
         SpriteRenderer[] sprites = animator.GetComponentsInChildren<SpriteRenderer>();
         foreach(SpriteRenderer sprite in sprites)
@@ -21,6 +21,13 @@ public class TotmesPowerfulDashState : StateMachineBehaviour
             sprite.DOColor(targetColor, 1f);
         }
         animator.GetComponent<Collider2D>().enabled = false;
+
+        playerSize = animator.GetComponent<TotmesPowerful>().ObjectSize();
+        dashPos = animator.GetComponent<TotmesPowerful>().GetRandomPointInCameraView();
+        while (Vector2.Distance(animator.transform.position, dashPos) < playerSize)
+        {
+            dashPos = animator.GetComponent<TotmesPowerful>().GetRandomPointInCameraView();
+        }
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

@@ -21,11 +21,11 @@ public class FlameThrower : MonoBehaviour
         // Update the collider size each frame
         ResizeCollider();
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.tag == "Ship")
+        if (collision.tag == "Ship")
         {
-            hpBar.SetHealth(1f);
+            hpBar.SetHealth(0.5f);
         }
     }
     private void ResizeCollider()

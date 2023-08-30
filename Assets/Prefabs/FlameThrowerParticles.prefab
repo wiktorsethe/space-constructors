@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2195583728157688067}
   - component: {fileID: 3576431484559242071}
   - component: {fileID: 434930507529171796}
-  - component: {fileID: 8847993310321830417}
   m_Layer: 0
   m_Name: FlameThrowerParticles
   m_TagString: FlameThrower
@@ -4815,20 +4814,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &8847993310321830417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3340080685340277693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cea14f5df6dcef849bacd316bd3c38b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particles: {fileID: 3576431484559242071}
-  colliderToResize: {fileID: 3820700792079876815}
 --- !u!1 &7583056791986668944
 GameObject:
   m_ObjectHideFlags: 0
@@ -4839,7 +4824,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7017218438778488098}
   - component: {fileID: 3820700792079876815}
-  - component: {fileID: 8444543988110823938}
+  - component: {fileID: 365514201991258227}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -4888,24 +4873,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!50 &8444543988110823938
-Rigidbody2D:
-  serializedVersion: 4
+--- !u!114 &365514201991258227
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7583056791986668944}
-  m_BodyType: 0
-  m_Simulated: 0
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cea14f5df6dcef849bacd316bd3c38b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particles: {fileID: 3576431484559242071}
+  colliderToResize: {fileID: 3820700792079876815}

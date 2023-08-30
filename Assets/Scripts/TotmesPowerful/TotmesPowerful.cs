@@ -12,6 +12,7 @@ public class TotmesPowerful : MonoBehaviour
     private GameManager gameManager;
     private ObjectPool[] objPools;
     private CameraShake camShake;
+    private CameraSize camSize;
     [Space(20f)]
 
     [Header("Health System")]
@@ -58,6 +59,7 @@ public class TotmesPowerful : MonoBehaviour
         expBar = GameObject.FindObjectOfType(typeof(ExpBar)) as ExpBar;
         gameManager = GameObject.FindObjectOfType(typeof(GameManager)) as GameManager;
         camShake = GameObject.FindObjectOfType(typeof(CameraShake)) as CameraShake;
+        camSize = GameObject.FindObjectOfType(typeof(CameraSize)) as CameraSize;
         healthBarCanvas = GameObject.Find("BossHPBar");
         objPools = GetComponents<ObjectPool>();
         healthBar = GameObject.Find("BossHPBar").GetComponent<Slider>();
@@ -421,5 +423,15 @@ public class TotmesPowerful : MonoBehaviour
                 flameThrowerParticle.transform.rotation = transform.Find("BossMain").transform.rotation;
             }
         }
+    }
+    public void FlameThrowerEnd()
+    {
+        flameThrowerParticle.SetActive(false);
+    }
+
+    public float ObjectSize()
+    {
+        Bounds parentBounds = camSize.CalculateParentBounds();
+        return parentBounds.size.x;
     }
 }

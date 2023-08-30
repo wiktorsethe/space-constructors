@@ -182,5 +182,4 @@ public class ShipManager : MonoBehaviour
             gravityWarningText.DOFade(0f, 1f).OnComplete(() => { animate = false; });
         });
     }
-
 }

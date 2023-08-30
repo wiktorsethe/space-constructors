@@ -8,22 +8,22 @@ public class TotmesPowerfulStartState : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        randInt = Random.Range(2, 3);
+        randInt = Random.Range(7, 10);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (randInt == 0)
+        if (randInt >= 0 && randInt < 5)
         {
             animator.SetTrigger("Attack1");
         }
-        else if (randInt == 1)
+        else if (randInt >= 5 && randInt < 7)
         {
             animator.SetTrigger("Dash");
             PlayerPrefs.SetInt("AmountOfDash", 0);
         }
-        else if(randInt == 2)
+        else if(randInt >=7)
         {
             animator.SetTrigger("SpecialPos");
         }

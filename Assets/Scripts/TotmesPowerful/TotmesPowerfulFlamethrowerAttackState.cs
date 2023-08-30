@@ -5,19 +5,33 @@ using UnityEngine;
 public class TotmesPowerfulFlamethrowerAttackState : StateMachineBehaviour
 {
     Vector2 newPos;
+    private float timer = 0f;
+    private float playerSize;
+    public PlayerStats playerStats;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        timer = 0f;
         newPos = animator.GetComponent<TotmesPowerful>().nextCorner;
         animator.GetComponent<TotmesPowerful>().FlameThrower();
+        playerSize = animator.GetComponent<TotmesPowerful>().ObjectSize();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if(Vector2.Distance(animator.transform.position, newPos) > 10f)
+        timer += Time.deltaTime;
+        if(timer >= 4f)
         {
-            animator.transform.position = Vector2.MoveTowards(animator.transform.position, newPos, 5f * Time.deltaTime);
+            if (Vector2.Distance(animator.transform.position, newPos) > playerSize * 1.1f)
+            {
+                animator.transform.position = Vector2.MoveTowards(animator.transform.position, newPos, (playerStats.shipSpeedValue * 1.5f) * Time.deltaTime);
+            }
+            else
+            {
+                animator.GetComponent<TotmesPowerful>().FlameThrowerEnd();
+                animator.SetTrigger("Start");
+            }
         }
     }
 
