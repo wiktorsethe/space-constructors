@@ -145,4 +145,5 @@ public class HpBar : MonoBehaviour
             elapsedTime += 0.5f;
         }
     }
+
 }
