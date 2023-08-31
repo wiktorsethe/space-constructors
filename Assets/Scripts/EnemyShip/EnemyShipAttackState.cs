@@ -16,7 +16,7 @@ public class EnemyShipAttackState : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.GetComponent<EmperorChefren>().ChangeRotation();
+        animator.GetComponent<EnemyShip>().ChangeRotation();
         timer += Time.deltaTime;
         if (Vector2.Distance(animator.transform.position, ship.transform.position) > 10f)
         {

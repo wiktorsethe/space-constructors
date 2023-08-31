@@ -61,4 +61,8 @@ public class MadMenesPhantomMinion : MonoBehaviour
 
         return closestObject;
     }
+    public void Despawn()
+    {
+        animator.SetTrigger("End");
+    }
 }

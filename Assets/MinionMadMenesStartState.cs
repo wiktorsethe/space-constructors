@@ -1,28 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
-public class MadMenesPhantomEndState : StateMachineBehaviour
+
+public class MinionMadMenesStartState : StateMachineBehaviour
 {
+    private GameObject ship;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        SpriteRenderer[] sprites = animator.GetComponentsInChildren<SpriteRenderer>();
-        foreach (SpriteRenderer sprite in sprites)
-        {
-            Color initialColor = sprite.color;
-            Color targetColor = new Color(initialColor.r, initialColor.g, initialColor.b, 1f);
-            sprite.DOColor(targetColor, 1f);
-        }
-        animator.GetComponent<Collider2D>().enabled = true;
-        animator.GetComponent<MadMenes>().DespawnPhantoms();
-        PlayerPrefs.DeleteKey("PhantomAttack");
+        ship = animator.GetComponent<MadMenesMinion>().FindClosestObject();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
+        if (Vector2.Distance(animator.transform.position, ship.transform.position) > 10f)
+        {
+            animator.transform.position = Vector2.MoveTowards(animator.transform.position, ship.transform.position, 2f * Time.deltaTime);
+        }
+        else if (Vector2.Distance(animator.transform.position, ship.transform.position) <= 10f)
+        {
+            animator.SetTrigger("Attack");
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

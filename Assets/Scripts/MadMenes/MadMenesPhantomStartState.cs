@@ -24,6 +24,7 @@ public class MadMenesPhantomStartState : StateMachineBehaviour
             sprite.DOColor(targetColor, 1f);
         }
         animator.GetComponent<Collider2D>().enabled = false;
+        PlayerPrefs.SetString("PhantomAttack", "true");
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -38,7 +39,7 @@ public class MadMenesPhantomStartState : StateMachineBehaviour
 
         if(timer >= timerStomp)
         {
-            animator.SetTrigger("End");
+            animator.SetTrigger("PhantomEnd");
         }
     }
 

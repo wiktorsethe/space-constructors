@@ -8,7 +8,21 @@ public class MadMenesStartState : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        randInt = Random.Range(5, 7);
+        if (PlayerPrefs.HasKey("HealingPillar"))
+        {
+            if (PlayerPrefs.HasKey("Minions"))
+            {
+                randInt = Random.Range(0, 5);
+            }
+            else
+            {
+                randInt = Random.Range(0, 8);
+            }
+        }
+        else
+        {
+            randInt = Random.Range(0, 10);
+        }
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -18,13 +32,13 @@ public class MadMenesStartState : StateMachineBehaviour
         {
             animator.SetTrigger("Attack");
         }
-        else if (randInt >= 5 && randInt < 7)
+        else if (randInt >= 5 && randInt < 8)
+        {
+            animator.SetTrigger("Minions");
+        }
+        else if (randInt >= 8)
         {
             animator.SetTrigger("PhantomStart");
-        }
-        else if (randInt >= 7)
-        {
-            animator.SetTrigger("SpecialPos");
         }
     }
 

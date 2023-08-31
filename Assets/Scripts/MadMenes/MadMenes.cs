@@ -11,7 +11,6 @@ public class MadMenes : MonoBehaviour
     private ExpBar expBar;
     private GameManager gameManager;
     private ObjectPool[] objPools;
-    private CameraShake camShake;
     private CameraSize camSize;
     [Space(20f)]
 
@@ -21,7 +20,7 @@ public class MadMenes : MonoBehaviour
     [SerializeField] private Gradient healthGradient;
     [SerializeField] private Image fillBar;
     [SerializeField] private int maxHealth;
-    private int currentHealth;
+    public int currentHealth;
     [Space(20f)]
 
     [Header("Other GameObjects")]
@@ -46,19 +45,18 @@ public class MadMenes : MonoBehaviour
     private bool isStartingPosSaved = false;
     private bool isDeath = false;
     private bool isHalfDeath = false;
+    private bool isMinionsSpawned = false;
     private bool isFlameStarted = false;
     private bool isPoisonStarted = false;
     private GameObject flameParticle;
     private GameObject poisonParticle;
-    private GameObject flameThrowerParticle;
-    private GameObject[] phantomMinions;
-    private bool areMinionsEnabled = false;
+    private GameObject pillar;
+    private GameObject[] minions;
     public Vector2 nextCorner;
     private void Start()
     {
         expBar = GameObject.FindObjectOfType(typeof(ExpBar)) as ExpBar;
         gameManager = GameObject.FindObjectOfType(typeof(GameManager)) as GameManager;
-        camShake = GameObject.FindObjectOfType(typeof(CameraShake)) as CameraShake;
         camSize = GameObject.FindObjectOfType(typeof(CameraSize)) as CameraSize;
         healthBarCanvas = GameObject.Find("BossHPBar");
         objPools = GetComponents<ObjectPool>();
@@ -106,19 +104,10 @@ public class MadMenes : MonoBehaviour
             }
         }
 
-        if (currentHealth <= maxHealth * 0.5f && !isHalfDeath)
+        if (currentHealth <= maxHealth * 0.5f && !isHalfDeath && !PlayerPrefs.HasKey("PhantomAttack"))
         {
             isHalfDeath = true;
-            animator.SetTrigger("Totems");
-        }
-
-        if (isHalfDeath && areMinionsEnabled)
-        {
-            GameObject[] pillars = GameObject.FindGameObjectsWithTag("Pillar");
-            if (pillars.Length == 0)
-            {
-                areMinionsEnabled = false;
-            }
+            animator.SetTrigger("Pillar");
         }
 
         if (flameParticle != null)
@@ -138,6 +127,11 @@ public class MadMenes : MonoBehaviour
                 poisonParticle.SetActive(false);
             }
         }
+        if(minions.Length == 0 && isMinionsSpawned)
+        {
+            PlayerPrefs.DeleteKey("Minions");
+            isMinionsSpawned = false;
+        }
     }
     public void SetMaxHealth(int health)
     {
@@ -151,27 +145,17 @@ public class MadMenes : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!areMinionsEnabled)
+        if (collision.GetComponent<ShootingBullet>().type == "NormalBullet")
         {
-            if (collision.GetComponent<ShootingBullet>().type == "NormalBullet")
-            {
-                CollisionDetected((int)collision.GetComponent<ShootingBullet>().damage);
-            }
-            if (collision.GetComponent<ShootingBullet>().type == "PoisonBullet")
-            {
-                StartPoison();
-            }
-            if (collision.GetComponent<ShootingBullet>().type == "FlameBullet")
-            {
-                StartFlame();
-            }
+            CollisionDetected((int)collision.GetComponent<ShootingBullet>().damage);
         }
-        else
+        if (collision.GetComponent<ShootingBullet>().type == "PoisonBullet")
         {
-            if (damageTextPrefab)
-            {
-                ShowDamageText(0);
-            }
+            StartPoison();
+        }
+        if (collision.GetComponent<ShootingBullet>().type == "FlameBullet")
+        {
+            StartFlame();
         }
     }
     private void ShowDamageText(int amount)
@@ -277,10 +261,6 @@ public class MadMenes : MonoBehaviour
         Vector3 vectorToTarget = ship.transform.position - animator.transform.position;
         animator.transform.Find("BossMain").transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget);
     }
-    public void ChangeRotBorder(Quaternion rot)
-    {
-        animator.transform.Find("BossMain").transform.rotation = Quaternion.Slerp(animator.transform.Find("BossMain").transform.rotation, rot, 5f * Time.deltaTime);
-    }
     public GameObject FindClosestObject()
     {
         GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag("Ship");
@@ -315,70 +295,6 @@ public class MadMenes : MonoBehaviour
 
         return randomPoint;
     }
-    public Vector3 GetNextCorner(int prevBorder)
-    {
-        Vector3 randomPoint = Vector3.zero;
-
-        // Get camera information
-        float cameraHeight = 2f * mainCam.orthographicSize;
-        float cameraWidth = cameraHeight * mainCam.aspect;
-
-        // Calculate random point on the border
-        switch (prevBorder)
-        {
-            case 0: // Top-left corner
-                randomPoint = new Vector3(cameraWidth * 0.45f, cameraHeight * 0.4f, 0);
-                break;
-            case 1: // Top-right corner
-                randomPoint = new Vector3(-cameraWidth * 0.45f, cameraHeight * 0.4f, 0);
-                break;
-            case 2: // Bottom-left corner
-                randomPoint = new Vector3(cameraWidth * 0.45f, -cameraHeight * 0.4f, 0);
-                break;
-            case 3: // Bottom-right corner
-                randomPoint = new Vector3(-cameraWidth * 0.45f, -cameraHeight * 0.4f, 0);
-                break;
-        }
-
-        // Convert to world space
-        randomPoint = mainCam.transform.position + mainCam.transform.TransformVector(randomPoint);
-
-        return randomPoint;
-    }
-    public Vector3 GetRandomPointOnBorder(int randomBorder)
-    {
-        Vector3 randomPoint = Vector3.zero;
-
-        // Get camera information
-        float cameraHeight = 2f * mainCam.orthographicSize;
-        float cameraWidth = cameraHeight * mainCam.aspect;
-
-        // Calculate random point on the border
-        switch (randomBorder)
-        {
-            case 0: // Top-left corner
-                randomPoint = new Vector3(-cameraWidth * 0.45f, cameraHeight * 0.4f, 0);
-                nextCorner = GetNextCorner(0);
-                break;
-            case 1: // Top-right corner
-                randomPoint = new Vector3(cameraWidth * 0.45f, cameraHeight * 0.4f, 0);
-                nextCorner = GetNextCorner(1);
-                break;
-            case 2: // Bottom-left corner
-                randomPoint = new Vector3(-cameraWidth * 0.45f, -cameraHeight * 0.4f, 0);
-                nextCorner = GetNextCorner(2);
-                break;
-            case 3: // Bottom-right corner
-                randomPoint = new Vector3(cameraWidth * 0.45f, -cameraHeight * 0.4f, 0);
-                nextCorner = GetNextCorner(3);
-                break;
-        }
-
-        // Convert to world space
-        randomPoint = mainCam.transform.position + mainCam.transform.TransformVector(randomPoint);
-
-        return randomPoint;
-    }
 
     Rect GetCameraBounds(Camera camera)
     {
@@ -389,54 +305,8 @@ public class MadMenes : MonoBehaviour
 
         return bounds;
     }
-    public void SpawnFireTotems()
-    {
-        foreach (ObjectPool script in objPools)
-        {
-            if (script.type == "fireTotemParticle")
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    GameObject fireTotem = script.GetPooledObject();
-                    fireTotem.SetActive(true);
-                    fireTotem.transform.position = GetRandomPointInCameraView();
-                }
-            }
-        }
-    }
-    public void FlameThrower()
-    {
-        foreach (ObjectPool script in objPools)
-        {
-            if (script.type == "flameThrowerParticle")
-            {
-                flameThrowerParticle = script.GetPooledObject(); //tu cos nie gra
-                flameThrowerParticle.transform.parent = transform.Find("BossMain").transform;
-                ParticleSystem.MainModule main = flameThrowerParticle.GetComponent<ParticleSystem>().main;
-                main.loop = true;
-                float cameraHeight = mainCam.orthographicSize * 0.2f;
-                float cameraWidth = cameraHeight * mainCam.aspect;
-                main.startLifetime = cameraWidth / 2;
-                main.duration = cameraWidth;
-                flameThrowerParticle.SetActive(true);
-                flameThrowerParticle.transform.position = transform.position;
-                flameThrowerParticle.transform.rotation = transform.Find("BossMain").transform.rotation;
-            }
-        }
-    }
-    public void FlameThrowerEnd()
-    {
-        flameThrowerParticle.SetActive(false);
-    }
-
-    public float ObjectSize()
-    {
-        Bounds parentBounds = camSize.CalculateParentBounds();
-        return parentBounds.size.x;
-    }
     public void SpawnPhantoms()
     {
-        areMinionsEnabled = true;
         foreach (ObjectPool script in objPools)
         {
             if (script.type == "phantomMinion")
@@ -515,15 +385,42 @@ public class MadMenes : MonoBehaviour
     }
     public void DespawnPhantoms()
     {
-        areMinionsEnabled = false;
         foreach (ObjectPool script in objPools)
         {
             if (script.type == "phantomMinion")
             {
                 for (int i = 0; i < 4; i++)
                 {
-                    script.pooledObjects[i].SetActive(false);
+                    script.pooledObjects[i].GetComponent<MadMenesPhantomMinion>().Despawn();
                 }
+            }
+        }
+    }
+    public void SpawnPillar()
+    {
+        foreach (ObjectPool script in objPools)
+        {
+            if (script.type == "pillar")
+            {
+                pillar = script.GetPooledObject();
+                pillar.transform.position = GetRandomPointInCameraView();
+                pillar.SetActive(true);
+            }
+        }
+    }
+    public void SpawnMinions()
+    {
+        foreach (ObjectPool script in objPools)
+        {
+            if (script.type == "minion")
+            {
+                for(int i=0; i<3; i++)
+                {
+                    minions[i] = script.GetPooledObject();
+                    minions[i].transform.position = GetRandomPointInCameraView();
+                    minions[i].SetActive(true);
+                }
+                isMinionsSpawned = true;
             }
         }
     }

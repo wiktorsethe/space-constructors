@@ -1,28 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
-public class MadMenesPhantomEndState : StateMachineBehaviour
+
+public class MadMenesHealingPillarStartState : StateMachineBehaviour
 {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        SpriteRenderer[] sprites = animator.GetComponentsInChildren<SpriteRenderer>();
-        foreach (SpriteRenderer sprite in sprites)
-        {
-            Color initialColor = sprite.color;
-            Color targetColor = new Color(initialColor.r, initialColor.g, initialColor.b, 1f);
-            sprite.DOColor(targetColor, 1f);
-        }
-        animator.GetComponent<Collider2D>().enabled = true;
-        animator.GetComponent<MadMenes>().DespawnPhantoms();
-        PlayerPrefs.DeleteKey("PhantomAttack");
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
+        animator.GetComponent<MadMenesHealingPillar>().ConnectBossToPillar();
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
