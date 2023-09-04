@@ -310,6 +310,8 @@ GameObject:
   - component: {fileID: 7322176964538573916}
   - component: {fileID: 7322176964538573915}
   - component: {fileID: 8460018392788184791}
+  - component: {fileID: 4223876437932836495}
+  - component: {fileID: 6061657912350515446}
   m_Layer: 0
   m_Name: LuciusMaximus
   m_TagString: Enemy
@@ -397,7 +399,6 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   fillBar: {fileID: 0}
   maxHealth: 18
-  bulletPrefab: {fileID: 5949201873329385209, guid: 7b5cda1cc44f8634ba51874c6d2af430, type: 3}
   damageTextPrefab: {fileID: 8062151463999637536, guid: b9d2f93f3a98b4d4b8a1be849730c94f, type: 3}
   firePoints:
   - {fileID: 6458330621074708463}
@@ -460,7 +461,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooledObjects: []
-  bulletPrefab: {fileID: 5949201873329385209, guid: 7b5cda1cc44f8634ba51874c6d2af430, type: 3}
+  prefab: {fileID: 5949201873329385209, guid: fcc211509cfc5ed4083bfec3ab4eca73, type: 3}
+  type: bullet
+--- !u!114 &4223876437932836495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322176964538573888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ab626b24757ddf4c9a2f979031c523f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  prefab: {fileID: 8196710097868671365, guid: 3218894ae1527da488d6aa48a8fda925, type: 3}
+  type: poisonParticle
+--- !u!114 &6061657912350515446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322176964538573888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ab626b24757ddf4c9a2f979031c523f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  prefab: {fileID: 7865696556722488135, guid: a9f1b9c626b61854cae1e5b0214bfbf9, type: 3}
+  type: flameParticle
 --- !u!1 &7322176966126600968
 GameObject:
   m_ObjectHideFlags: 0

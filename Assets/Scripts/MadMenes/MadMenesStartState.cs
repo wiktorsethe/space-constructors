@@ -21,7 +21,7 @@ public class MadMenesStartState : StateMachineBehaviour
         }
         else
         {
-            randInt = Random.Range(0, 10);
+            randInt = Random.Range(8, 10);
         }
     }
 

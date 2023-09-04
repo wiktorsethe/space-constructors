@@ -25,7 +25,7 @@ MonoBehaviour:
     bigGunAttackSpeedValue: 0
     shipSpeedValue: -2
     oreMiningBonus: 0
-  - image: {fileID: 21300000, guid: bb19d358101dac644a00ad597b5ad036, type: 3}
+  - image: {fileID: 21300000, guid: 53b4cb8dc2b9372498e884fd161a12f1, type: 3}
     description: You will get +4 ship speed but 3 damage less on normal gun
     normalGunDamageValue: -3
     laserGunDamageValue: 0
@@ -37,7 +37,7 @@ MonoBehaviour:
     bigGunAttackSpeedValue: 0
     shipSpeedValue: 4
     oreMiningBonus: 0
-  - image: {fileID: 21300000, guid: 9125c204f566db048a92ebcb64d9d14a, type: 3}
+  - image: {fileID: 21300000, guid: 30caea405ff066c47a9d7233f1a22227, type: 3}
     description: You will get 3 damage more for double gun
     normalGunDamageValue: 0
     laserGunDamageValue: 0
@@ -49,7 +49,7 @@ MonoBehaviour:
     bigGunAttackSpeedValue: 0
     shipSpeedValue: 0
     oreMiningBonus: 0
-  - image: {fileID: 21300000, guid: 9125c204f566db048a92ebcb64d9d14a, type: 3}
+  - image: {fileID: 21300000, guid: c23bfe3b59172494ea8e944d26e2cf7a, type: 3}
     description: 111
     normalGunDamageValue: 111
     laserGunDamageValue: 0
@@ -61,7 +61,7 @@ MonoBehaviour:
     bigGunAttackSpeedValue: 0
     shipSpeedValue: 0
     oreMiningBonus: 0
-  - image: {fileID: 21300000, guid: 9125c204f566db048a92ebcb64d9d14a, type: 3}
+  - image: {fileID: 21300000, guid: 47d279b609ebee34b97242d6e74dcfb0, type: 3}
     description: 222
     normalGunDamageValue: 333
     laserGunDamageValue: 0
@@ -73,7 +73,7 @@ MonoBehaviour:
     bigGunAttackSpeedValue: 0
     shipSpeedValue: 0
     oreMiningBonus: 0
-  - image: {fileID: 21300000, guid: 9125c204f566db048a92ebcb64d9d14a, type: 3}
+  - image: {fileID: 21300000, guid: 47d279b609ebee34b97242d6e74dcfb0, type: 3}
     description: 333
     normalGunDamageValue: 333
     laserGunDamageValue: 0

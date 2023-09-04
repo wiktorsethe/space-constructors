@@ -51,7 +51,7 @@ public class MadMenes : MonoBehaviour
     private GameObject flameParticle;
     private GameObject poisonParticle;
     private GameObject pillar;
-    private GameObject[] minions;
+    private List<GameObject> minions = new List<GameObject>();
     public Vector2 nextCorner;
     private void Start()
     {
@@ -127,7 +127,8 @@ public class MadMenes : MonoBehaviour
                 poisonParticle.SetActive(false);
             }
         }
-        if(minions.Length == 0 && isMinionsSpawned)
+        
+        if (minions.Count == 0 && isMinionsSpawned && PlayerPrefs.HasKey("Minions"))
         {
             PlayerPrefs.DeleteKey("Minions");
             isMinionsSpawned = false;
@@ -416,9 +417,10 @@ public class MadMenes : MonoBehaviour
             {
                 for(int i=0; i<3; i++)
                 {
-                    minions[i] = script.GetPooledObject();
-                    minions[i].transform.position = GetRandomPointInCameraView();
-                    minions[i].SetActive(true);
+                    GameObject minion = script.GetPooledObject();
+                    minion.transform.position = GetRandomPointInCameraView();
+                    minion.SetActive(true);
+                    minions.Add(minion);
                 }
                 isMinionsSpawned = true;
             }

@@ -11,7 +11,7 @@ public class LuciusMaximus : MonoBehaviour
     public PlayerStats playerStats;
     private ExpBar expBar;
     private GameManager gameManager;
-    private ObjectPool objPool;
+    private ObjectPool[] objPools;
     [Space(20f)]
 
     [Header("Health System")]
@@ -43,12 +43,16 @@ public class LuciusMaximus : MonoBehaviour
     public Vector2 startingPos;
     private bool isStartingPosSaved = false;
     private bool isDeath = false;
+    private bool isFlameStarted = false;
+    private bool isPoisonStarted = false;
+    private GameObject flameParticle;
+    private GameObject poisonParticle;
     private void Start()
     {
         expBar = GameObject.FindObjectOfType(typeof(ExpBar)) as ExpBar;
         gameManager = GameObject.FindObjectOfType(typeof(GameManager)) as GameManager;
         healthBarCanvas = GameObject.Find("BossHPBar");
-        objPool = GetComponent<ObjectPool>();
+        objPools = GetComponents<ObjectPool>();
         healthBar = GameObject.Find("BossHPBar").GetComponent<Slider>();
         fillBar = GameObject.Find("BossHPBar").GetComponentInChildren<Image>();
         currentHealth = maxHealth;
@@ -83,6 +87,24 @@ public class LuciusMaximus : MonoBehaviour
             gameManager.bounds.ActivatePlanets();
             Destroy(gameObject, 2f);
         }
+
+        if (flameParticle != null)
+        {
+            if (!flameParticle.GetComponent<ParticleSystem>().IsAlive())
+            {
+                isFlameStarted = false;
+                flameParticle.SetActive(false);
+            }
+        }
+
+        if (poisonParticle != null)
+        {
+            if (!poisonParticle.GetComponent<ParticleSystem>().IsAlive())
+            {
+                isPoisonStarted = false;
+                poisonParticle.SetActive(false);
+            }
+        }
     }
     public void SetMaxHealth(int health)
     {
@@ -116,16 +138,23 @@ public class LuciusMaximus : MonoBehaviour
     }
     public void FireBullet(int i)
     {
-        GameObject bullet = objPool.GetPooledObject();
-        bullet.transform.position = firePoints[i].position;
-        bullet.GetComponent<ShootingBullet>().startingPos = firePoints[i].position;
-        bullet.transform.rotation = firePoints[i].rotation;
-        bullet.SetActive(true);
-        bullet.GetComponent<ShootingBullet>().target = target;
-        bullet.GetComponent<ShootingBullet>().damage = 5;
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        Vector2 bulletVelocity = firePoints[i].up * bulletSpeed;
-        rb.velocity = bulletVelocity;
+        foreach (ObjectPool script in objPools)
+        {
+            if (script.type == "bullet")
+            {
+                GameObject bullet = script.GetPooledObject();
+                bullet.transform.position = firePoints[i].position;
+                bullet.GetComponent<ShootingBullet>().startingPos = firePoints[i].position;
+                bullet.transform.rotation = firePoints[i].rotation;
+                bullet.SetActive(true);
+                bullet.GetComponent<ShootingBullet>().target = target;
+                bullet.GetComponent<ShootingBullet>().damage = 5;
+                Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+                Vector2 bulletVelocity = firePoints[i].up * bulletSpeed;
+                rb.velocity = bulletVelocity;
+            }
+        }
+        
     }
     private void DestroyParticles()
     {
@@ -142,29 +171,61 @@ public class LuciusMaximus : MonoBehaviour
     }
     public void StartPoison()
     {
-        StartCoroutine("Poison");
+        if (!isPoisonStarted)
+        {
+            isPoisonStarted = true;
+            StartCoroutine("Poison");
+        }
     }
     IEnumerator Poison()
     {
-        int t = 0;
-        while (t < playerStats.poisonGunDurationValue)
+        float elapsedTime = 0f;
+        foreach (ObjectPool script in objPools)
+        {
+            if (script.type == "poisonParticle")
+            {
+                poisonParticle = script.GetPooledObject();
+                poisonParticle.transform.parent = transform;
+                ParticleSystem.MainModule main = poisonParticle.GetComponent<ParticleSystem>().main;
+                main.duration = playerStats.poisonGunDurationValue;
+                poisonParticle.SetActive(true);
+                poisonParticle.transform.position = transform.position;
+            }
+        }
+        while (elapsedTime <= playerStats.poisonGunDurationValue)
         {
             CollisionDetected((int)playerStats.poisonGunBetweenDamageValue);
-            t++;
+            elapsedTime += playerStats.poisonGunBetweenAttackSpeedValue;
             yield return new WaitForSeconds(playerStats.poisonGunBetweenAttackSpeedValue);
         }
     }
     public void StartFlame()
     {
-        StartCoroutine("Flame");
+        if (!isFlameStarted)
+        {
+            isFlameStarted = true;
+            StartCoroutine("Flame");
+        }
     }
     IEnumerator Flame()
     {
         float elapsedTime = 0f;
+        foreach (ObjectPool script in objPools)
+        {
+            if (script.type == "flameParticle")
+            {
+                flameParticle = script.GetPooledObject(); //tu cos nie gra
+                flameParticle.transform.parent = transform;
+                ParticleSystem.MainModule main = flameParticle.GetComponent<ParticleSystem>().main;
+                main.duration = playerStats.flameGunDurationValue;
+                flameParticle.SetActive(true);
+                flameParticle.transform.position = transform.position;
+            }
+        }
         while (elapsedTime <= playerStats.flameGunDurationValue)
         {
-            CollisionDetected((int)playerStats.flameGunBetweenDamageValue);
             yield return new WaitForSeconds(0.5f);
+            CollisionDetected((int)playerStats.flameGunBetweenDamageValue);
             elapsedTime += 0.5f;
         }
     }
