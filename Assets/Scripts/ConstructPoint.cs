@@ -18,6 +18,5 @@ public class ConstructPoint : MonoBehaviour
     {
         shipManager.activeConstructPoint = gameObject;
         menu.ConstructMenu();
-
     }
 }

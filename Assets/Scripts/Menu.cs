@@ -71,7 +71,7 @@ public class Menu : MonoBehaviour
         oreText.text = "Ores: " + playerStats.ore.ToString();
         if (playerStats.refreshKey <= 0)
         {
-            foreach(GameObject refresh in refreshes)
+            foreach (GameObject refresh in refreshes)
             {
                 refresh.SetActive(false);
             }
@@ -79,12 +79,13 @@ public class Menu : MonoBehaviour
     }
     public void ConstructMenu()
     {
-        constructMenu.SetActive(true);
+        constructMenu.GetComponent<CanvasGroup>().DOFade(1f, 0.5f).SetUpdate(UpdateType.Normal, true);
+        constructMenu.GetComponent<CanvasGroup>().interactable = true;
         shootingNormalGunList = MonoBehaviour.FindObjectsOfType<ShootingNormalGun>();
         shootingLaserGunList = MonoBehaviour.FindObjectsOfType<ShootingLaserGun>();
         shootingBigGunList = MonoBehaviour.FindObjectsOfType<ShootingBigGun>();
         shootingDoubleGunList = MonoBehaviour.FindObjectsOfType<ShootingDoubleGun>();
-        foreach(ShootingNormalGun script in shootingNormalGunList)
+        foreach (ShootingNormalGun script in shootingNormalGunList)
         {
             script.shootTimer = 0f;
         }
@@ -107,14 +108,15 @@ public class Menu : MonoBehaviour
         shipPartsInstantiate.Clear();
         for (int i = 0; i < shipPartsDB.shipParts.Length; i++)
         {
-            if(shipPartsDB.shipParts[i].amount > 0 && shipManager.activeConstructPoint.GetComponent<ConstructPoint>().shipPartType != shipPartsDB.shipParts[i].shipPartType)
+            if (shipPartsDB.shipParts[i].amount > 0 && shipManager.activeConstructPoint.GetComponent<ConstructPoint>().shipPartType != shipPartsDB.shipParts[i].shipPartType)
             {
                 GameObject obj = Instantiate(shipPartMenuPrefab, constructMenu.transform.Find("Scroll View").transform.Find("Panel").transform);
                 //obj.GetComponent<RectTransform>().DOAnchorPos(new Vector2(397f, 0f), 0.1f).SetUpdate(UpdateType.Normal, true);
                 obj.GetComponent<ShipPartMenu>().index = i;
-                obj.transform.Find("Image").GetComponent<Image>().sprite = shipPartsDB.shipParts[i].image;
-                obj.transform.Find("CostText").GetComponent<TMP_Text>().text = shipPartsDB.shipParts[i].oreCost.ToString();
-                obj.transform.Find("AmountText").GetComponent<TMP_Text>().text = shipPartsDB.shipParts[i].amount.ToString();
+                obj.transform.Find("ImgPanel").transform.Find("cardImg").GetComponent<Image>().sprite = shipPartsDB.shipParts[i].image;
+                obj.transform.Find("BuyButton").transform.Find("TxtPanel").transform.Find("oreTxt").GetComponent<TMP_Text>().text = shipPartsDB.shipParts[i].oreCost.ToString();
+                obj.transform.Find("BuyButton").transform.Find("TxtPanel").transform.Find("screwTxt").GetComponent<TMP_Text>().text = shipPartsDB.shipParts[i].screwCost.ToString();
+                obj.transform.Find("ImgPanel").transform.Find("Panel").transform.Find("AmountText").GetComponent<TMP_Text>().text = "x" + shipPartsDB.shipParts[i].amount.ToString();
                 shipPartsInstantiate.Add(obj);
                 obj.GetComponent<Button>().onClick.AddListener(() => shipManager.NewPart(obj.GetComponent<ShipPartMenu>().index));
             }
@@ -132,7 +134,7 @@ public class Menu : MonoBehaviour
         gameMenu.SetActive(false);
         gameOverMenu.SetActive(false);
         constructPoints = GameObject.FindGameObjectsWithTag("ConstructPoint");
-        for(int i=0; i<constructPoints.Length; i++)
+        for (int i = 0; i < constructPoints.Length; i++)
         {
             constructPoints[i].GetComponent<Image>().enabled = true;
             constructPoints[i].GetComponent<Button>().enabled = true;
@@ -163,7 +165,8 @@ public class Menu : MonoBehaviour
     }
     public void ExitConstructMenu()
     {
-        constructMenu.SetActive(false);
+        constructMenu.GetComponent<CanvasGroup>().DOFade(0f, 0.5f).SetUpdate(UpdateType.Normal, true);
+        constructMenu.GetComponent<CanvasGroup>().interactable = false;
     }
     public void GameOver()
     {
@@ -184,7 +187,7 @@ public class Menu : MonoBehaviour
         shipMovement.enabled = false;
         cardsMenuText.SetActive(true);
         cardsMenu.GetComponentInChildren<HorizontalLayoutGroup>().enabled = true;
-        for (int i = 0; i < cards.Count;i++)
+        for (int i = 0; i < cards.Count; i++)
         {
             if (!cards[i].activeSelf)
             {
@@ -198,7 +201,7 @@ public class Menu : MonoBehaviour
         gameOverMenu.SetActive(false);
         cardsMenu.GetComponent<CanvasGroup>().DOFade(1f, 1f).SetUpdate(UpdateType.Normal, true);
         cardsMenu.GetComponent<CanvasGroup>().interactable = true;
-        for (int i=0; i<cards.Count; i++)
+        for (int i = 0; i < cards.Count; i++)
         {
             int randIndex = Random.Range(0, cardsDB.cards.Length);
             while (generatedCardsIndexes.Contains(randIndex))
@@ -227,9 +230,9 @@ public class Menu : MonoBehaviour
         generatedCards.Clear();
         cardsMenuText.SetActive(false);
         cardsMenu.GetComponentInChildren<HorizontalLayoutGroup>().enabled = false;
-        for(int j=0; j<cards.Count; j++)
+        for (int j = 0; j < cards.Count; j++)
         {
-            if(j != i)
+            if (j != i)
             {
                 //Destroy(cards[j]);
                 cards[j].SetActive(false);
