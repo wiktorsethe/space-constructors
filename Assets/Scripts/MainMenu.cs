@@ -14,8 +14,8 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject dailyRewardsMenu;
     [SerializeField] private GameObject dailyChallengesMenu;
-    [SerializeField] private GameObject skinsMenu;
     [SerializeField] private GameObject shopMenu;
+    [SerializeField] private GameObject optionsMenu;
     public void Play()
     {
         playerStats.Reset();
@@ -32,7 +32,7 @@ public class MainMenu : MonoBehaviour
         mainMenu.SetActive(false);
         dailyRewardsMenu.SetActive(false);
         dailyChallengesMenu.SetActive(false);
-        skinsMenu.SetActive(true);
+        optionsMenu.SetActive(true);
         shopMenu.SetActive(false);
     }
     public void Shop()
@@ -40,15 +40,39 @@ public class MainMenu : MonoBehaviour
         mainMenu.SetActive(false);
         dailyRewardsMenu.SetActive(false);
         dailyChallengesMenu.SetActive(false);
-        skinsMenu.SetActive(false);
+        optionsMenu.SetActive(false);
         shopMenu.SetActive(true);
+    }
+    public void DailyRewards()
+    {
+        mainMenu.SetActive(false);
+        dailyRewardsMenu.SetActive(true);
+        dailyChallengesMenu.SetActive(false);
+        optionsMenu.SetActive(false);
+        shopMenu.SetActive(false);
+    }
+    public void DailyChallenges()
+    {
+        mainMenu.SetActive(false);
+        dailyRewardsMenu.SetActive(false);
+        dailyChallengesMenu.SetActive(true);
+        optionsMenu.SetActive(false);
+        shopMenu.SetActive(false);
+    }
+    public void Options()
+    {
+        mainMenu.SetActive(false);
+        dailyRewardsMenu.SetActive(false);
+        dailyChallengesMenu.SetActive(false);
+        optionsMenu.SetActive(true);
+        shopMenu.SetActive(false);
     }
     public void Exit()
     {
         mainMenu.SetActive(true);
         dailyRewardsMenu.SetActive(false);
         dailyChallengesMenu.SetActive(false);
-        skinsMenu.SetActive(false);
+        optionsMenu.SetActive(false);
         shopMenu.SetActive(false);
     }
 }
