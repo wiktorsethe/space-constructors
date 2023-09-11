@@ -16,47 +16,75 @@ MonoBehaviour:
   shipCurrentHealth: 100
   experience: 0
   level: 1
-  bestTime: 0
-  todayBestTime: 0
-  mostKills: 0
-  todayMostKills: 0
-  mostGoldEarned: 0
-  todayMostGoldEarned: 0
-  gold: 650
+  bestTime: 111111110
+  todayBestTime: 111111100
+  mostKills: 111111
+  todayMostKills: 1111111
+  mostGoldEarned: 1111111
+  todayMostGoldEarned: 1111111
+  gold: 505
   shipGravity: 1
   ore: 50
   screw: 5
-  normalGunDamageValue: 1
-  laserGunDamageValue: 1
-  doubleGunDamageValue: 1
-  bigGunDamageValue: 1
+  normalGunDamageValue: 3
+  laserGunDamageValue: 2
+  doubleGunDamageValue: 2
+  bigGunDamageValue: 5
+  poisonGunCollisionDamageValue: 4
+  poisonGunBetweenDamageValue: 1
+  flameGunCollisionDamageValue: 4
+  flameGunBetweenDamageValue: 1
+  bombGunDamageValue: 7
+  homingGunDamageValue: 4
+  stunningGunDamageValue: 0
   normalGunAttackSpeedValue: 4
   laserGunAttackSpeedValue: 4
   doubleGunAttackSpeedValue: 3
   bigGunAttackSpeedValue: 6
+  poisonGunCollisionAttackSpeedValue: 8
+  poisonGunBetweenAttackSpeedValue: 2
+  poisonGunDurationValue: 3
+  flameGunCollisionAttackSpeedValue: 8
+  flameGunDurationValue: 2
+  bombGunAttackSpeedValue: 7
+  homingGunAttackSpeedValue: 3
+  stunningGunAttackSpeedValue: 8
+  stunDurationValue: 2
   shipSpeedValue: 10
   oreMiningBonusValue: 1
   shipPosition: {x: 0, y: 0, z: 0}
   challenges:
   - task: Do it
     reward: {fileID: 11400000, guid: 5263916799579ea459ef2334c8dd4354, type: 2}
-    amount: 50
+    amount: 1
     bestTimeTask: 100
     mostGoldEarnedTask: 100
     mostKillsTask: 0
-    isDone: 0
+    isDone: 1
+  - task: Do it someday
+    reward: {fileID: 11400000, guid: 5263916799579ea459ef2334c8dd4354, type: 2}
+    amount: 4
+    bestTimeTask: 100
+    mostGoldEarnedTask: 100
+    mostKillsTask: 0
+    isDone: 1
   - task: Do it again
     reward: {fileID: 11400000, guid: 5263916799579ea459ef2334c8dd4354, type: 2}
-    amount: 50
+    amount: 3
     bestTimeTask: 100
     mostGoldEarnedTask: 100
     mostKillsTask: 0
     isDone: 0
   - task: Do it maybe
     reward: {fileID: 11400000, guid: 5263916799579ea459ef2334c8dd4354, type: 2}
-    amount: 50
+    amount: 2
     bestTimeTask: 100
     mostGoldEarnedTask: 100
     mostKillsTask: 0
     isDone: 0
-  loginTime: 14.07.2023 20:14:54
+  loginTime: 11.09.2023 13:51:12
+  dailyRewardsDay: 0
+  firstBonus: 0
+  lastDateBonus: 10.10.2010 10:10:10
+  selectedSkin: 0
+  refreshKey: 3

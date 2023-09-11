@@ -15,21 +15,28 @@ MonoBehaviour:
   challenges:
   - task: Do it
     reward: {fileID: 11400000, guid: 5263916799579ea459ef2334c8dd4354, type: 2}
-    amount: 50
+    amount: 1
     bestTimeTask: 100
     mostGoldEarnedTask: 100
     mostKillsTask: 0
     isDone: 0
   - task: Do it maybe
     reward: {fileID: 11400000, guid: 5263916799579ea459ef2334c8dd4354, type: 2}
-    amount: 50
+    amount: 2
     bestTimeTask: 100
     mostGoldEarnedTask: 100
     mostKillsTask: 0
     isDone: 0
   - task: Do it again
     reward: {fileID: 11400000, guid: 5263916799579ea459ef2334c8dd4354, type: 2}
-    amount: 50
+    amount: 3
+    bestTimeTask: 100
+    mostGoldEarnedTask: 100
+    mostKillsTask: 0
+    isDone: 0
+  - task: Do it someday
+    reward: {fileID: 11400000, guid: 5263916799579ea459ef2334c8dd4354, type: 2}
+    amount: 4
     bestTimeTask: 100
     mostGoldEarnedTask: 100
     mostKillsTask: 0

@@ -130,7 +130,7 @@ public class DailyRewards : MonoBehaviour
             double elapsedHours = (currentDate - lastBonusDate).TotalHours; //zamien na totalhours
             if (elapsedHours >= 24f)
             {
-                days[currentDay].transform.Find("TimerText").gameObject.SetActive(false);
+                days[currentDay].transform.Find("TimerTxt").gameObject.SetActive(false);
                 claimButton.interactable = true;
                 /*
                 if (adManager.isReadyIntersitial)
@@ -148,8 +148,8 @@ public class DailyRewards : MonoBehaviour
                 int hours = 23 - timeSpan.Hours;
                 int minutes = 59 - timeSpan.Minutes;
                 int seconds = 59 - timeSpan.Seconds;
-                days[currentDay].transform.Find("TimerText").GetComponent<TMP_Text>().text = string.Format("{0:00}:{1:00}:{2:00}", hours, minutes, seconds);
-                days[currentDay].transform.Find("TimerText").gameObject.SetActive(true);
+                days[currentDay].transform.Find("TimerTxt").GetComponent<TMP_Text>().text = string.Format("{0:00}:{1:00}:{2:00}", hours, minutes, seconds);
+                days[currentDay].transform.Find("TimerTxt").gameObject.SetActive(true);
                 claimButton.interactable = false;
                 adButton.SetActive(false);
             }
@@ -164,13 +164,13 @@ public class DailyRewards : MonoBehaviour
             tempColor = new Color(0.6f, 0.6f, 0.6f, 1);
             image.color = tempColor;
 
-            var dayText = days[i].transform.Find("DayText").GetComponent<TMP_Text>();
+            var dayText = days[i].transform.Find("DayTxt").GetComponent<TMP_Text>();
             /*
             var dayTextTempColor = dayText.color;
             dayTextTempColor = new Color(0.6f, 0.6f, 0.6f, 1);
             dayText.color = dayTextTempColor;
             */
-            var priceText = days[i].transform.Find("PriceText").GetComponent<TMP_Text>();
+            var priceText = days[i].transform.Find("PriceTxt").GetComponent<TMP_Text>();
             /*
             var priceTextTempColor = priceText.color;
             priceTextTempColor = new Color(0.6f, 0.6f, 0.6f, 1);
@@ -178,11 +178,12 @@ public class DailyRewards : MonoBehaviour
             */
             days[i].transform.Find("ActivatedDay").gameObject.SetActive(false);
 
-            days[i].transform.Find("TimerText").gameObject.SetActive(false);
+            days[i].transform.Find("TimerTxt").gameObject.SetActive(false);
 
             if (i < currentDay)
             {
                 days[i].transform.Find("ActivatedDay").gameObject.SetActive(true);
+                days[i].transform.Find("DeactivatedDay").gameObject.SetActive(false);
             }
             if (currentDay == 0 && playerStats.firstBonus)
             {
@@ -193,36 +194,37 @@ public class DailyRewards : MonoBehaviour
                 else if (i == 0)
                 {
                     days[i].gameObject.GetComponent<Image>().color = new Color(0.6f, 0.6f, 0.6f, 1);
-                    days[i].transform.Find("DayText").GetComponent<TMP_Text>().color = new Color(0.6f, 0.6f, 0.6f, 1);
-                    days[i].transform.Find("PriceText").GetComponent<TMP_Text>().color = new Color(0.6f, 0.6f, 0.6f, 1);
-                    days[i].transform.Find("TimerText").gameObject.SetActive(true);
+                    days[i].transform.Find("DayTxt").GetComponent<TMP_Text>().color = new Color(0.6f, 0.6f, 0.6f, 1);
+                    days[i].transform.Find("PriceTxt").GetComponent<TMP_Text>().color = new Color(0.6f, 0.6f, 0.6f, 1);
+                    days[i].transform.Find("TimerTxt").gameObject.SetActive(true);
                 }
             }
             if (i == currentDay)
             {
                 image.color = new Color(1, 1, 1, 1);
+                days[i].transform.Find("DeactivatedDay").gameObject.SetActive(false);
                 //dayText.color = new Color(0, 0, 0, 1);
                 //priceText.color = new Color(0, 0, 0, 1);
             }
             if (PlayerPrefs.GetInt("BonusActivated") == 1)
             {
-                days[0].transform.Find("PriceText").GetComponent<TMP_Text>().text = "100";
-                days[1].transform.Find("PriceText").GetComponent<TMP_Text>().text = "240";
-                days[2].transform.Find("PriceText").GetComponent<TMP_Text>().text = "420";
-                days[3].transform.Find("PriceText").GetComponent<TMP_Text>().text = "600";
-                days[4].transform.Find("PriceText").GetComponent<TMP_Text>().text = "840";
-                days[5].transform.Find("PriceText").GetComponent<TMP_Text>().text = "1100";
-                days[6].transform.Find("PriceText").GetComponent<TMP_Text>().text = "1400";
+                days[0].transform.Find("PriceTxt").GetComponent<TMP_Text>().text = "100";
+                days[1].transform.Find("PriceTxt").GetComponent<TMP_Text>().text = "240";
+                days[2].transform.Find("PriceTxt").GetComponent<TMP_Text>().text = "420";
+                days[3].transform.Find("PriceTxt").GetComponent<TMP_Text>().text = "600";
+                days[4].transform.Find("PriceTxt").GetComponent<TMP_Text>().text = "840";
+                days[5].transform.Find("PriceTxt").GetComponent<TMP_Text>().text = "1100";
+                days[6].transform.Find("PriceTxt").GetComponent<TMP_Text>().text = "1400";
             }
             else
             {
-                days[0].transform.Find("PriceText").GetComponent<TMP_Text>().text = "50";
-                days[1].transform.Find("PriceText").GetComponent<TMP_Text>().text = "120";
-                days[2].transform.Find("PriceText").GetComponent<TMP_Text>().text = "210";
-                days[3].transform.Find("PriceText").GetComponent<TMP_Text>().text = "300";
-                days[4].transform.Find("PriceText").GetComponent<TMP_Text>().text = "420";
-                days[5].transform.Find("PriceText").GetComponent<TMP_Text>().text = "550";
-                days[6].transform.Find("PriceText").GetComponent<TMP_Text>().text = "700";
+                days[0].transform.Find("PriceTxt").GetComponent<TMP_Text>().text = "50";
+                days[1].transform.Find("PriceTxt").GetComponent<TMP_Text>().text = "120";
+                days[2].transform.Find("PriceTxt").GetComponent<TMP_Text>().text = "210";
+                days[3].transform.Find("PriceTxt").GetComponent<TMP_Text>().text = "300";
+                days[4].transform.Find("PriceTxt").GetComponent<TMP_Text>().text = "420";
+                days[5].transform.Find("PriceTxt").GetComponent<TMP_Text>().text = "550";
+                days[6].transform.Find("PriceTxt").GetComponent<TMP_Text>().text = "700";
             }
         }
     }
