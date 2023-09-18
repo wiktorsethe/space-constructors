@@ -37,9 +37,10 @@ public class Menu : MonoBehaviour
     [Space(20f)]
 
     [Header("Texts")]
-    [SerializeField] private TMP_Text bestTimeText;
-    [SerializeField] private TMP_Text mostKillsText;
-    [SerializeField] private TMP_Text mostGoldEarnedText;
+    [SerializeField] private TMP_Text timeText;
+    [SerializeField] private TMP_Text killsText;
+    [SerializeField] private TMP_Text goldEarnedText;
+    [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text goldText;
     [SerializeField] private TMP_Text screwText;
     [SerializeField] private TMP_Text oreText;
@@ -66,9 +67,9 @@ public class Menu : MonoBehaviour
     private void Update()
     {
         //shipManager = GameObject.FindObjectOfType(typeof(ShipManager)) as ShipManager;
-        goldText.text = "Gold: " + playerStats.gold.ToString();
-        screwText.text = "Screws: " + playerStats.screw.ToString();
-        oreText.text = "Ores: " + playerStats.ore.ToString();
+        goldText.text = playerStats.gold.ToString();
+        screwText.text = playerStats.screw.ToString();
+        oreText.text = playerStats.ore.ToString();
         if (playerStats.refreshKey <= 0)
         {
             foreach (GameObject refresh in refreshes)
@@ -108,7 +109,7 @@ public class Menu : MonoBehaviour
         shipPartsInstantiate.Clear();
         for (int i = 0; i < shipPartsDB.shipParts.Length; i++)
         {
-            if (shipPartsDB.shipParts[i].amount > 0 && shipManager.activeConstructPoint.GetComponent<ConstructPoint>().shipPartType != shipPartsDB.shipParts[i].shipPartType)
+            if (shipPartsDB.shipParts[i].ownedAmount > 0 && shipManager.activeConstructPoint.GetComponent<ConstructPoint>().shipPartType != shipPartsDB.shipParts[i].shipPartType && shipPartsDB.shipParts[i].isOwned)
             {
                 GameObject obj = Instantiate(shipPartMenuPrefab, constructMenu.transform.Find("Scroll View").transform.Find("Panel").transform);
                 //obj.GetComponent<RectTransform>().DOAnchorPos(new Vector2(397f, 0f), 0.1f).SetUpdate(UpdateType.Normal, true);
@@ -116,7 +117,7 @@ public class Menu : MonoBehaviour
                 obj.transform.Find("ImgPanel").transform.Find("cardImg").GetComponent<Image>().sprite = shipPartsDB.shipParts[i].image;
                 obj.transform.Find("BuyButton").transform.Find("TxtPanel").transform.Find("oreTxt").GetComponent<TMP_Text>().text = shipPartsDB.shipParts[i].oreCost.ToString();
                 obj.transform.Find("BuyButton").transform.Find("TxtPanel").transform.Find("screwTxt").GetComponent<TMP_Text>().text = shipPartsDB.shipParts[i].screwCost.ToString();
-                obj.transform.Find("ImgPanel").transform.Find("Panel").transform.Find("AmountText").GetComponent<TMP_Text>().text = "x" + shipPartsDB.shipParts[i].amount.ToString();
+                obj.transform.Find("ImgPanel").transform.Find("Panel").transform.Find("AmountText").GetComponent<TMP_Text>().text = "x" + shipPartsDB.shipParts[i].ownedAmount.ToString();
                 shipPartsInstantiate.Add(obj);
                 obj.GetComponent<Button>().onClick.AddListener(() => shipManager.NewPart(obj.GetComponent<ShipPartMenu>().index));
             }
@@ -174,10 +175,11 @@ public class Menu : MonoBehaviour
         gameMenu.SetActive(false);
         pauseMenu.SetActive(false);
         gameOverMenu.SetActive(true);
-        TimeSpan timeSpan = TimeSpan.FromSeconds(playerStats.bestTime);
-        bestTimeText.text = "Best Time: " + string.Format("{0:00}:{1:00}:{2:00}", timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds);
-        mostKillsText.text = "Most Kills: " + playerStats.mostKills.ToString();
-        mostGoldEarnedText.text = "Most Gold Earned: " + playerStats.mostGoldEarned.ToString();
+        TimeSpan timeSpan = TimeSpan.FromSeconds(PlayerPrefs.GetFloat("BestTimeTimer"));
+        timeText.text = string.Format("{0:00}:{1:00}:{2:00}", timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds);
+        killsText.text = PlayerPrefs.GetInt("Kills").ToString();
+        goldEarnedText.text = PlayerPrefs.GetInt("GoldEarned").ToString();
+        scoreText.text = PlayerPrefs.GetInt("Score").ToString();
 
         Time.timeScale = 0f;
     }

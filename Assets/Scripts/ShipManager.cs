@@ -147,7 +147,7 @@ public class ShipManager : MonoBehaviour
             //camSize.ChangeCamSize();
             playerStats.ore -= shipPartsDB.shipParts[index].oreCost;
             playerStats.screw -= shipPartsDB.shipParts[index].screwCost;
-            shipPartsDB.shipParts[index].amount--;
+            shipPartsDB.shipParts[index].ownedAmount--;
             playerStats.shipGravity += shipPartsDB.shipParts[index].gravityBonus;
             ShipPartInScene newShipPart;
             newShipPart.shipPartIndex = index;

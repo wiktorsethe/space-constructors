@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 using System;
 using Random = UnityEngine.Random;
 
@@ -50,41 +51,6 @@ public class DailyChallenges : MonoBehaviour
                 except.Add(randIndex);
                 playerStats.challenges[i] = challengesDB.challenges[randIndex];
             }
-
-            //int i = 0;
-            //int j = 0;
-            /*
-            foreach (GameObject challenge in challengesObjects)
-            {
-                randIndex = RandomRangeExcept(0, challengesDB.challenges.Length);
-                challenge.transform.Find("MissionTxt").GetComponent<TMP_Text>().text = challengesDB.challenges[randIndex].task;
-                challengesDB.challenges[randIndex].isDone = false;
-                
-                except.Add(randIndex);
-                playerStats.challenges[i] = challengesDB.challenges[randIndex];
-                i++;
-            }
-            foreach (GameObject reward in rewardsObjects)
-            {
-                reward.transform.Find("RewardTxt").GetComponent<TMP_Text>().text = challengesDB.challenges[randIndex].amount.ToString();
-                challengesDB.challenges[randIndex].isDone = false;
-                
-                j++;
-            }
-            foreach(GameObject button in claimButtonObjects)
-            {
-                if (challengesDB.challenges[randIndex].bestTimeTask <= playerStats.todayBestTime
-                    && challengesDB.challenges[randIndex].mostGoldEarnedTask <= playerStats.todayMostGoldEarned
-                    && challengesDB.challenges[randIndex].mostKillsTask <= playerStats.todayMostKills)
-                {
-                    button.GetComponent<Button>().interactable = true;
-                }
-                else
-                {
-                    button.GetComponent<Button>().interactable = false;
-                }
-            }
-            */
         }
         else
         {
@@ -112,64 +78,7 @@ public class DailyChallenges : MonoBehaviour
                     claimButtonObjects[i].GetComponent<Button>().interactable = false;
                 }
             }
-
-            /*
-            int i = 0;
-            int j = 0;
-            int k = 0;
-            foreach (GameObject challenge in challengesObjects)
-            {
-                if (!playerStats.challenges[i].isDone)
-                {
-                    challenge.transform.Find("MissionTxt").GetComponent<TMP_Text>().text = playerStats.challenges[i].task; //challengesDB.challenges[randIndex].task;
-                    //challenge.transform.Find("RewardText").GetComponent<TMP_Text>().text = playerStats.challenges[i].amount.ToString();
-                    //challenge.transform.Find("RewardIcon").GetComponent<Image>().sprite = playerStats.challenges[i].reward.lootSprite;
-                }
-                else
-                {
-                    challenge.transform.Find("MissionTxt").GetComponent<TMP_Text>().text = "Task done";
-                    //challenge.transform.Find("RewardText").GetComponent<TMP_Text>().text = "";
-                    //challenge.transform.Find("RewardIcon").GetComponent<Image>().enabled = false;
-
-                }
-                i++;
-            }
-            foreach (GameObject reward in rewardsObjects)
-            {
-                if (!playerStats.challenges[j].isDone)
-                {
-                    //reward.transform.Find("TaskText").GetComponent<TMP_Text>().text = playerStats.challenges[i].task; //challengesDB.challenges[randIndex].task;
-                    reward.transform.Find("RewardTxt").GetComponent<TMP_Text>().text = playerStats.challenges[j].amount.ToString();
-                    //reward.transform.Find("RewardIcon").GetComponent<Image>().sprite = playerStats.challenges[i].reward.lootSprite;
-
-                }
-                else
-                {
-                    //reward.transform.Find("TaskText").GetComponent<TMP_Text>().text = "Task done";
-                    reward.transform.Find("RewardTxt").GetComponent<TMP_Text>().text = "";
-                    //reward.transform.Find("RewardIcon").GetComponent<Image>().enabled = false;
-
-                }
-                j++;
-            }
-            foreach(GameObject button in claimButtonObjects)
-            {
-                if (playerStats.challenges[k].bestTimeTask <= playerStats.todayBestTime
-                    && playerStats.challenges[k].mostGoldEarnedTask <= playerStats.todayMostGoldEarned
-                    && playerStats.challenges[k].mostKillsTask <= playerStats.todayMostKills)
-                {
-                    button.GetComponent<Button>().interactable = true;
-                }
-                else
-                {
-                    button.GetComponent<Button>().interactable = false;
-                }
-                k++;
-            }
-            */
         }
-
-
     }
     int RandomRangeExcept(int min, int max)
     {

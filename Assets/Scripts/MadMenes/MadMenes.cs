@@ -61,7 +61,7 @@ public class MadMenes : MonoBehaviour
         healthBarCanvas = GameObject.Find("BossHPBar");
         objPools = GetComponents<ObjectPool>();
         healthBar = GameObject.Find("BossHPBar").GetComponent<Slider>();
-        fillBar = GameObject.Find("BossHPBar").GetComponentInChildren<Image>();
+        fillBar = GameObject.Find("BossHPBar").transform.Find("Bar").GetComponent<Image>();
         mainCam = Camera.main;
         currentHealth = maxHealth;
         SetMaxHealth(maxHealth);

@@ -57,7 +57,7 @@ public class CollectLoot : MonoBehaviour
                 {
                     if (shipPartsDB.shipParts[i].shipPartType == "corridor")
                     {
-                        shipPartsDB.shipParts[i].amount++;
+                        shipPartsDB.shipParts[i].ownedAmount++;
                         ShowMiningText(1, "Corridor");
                     }
                     Destroy(this.gameObject);
@@ -69,7 +69,7 @@ public class CollectLoot : MonoBehaviour
                 {
                     if (shipPartsDB.shipParts[i].shipPartType == "main")
                     {
-                        shipPartsDB.shipParts[i].amount++;
+                        shipPartsDB.shipParts[i].ownedAmount++;
                         ShowMiningText(1, "Main");
                     }
                     Destroy(this.gameObject);
@@ -81,7 +81,7 @@ public class CollectLoot : MonoBehaviour
                 {
                     if (shipPartsDB.shipParts[i].shipPartType == "normalGun")
                     {
-                        shipPartsDB.shipParts[i].amount++;
+                        shipPartsDB.shipParts[i].ownedAmount++;
                         ShowMiningText(1, "Normal Gun");
                     }
                     Destroy(this.gameObject);
@@ -93,7 +93,7 @@ public class CollectLoot : MonoBehaviour
                 {
                     if(shipPartsDB.shipParts[i].shipPartType == "laserGun")
                     {
-                        shipPartsDB.shipParts[i].amount++;
+                        shipPartsDB.shipParts[i].ownedAmount++;
                         ShowMiningText(1, "Laser Gun");
                     }
                     Destroy(this.gameObject);
@@ -105,7 +105,7 @@ public class CollectLoot : MonoBehaviour
                 {
                     if (shipPartsDB.shipParts[i].shipPartType == "doubleGun")
                     {
-                        shipPartsDB.shipParts[i].amount++;
+                        shipPartsDB.shipParts[i].ownedAmount++;
                         ShowMiningText(1, "Double Gun");
                     }
                     Destroy(this.gameObject);
@@ -117,7 +117,7 @@ public class CollectLoot : MonoBehaviour
                 {
                     if (shipPartsDB.shipParts[i].shipPartType == "bigGun")
                     {
-                        shipPartsDB.shipParts[i].amount++;
+                        shipPartsDB.shipParts[i].ownedAmount++;
                         ShowMiningText(1, "Big Gun");
                     }
                     Destroy(this.gameObject);

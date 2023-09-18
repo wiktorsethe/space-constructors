@@ -16,6 +16,7 @@ public class MenuMisteriousPlace : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject gameMenu;
     [SerializeField] private GameObject misteriousManMenu;
+    [SerializeField] private GameObject forgeManMenu;
     [SerializeField] private GameObject cardPrefab;
     private Camera mainCam;
     [Space(20f)]
@@ -56,6 +57,16 @@ public class MenuMisteriousPlace : MonoBehaviour
             //shipPartsInstantiate.Add(obj);
             obj.GetComponent<Button>().onClick.AddListener(() => ChooseCard(obj.GetComponent<CardMenu>().index));
         }
+    }
+    public void ForgeManMenu()
+    {
+        gameMenu.SetActive(false);
+        pauseMenu.SetActive(false);
+        forgeManMenu.SetActive(true);
+    }
+    private void ForgeManStart()
+    {
+
     }
     public void Restart()
     {

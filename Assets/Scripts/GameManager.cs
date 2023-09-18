@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public float bestTimeTimer;
     public int kills = 0;
     public int goldEarned = 0;
+    public int score = 0;
     public TMP_Text sceneNameText;
     public string sceneName;
     private Vector3 bossSize = new Vector3(5.29f, 8.04f, 0.2f);
@@ -44,6 +45,7 @@ public class GameManager : MonoBehaviour
         bestTimeTimer = PlayerPrefs.GetFloat("BestTimeTimer");
         kills = PlayerPrefs.GetInt("Kills");
         goldEarned = PlayerPrefs.GetInt("GoldEarned");
+        score = PlayerPrefs.GetInt("Score");
         StartCoroutine(SpawnRateChanger());
     }
     private void Update()

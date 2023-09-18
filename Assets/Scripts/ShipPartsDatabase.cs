@@ -11,9 +11,9 @@ public class ShipPartsDatabase : ScriptableObject
     {
         for(int i=0; i<shipParts.Length; i++)
         {
-            shipParts[i].amount = 0;
+            shipParts[i].ownedAmount = 0;
         }
-        shipParts[0].amount = 2;
-        shipParts[1].amount = 1;
+        shipParts[0].ownedAmount = 2;
+        shipParts[1].ownedAmount = 1;
     }
 }
