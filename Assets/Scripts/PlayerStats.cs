@@ -7,6 +7,8 @@ public class PlayerStats : ScriptableObject
 {
     public float shipMaxHealth;
     public float shipCurrentHealth;
+    public float shipMaxShield;
+    public float shipCurrentShield;
     public int experience;
     public int level;
     public float bestTime;
@@ -61,6 +63,8 @@ public class PlayerStats : ScriptableObject
     {
         shipMaxHealth = 100;
         shipCurrentHealth = 100;
+        shipCurrentShield = 0;
+        shipMaxShield = 0;
         shipSpeedValue = 10;
         level = 1;
         experience = 0;

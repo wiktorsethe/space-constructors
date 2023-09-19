@@ -24,6 +24,8 @@ public class PlayerStatsEditor : Editor
         GUILayout.Label("       SHIP STATS", EditorStyles.boldLabel);
         playerStats.shipMaxHealth = EditorGUILayout.FloatField("Ship Max Health", playerStats.shipMaxHealth);
         playerStats.shipCurrentHealth = EditorGUILayout.FloatField("Ship Current Health", playerStats.shipCurrentHealth);
+        playerStats.shipMaxShield = EditorGUILayout.FloatField("Ship Max Shield", playerStats.shipMaxShield);
+        playerStats.shipCurrentShield = EditorGUILayout.FloatField("Ship Current Shield", playerStats.shipCurrentShield);
         playerStats.shipSpeedValue = EditorGUILayout.FloatField("Ship Speed", playerStats.shipSpeedValue);
         playerStats.shipGravity = EditorGUILayout.FloatField("Gravity", playerStats.shipGravity);
         playerStats.oreMiningBonusValue = EditorGUILayout.FloatField("Ore Mining Bonus", playerStats.oreMiningBonusValue);

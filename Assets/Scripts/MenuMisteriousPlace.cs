@@ -10,6 +10,7 @@ public class MenuMisteriousPlace : MonoBehaviour
     [Header("Other Scripts")]
     public PlayerStats playerStats;
     public CardsDatabase cardsDB;
+    private WalkerMovement walkerMovement;
     private CameraSize camSize;
     [Space(20f)]
     [Header("Other GameObjects")]
@@ -17,16 +18,24 @@ public class MenuMisteriousPlace : MonoBehaviour
     [SerializeField] private GameObject gameMenu;
     [SerializeField] private GameObject misteriousManMenu;
     [SerializeField] private GameObject forgeManMenu;
+    [SerializeField] private GameObject changeManMenu;
     [SerializeField] private GameObject cardPrefab;
     private Camera mainCam;
     [Space(20f)]
     [Header("Lists")]
     [SerializeField] private List<Card> generatedCards = new List<Card>();
-
+    [Space(20f)]
+    [Header("Texts")]
+    [SerializeField] private TMP_Text changeCardsAmountText;
     private void Start()
     {
         camSize = GameObject.FindObjectOfType(typeof(CameraSize)) as CameraSize;
+        walkerMovement = GameObject.FindObjectOfType(typeof(WalkerMovement)) as WalkerMovement;
         mainCam = Camera.main;
+    }
+    private void Update()
+    {
+        changeCardsAmountText.text = PlayerPrefs.GetInt("ChangeCards").ToString();
     }
     public void PauseMenu()
     {
@@ -34,12 +43,17 @@ public class MenuMisteriousPlace : MonoBehaviour
         pauseMenu.SetActive(true);
         gameMenu.SetActive(false);
         misteriousManMenu.SetActive(false);
+        forgeManMenu.SetActive(false);
+        changeManMenu.SetActive(false);
     }
     public void Resume()
     {
         gameMenu.SetActive(true);
         pauseMenu.SetActive(false);
         misteriousManMenu.SetActive(false);
+        forgeManMenu.SetActive(false);
+        changeManMenu.SetActive(false);
+        walkerMovement.enabled = true;
         Time.timeScale = 1f;
     }
     public void MisteriousManMenu()
@@ -47,7 +61,9 @@ public class MenuMisteriousPlace : MonoBehaviour
         gameMenu.SetActive(false);
         pauseMenu.SetActive(false);
         misteriousManMenu.SetActive(true);
-        for(int i=0; i<cardsDB.cards.Length; i++)
+        forgeManMenu.SetActive(false);
+        changeManMenu.SetActive(false);
+        for (int i=0; i<cardsDB.cards.Length; i++)
         {
             GameObject obj = Instantiate(cardPrefab, misteriousManMenu.transform.Find("Scroll").transform.Find("Panel").transform);
             obj.GetComponent<CardMenu>().index = i;
@@ -62,11 +78,17 @@ public class MenuMisteriousPlace : MonoBehaviour
     {
         gameMenu.SetActive(false);
         pauseMenu.SetActive(false);
+        misteriousManMenu.SetActive(false);
         forgeManMenu.SetActive(true);
+        changeManMenu.SetActive(false);
     }
-    private void ForgeManStart()
+    public void ChangeManMenu()
     {
-
+        gameMenu.SetActive(false);
+        pauseMenu.SetActive(false);
+        misteriousManMenu.SetActive(false);
+        forgeManMenu.SetActive(false);
+        changeManMenu.SetActive(true);
     }
     public void Restart()
     {

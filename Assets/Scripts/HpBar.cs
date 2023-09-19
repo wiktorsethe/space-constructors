@@ -13,7 +13,9 @@ public class HpBar : MonoBehaviour
 
     [Header("Slider")]
     [SerializeField] private TMP_Text hpText;
+    [SerializeField] private GameObject shieldText;
     [SerializeField] private Slider hpBar;
+    [SerializeField] private Slider shieldBar;
     private bool isFlameStarted = false;
     private bool isPoisonStarted = false;
     private GameObject flameParticle;
@@ -51,31 +53,41 @@ public class HpBar : MonoBehaviour
         hpBar.maxValue = health;
         hpBar.value = health;
         //hpText.text = "HP " + playerStats.shipCurrentHealth + "/" + playerStats.shipMaxHealth;
-        StartCoroutine(AnimateNumberIteration((int)hpBar.value, (int)playerStats.shipMaxHealth));
+        StartCoroutine(AnimateNumberIterationHp((int)hpBar.value, (int)playerStats.shipMaxHealth));
         playerStats.shipCurrentHealth = health;
     }
     public void SetHealth(float health)
     {
-        playerStats.shipCurrentHealth -= health;
-        //hpText.text = "HP " + playerStats.shipCurrentHealth + "/" + playerStats.shipMaxHealth;
-        StartCoroutine(AnimateNumberIteration((int)hpBar.value, (int)playerStats.shipCurrentHealth));
-        DOTween.To(() => hpBar.value, x => hpBar.value = x, playerStats.shipCurrentHealth, 1.5f);
+        if(playerStats.shipCurrentShield > 0)
+        {
+            playerStats.shipCurrentShield -= health;
+            //hpText.text = "HP " + playerStats.shipCurrentHealth + "/" + playerStats.shipMaxHealth;
+            StartCoroutine(AnimateNumberIterationShield((int)(playerStats.shipCurrentShield + health), (int)playerStats.shipCurrentShield));
+            //DOTween.To(() => shieldBar.value, x => shieldBar.value = x, playerStats.shipShield, 1.5f);
+        }
+        else
+        {
+            playerStats.shipCurrentHealth -= health;
+            //hpText.text = "HP " + playerStats.shipCurrentHealth + "/" + playerStats.shipMaxHealth;
+            StartCoroutine(AnimateNumberIterationHp((int)hpBar.value, (int)playerStats.shipCurrentHealth));
+            DOTween.To(() => hpBar.value, x => hpBar.value = x, playerStats.shipCurrentHealth, 1.5f);
+        }
     }
     public void RegenerateHealth()
     {
         playerStats.shipCurrentHealth = hpBar.maxValue;
         //hpText.text = "HP " + playerStats.shipCurrentHealth + "/" + playerStats.shipMaxHealth;
-        StartCoroutine(AnimateNumberIteration((int)hpBar.value, (int)playerStats.shipCurrentHealth));
+        StartCoroutine(AnimateNumberIterationHp((int)hpBar.value, (int)playerStats.shipCurrentHealth));
         DOTween.To(() => hpBar.value, x => hpBar.value = x, playerStats.shipCurrentHealth, 1.5f);
     }
     public void RegenerateHealthByFragment(float health)
     {
         playerStats.shipCurrentHealth += health;
         //hpText.text = "HP " + playerStats.shipCurrentHealth + "/" + playerStats.shipMaxHealth;
-        StartCoroutine(AnimateNumberIteration((int)hpBar.value, (int)playerStats.shipCurrentHealth));
+        StartCoroutine(AnimateNumberIterationHp((int)hpBar.value, (int)playerStats.shipCurrentHealth));
         DOTween.To(() => hpBar.value, x => hpBar.value = x, playerStats.shipCurrentHealth, 1.5f);
     }
-    private IEnumerator AnimateNumberIteration(int startNumber, int targetNumber)
+    private IEnumerator AnimateNumberIterationHp(int startNumber, int targetNumber)
     {
         float startTime = Time.time;
 
@@ -90,6 +102,22 @@ public class HpBar : MonoBehaviour
 
         // Ensure the text shows the final value
         hpText.text = "HP " + targetNumber.ToString() + "/" + playerStats.shipMaxHealth;
+    }
+    private IEnumerator AnimateNumberIterationShield(int startNumber, int targetNumber)
+    {
+        float startTime = Time.time;
+
+        while (Time.time - startTime < 1f)
+        {
+            float t = (Time.time - startTime) / 1f;
+            int currentValue = Mathf.RoundToInt(Mathf.Lerp(startNumber, targetNumber, t));
+            shieldText.GetComponent<TMP_Text>().text = currentValue.ToString() + "/" + playerStats.shipMaxShield;
+
+            yield return null;
+        }
+
+        // Ensure the text shows the final value
+        shieldText.GetComponent<TMP_Text>().text = targetNumber.ToString() + "/" + playerStats.shipMaxShield;
     }
     public void StartPoison()
     {
@@ -145,5 +173,21 @@ public class HpBar : MonoBehaviour
             elapsedTime += 0.5f;
         }
     }
-
+    public void ActiveShield()
+    {
+        if(playerStats.shipCurrentShield <= 0)
+        {
+            playerStats.shipMaxShield = playerStats.shipMaxHealth / 2;
+            playerStats.shipCurrentShield = playerStats.shipMaxHealth / 2;
+            shieldText.GetComponent<TMP_Text>().text = playerStats.shipMaxShield + "/" + playerStats.shipMaxShield;
+            shieldText.SetActive(true);
+        }
+    }
+    public void DeactivateShield()
+    {
+        if (playerStats.shipCurrentShield <= 0)
+        {
+            shieldText.SetActive(false);
+        }
+    }
 }
