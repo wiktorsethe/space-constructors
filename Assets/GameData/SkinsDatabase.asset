@@ -13,15 +13,51 @@ MonoBehaviour:
   m_Name: SkinsDatabase
   m_EditorClassIdentifier: 
   skins:
-  - skinSpriteMain: {fileID: 21300000, guid: 9125c204f566db048a92ebcb64d9d14a, type: 3}
-    skinSpriteCorridor: {fileID: 21300000, guid: cee9dbe90b270c944ae1dabf41c93b10, type: 3}
+  - skinSpriteMain: {fileID: 21300000, guid: 81a8daacbd4053e4997c55531cf1b14b, type: 3}
+    skinSpriteCorridor: {fileID: 21300000, guid: 73046434a08477945ba0acff471eff25, type: 3}
+    cost: 1
+    isPurchased: 1
+  - skinSpriteMain: {fileID: 21300000, guid: 7d9c7cb46a9c9a74d9a033a62c5cbf32, type: 3}
+    skinSpriteCorridor: {fileID: 21300000, guid: b88988473cb0b9f4db5f39f6487d34ac, type: 3}
+    cost: 1
+    isPurchased: 1
+  - skinSpriteMain: {fileID: 21300000, guid: ed005d8e20e73a04c9da88ec228327d1, type: 3}
+    skinSpriteCorridor: {fileID: 21300000, guid: 3be4ce4575c8802499a5e824ef1128e4, type: 3}
     cost: 1
     isPurchased: 0
-  - skinSpriteMain: {fileID: 21300000, guid: 748ae8b33df036b46a86e0387f1602cf, type: 3}
-    skinSpriteCorridor: {fileID: 21300000, guid: cee9dbe90b270c944ae1dabf41c93b10, type: 3}
+  - skinSpriteMain: {fileID: 21300000, guid: 0a2a1a829a9373f48ba36d3ffed47470, type: 3}
+    skinSpriteCorridor: {fileID: 21300000, guid: 94e407fd1fe0dfd49b204e7e6aee64a3, type: 3}
     cost: 1
     isPurchased: 0
-  - skinSpriteMain: {fileID: 21300000, guid: 5430b5412bcac5b4986be0a875a5e978, type: 3}
-    skinSpriteCorridor: {fileID: 21300000, guid: cee9dbe90b270c944ae1dabf41c93b10, type: 3}
+  - skinSpriteMain: {fileID: 21300000, guid: 0b1c5ac13a1bc594eb7d73cf95cf3ac0, type: 3}
+    skinSpriteCorridor: {fileID: 21300000, guid: 20277061245f9a842beffb22cb020d61, type: 3}
+    cost: 1
+    isPurchased: 0
+  - skinSpriteMain: {fileID: 21300000, guid: f4a2d441fefe85d4799668ea3f7810e8, type: 3}
+    skinSpriteCorridor: {fileID: 21300000, guid: 0ae02766bfa41cd4d91bac2cd39aa251, type: 3}
+    cost: 1
+    isPurchased: 0
+  - skinSpriteMain: {fileID: 21300000, guid: e42d101788e3b0b49aafb657ca4fdfba, type: 3}
+    skinSpriteCorridor: {fileID: 21300000, guid: 729fe19f610ef00419b27519e9613c67, type: 3}
+    cost: 1
+    isPurchased: 0
+  - skinSpriteMain: {fileID: 21300000, guid: 655920b672d4ac54a92a0b8a861f45b5, type: 3}
+    skinSpriteCorridor: {fileID: 21300000, guid: 5a966cff0741e2d498f62b8307320137, type: 3}
+    cost: 1
+    isPurchased: 0
+  - skinSpriteMain: {fileID: 21300000, guid: 9f00a0028193ce643a59b89ad7ae5963, type: 3}
+    skinSpriteCorridor: {fileID: 21300000, guid: f0ba5bffad216104db2438f959dba8f2, type: 3}
+    cost: 1
+    isPurchased: 0
+  - skinSpriteMain: {fileID: 21300000, guid: a2a91a2be52476346ba962fbfa17b14b, type: 3}
+    skinSpriteCorridor: {fileID: 21300000, guid: c749d6a8a7281104bba538735d393e4c, type: 3}
+    cost: 1
+    isPurchased: 0
+  - skinSpriteMain: {fileID: 21300000, guid: e64af2e5c5a9e474e929671cb22eb3de, type: 3}
+    skinSpriteCorridor: {fileID: 21300000, guid: cbae1d659d6438b4399611b77cba2516, type: 3}
+    cost: 1
+    isPurchased: 0
+  - skinSpriteMain: {fileID: 21300000, guid: ec675ea1f150e254e84244a8f10efadc, type: 3}
+    skinSpriteCorridor: {fileID: 21300000, guid: 85064469e2b6ca441bbdbe7b80dad9bb, type: 3}
     cost: 1
     isPurchased: 0

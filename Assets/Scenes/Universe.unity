@@ -15522,6 +15522,7 @@ MonoBehaviour:
   playerStats: {fileID: 11400000, guid: 284895b3224468a48aa2a763a688b966, type: 2}
   shipPartsDB: {fileID: 11400000, guid: 7750664a700cbd8439c2f6aebe185d4a, type: 2}
   shipProgress: {fileID: 11400000, guid: e5214ab3914aca544b64f6cc6b7c753d, type: 2}
+  skinsDB: {fileID: 11400000, guid: 4d521d9abffbec0449e4b480e5cfec3a, type: 2}
   activeConstructPoint: {fileID: 0}
   gravityWarningText: {fileID: 1098182486}
   potentialSpawnPoints:

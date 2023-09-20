@@ -13,6 +13,7 @@ public class ShipManager : MonoBehaviour
     public PlayerStats playerStats;
     public ShipPartsDatabase shipPartsDB;
     public ShipProgress shipProgress;
+    public SkinsDatabase skinsDB;
     [Space(20f)]
 
     [Header("GameObjects")]
@@ -35,12 +36,21 @@ public class ShipManager : MonoBehaviour
         camSize = GameObject.FindObjectOfType(typeof(CameraSize)) as CameraSize;
         player = GameObject.FindGameObjectWithTag("Player");
         ship = GameObject.Find("SHIP"/*(Clone)"*/);
+        ship.transform.Find("Ship").GetComponent<SpriteRenderer>().sprite = skinsDB.skins[playerStats.selectedSkin].skinSpriteMain;
         if (shipProgress.shipParts.Count > 0)
         {
             for(int i=0; i<shipProgress.shipParts.Count; i++)
             {
                 GameObject shipPart = Instantiate(shipPartsDB.shipParts[shipProgress.shipParts[i].shipPartIndex].shipPart, shipProgress.shipParts[i].position, shipProgress.shipParts[i].rotation);
                 shipPart.transform.parent = ship.transform;
+                if (shipProgress.shipParts[i].shipPartIndex == 0)
+                {
+                    shipPart.transform.Find("Skin").GetComponent<SpriteRenderer>().sprite = skinsDB.skins[playerStats.selectedSkin].skinSpriteCorridor;
+                }
+                else if (shipProgress.shipParts[i].shipPartIndex == 1)
+                {
+                    shipPart.transform.Find("Skin").GetComponent<SpriteRenderer>().sprite = skinsDB.skins[playerStats.selectedSkin].skinSpriteMain;
+                }
             }
 
             GameObject[] targets = GameObject.FindGameObjectsWithTag("ConstructPoint");
@@ -134,6 +144,14 @@ public class ShipManager : MonoBehaviour
             ship = GameObject.Find("SHIP"/*(Clone)"*/); // tu usunac clone jak nie dziala
             GameObject shipPart = Instantiate(shipPartsDB.shipParts[index].shipPart, activeConstructPoint.transform.position, activeConstructPoint.transform.rotation);
             shipPart.transform.parent = ship.transform;
+            if(index == 0)
+            {
+                shipPart.transform.Find("Skin").GetComponent<SpriteRenderer>().sprite = skinsDB.skins[playerStats.selectedSkin].skinSpriteCorridor;
+            }
+            else if (index == 1)
+            {
+                shipPart.transform.Find("Skin").GetComponent<SpriteRenderer>().sprite = skinsDB.skins[playerStats.selectedSkin].skinSpriteMain;
+            }
             menu.constructPoints = GameObject.FindGameObjectsWithTag("ConstructPoint");
             for (int i = 0; i < menu.constructPoints.Length; i++)
             {
@@ -152,9 +170,10 @@ public class ShipManager : MonoBehaviour
             ShipPartInScene newShipPart;
             newShipPart.shipPartIndex = index;
             newShipPart.position = shipPart.transform.localPosition;
+            Debug.Log(newShipPart.position);
             newShipPart.rotation = activeConstructPoint.transform.rotation;
             shipProgress.shipParts.Add(newShipPart);
-            shipProgress.usedContstructPoints.Add(new Vector2(activeConstructPoint.transform.localPosition.x, activeConstructPoint.transform.localPosition.y));
+            shipProgress.usedContstructPoints.Add(new Vector2(newShipPart.position.x, newShipPart.position.y));
         }
 
     }

@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 5953221921869543459}
   - component: {fileID: 5953221921869543458}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Skin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
