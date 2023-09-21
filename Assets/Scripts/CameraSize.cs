@@ -9,10 +9,11 @@ public class CameraSize : MonoBehaviour
     [SerializeField] private Transform parentObject;
     [SerializeField] private Transform shipCenter;
     private Camera mainCamera;
- 
+    private UniverseScaler uniScaler;
     private void Start()
     {
         mainCamera = Camera.main;
+        uniScaler = GameObject.FindObjectOfType<UniverseScaler>() as UniverseScaler;
         ChangeCamSize();
     }
     
@@ -53,6 +54,7 @@ public class CameraSize : MonoBehaviour
                     DOTween.To(() => mainCamera.orthographicSize, x => mainCamera.orthographicSize = x, 9f, 1f).SetUpdate(UpdateType.Normal, true);
                 }
             }
+            uniScaler.ChangeUniverseScale();
         }
     }
 

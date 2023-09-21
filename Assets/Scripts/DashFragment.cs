@@ -12,6 +12,7 @@ public class DashFragment : MonoBehaviour
     {
         menu = GameObject.FindObjectOfType<Menu>() as Menu;
         shipMovement = GameObject.FindObjectOfType<ShipMovement>() as ShipMovement;
+        menu.dashButton.SetActive(true);
         menu.dashButton.GetComponent<Button>().onClick.AddListener(() => OnClickDash());
     }
     private void OnClickDash()
