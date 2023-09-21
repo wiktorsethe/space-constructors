@@ -11,6 +11,7 @@ public struct ShipPart
     public int oreCost;
     public int screwCost;
     public int gravityBonus;
+    public int hpBonus;
     public string shipPartType;
     public bool isOwned;
     public int produceAmount;

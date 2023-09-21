@@ -456,6 +456,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6282078967647910800, guid: be1271b06d2e2a6489030a0a60eb0cfb, type: 3}
+      propertyPath: experience
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6282078967647910801, guid: be1271b06d2e2a6489030a0a60eb0cfb, type: 3}
       propertyPath: m_Name
       value: EnemyShaman
@@ -3456,6 +3460,7 @@ MonoBehaviour:
   bestTimeTimer: 0
   kills: 0
   goldEarned: 0
+  score: 0
   sceneNameText: {fileID: 2111943302}
   sceneName: sigma centauris
 --- !u!114 &1859827763
@@ -3487,7 +3492,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerStats: {fileID: 11400000, guid: 284895b3224468a48aa2a763a688b966, type: 2}
   hpText: {fileID: 815468870}
+  shieldText: {fileID: 0}
   hpBar: {fileID: 454995186}
+  shieldBar: {fileID: 0}
 --- !u!114 &1859827765
 MonoBehaviour:
   m_ObjectHideFlags: 0

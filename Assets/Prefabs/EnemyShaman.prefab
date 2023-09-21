@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats: {fileID: 11400000, guid: 284895b3224468a48aa2a763a688b966, type: 2}
-  experience: 10
+  experience: 0
   gold: 100
   spawnPoints:
   - {fileID: 7940105132011682554}
@@ -126,7 +126,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooledObjects: []
-  bulletPrefab: {fileID: 5343667911992834465, guid: 9e7dad0f744436a43bf4ad11fdbe826a, type: 3}
+  prefab: {fileID: 0}
+  type: 
 --- !u!1 &6282078967857492212
 GameObject:
   m_ObjectHideFlags: 0

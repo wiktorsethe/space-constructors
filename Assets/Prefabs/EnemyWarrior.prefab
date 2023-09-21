@@ -337,9 +337,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05f66749f40aa024e8037a4f7f2caaf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpBar: {fileID: 0}
   playerStats: {fileID: 11400000, guid: 284895b3224468a48aa2a763a688b966, type: 2}
-  experience: 10
+  experience: 0
   gold: 100
   attackTimer: 0
   miningTextPrefab: {fileID: 8062151463999637536, guid: b9d2f93f3a98b4d4b8a1be849730c94f, type: 3}

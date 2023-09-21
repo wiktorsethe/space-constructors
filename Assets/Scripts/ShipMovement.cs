@@ -11,6 +11,7 @@ public class ShipMovement : MonoBehaviour
     [SerializeField] private float rotationSpeed;
     private Vector2 moveVector;
     public PlayerStats playerStats;
+    public bool isDashActivated = false;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -22,7 +23,8 @@ public class ShipMovement : MonoBehaviour
     }
     private void Update()
     {
-        Move();
+        if (!isDashActivated) Move();
+        else if (isDashActivated) Dash();
         Rotate();
     }
     private void Move()
@@ -45,5 +47,11 @@ public class ShipMovement : MonoBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
     }
-
+    public void Dash()
+    {
+        moveVector = Vector2.zero;
+        moveVector.x = movementJoystick.Horizontal * playerStats.shipSpeedValue * 2.5f * Time.deltaTime;
+        moveVector.y = movementJoystick.Vertical * playerStats.shipSpeedValue * 2.5f * Time.deltaTime;
+        rb.MovePosition(rb.position + moveVector);
+    }
 }

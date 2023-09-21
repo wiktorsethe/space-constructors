@@ -167,10 +167,10 @@ public class ShipManager : MonoBehaviour
             playerStats.screw -= shipPartsDB.shipParts[index].screwCost;
             shipPartsDB.shipParts[index].ownedAmount--;
             playerStats.shipGravity += shipPartsDB.shipParts[index].gravityBonus;
+            playerStats.shipMaxHealth += shipPartsDB.shipParts[index].hpBonus;
             ShipPartInScene newShipPart;
             newShipPart.shipPartIndex = index;
             newShipPart.position = shipPart.transform.localPosition;
-            Debug.Log(newShipPart.position);
             newShipPart.rotation = activeConstructPoint.transform.rotation;
             shipProgress.shipParts.Add(newShipPart);
             shipProgress.usedContstructPoints.Add(new Vector2(newShipPart.position.x, newShipPart.position.y));

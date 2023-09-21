@@ -34,6 +34,7 @@ public class Menu : MonoBehaviour
     [SerializeField] private GameObject bossHPBar;
     [SerializeField] private GameObject shipPartMenuPrefab;
     [SerializeField] private GameObject cardsMenuText;
+    public GameObject dashButton;
     [Space(20f)]
 
     [Header("Texts")]

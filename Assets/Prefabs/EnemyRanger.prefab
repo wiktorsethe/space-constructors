@@ -446,9 +446,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats: {fileID: 11400000, guid: 284895b3224468a48aa2a763a688b966, type: 2}
-  experience: 10
+  experience: 0
   gold: 100
-  bulletPrefab: {fileID: 5949201873329385209, guid: 7e5f433180cf9b540b3abcc27fb2ff97, type: 3}
   firePoint: {fileID: 1274150154848872869}
   miningTextPrefab: {fileID: 8062151463999637536, guid: b9d2f93f3a98b4d4b8a1be849730c94f, type: 3}
   animator: {fileID: 4997762367860128079}
@@ -522,4 +521,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooledObjects: []
-  bulletPrefab: {fileID: 5949201873329385209, guid: 7e5f433180cf9b540b3abcc27fb2ff97, type: 3}
+  prefab: {fileID: 0}
+  type: 
