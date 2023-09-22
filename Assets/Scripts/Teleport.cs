@@ -98,4 +98,8 @@ public class Teleport : MonoBehaviour
             angle += angleIncrement;
         }
     }
+    public void ChangeAttractionSize()
+    {
+        attractionDistance = size.x * 0.08f;
+    }
 }

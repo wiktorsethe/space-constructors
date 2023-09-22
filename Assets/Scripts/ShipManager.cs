@@ -174,6 +174,7 @@ public class ShipManager : MonoBehaviour
             newShipPart.rotation = activeConstructPoint.transform.rotation;
             shipProgress.shipParts.Add(newShipPart);
             shipProgress.usedContstructPoints.Add(new Vector2(newShipPart.position.x, newShipPart.position.y));
+            
         }
 
     }

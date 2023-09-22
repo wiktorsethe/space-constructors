@@ -10,10 +10,12 @@ public class CameraSize : MonoBehaviour
     [SerializeField] private Transform shipCenter;
     private Camera mainCamera;
     private UniverseScaler uniScaler;
+    private BackgroundScaler bgScaler;
     private void Start()
     {
         mainCamera = Camera.main;
         uniScaler = GameObject.FindObjectOfType<UniverseScaler>() as UniverseScaler;
+        bgScaler = GameObject.FindObjectOfType<BackgroundScaler>() as BackgroundScaler;
         ChangeCamSize();
     }
     
@@ -55,6 +57,12 @@ public class CameraSize : MonoBehaviour
                 }
             }
             uniScaler.ChangeUniverseScale();
+            bgScaler.ChangeBackgroundScale();
+            GameObject[] teleports = GameObject.FindGameObjectsWithTag("Planet");
+            foreach (GameObject tp in teleports)
+            {
+                tp.GetComponent<Teleport>().ChangeAttractionSize();
+            }
         }
     }
 
