@@ -14,11 +14,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipParts:
   - shipPartIndex: 0
-    position: {x: 2.25, y: 1.300003, z: 0}
+    position: {x: 2.25, y: 1.2998047, z: 0}
     rotation: {x: -0, y: -0, z: -0.5, w: 0.8660254}
-  - shipPartIndex: 2
-    position: {x: 4.0686493, y: 2.350006, z: 0}
+  - shipPartIndex: 1
+    position: {x: 4.0688477, y: 2.3496094, z: 0}
+    rotation: {x: -0, y: -0, z: -0.5, w: 0.8660254}
+  - shipPartIndex: 0
+    position: {x: 8.745605, y: 5.0498047, z: 0}
+    rotation: {x: -0, y: -0, z: -0.5, w: 0.8660254}
+  - shipPartIndex: 1
+    position: {x: 10.564453, y: 6.0996094, z: 0}
+    rotation: {x: -0, y: -0, z: -0.5, w: 0.8660254}
+  - shipPartIndex: 0
+    position: {x: 15.241211, y: 8.799805, z: 0}
+    rotation: {x: -0, y: -0, z: -0.5, w: 0.8660254}
+  - shipPartIndex: 1
+    position: {x: 17.060059, y: 9.849609, z: 0}
     rotation: {x: -0, y: -0, z: -0.5, w: 0.8660254}
   usedContstructPoints:
-  - {x: 2.25, y: 1.300003}
-  - {x: 4.0686493, y: 2.350006}
+  - {x: 2.25, y: 1.2998047}
+  - {x: 4.0688477, y: 2.3496094}
+  - {x: 8.745605, y: 5.0498047}
+  - {x: 10.564453, y: 6.0996094}
+  - {x: 15.241211, y: 8.799805}
+  - {x: 17.060059, y: 9.849609}

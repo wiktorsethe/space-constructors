@@ -11,11 +11,13 @@ public class CameraSize : MonoBehaviour
     private Camera mainCamera;
     private UniverseScaler uniScaler;
     private BackgroundScaler bgScaler;
+    private UniverseMaxSize uniMaxSize;
     private void Start()
     {
         mainCamera = Camera.main;
         uniScaler = GameObject.FindObjectOfType<UniverseScaler>() as UniverseScaler;
         bgScaler = GameObject.FindObjectOfType<BackgroundScaler>() as BackgroundScaler;
+        uniMaxSize = GameObject.FindObjectOfType<UniverseMaxSize>() as UniverseMaxSize;
         ChangeCamSize();
     }
     
@@ -56,13 +58,14 @@ public class CameraSize : MonoBehaviour
                     DOTween.To(() => mainCamera.orthographicSize, x => mainCamera.orthographicSize = x, 9f, 1f).SetUpdate(UpdateType.Normal, true);
                 }
             }
-            uniScaler.ChangeUniverseScale();
-            bgScaler.ChangeBackgroundScale();
+            uniScaler.ActivateCortoutine();
+            bgScaler.ActivateCortoutine();
             GameObject[] teleports = GameObject.FindGameObjectsWithTag("Planet");
             foreach (GameObject tp in teleports)
             {
                 tp.GetComponent<Teleport>().ChangeAttractionSize();
             }
+            uniMaxSize.ActivateCortoutine();
         }
     }
 

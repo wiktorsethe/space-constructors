@@ -5,13 +5,18 @@ using UnityEngine;
 public class BackgroundScaler : MonoBehaviour
 {
     private GameObject player;
-    public void ChangeBackgroundScale()
+    public void ActivateCortoutine()
     {
+        StartCoroutine("ChangeBackgroundScale");
+    }
+    private IEnumerator ChangeBackgroundScale()
+    {
+        yield return new WaitForSeconds(0.1f);
         player = GameObject.FindGameObjectWithTag("Player");
 
         Bounds bounds = Bounds();
 
-        Vector3 newScale = transform.localScale * (bounds.size.magnitude / 9.6215f);
+        Vector3 newScale = new Vector3(1, 1, 1) * (bounds.size.magnitude / 9.6215f);
         transform.localScale = newScale;
     }
     private Bounds Bounds()

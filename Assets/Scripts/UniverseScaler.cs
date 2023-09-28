@@ -6,13 +6,19 @@ public class UniverseScaler : MonoBehaviour
 {
     private GameObject player;
 
-    public void ChangeUniverseScale()
+    public void ActivateCortoutine()
     {
+        StartCoroutine("ChangeUniverseScale");
+    }
+    private IEnumerator ChangeUniverseScale()
+    {
+        yield return new WaitForSeconds(0.1f);
+
         player = GameObject.FindGameObjectWithTag("Player");
 
         Bounds bounds = Bounds();
 
-        Vector3 newScale = transform.localScale * (bounds.size.magnitude / 50f);
+        Vector3 newScale = new Vector3(1, 1, 1) * (bounds.size.magnitude / 50f);
         transform.localScale = newScale;
     }
     private Bounds Bounds()
