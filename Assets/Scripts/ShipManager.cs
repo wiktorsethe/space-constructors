@@ -65,13 +65,8 @@ public class ShipManager : MonoBehaviour
                 }
             }
         }
-        ship.gameObject.transform.position = playerStats.shipPosition;
+        Invoke("StartingPos", 0.5f);
         menu.HideConstructPoints();
-        if(playerStats.shipPosition == new Vector3(0f, 0f, 0f))
-        {
-            int randIndex = Random.Range(0, potentialSpawnPoints.Length);
-            transform.position = potentialSpawnPoints[randIndex].transform.position;
-        }
     }
     private void Update()
     {
@@ -136,6 +131,15 @@ public class ShipManager : MonoBehaviour
             }
         }
         
+    }
+    private void StartingPos()
+    {
+        ship.gameObject.transform.position = playerStats.shipPosition; /// <--------
+        if (playerStats.shipPosition == new Vector3(0f, 0f, 0f))
+        {
+            int randIndex = Random.Range(0, potentialSpawnPoints.Length);
+            transform.position = potentialSpawnPoints[randIndex].transform.position;
+        }
     }
     public void NewPart(int index)
     {

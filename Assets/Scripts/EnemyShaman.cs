@@ -10,6 +10,7 @@ public class EnemyShaman : MonoBehaviour
     private ExpBar expBar;
     public PlayerStats playerStats;
     private GameManager gameManager;
+    private ObjectPool objPool;
     [Space(20f)]
     [Header("Variables")]
     [SerializeField] private int experience; // ??
@@ -43,6 +44,7 @@ public class EnemyShaman : MonoBehaviour
         expBar = GameObject.FindObjectOfType(typeof(ExpBar)) as ExpBar;
         gameManager = GameObject.FindObjectOfType(typeof(GameManager)) as GameManager;
         player = GameObject.FindGameObjectWithTag("Player");
+        objPool = GetComponent<ObjectPool>();
 
         canvas.worldCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         currentHealth = maxHealth;
@@ -91,7 +93,11 @@ public class EnemyShaman : MonoBehaviour
     {
         for(int i=0; i<3; i++)
         {
-            GameObject minion = Instantiate(enemyWarriorPrefab, spawnPoints[i].transform.position, Quaternion.identity);
+            //GameObject minion = Instantiate(enemyWarriorPrefab, spawnPoints[i].transform.position, Quaternion.identity);
+
+            GameObject minion = objPool.GetPooledObject();
+            minion.transform.position = spawnPoints[i].transform.position;
+            minion.transform.rotation = Quaternion.identity;
             minions.Add(minion);
             minion.SetActive(false);
         }

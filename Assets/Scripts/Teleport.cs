@@ -100,6 +100,6 @@ public class Teleport : MonoBehaviour
     }
     public void ChangeAttractionSize()
     {
-        attractionDistance = size.x * 0.08f;
+        attractionDistance = size.x * 0.24f;
     }
 }

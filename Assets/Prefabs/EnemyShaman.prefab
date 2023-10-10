@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooledObjects: []
-  prefab: {fileID: 0}
+  prefab: {fileID: 5343667911992834465, guid: 9e7dad0f744436a43bf4ad11fdbe826a, type: 3}
   type: 
 --- !u!1 &6282078967857492212
 GameObject:

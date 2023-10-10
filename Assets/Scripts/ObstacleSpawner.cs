@@ -20,13 +20,18 @@ public class ObstacleSpawner : MonoBehaviour
         if(spawnTimer > spawnRate)
         {
             GameObject obj = GetPooledObject();
-            int randSpawnPoint = Random.Range(0, spawnPoints.Length);
-            obj.transform.position = spawnPoints[randSpawnPoint].transform.position;
+
+            obj.transform.position = RandomSpawnPoint().position;
             obj.transform.rotation = Quaternion.identity;
             
             obj.SetActive(true);
             spawnTimer = 0f;
         }
+    }
+    public Transform RandomSpawnPoint()
+    {
+        int randSpawnPoint = Random.Range(0, spawnPoints.Length);
+        return spawnPoints[randSpawnPoint].transform;
     }
     public GameObject GetPooledObject()
     {

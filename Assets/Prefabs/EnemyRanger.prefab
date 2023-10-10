@@ -521,5 +521,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooledObjects: []
-  prefab: {fileID: 0}
+  prefab: {fileID: 5949201873329385209, guid: 7e5f433180cf9b540b3abcc27fb2ff97, type: 3}
   type: 

@@ -2,14 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MenuPlanet : MonoBehaviour
 {
+    public PlayerStats playerStats;
     [Header("UI")]
     [SerializeField] private GameObject gameMenu;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject gameOverMenu;
+    [Space(20f)]
+    [Header("Text")]
+    [SerializeField] private TMP_Text goldText;
+    [SerializeField] private TMP_Text screwText;
+    [SerializeField] private TMP_Text oreText;
 
+    private void Update()
+    {
+        goldText.text = playerStats.gold.ToString();
+        screwText.text = playerStats.screw.ToString();
+        oreText.text = playerStats.ore.ToString();
+    }
     public void PauseMenu()
     {
         Time.timeScale = 0f;

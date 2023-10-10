@@ -147,11 +147,11 @@ public class GameManager : MonoBehaviour
 
             if (gap.x <= gap.y)
             {
-                boss.transform.localScale = new Vector3(gap.y, gap.y, boss.transform.localScale.z);
+                //boss.transform.localScale = new Vector3(gap.y, gap.y, boss.transform.localScale.z);
             }
             else
             {
-                boss.transform.localScale = new Vector3(gap.x, gap.x, boss.transform.localScale.z);
+                //boss.transform.localScale = new Vector3(gap.x, gap.x, boss.transform.localScale.z);
             }
         }
     }
