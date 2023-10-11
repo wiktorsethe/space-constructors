@@ -36,14 +36,17 @@ public class FirstBossSimpleAttackState : StateMachineBehaviour
             shootTimer = 0f;
         }
 
-        if (Vector2.Distance(animator.transform.position, ship.transform.position) > 15f)
+        if (Vector2.Distance(animator.transform.position, ship.transform.position) >= 16f)
         {
             animator.transform.position = Vector2.MoveTowards(animator.transform.position, ship.transform.position, 4f * Time.deltaTime);
         }
-        else
+        else if(Vector2.Distance(animator.transform.position, ship.transform.position) < 15.9f)
         {
+            Vector3 direction = animator.transform.position - ship.transform.position;
+            direction.Normalize();
 
-            animator.transform.position = Vector2.MoveTowards(animator.transform.position, -ship.transform.position, 14f * Time.deltaTime);
+            animator.transform.Translate(direction * 14f * Time.deltaTime);
+            //animator.transform.position = Vector2.MoveTowards(animator.transform.position, direction, 14f * Time.deltaTime);
         }
 
         if (timer >= currentTimerStomp)

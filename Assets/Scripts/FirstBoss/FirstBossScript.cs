@@ -11,7 +11,6 @@ public class FirstBossScript : MonoBehaviour
     public PlayerStats playerStats;
     private GameManager gameManager;
     private ExpBar expBar;
-    private ObstacleSpawner obstacleSpawner;
     [Space(20f)]
 
     [Header("Health System")]
@@ -47,7 +46,6 @@ public class FirstBossScript : MonoBehaviour
     {
         expBar = GameObject.FindObjectOfType(typeof(ExpBar)) as ExpBar;
         gameManager = GameObject.FindObjectOfType(typeof(GameManager)) as GameManager;
-        obstacleSpawner = GameObject.FindObjectOfType(typeof(ObstacleSpawner)) as ObstacleSpawner;
         healthBarCanvas = GameObject.Find("BossHPBar");
         objPools = GetComponents<ObjectPool>();
         healthBar = GameObject.Find("BossHPBar").GetComponent<Slider>();
@@ -306,6 +304,7 @@ public class FirstBossScript : MonoBehaviour
                 {
                     GameObject minion = script.GetPooledObject();
                     minion.transform.position = transform.position;
+                    minion.GetComponent<FirstBossMinionScript>().pivotObject = gameObject;
                     minion.SetActive(true);
                 }
             }

@@ -360,14 +360,14 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 0, y: 3.62}
-      - {x: -5.39, y: 1.04}
-      - {x: -5.39, y: -0.09}
+      - {x: -5.39, y: 0.2}
+      - {x: -5.39, y: -1.23}
       - {x: -1.83, y: -2.16}
       - {x: -0.92, y: -3.66}
       - {x: 0.92, y: -3.66}
       - {x: 1.83, y: -2.16}
-      - {x: 5.39, y: -0.09}
-      - {x: 5.39, y: 1.04}
+      - {x: 5.39, y: -1.23}
+      - {x: 5.39, y: 0.2}
 --- !u!114 &814842546047016683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,7 +441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooledObjects: []
-  prefab: {fileID: 4097292490769698411, guid: eedad65d5d0f824418346303719b62a4, type: 3}
+  prefab: {fileID: 3477588971784978334, guid: 272bcf9602937fa4b9fd3a43a9a80b02, type: 3}
   type: minion
 --- !u!95 &814842546047016687
 Animator:
