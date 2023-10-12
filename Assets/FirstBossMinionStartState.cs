@@ -10,7 +10,7 @@ public class FirstBossMinionStartState : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.transform.Find("EnemyShipImage").transform.GetComponent<PolygonCollider2D>().enabled = false;
-        boss = animator.GetComponent<FirstBossMinionScript>().pivotObject;
+        boss = animator.GetComponent<FirstBossMinionScript>().bossObject;
 
         Renderer[] bossRenderers = boss.GetComponentsInChildren<Renderer>();
         if (bossRenderers.Length > 0)
@@ -30,11 +30,11 @@ public class FirstBossMinionStartState : StateMachineBehaviour
     {
         if(Vector2.Distance(boss.transform.position, animator.transform.position) < bossSize)
         {
+            //Debug.Log(Vector2.Distance(boss.transform.position, animator.transform.position));
             Vector3 direction = animator.transform.position - boss.transform.position;
             direction.Normalize();
 
             animator.transform.Translate(direction * 14f * Time.deltaTime);
-            //animator.transform.position = Vector2.MoveTowards(animator.transform.position, -boss.transform.position, 4f * Time.deltaTime);
         }
         else
         {

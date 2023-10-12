@@ -89,8 +89,6 @@ MonoBehaviour:
   currentHealth: 0
   animator: {fileID: 3477588971784978335}
   retreatVector: {x: 0, y: 0}
-  rotatingSpeed: 40
-  rotatingLocalSpeed: 0
   pivotObject: {fileID: 0}
 --- !u!114 &3477588971784978328
 MonoBehaviour:
@@ -236,7 +234,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3477588971854347955}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0

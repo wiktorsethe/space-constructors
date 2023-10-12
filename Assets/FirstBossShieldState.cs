@@ -8,7 +8,8 @@ public class FirstBossShieldState : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.GetComponent<FirstBossScript>().Shield();
-        animator.GetComponent<FirstBossScript>().SpawnMinions(3);
+        animator.GetComponent<FirstBossScript>().SpawnMinions(1);
+        animator.SetTrigger("SimpleAttack");
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

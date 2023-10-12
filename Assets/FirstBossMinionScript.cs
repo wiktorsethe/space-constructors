@@ -13,6 +13,7 @@ public class FirstBossMinionScript : MonoBehaviour
     public float moveSpeed = 2f;
     [Space(20f)]
     [Header("GameObjects and Rest")]
+    public GameObject bossObject;
     [SerializeField] private GameObject damageTextPrefab;
     [Space(20f)]
     [Header("Health System")]
@@ -34,11 +35,6 @@ public class FirstBossMinionScript : MonoBehaviour
     private GameObject dashParticle;
     private ObjectPool[] objPools;
     public Vector2 retreatVector;
-    [Space(20f)]
-    [Header("Rotating around boss")]
-    public float rotatingSpeed;
-    [SerializeField] private float rotatingLocalSpeed;
-    public GameObject pivotObject;
     private void Start()
     {
         objPools = GetComponents<ObjectPool>();
@@ -237,15 +233,19 @@ public class FirstBossMinionScript : MonoBehaviour
 
         return closestObject;
     }
-    public void Pivot()
+    public void Pivot(float rotatingSpeed)
     {
-        if (pivotObject)
+        if (bossObject)
         {
-            transform.RotateAround(pivotObject.transform.position, Vector3.forward, rotatingSpeed * Time.deltaTime);
+            transform.RotateAround(bossObject.transform.position, Vector3.forward, rotatingSpeed * Time.deltaTime);
         }
-
-        float currentRotation = transform.rotation.eulerAngles.z;
-        float newRotation = currentRotation + (rotatingLocalSpeed * Time.deltaTime);
-        transform.rotation = Quaternion.Euler(0f, 0f, newRotation);
+    }
+    public void HealBoss()
+    {
+        if (bossObject)
+        {
+            bossObject.GetComponent<FirstBossScript>().currentHealth += 3;
+            bossObject.GetComponent<FirstBossScript>().SetHealth();
+        }
     }
 }

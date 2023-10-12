@@ -18,7 +18,7 @@ public class FirstBossScript : MonoBehaviour
     [SerializeField] private Slider healthBar;
     [SerializeField] private Image fillBar;
     [SerializeField] private int maxHealth;
-    private int currentHealth;
+    public int currentHealth;
     private bool isDeath = false;
     private bool isHalfDeath = false;
     [Space(20f)]
@@ -304,11 +304,18 @@ public class FirstBossScript : MonoBehaviour
                 {
                     GameObject minion = script.GetPooledObject();
                     minion.transform.position = transform.position;
-                    minion.GetComponent<FirstBossMinionScript>().pivotObject = gameObject;
+                    minion.GetComponent<FirstBossMinionScript>().bossObject = gameObject;
                     minion.SetActive(true);
                 }
             }
                 
+        }
+    }
+    public void Pivot(float rotatingSpeed)
+    {
+        if (FindClosestObject())
+        {
+            transform.RotateAround(FindClosestObject().transform.position, Vector3.forward, rotatingSpeed * Time.deltaTime);
         }
     }
 }

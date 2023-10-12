@@ -10,6 +10,8 @@ public class FirstBossSimpleAttackState : StateMachineBehaviour
     private float maxTimer = 17f;
     private float currentTimerStomp;
     private GameObject ship;
+    private float randTimer;
+    private float randSpeed;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -18,6 +20,8 @@ public class FirstBossSimpleAttackState : StateMachineBehaviour
         shootTimer = 0f;
         currentTimerStomp = Random.Range(minTimer, maxTimer);
         ship = animator.GetComponent<FirstBossScript>().FindClosestObject();
+
+        randSpeed = Random.Range(-1000, 1000) / 100;
 
     }
 
@@ -31,6 +35,7 @@ public class FirstBossSimpleAttackState : StateMachineBehaviour
         animator.GetComponent<FirstBossScript>().ChangeRotation();
         if (shootTimer >= 4f)
         {
+            randSpeed = Random.Range(-1000, 1000) / 50;
             animator.GetComponent<FirstBossScript>().FireBullet(0);
             animator.GetComponent<FirstBossScript>().FireBullet(1);
             shootTimer = 0f;
@@ -47,6 +52,10 @@ public class FirstBossSimpleAttackState : StateMachineBehaviour
 
             animator.transform.Translate(direction * 14f * Time.deltaTime);
             //animator.transform.position = Vector2.MoveTowards(animator.transform.position, direction, 14f * Time.deltaTime);
+        }
+        else
+        {
+            animator.transform.GetComponent<FirstBossScript>().Pivot(randSpeed);
         }
 
         if (timer >= currentTimerStomp)
