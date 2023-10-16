@@ -25,14 +25,6 @@ public class ShootingBombBullet : MonoBehaviour
         cam = Camera.main;
         cameraHalfWidth = cam.orthographicSize * cam.aspect;
 
-        float cameraHeight = cam.orthographicSize * 0.13f;
-        float cameraWidth = cameraHeight * cam.aspect;
-
-        float scaleX = cameraWidth / transform.localScale.x;
-        float scaleY = cameraHeight / transform.localScale.y;
-
-        float objectScale = Mathf.Min(scaleX, scaleY);
-        transform.localScale = new Vector3(objectScale, objectScale, 1f);
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -92,5 +84,16 @@ public class ShootingBombBullet : MonoBehaviour
     {
 
         yield return new WaitForSeconds(3f);
+    }
+    public void ChangeSize()
+    {
+        float cameraHeight = cam.orthographicSize * 0.13f;
+        float cameraWidth = cameraHeight * cam.aspect;
+
+        float scaleX = cameraWidth / transform.localScale.x;
+        float scaleY = cameraHeight / transform.localScale.y;
+
+        float objectScale = Mathf.Min(scaleX, scaleY);
+        transform.localScale = new Vector3(objectScale, objectScale, 1f);
     }
 }

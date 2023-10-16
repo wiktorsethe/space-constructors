@@ -60,6 +60,7 @@ public class ShootingLaserGun : MonoBehaviour
         bullet.SetActive(true);
         bullet.GetComponent<ShootingBullet>().target = target;
         bullet.GetComponent<ShootingBullet>().damage = playerStats.laserGunDamageValue;
+        bullet.GetComponent<ShootingBombBullet>().ChangeSize();
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         Vector2 bulletVelocity = firePoint.up * bulletSpeed;
         rb.velocity = bulletVelocity;

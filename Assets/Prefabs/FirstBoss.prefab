@@ -281,6 +281,7 @@ GameObject:
   - component: {fileID: 814842546047016685}
   - component: {fileID: 814842546047016682}
   - component: {fileID: 1056169755681411630}
+  - component: {fileID: 2876711426468531294}
   - component: {fileID: 814842546047016687}
   m_Layer: 0
   m_Name: FirstBoss
@@ -322,11 +323,11 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   fillBar: {fileID: 0}
   maxHealth: 100
+  currentHealth: 0
   damageTextPrefab: {fileID: 8062151463999637536, guid: b9d2f93f3a98b4d4b8a1be849730c94f, type: 3}
   firePoints:
   - {fileID: 814842544607181127}
   - {fileID: 814842544745519231}
-  minionSpawnPoints: []
   bulletSpeed: 10
   target: Ship
   experience: 1
@@ -334,6 +335,7 @@ MonoBehaviour:
   isShieldActive: 1
   animator: {fileID: 814842546047016687}
   destroyParticles: {fileID: 5750636412268111920, guid: 5a3b3b77bbf61d5468325aef9d20a9d2, type: 3}
+  nextCorner: {x: 0, y: 0}
 --- !u!60 &814842546047016680
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -443,6 +445,21 @@ MonoBehaviour:
   pooledObjects: []
   prefab: {fileID: 3477588971784978334, guid: 272bcf9602937fa4b9fd3a43a9a80b02, type: 3}
   type: minion
+--- !u!114 &2876711426468531294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 814842546047016679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ab626b24757ddf4c9a2f979031c523f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  prefab: {fileID: 3340080685340277693, guid: 1b3fea5dd4a335a4b9cbf9e167221988, type: 3}
+  type: flameThrowerParticle
 --- !u!95 &814842546047016687
 Animator:
   serializedVersion: 5

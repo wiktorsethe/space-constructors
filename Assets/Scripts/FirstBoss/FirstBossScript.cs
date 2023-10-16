@@ -21,12 +21,12 @@ public class FirstBossScript : MonoBehaviour
     public int currentHealth;
     private bool isDeath = false;
     private bool isHalfDeath = false;
+    private bool isQuarterDeath = false;
     [Space(20f)]
 
     [Header("Damage/Attack")]
     [SerializeField] private GameObject damageTextPrefab;
     [SerializeField] private Transform[] firePoints;
-    [SerializeField] private Transform[] minionSpawnPoints;
     [SerializeField] private float bulletSpeed;
     [SerializeField] private string target;
     [SerializeField] private int experience;
@@ -42,6 +42,12 @@ public class FirstBossScript : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject destroyParticles;
 
+
+    private Camera mainCam;
+    public Vector2 nextCorner;
+    private GameObject flameThrowerParticle;
+    private CameraSize camSize;
+
     private void Start()
     {
         expBar = GameObject.FindObjectOfType(typeof(ExpBar)) as ExpBar;
@@ -50,6 +56,8 @@ public class FirstBossScript : MonoBehaviour
         objPools = GetComponents<ObjectPool>();
         healthBar = GameObject.Find("BossHPBar").GetComponent<Slider>();
         fillBar = GameObject.Find("BossHPBar").transform.Find("Bar").GetComponent<Image>();
+        camSize = GameObject.FindObjectOfType(typeof(CameraSize)) as CameraSize;
+        mainCam = Camera.main;
         currentHealth = maxHealth;
         SetMaxHealth(maxHealth);
         Shield();
@@ -108,6 +116,11 @@ public class FirstBossScript : MonoBehaviour
         {
             isHalfDeath = true;
             animator.SetTrigger("Shield");
+        }
+        if (currentHealth <= maxHealth * 0.75f && !isQuarterDeath)
+        {
+            isQuarterDeath = true;
+            animator.SetTrigger("FlamethrowerStart");
         }
         /*
         if (isHalfDeath && !isShieldActive)
@@ -317,5 +330,102 @@ public class FirstBossScript : MonoBehaviour
         {
             transform.RotateAround(FindClosestObject().transform.position, Vector3.forward, rotatingSpeed * Time.deltaTime);
         }
+    }
+    public Vector3 GetRandomPointOnBorder(int randomBorder)
+    {
+        Vector3 randomPoint = Vector3.zero;
+
+        // Get camera information
+        float cameraHeight = 2f * mainCam.orthographicSize;
+        float cameraWidth = cameraHeight * mainCam.aspect;
+
+        // Calculate random point on the border
+        switch (randomBorder)
+        {
+            case 0: // Top-left corner
+                randomPoint = new Vector3(-cameraWidth * 0.45f, cameraHeight * 0.4f, 0);
+                nextCorner = GetNextCorner(0);
+                break;
+            case 1: // Top-right corner
+                randomPoint = new Vector3(cameraWidth * 0.45f, cameraHeight * 0.4f, 0);
+                nextCorner = GetNextCorner(1);
+                break;
+            case 2: // Bottom-left corner
+                randomPoint = new Vector3(-cameraWidth * 0.45f, -cameraHeight * 0.4f, 0);
+                nextCorner = GetNextCorner(2);
+                break;
+            case 3: // Bottom-right corner
+                randomPoint = new Vector3(cameraWidth * 0.45f, -cameraHeight * 0.4f, 0);
+                nextCorner = GetNextCorner(3);
+                break;
+        }
+
+        // Convert to world space
+        randomPoint = mainCam.transform.position + mainCam.transform.TransformVector(randomPoint);
+
+        return randomPoint;
+    }
+    public void ChangeRotBorder(Quaternion rot)
+    {
+        animator.transform.Find("main").transform.rotation = Quaternion.Slerp(animator.transform.Find("main").transform.rotation, rot, 5f * Time.deltaTime);
+    }
+    public Vector3 GetNextCorner(int prevBorder)
+    {
+        Vector3 randomPoint = Vector3.zero;
+
+        // Get camera information
+        float cameraHeight = 2f * mainCam.orthographicSize;
+        float cameraWidth = cameraHeight * mainCam.aspect;
+
+        // Calculate random point on the border
+        switch (prevBorder)
+        {
+            case 0: // Top-left corner
+                randomPoint = new Vector3(cameraWidth * 0.45f, cameraHeight * 0.4f, 0);
+                break;
+            case 1: // Top-right corner
+                randomPoint = new Vector3(-cameraWidth * 0.45f, cameraHeight * 0.4f, 0);
+                break;
+            case 2: // Bottom-left corner
+                randomPoint = new Vector3(cameraWidth * 0.45f, -cameraHeight * 0.4f, 0);
+                break;
+            case 3: // Bottom-right corner
+                randomPoint = new Vector3(-cameraWidth * 0.45f, -cameraHeight * 0.4f, 0);
+                break;
+        }
+
+        // Convert to world space
+        randomPoint = mainCam.transform.position + mainCam.transform.TransformVector(randomPoint);
+
+        return randomPoint;
+    }
+    public void FlameThrower()
+    {
+        foreach (ObjectPool script in objPools)
+        {
+            if (script.type == "flameThrowerParticle")
+            {
+                flameThrowerParticle = script.GetPooledObject(); //tu cos nie gra
+                flameThrowerParticle.transform.parent = transform.Find("main").transform;
+                ParticleSystem.MainModule main = flameThrowerParticle.GetComponent<ParticleSystem>().main;
+                main.loop = true;
+                float cameraHeight = mainCam.orthographicSize * 0.2f;
+                float cameraWidth = cameraHeight * mainCam.aspect;
+                main.startLifetime = cameraWidth / 2;
+                main.duration = cameraWidth;
+                flameThrowerParticle.SetActive(true);
+                flameThrowerParticle.transform.position = transform.position;
+                flameThrowerParticle.transform.rotation = transform.Find("main").transform.rotation;
+            }
+        }
+    }
+    public void FlameThrowerEnd()
+    {
+        flameThrowerParticle.SetActive(false);
+    }
+    public float ObjectSize()
+    {
+        Bounds parentBounds = camSize.CalculateParentBounds();
+        return parentBounds.size.x;
     }
 }

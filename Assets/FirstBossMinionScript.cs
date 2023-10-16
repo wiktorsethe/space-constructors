@@ -244,7 +244,7 @@ public class FirstBossMinionScript : MonoBehaviour
     {
         if (bossObject)
         {
-            bossObject.GetComponent<FirstBossScript>().currentHealth += 3;
+            bossObject.GetComponent<FirstBossScript>().currentHealth += 1;
             bossObject.GetComponent<FirstBossScript>().SetHealth();
         }
     }

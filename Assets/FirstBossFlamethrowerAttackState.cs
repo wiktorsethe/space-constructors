@@ -2,24 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FirstBossStartState : StateMachineBehaviour
+public class FirstBossFlamethrowerAttackState : StateMachineBehaviour
 {
-    private int randInt;
+    Vector2 newPos;
+    private float timer = 0f;
+    private float playerSize;
+    public PlayerStats playerStats;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        randInt = Random.Range(0, 1);
+        timer = 0f;
+        newPos = animator.GetComponent<FirstBossScript>().nextCorner;
+        animator.GetComponent<FirstBossScript>().FlameThrower();
+        playerSize = animator.GetComponent<FirstBossScript>().ObjectSize();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (randInt == 0)
+        timer += Time.deltaTime;
+        if (timer >= 4f)
         {
-            animator.SetTrigger("SimpleAttack");
+            if (Vector2.Distance(animator.transform.position, newPos) > playerSize * 1.1f)
+            {
+                animator.transform.position = Vector2.MoveTowards(animator.transform.position, newPos, (playerStats.shipSpeedValue * 1.5f) * Time.deltaTime);
+            }
+            else
+            {
+                animator.GetComponent<FirstBossScript>().FlameThrowerEnd();
+                animator.GetComponent<PolygonCollider2D>().enabled = true;
+                animator.SetTrigger("Start");
+            }
         }
-        
-
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

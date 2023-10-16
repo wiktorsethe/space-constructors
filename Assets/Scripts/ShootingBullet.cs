@@ -25,15 +25,6 @@ public class ShootingBullet : MonoBehaviour
         camShake = GameObject.FindObjectOfType(typeof(CameraShake)) as CameraShake;
         cam = Camera.main;
         cameraHalfWidth = cam.orthographicSize * cam.aspect;
-
-        float cameraHeight = cam.orthographicSize * 0.13f;
-        float cameraWidth = cameraHeight * cam.aspect;
-
-        float scaleX = cameraWidth / transform.localScale.x;
-        float scaleY = cameraHeight / transform.localScale.y;
-
-        float objectScale = Mathf.Min(scaleX, scaleY);
-        transform.localScale = new Vector3(objectScale, objectScale, 1f);
     }
     private void Update()
     {
@@ -99,5 +90,16 @@ public class ShootingBullet : MonoBehaviour
             particle.SetActive(true);
             gameObject.SetActive(false);
         }
+    }
+    public void ChangeSize()
+    {
+        float cameraHeight = cam.orthographicSize * 0.13f;
+        float cameraWidth = cameraHeight * cam.aspect;
+
+        float scaleX = cameraWidth / transform.localScale.x;
+        float scaleY = cameraHeight / transform.localScale.y;
+
+        float objectScale = Mathf.Min(scaleX, scaleY);
+        transform.localScale = new Vector3(objectScale, objectScale, 1f);
     }
 }

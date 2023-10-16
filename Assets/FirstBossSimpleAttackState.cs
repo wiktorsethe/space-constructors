@@ -45,7 +45,7 @@ public class FirstBossSimpleAttackState : StateMachineBehaviour
         {
             animator.transform.position = Vector2.MoveTowards(animator.transform.position, ship.transform.position, 4f * Time.deltaTime);
         }
-        else if(Vector2.Distance(animator.transform.position, ship.transform.position) < 15.9f)
+        else if(Vector2.Distance(animator.transform.position, ship.transform.position) < 15f)
         {
             Vector3 direction = animator.transform.position - ship.transform.position;
             direction.Normalize();

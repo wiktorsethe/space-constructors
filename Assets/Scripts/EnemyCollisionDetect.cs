@@ -6,7 +6,7 @@ public class EnemyCollisionDetect : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Bullet")
+        if (collision.gameObject.tag == "Bullet" && collision.gameObject.GetComponent<ShootingBullet>().target == "Enemy")
         {
             if(transform.parent.tag == "EnemyRanger")
             {

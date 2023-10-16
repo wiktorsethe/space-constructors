@@ -42,6 +42,7 @@ public class ShootingBombGun : MonoBehaviour
         bullet.SetActive(true);
         bullet.GetComponent<ShootingBombBullet>().target = target;
         bullet.GetComponent<ShootingBombBullet>().damage = playerStats.bombGunDamageValue;
+        bullet.GetComponent<ShootingBombBullet>().ChangeSize();
         bullet.GetComponent<ShootingBombBullet>().isBombGunShoot = false;
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         Vector2 bulletVelocity = firePoint.up * bulletSpeed;
