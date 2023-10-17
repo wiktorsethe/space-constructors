@@ -47,7 +47,7 @@ public class ShootingHomingGun : MonoBehaviour
             bullet.transform.rotation = firePoint.rotation;
             bullet.GetComponent<ShootingBullet>().target = target;
             bullet.GetComponent<ShootingBullet>().damage = playerStats.homingGunDamageValue;
-            bullet.GetComponent<ShootingBombBullet>().ChangeSize();
+            bullet.GetComponent<ShootingBullet>().ChangeSize();
             float closestDistance = Mathf.Infinity;
             GameObject closestObject = null;
             foreach (GameObject obj in targets)

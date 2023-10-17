@@ -42,7 +42,7 @@ public class ShootingFlameGun : MonoBehaviour
         bullet.SetActive(true);
         bullet.GetComponent<ShootingBullet>().target = target;
         bullet.GetComponent<ShootingBullet>().damage = playerStats.flameGunCollisionDamageValue;
-        bullet.GetComponent<ShootingBombBullet>().ChangeSize();
+        bullet.GetComponent<ShootingBullet>().ChangeSize();
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         Vector2 bulletVelocity = firePoint.up * bulletSpeed;
         rb.velocity = bulletVelocity;

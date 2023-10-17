@@ -129,7 +129,8 @@ public class GameManager : MonoBehaviour
 
     private void SpawnBoss()
     {
-
+        Instantiate(bossPrefab, new Vector3(mainCamera.transform.position.x, bounds.spawnPoints[1].transform.position.y + bossSize.y + 10f, 0f), Quaternion.identity);
+        /*
         Renderer[] playerRenderers = player.GetComponentsInChildren<Renderer>();
         if (playerRenderers.Length > 0)
         {
@@ -153,6 +154,6 @@ public class GameManager : MonoBehaviour
             {
                 //boss.transform.localScale = new Vector3(gap.x, gap.x, boss.transform.localScale.z);
             }
-        }
+        }*/
     }
 }

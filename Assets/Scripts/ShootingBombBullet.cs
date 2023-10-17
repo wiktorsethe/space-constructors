@@ -17,6 +17,7 @@ public class ShootingBombBullet : MonoBehaviour
     public float speed = 5f;
     private Rigidbody2D rb;
     private bool isBombTime = false;
+    private float camHeight;
     // Start is called before the first frame update
     private void Start()
     {
@@ -89,11 +90,14 @@ public class ShootingBombBullet : MonoBehaviour
     {
         float cameraHeight = cam.orthographicSize * 0.13f;
         float cameraWidth = cameraHeight * cam.aspect;
+        if (cameraHeight != camHeight)
+        {
+            float scaleX = cameraWidth / transform.localScale.x;
+            float scaleY = cameraHeight / transform.localScale.y;
 
-        float scaleX = cameraWidth / transform.localScale.x;
-        float scaleY = cameraHeight / transform.localScale.y;
-
-        float objectScale = Mathf.Min(scaleX, scaleY);
-        transform.localScale = new Vector3(objectScale, objectScale, 1f);
+            float objectScale = Mathf.Min(scaleX, scaleY);
+            transform.localScale = new Vector3(objectScale, objectScale, 1f);
+            camHeight = cameraHeight;
+        }
     }
 }

@@ -37,13 +37,13 @@ public class ShootingNormalGun : MonoBehaviour
     {
         shootAnimator.SetTrigger("Play");
         GameObject bullet = objPool.GetPooledObject();
+        bullet.GetComponent<ShootingBullet>().ChangeSize();
         bullet.transform.position = firePoint.position;
         bullet.GetComponent<ShootingBullet>().startingPos = firePoint.position;
         bullet.transform.rotation = firePoint.rotation;
         bullet.SetActive(true);
         bullet.GetComponent<ShootingBullet>().target = target;
         bullet.GetComponent<ShootingBullet>().damage = playerStats.normalGunDamageValue;
-        bullet.GetComponent<ShootingBombBullet>().ChangeSize();
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         Vector2 bulletVelocity = firePoint.up * bulletSpeed;
         rb.velocity = bulletVelocity;

@@ -21,6 +21,7 @@ TagManager:
   - EnemyFlame
   - Pillar
   - FlameThrower
+  - Wall
   layers:
   - Default
   - TransparentFX

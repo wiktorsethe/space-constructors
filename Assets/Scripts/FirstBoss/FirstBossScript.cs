@@ -428,4 +428,41 @@ public class FirstBossScript : MonoBehaviour
         Bounds parentBounds = camSize.CalculateParentBounds();
         return parentBounds.size.x;
     }
+    public Vector3 GetRandomPointInCameraView()
+    {
+        Rect cameraBounds = GetCameraBounds(mainCam);
+
+        float randomX = Random.Range(cameraBounds.xMin, cameraBounds.xMax);
+        float randomY = Random.Range(cameraBounds.yMin, cameraBounds.yMax);
+
+        Vector3 randomPoint = new Vector3(randomX, randomY, 0f);
+
+        return randomPoint;
+    }
+    Rect GetCameraBounds(Camera camera)
+    {
+        Vector2 bottomLeft = camera.ViewportToWorldPoint(new Vector3(0, 0, camera.nearClipPlane));
+        Vector2 topRight = camera.ViewportToWorldPoint(new Vector3(1, 1, camera.nearClipPlane));
+
+        Rect bounds = new Rect(bottomLeft.x, bottomLeft.y, topRight.x - bottomLeft.x, topRight.y - bottomLeft.y);
+
+        return bounds;
+    }
+    public void SpawnWalls(int amount)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            foreach (ObjectPool script in objPools)
+            {
+                if (script.type == "wall")
+                {
+                    GameObject wall = script.GetPooledObject();
+                    wall.transform.position = GetRandomPointInCameraView();
+                    wall.SetActive(true);
+
+                }
+            }
+
+        }
+    }
 }

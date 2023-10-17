@@ -13,6 +13,7 @@ public class FirstBossFlamethrowerPosState : StateMachineBehaviour
         animator.GetComponent<PolygonCollider2D>().enabled = false;
         randomBorder = Random.Range(0, 4);
         specialAttackPos = animator.GetComponent<FirstBossScript>().GetRandomPointOnBorder(randomBorder);
+        animator.GetComponent<FirstBossScript>().SpawnWalls(3);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

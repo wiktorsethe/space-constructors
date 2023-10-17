@@ -17,7 +17,7 @@ public class ShootingBullet : MonoBehaviour
     public Transform targetT;
     private float speed = 10;
     private float rotateSpeed = 200;
-
+    private float camHeight;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -93,13 +93,17 @@ public class ShootingBullet : MonoBehaviour
     }
     public void ChangeSize()
     {
+        Camera cam = Camera.main;
         float cameraHeight = cam.orthographicSize * 0.13f;
         float cameraWidth = cameraHeight * cam.aspect;
+        if(cameraHeight != camHeight)
+        {
+            float scaleX = cameraWidth / transform.localScale.x;
+            float scaleY = cameraHeight / transform.localScale.y;
 
-        float scaleX = cameraWidth / transform.localScale.x;
-        float scaleY = cameraHeight / transform.localScale.y;
-
-        float objectScale = Mathf.Min(scaleX, scaleY);
-        transform.localScale = new Vector3(objectScale, objectScale, 1f);
+            float objectScale = Mathf.Min(scaleX, scaleY);
+            transform.localScale = new Vector3(objectScale, objectScale, 1f);
+            camHeight = cameraHeight;
+        }
     }
 }
