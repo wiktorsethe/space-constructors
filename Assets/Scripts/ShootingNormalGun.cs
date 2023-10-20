@@ -37,7 +37,6 @@ public class ShootingNormalGun : MonoBehaviour
     {
         shootAnimator.SetTrigger("Play");
         GameObject bullet = objPool.GetPooledObject();
-        bullet.GetComponent<ShootingBullet>().ChangeSize();
         bullet.transform.position = firePoint.position;
         bullet.GetComponent<ShootingBullet>().startingPos = firePoint.position;
         bullet.transform.rotation = firePoint.rotation;
@@ -47,5 +46,6 @@ public class ShootingNormalGun : MonoBehaviour
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         Vector2 bulletVelocity = firePoint.up * bulletSpeed;
         rb.velocity = bulletVelocity;
+        bullet.GetComponent<ShootingBullet>().ChangeSize();
     }
 }

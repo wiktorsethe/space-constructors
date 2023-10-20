@@ -96,14 +96,14 @@ public class ShootingBullet : MonoBehaviour
         Camera cam = Camera.main;
         float cameraHeight = cam.orthographicSize * 0.13f;
         float cameraWidth = cameraHeight * cam.aspect;
-        if(cameraHeight != camHeight)
+        if (cameraHeight != camHeight)
         {
+            camHeight = cameraHeight;
             float scaleX = cameraWidth / transform.localScale.x;
             float scaleY = cameraHeight / transform.localScale.y;
 
             float objectScale = Mathf.Min(scaleX, scaleY);
             transform.localScale = new Vector3(objectScale, objectScale, 1f);
-            camHeight = cameraHeight;
         }
     }
 }

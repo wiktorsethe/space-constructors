@@ -120,8 +120,11 @@ public class EnemyShip : MonoBehaviour
     public void ChangeRotation()
     {
         GameObject ship = FindClosestObject();
-        Vector3 vectorToTarget = ship.transform.position - animator.transform.position;
-        animator.transform.Find("EnemyShipImage").transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget);
+        if (ship)
+        {
+            Vector3 vectorToTarget = ship.transform.position - animator.transform.position;
+            animator.transform.Find("EnemyShipImage").transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget);
+        }
     }
     public void SetMaxHealth(int health)
     {

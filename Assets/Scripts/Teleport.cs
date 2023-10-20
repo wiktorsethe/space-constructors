@@ -17,6 +17,7 @@ public class Teleport : MonoBehaviour
     [SerializeField] private string targetScene;
     private bool sizeChanged = false;
     private float collisionTime = -1;
+    private float distance;
     public int gravity;
     private Vector3 size;
     [Space(20f)]
@@ -51,9 +52,11 @@ public class Teleport : MonoBehaviour
     private void Update()
     {
         //player = GameObject.FindGameObjectWithTag("Player");
-        float distance = Vector3.Distance(player.transform.position, transform.position);
-
-        if(distance <= attractionDistance)
+        if (player)
+        {
+            distance = Vector3.Distance(player.transform.position, transform.position);
+        }
+        if (distance <= attractionDistance)
         {
             if(collisionTime == -1)
             {

@@ -14,12 +14,13 @@ public class FlameThrower : MonoBehaviour
         particles.trigger.SetCollider(0, colliderToResize);
 
         // Adjust the collider size initially
-        ResizeCollider();
+        //ResizeCollider();
     }
     private void Update()
     {
         // Update the collider size each frame
         ResizeCollider();
+    
     }
     private void OnTriggerStay2D(Collider2D collision)
     {

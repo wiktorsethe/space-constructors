@@ -14,6 +14,7 @@ public class ShipManager : MonoBehaviour
     public ShipPartsDatabase shipPartsDB;
     public ShipProgress shipProgress;
     public SkinsDatabase skinsDB;
+    private UniverseMaxSize uniMaxSize;
     [Space(20f)]
 
     [Header("GameObjects")]
@@ -34,6 +35,7 @@ public class ShipManager : MonoBehaviour
     {
         menu = GameObject.FindObjectOfType(typeof(Menu)) as Menu;
         camSize = GameObject.FindObjectOfType(typeof(CameraSize)) as CameraSize;
+        uniMaxSize = GameObject.FindObjectOfType(typeof(UniverseMaxSize)) as UniverseMaxSize;
         player = GameObject.FindGameObjectWithTag("Player");
         ship = GameObject.Find("SHIP"/*(Clone)"*/);
         ship.transform.Find("Ship").GetComponent<SpriteRenderer>().sprite = skinsDB.skins[playerStats.selectedSkin].skinSpriteMain;
@@ -73,6 +75,7 @@ public class ShipManager : MonoBehaviour
         if(playerStats.shipCurrentHealth <= 0)
         {
             menu.GameOver();
+            uniMaxSize.enabled = false;
             Destroy(gameObject);
         }
 

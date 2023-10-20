@@ -21,7 +21,7 @@ public class FirstBossFlamethrowerAttackState : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         timer += Time.deltaTime;
-        if (timer >= 4f)
+        if (timer >= 0f)
         {
             if (Vector2.Distance(animator.transform.position, newPos) > playerSize * 1.1f)
             {

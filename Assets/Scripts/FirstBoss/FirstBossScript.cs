@@ -132,21 +132,20 @@ public class FirstBossScript : MonoBehaviour
     {
         if (!isShieldActive)
         {
-            if (collision.GetComponent<ShootingBullet>().type == "NormalBullet")
+            if (collision.gameObject.GetComponent<ShootingBullet>())
             {
-                CollisionDetected((int)collision.GetComponent<ShootingBullet>().damage);
-            }
-            if (collision.GetComponent<ShootingBullet>().type == "PoisonBullet")
-            {
-                StartPoison();
-            }
-            if (collision.GetComponent<ShootingBullet>().type == "FlameBullet")
-            {
-                StartFlame();
-            }
-            if (collision.CompareTag("Ship"))
-            {
-
+                if (collision.GetComponent<ShootingBullet>().type == "NormalBullet")
+                {
+                    CollisionDetected((int)collision.GetComponent<ShootingBullet>().damage);
+                }
+                if (collision.GetComponent<ShootingBullet>().type == "PoisonBullet")
+                {
+                    StartPoison();
+                }
+                if (collision.GetComponent<ShootingBullet>().type == "FlameBullet")
+                {
+                    StartFlame();
+                }
             }
         }
         else
@@ -422,6 +421,16 @@ public class FirstBossScript : MonoBehaviour
     public void FlameThrowerEnd()
     {
         flameThrowerParticle.SetActive(false);
+        foreach (ObjectPool script in objPools)
+        {
+            if (script.type == "wall")
+            {
+                for(int i=0; i<script.pooledObjects.Count; i++)
+                {
+                    script.pooledObjects[i].SetActive(false);
+                }
+            }
+        }
     }
     public float ObjectSize()
     {
