@@ -107,6 +107,7 @@ public class PlayerStats : ScriptableObject
 
         oreMiningBonusValue = 1;
         shipPosition = new Vector3(0f, 0f, 0f);
+        /*
         for (int i = 0; i < challenges.Length; i++)
         {
             challenges[i].task = "";
@@ -117,11 +118,13 @@ public class PlayerStats : ScriptableObject
             challenges[i].mostKillsTask = 0;
             challenges[i].isDone = false;
         }
+        
         loginTime = "10.10.2010 10:10:10";
         dailyRewardsDay = 0;
         firstBonus = false;
         lastDateBonus = "10.10.2010 10:10:10";
         selectedSkin = 0;
         refreshKey = 3;
+        */
     }
 }
