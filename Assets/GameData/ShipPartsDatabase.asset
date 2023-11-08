@@ -15,29 +15,29 @@ MonoBehaviour:
   shipParts:
   - image: {fileID: 21300000, guid: 73046434a08477945ba0acff471eff25, type: 3}
     shipPart: {fileID: 5953221920737725232, guid: 8a36e4a37f4681842a2a5d08ad5eb84e, type: 3}
-    ownedAmount: 95
+    ownedAmount: 98
     oreCost: 0
     screwCost: 0
     gravityBonus: 2
     hpBonus: 20
     shipPartType: corridor
     isOwned: 1
-    produceAmount: 0
+    produceAmount: 101
     neededToProduceAmount: 0
   - image: {fileID: 21300000, guid: 81a8daacbd4053e4997c55531cf1b14b, type: 3}
     shipPart: {fileID: 5953221920737725232, guid: 8c5c946de78166c43b50ddd344e0c1c4, type: 3}
-    ownedAmount: 996
+    ownedAmount: 100
     oreCost: 0
     screwCost: 0
     gravityBonus: 6
     hpBonus: 50
     shipPartType: main
     isOwned: 1
-    produceAmount: 0
-    neededToProduceAmount: 0
+    produceAmount: 101
+    neededToProduceAmount: 101
   - image: {fileID: 21300000, guid: 97222c48deedb5c4d87ea37a66cd2d15, type: 3}
     shipPart: {fileID: 2566265039767232474, guid: c928b84be04ab294baf525fb5cc1f4fa, type: 3}
-    ownedAmount: 3
+    ownedAmount: 101
     oreCost: 0
     screwCost: 0
     gravityBonus: 1
@@ -48,14 +48,14 @@ MonoBehaviour:
     neededToProduceAmount: 101
   - image: {fileID: 21300000, guid: 072ca775f5f5e864290090073688e7ae, type: 3}
     shipPart: {fileID: 2566265039767232474, guid: a1ae2524dece0e64bae343132162b6ab, type: 3}
-    ownedAmount: 0
+    ownedAmount: 101
     oreCost: 0
     screwCost: 0
     gravityBonus: 1
     hpBonus: 15
     shipPartType: laserGun
     isOwned: 0
-    produceAmount: 0
+    produceAmount: 101
     neededToProduceAmount: 0
   - image: {fileID: 21300000, guid: 3231ba3c46b070443915e91242f40072, type: 3}
     shipPart: {fileID: 2566265039767232474, guid: 784004fbb19601440abd806ae104b635, type: 3}
@@ -66,7 +66,7 @@ MonoBehaviour:
     hpBonus: 15
     shipPartType: bigGun
     isOwned: 0
-    produceAmount: 0
+    produceAmount: 101
     neededToProduceAmount: 0
   - image: {fileID: 21300000, guid: 4bda9bff6522c474681a18397f0d9997, type: 3}
     shipPart: {fileID: 2566265039767232474, guid: 87f03315fe9515345806355290a80874, type: 3}
@@ -77,7 +77,7 @@ MonoBehaviour:
     hpBonus: 15
     shipPartType: doubleGun
     isOwned: 0
-    produceAmount: 0
+    produceAmount: 101
     neededToProduceAmount: 0
   - image: {fileID: 21300000, guid: 75dffdb29455f0d45a0ef0bde335e851, type: 3}
     shipPart: {fileID: 6773448880224228588, guid: c8830f9dd21e47644b7885b07be83216, type: 3}
@@ -88,7 +88,7 @@ MonoBehaviour:
     hpBonus: 15
     shipPartType: healthRegen
     isOwned: 0
-    produceAmount: 0
+    produceAmount: 101
     neededToProduceAmount: 0
   - image: {fileID: 21300000, guid: 988e1067f6b43c347b9166efba29fcaa, type: 3}
     shipPart: {fileID: 981391396233474392, guid: ede555efee255b240a032e09d9dca879, type: 3}
@@ -99,7 +99,7 @@ MonoBehaviour:
     hpBonus: 15
     shipPartType: poisonGun
     isOwned: 0
-    produceAmount: 0
+    produceAmount: 101
     neededToProduceAmount: 0
   - image: {fileID: 21300000, guid: 988e1067f6b43c347b9166efba29fcaa, type: 3}
     shipPart: {fileID: 6998996897852225894, guid: 334fc0e7fb433be47950416f5f6f2783, type: 3}
@@ -110,7 +110,7 @@ MonoBehaviour:
     hpBonus: 15
     shipPartType: flameGun
     isOwned: 0
-    produceAmount: 0
+    produceAmount: 101
     neededToProduceAmount: 0
   - image: {fileID: 21300000, guid: 988e1067f6b43c347b9166efba29fcaa, type: 3}
     shipPart: {fileID: 9059050534220614162, guid: d626f1fd3ab6cfd4aa5a9c951643ce36, type: 3}
@@ -121,7 +121,7 @@ MonoBehaviour:
     hpBonus: 15
     shipPartType: bombGun
     isOwned: 0
-    produceAmount: 0
+    produceAmount: 101
     neededToProduceAmount: 0
   - image: {fileID: 21300000, guid: 988e1067f6b43c347b9166efba29fcaa, type: 3}
     shipPart: {fileID: 3025597490013899895, guid: f41795a43acaa03459ded35e74849324, type: 3}
@@ -143,7 +143,7 @@ MonoBehaviour:
     hpBonus: 15
     shipPartType: stunningGun
     isOwned: 0
-    produceAmount: 0
+    produceAmount: 101
     neededToProduceAmount: 0
   - image: {fileID: 21300000, guid: 75dffdb29455f0d45a0ef0bde335e851, type: 3}
     shipPart: {fileID: 3650537372648192703, guid: d67b89cdaf3f3f942b33766603c878e0, type: 3}
@@ -154,16 +154,16 @@ MonoBehaviour:
     hpBonus: 35
     shipPartType: shield
     isOwned: 1
-    produceAmount: 0
+    produceAmount: 101
     neededToProduceAmount: 0
   - image: {fileID: 21300000, guid: 75dffdb29455f0d45a0ef0bde335e851, type: 3}
     shipPart: {fileID: 1793594598498737876, guid: 5afab95dae863574d8769e88325c9e11, type: 3}
-    ownedAmount: 10
+    ownedAmount: 0
     oreCost: 0
     screwCost: 0
     gravityBonus: 1
     hpBonus: 35
     shipPartType: dash
     isOwned: 1
-    produceAmount: 0
+    produceAmount: 101
     neededToProduceAmount: 0
