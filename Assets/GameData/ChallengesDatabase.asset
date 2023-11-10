@@ -13,31 +13,31 @@ MonoBehaviour:
   m_Name: ChallengesDatabase
   m_EditorClassIdentifier: 
   challenges:
-  - task: Do it
+  - task: Kill 10 mobs
     reward: {fileID: 11400000, guid: 5263916799579ea459ef2334c8dd4354, type: 2}
-    amount: 1
+    amount: 100
+    bestTimeTask: 0
+    mostGoldEarnedTask: 0
+    mostKillsTask: 10
+    isDone: 0
+  - task: Last for 10 seconds
+    reward: {fileID: 11400000, guid: 5263916799579ea459ef2334c8dd4354, type: 2}
+    amount: 150
     bestTimeTask: 100
-    mostGoldEarnedTask: 100
+    mostGoldEarnedTask: 0
     mostKillsTask: 0
     isDone: 0
-  - task: Do it maybe
+  - task: Collect 50 gold
     reward: {fileID: 11400000, guid: 5263916799579ea459ef2334c8dd4354, type: 2}
-    amount: 2
-    bestTimeTask: 100
-    mostGoldEarnedTask: 100
+    amount: 50
+    bestTimeTask: 0
+    mostGoldEarnedTask: 50
     mostKillsTask: 0
     isDone: 0
-  - task: Do it again
+  - task: Collect 50 gold and kill 5 mobs
     reward: {fileID: 11400000, guid: 5263916799579ea459ef2334c8dd4354, type: 2}
-    amount: 3
-    bestTimeTask: 100
-    mostGoldEarnedTask: 100
-    mostKillsTask: 0
-    isDone: 0
-  - task: Do it someday
-    reward: {fileID: 11400000, guid: 5263916799579ea459ef2334c8dd4354, type: 2}
-    amount: 4
-    bestTimeTask: 100
-    mostGoldEarnedTask: 100
-    mostKillsTask: 0
+    amount: 150
+    bestTimeTask: 0
+    mostGoldEarnedTask: 50
+    mostKillsTask: 5
     isDone: 0

@@ -17,6 +17,7 @@ public class PlayerStatsEditor : Editor
         if (GUILayout.Button("RESET TO DEFAULT", buttonStyle, GUILayout.Height(40), GUILayout.Width(200)))
         {
             playerStats.Reset();
+            playerStats.ResetRestStats();
         }
         GUILayout.FlexibleSpace();
         GUILayout.EndHorizontal();

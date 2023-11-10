@@ -14,15 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipMaxHealth: 100
   shipCurrentHealth: 100
+  shipMaxShield: 0
+  shipCurrentShield: 0
   experience: 0
   level: 1
-  bestTime: 111111110
-  todayBestTime: 111111100
-  mostKills: 111111
-  todayMostKills: 1111111
-  mostGoldEarned: 1111111
-  todayMostGoldEarned: 1111111
-  gold: 505
+  bestTime: 0
+  todayBestTime: 0
+  mostKills: 0
+  todayMostKills: 0
+  mostGoldEarned: 0
+  todayMostGoldEarned: 0
+  gold: 550
   shipGravity: 1
   ore: 50
   screw: 5
@@ -54,37 +56,37 @@ MonoBehaviour:
   oreMiningBonusValue: 1
   shipPosition: {x: 0, y: 0, z: 0}
   challenges:
-  - task: Do it
+  - task: Last for 10 seconds
     reward: {fileID: 11400000, guid: 5263916799579ea459ef2334c8dd4354, type: 2}
-    amount: 1
+    amount: 150
     bestTimeTask: 100
-    mostGoldEarnedTask: 100
-    mostKillsTask: 0
-    isDone: 1
-  - task: Do it someday
-    reward: {fileID: 11400000, guid: 5263916799579ea459ef2334c8dd4354, type: 2}
-    amount: 4
-    bestTimeTask: 100
-    mostGoldEarnedTask: 100
-    mostKillsTask: 0
-    isDone: 1
-  - task: Do it again
-    reward: {fileID: 11400000, guid: 5263916799579ea459ef2334c8dd4354, type: 2}
-    amount: 3
-    bestTimeTask: 100
-    mostGoldEarnedTask: 100
+    mostGoldEarnedTask: 0
     mostKillsTask: 0
     isDone: 0
-  - task: Do it maybe
+  - task: Collect 50 gold and kill 5 mobs
     reward: {fileID: 11400000, guid: 5263916799579ea459ef2334c8dd4354, type: 2}
-    amount: 2
-    bestTimeTask: 100
-    mostGoldEarnedTask: 100
+    amount: 150
+    bestTimeTask: 0
+    mostGoldEarnedTask: 50
+    mostKillsTask: 5
+    isDone: 0
+  - task: Collect 50 gold
+    reward: {fileID: 11400000, guid: 5263916799579ea459ef2334c8dd4354, type: 2}
+    amount: 50
+    bestTimeTask: 0
+    mostGoldEarnedTask: 50
     mostKillsTask: 0
     isDone: 0
-  loginTime: 11.09.2023 13:51:12
-  dailyRewardsDay: 0
-  firstBonus: 0
-  lastDateBonus: 10.10.2010 10:10:10
+  - task: Kill 10 mobs
+    reward: {fileID: 11400000, guid: 5263916799579ea459ef2334c8dd4354, type: 2}
+    amount: 100
+    bestTimeTask: 0
+    mostGoldEarnedTask: 0
+    mostKillsTask: 10
+    isDone: 0
+  loginTime: 10.11.2023 20:12:14
+  dailyRewardsDay: 1
+  firstBonus: 1
+  lastDateBonus: 10.11.2023 20:12:30
   selectedSkin: 0
   refreshKey: 3

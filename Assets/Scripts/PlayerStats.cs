@@ -69,15 +69,11 @@ public class PlayerStats : ScriptableObject
         level = 1;
         experience = 0;
         shipGravity = 1;
-        gold = 500;
         ore = 50;
         screw = 5;
         bestTime = 0;
-        todayBestTime = 0;
         mostKills = 0;
-        todayMostKills = 0;
         mostGoldEarned = 0;
-        todayMostGoldEarned = 0;
 
         normalGunDamageValue = 3;
         laserGunDamageValue = 2;
@@ -107,7 +103,9 @@ public class PlayerStats : ScriptableObject
 
         oreMiningBonusValue = 1;
         shipPosition = new Vector3(0f, 0f, 0f);
-        /*
+    }
+    public void ResetRestStats()
+    {
         for (int i = 0; i < challenges.Length; i++)
         {
             challenges[i].task = "";
@@ -118,13 +116,16 @@ public class PlayerStats : ScriptableObject
             challenges[i].mostKillsTask = 0;
             challenges[i].isDone = false;
         }
-        
+
         loginTime = "10.10.2010 10:10:10";
         dailyRewardsDay = 0;
         firstBonus = false;
         lastDateBonus = "10.10.2010 10:10:10";
         selectedSkin = 0;
         refreshKey = 3;
-        */
+        gold = 500; 
+        todayMostKills = 0;
+        todayMostGoldEarned = 0;
+        todayBestTime = 0;
     }
 }

@@ -14,6 +14,7 @@ public class Menu : MonoBehaviour
     private ShipManager shipManager;
     private ShipMovement shipMovement;
     public PlayerStats playerStats;
+    public ShipProgress shipProgress;
     private ShootingNormalGun[] shootingNormalGunList;
     private ShootingLaserGun[] shootingLaserGunList;
     private ShootingBigGun[] shootingBigGunList;
@@ -163,7 +164,13 @@ public class Menu : MonoBehaviour
     public void Restart()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(0);
+        playerStats.Reset();
+        shipProgress.Reset();
+        SceneManager.LoadScene("Universe");
+    }
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene("main");
     }
     public void ExitConstructMenu()
     {

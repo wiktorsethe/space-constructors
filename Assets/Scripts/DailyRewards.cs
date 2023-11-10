@@ -22,7 +22,11 @@ public class DailyRewards : MonoBehaviour
     private string lastDate;
     private void Start()
     {
-        Invoke("CheckRewards", 1f);
+        CheckRewards();
+    }
+    private void GetCurrentDay()
+    {
+        currentDay = playerStats.dailyRewardsDay;
     }
     public void GetReward()
     {
@@ -108,7 +112,7 @@ public class DailyRewards : MonoBehaviour
             }
             playerStats.dailyRewardsDay = 0;
         }
-        currentDay = playerStats.dailyRewardsDay;
+        GetCurrentDay();
         lastDate = DateTime.Now.ToString();
         playerStats.lastDateBonus = lastDate;
         //PlayerPrefs.SetString("lastDate", lastDate);
@@ -122,7 +126,7 @@ public class DailyRewards : MonoBehaviour
     }
     public void Update()
     {
-        currentDay = playerStats.dailyRewardsDay;
+        GetCurrentDay();
         if (playerStats.firstBonus)
         {
             DateTime currentDate = DateTime.Now;
@@ -157,6 +161,7 @@ public class DailyRewards : MonoBehaviour
     }
     private void CheckRewards()
     {
+        GetCurrentDay();
         for (int i = 0; i < days.Length; i++)
         {
             var image = days[i].gameObject.GetComponent<Image>();
@@ -165,17 +170,9 @@ public class DailyRewards : MonoBehaviour
             image.color = tempColor;
 
             var dayText = days[i].transform.Find("DayTxt").GetComponent<TMP_Text>();
-            /*
-            var dayTextTempColor = dayText.color;
-            dayTextTempColor = new Color(0.6f, 0.6f, 0.6f, 1);
-            dayText.color = dayTextTempColor;
-            */
+            
             var priceText = days[i].transform.Find("PriceTxt").GetComponent<TMP_Text>();
-            /*
-            var priceTextTempColor = priceText.color;
-            priceTextTempColor = new Color(0.6f, 0.6f, 0.6f, 1);
-            priceText.color = priceTextTempColor;
-            */
+            
             days[i].transform.Find("ActivatedDay").gameObject.SetActive(false);
 
             days[i].transform.Find("TimerTxt").gameObject.SetActive(false);
@@ -184,7 +181,9 @@ public class DailyRewards : MonoBehaviour
             {
                 days[i].transform.Find("ActivatedDay").gameObject.SetActive(true);
                 days[i].transform.Find("DeactivatedDay").gameObject.SetActive(false);
+                days[i].transform.Find("PriceTxt").gameObject.SetActive(false);
             }
+            
             if (currentDay == 0 && playerStats.firstBonus)
             {
                 if (i < 0)
@@ -199,6 +198,7 @@ public class DailyRewards : MonoBehaviour
                     days[i].transform.Find("TimerTxt").gameObject.SetActive(true);
                 }
             }
+
             if (i == currentDay)
             {
                 image.color = new Color(1, 1, 1, 1);
@@ -206,6 +206,7 @@ public class DailyRewards : MonoBehaviour
                 //dayText.color = new Color(0, 0, 0, 1);
                 //priceText.color = new Color(0, 0, 0, 1);
             }
+
             if (PlayerPrefs.GetInt("BonusActivated") == 1)
             {
                 days[0].transform.Find("PriceTxt").GetComponent<TMP_Text>().text = "100";
