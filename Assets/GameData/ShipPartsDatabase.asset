@@ -15,7 +15,7 @@ MonoBehaviour:
   shipParts:
   - image: {fileID: 21300000, guid: f56c8172fd2a36842a57d8d0082daf52, type: 3}
     shipPart: {fileID: 5953221920737725232, guid: 8a36e4a37f4681842a2a5d08ad5eb84e, type: 3}
-    ownedAmount: 96
+    ownedAmount: 89
     oreCost: 0
     screwCost: 0
     gravityBonus: 2
@@ -26,7 +26,7 @@ MonoBehaviour:
     neededToProduceAmount: 0
   - image: {fileID: 21300000, guid: 2f237efa278ed3244945baaf8e48cc0b, type: 3}
     shipPart: {fileID: 5953221920737725232, guid: 8c5c946de78166c43b50ddd344e0c1c4, type: 3}
-    ownedAmount: 99
+    ownedAmount: 95
     oreCost: 0
     screwCost: 0
     gravityBonus: 6
@@ -147,7 +147,7 @@ MonoBehaviour:
     neededToProduceAmount: 0
   - image: {fileID: 21300000, guid: 75dffdb29455f0d45a0ef0bde335e851, type: 3}
     shipPart: {fileID: 3650537372648192703, guid: d67b89cdaf3f3f942b33766603c878e0, type: 3}
-    ownedAmount: 0
+    ownedAmount: 89
     oreCost: 0
     screwCost: 0
     gravityBonus: 1
@@ -158,7 +158,7 @@ MonoBehaviour:
     neededToProduceAmount: 0
   - image: {fileID: 21300000, guid: 75dffdb29455f0d45a0ef0bde335e851, type: 3}
     shipPart: {fileID: 1793594598498737876, guid: 5afab95dae863574d8769e88325c9e11, type: 3}
-    ownedAmount: 0
+    ownedAmount: 88
     oreCost: 0
     screwCost: 0
     gravityBonus: 1

@@ -40,13 +40,17 @@ public class Teleport : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.tag == "Ship")
+        if (collision.transform.tag == "Ship" && gravity <= playerStats.shipGravity)
         {
             playerStats.shipPosition = safeSpawn.position;
             PlayerPrefs.SetFloat("BestTimeTimer", gameManager.bestTimeTimer);
             PlayerPrefs.SetInt("Kills", gameManager.kills);
             PlayerPrefs.SetInt("GoldEarned", gameManager.goldEarned);
             SceneManager.LoadScene(targetScene);
+        }
+        else
+        {
+            playerStats.shipCurrentHealth -= playerStats.shipMaxHealth;
         }
     }
     private void Update()

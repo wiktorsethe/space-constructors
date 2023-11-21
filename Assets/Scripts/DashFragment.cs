@@ -8,6 +8,8 @@ public class DashFragment : MonoBehaviour
     public PlayerStats playerStats;
     private Menu menu;
     private ShipMovement shipMovement;
+    [SerializeField] private Sprite buttonOn;
+    [SerializeField] private Sprite buttonOff;
     private void Start()
     {
         menu = GameObject.FindObjectOfType<Menu>() as Menu;
@@ -21,8 +23,10 @@ public class DashFragment : MonoBehaviour
     }
     public IEnumerator Dash()
     {
+        menu.dashButton.GetComponent<Image>().sprite = buttonOff;
         shipMovement.isDashActivated = true;
         yield return new WaitForSeconds(1f);
+        menu.dashButton.GetComponent<Image>().sprite = buttonOn;
         shipMovement.isDashActivated = false;
 
     }

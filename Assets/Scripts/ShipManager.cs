@@ -21,7 +21,7 @@ public class ShipManager : MonoBehaviour
     private GameObject ship;
     public GameObject activeConstructPoint;
     private GameObject player;
-    [SerializeField] private TMP_Text gravityWarningText;
+    [SerializeField] private CanvasGroup gravityWarning;
     [SerializeField] private GameObject[] potentialSpawnPoints;
 
     private float distanceThreshold = 1000f;
@@ -60,7 +60,8 @@ public class ShipManager : MonoBehaviour
             {
                 foreach (Vector2 shipPartPos in shipProgress.usedContstructPoints)
                 {
-                    if ((Vector2)targets[i].transform.position == shipPartPos)
+                    //Debug.Log(shipPartPos + ", " + targets[i].transform.position);
+                    if ((Vector2)targets[i].transform.position == shipPartPos || Vector2.Distance((Vector2)targets[i].transform.position, shipPartPos) < 0.01f)
                     {
                         Destroy(targets[i].gameObject);
                     }
@@ -69,6 +70,7 @@ public class ShipManager : MonoBehaviour
         }
         Invoke("StartingPos", 0.5f);
         menu.HideConstructPoints();
+        gravityWarning.alpha = 0;
     }
     private void Update()
     {
@@ -104,12 +106,11 @@ public class ShipManager : MonoBehaviour
                 Vector3 targetDir = direction;
                 targetDir.z = 0f;
                 arrow.transform.rotation = Quaternion.LookRotation(Vector3.forward, targetDir);
-                if (!animate)
+                if (!animate && choosenTarget.GetComponent<Teleport>().gravity > playerStats.shipGravity)
                 {
-                    AnimateGravityWarningText();
+                    AnimateGravityWarning();
                     animate = true;
                 }
-
 
                 if (playerStats.shipGravity > choosenTarget.GetComponent<Teleport>().gravity + 10)
                 {
@@ -202,11 +203,11 @@ public class ShipManager : MonoBehaviour
         transform.DOMove(targetPosition, 1f).SetUpdate(UpdateType.Normal, true);
     }
     */
-    public void AnimateGravityWarningText()
+    public void AnimateGravityWarning()
     {
-        gravityWarningText.DOFade(1f, 1f).From(0f).OnComplete(() =>
+        gravityWarning.DOFade(1f, 1f).From(0f).OnComplete(() =>
         {
-            gravityWarningText.DOFade(0f, 1f).OnComplete(() => { animate = false; });
+            gravityWarning.DOFade(0f, 1f).OnComplete(() => { animate = false; gravityWarning.alpha = 0; });
         });
     }
 }

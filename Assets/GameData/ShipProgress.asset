@@ -16,9 +16,45 @@ MonoBehaviour:
   - shipPartIndex: 0
     position: {x: 2.25, y: 1.2999878, z: 0}
     rotation: {x: -0, y: -0, z: -0.5, w: 0.8660254}
+  - shipPartIndex: 0
+    position: {x: -2.25, y: 1.3, z: 0}
+    rotation: {x: -0, y: -0, z: 0.5, w: 0.8660254}
   - shipPartIndex: 1
-    position: {x: 4.0686035, y: 2.3499756, z: 0}
-    rotation: {x: -0, y: -0, z: -0.5, w: 0.8660254}
+    position: {x: -4.068653, y: 2.35, z: 0}
+    rotation: {x: -0, y: -0, z: 0.5, w: 0.8660254}
+  - shipPartIndex: 0
+    position: {x: -6.492691, y: 1.1514428, z: 0}
+    rotation: {x: -0, y: -0, z: 1, w: -0.00000008940697}
+  - shipPartIndex: 1
+    position: {x: -6.4926906, y: -0.94855714, z: 0}
+    rotation: {x: -0, y: -0, z: 1, w: -0.00000008940697}
+  - shipPartIndex: 0
+    position: {x: -4.24269, y: -5.0485563, z: 0}
+    rotation: {x: -0, y: -0, z: 0.8660253, w: -0.50000006}
+  - shipPartIndex: 0
+    position: {x: -4.24269, y: -2.448557, z: 0}
+    rotation: {x: -0, y: -0, z: 0.49999985, w: -0.8660255}
+  - shipPartIndex: 1
+    position: {x: -2.4240365, y: -6.0985565, z: 0}
+    rotation: {x: -0, y: -0, z: 0.8660254, w: -0.5000001}
+  - shipPartIndex: 0
+    position: {x: 0.0000019073486, y: -4.899999, z: 0}
+    rotation: {x: -0, y: -0, z: -0.00000017881393, w: -1}
+  - shipPartIndex: 0
+    position: {x: 2.2516685, y: -6.199999, z: 0}
+    rotation: {x: -0, y: -0, z: 0.49999994, w: -0.86602545}
+  - shipPartIndex: 1
+    position: {x: 4.0703216, y: -5.1499987, z: 0}
+    rotation: {x: -0, y: -0, z: 0.49999994, w: -0.86602545}
   usedContstructPoints:
   - {x: 2.25, y: 1.2999878}
-  - {x: 4.0686035, y: 2.3499756}
+  - {x: -2.25, y: 1.3}
+  - {x: -4.068653, y: 2.35}
+  - {x: -6.492691, y: 1.1514428}
+  - {x: -6.4926906, y: -0.94855714}
+  - {x: -4.24269, y: -5.0485563}
+  - {x: -4.24269, y: -2.448557}
+  - {x: -2.4240365, y: -6.0985565}
+  - {x: 0.0000019073486, y: -4.899999}
+  - {x: 2.2516685, y: -6.199999}
+  - {x: 4.0703216, y: -5.1499987}

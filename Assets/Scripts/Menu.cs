@@ -33,6 +33,7 @@ public class Menu : MonoBehaviour
     [SerializeField] private GameObject gameOverMenu;
     [SerializeField] private GameObject cardsMenu;
     [SerializeField] private GameObject bossHPBar;
+    [SerializeField] private GameObject backgroundBossHPBar;
     [SerializeField] private GameObject shipPartMenuPrefab;
     [SerializeField] private GameObject cardsMenuText;
     public GameObject dashButton;
@@ -295,10 +296,12 @@ public class Menu : MonoBehaviour
     public void ActiveBossHealthBar()
     {
         bossHPBar.SetActive(true);
+        backgroundBossHPBar.SetActive(true);
     }
     public void DeactiveBossHealthBar()
     {
         bossHPBar.SetActive(false);
+        backgroundBossHPBar.SetActive(false);
     }
     private Vector2 GetCenterOfCameraView()
     {
