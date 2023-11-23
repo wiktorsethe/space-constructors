@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2174138466620340645}
   - component: {fileID: 3066191426800728120}
   m_Layer: 0
-  m_Name: HealthRegenFragmentGraphic
+  m_Name: DashFragmentGraphic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c721cb852f119f44ababafc0848acae8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 704709a553d98294a8d410fab2ac39fb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

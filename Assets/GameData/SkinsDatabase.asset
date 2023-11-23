@@ -15,49 +15,109 @@ MonoBehaviour:
   skins:
   - skinSpriteMain: {fileID: 21300000, guid: 81a8daacbd4053e4997c55531cf1b14b, type: 3}
     skinSpriteCorridor: {fileID: 21300000, guid: 73046434a08477945ba0acff471eff25, type: 3}
+    skinSpriteNormalGun: {fileID: 21300000, guid: 38b372ef60f3ec347ad71293a637ba8d, type: 3}
+    skinSpriteDoubleGun: {fileID: 21300000, guid: 8a8686e6a4dfa8840b9915eb6fe80d38, type: 3}
+    skinSpriteLaserGun: {fileID: 21300000, guid: f27722b751053eb44b02f8164f04e3d5, type: 3}
+    skinSpriteBigGun: {fileID: 21300000, guid: c4a4184e80ac07241a20cd9eb4fac0c2, type: 3}
+    skinSpriteHealFragment: {fileID: 21300000, guid: 492cfe327f79b3b4cbebd0b3a32c2cf4, type: 3}
     cost: 1
     isPurchased: 1
   - skinSpriteMain: {fileID: 21300000, guid: 7d9c7cb46a9c9a74d9a033a62c5cbf32, type: 3}
     skinSpriteCorridor: {fileID: 21300000, guid: b88988473cb0b9f4db5f39f6487d34ac, type: 3}
+    skinSpriteNormalGun: {fileID: 21300000, guid: 716ee650b86aef34f9eaaaa906538fb4, type: 3}
+    skinSpriteDoubleGun: {fileID: 21300000, guid: 626bfc253b3855e49b0bc46fde83034b, type: 3}
+    skinSpriteLaserGun: {fileID: 21300000, guid: cd7c95100d96b254ab1fdf043e0c879e, type: 3}
+    skinSpriteBigGun: {fileID: 21300000, guid: 47c7801b7094a0e49a28885d4daef4f2, type: 3}
+    skinSpriteHealFragment: {fileID: 21300000, guid: ba943a70707935b4a82f475e1ec02e2e, type: 3}
     cost: 1
     isPurchased: 1
   - skinSpriteMain: {fileID: 21300000, guid: ed005d8e20e73a04c9da88ec228327d1, type: 3}
     skinSpriteCorridor: {fileID: 21300000, guid: 3be4ce4575c8802499a5e824ef1128e4, type: 3}
+    skinSpriteNormalGun: {fileID: 21300000, guid: 49a97f5edf13a3d4b94ed6ebe97793fc, type: 3}
+    skinSpriteDoubleGun: {fileID: 21300000, guid: aea604221fc0a3643aeda5b4c2a11110, type: 3}
+    skinSpriteLaserGun: {fileID: 21300000, guid: 835415c55bfedc146a2a230dc9d0d700, type: 3}
+    skinSpriteBigGun: {fileID: 21300000, guid: 215e15c616087d24f9722e08e5ed4385, type: 3}
+    skinSpriteHealFragment: {fileID: 21300000, guid: 9de7f05f91a437c46a4a269dc2b3fb43, type: 3}
     cost: 1
     isPurchased: 0
   - skinSpriteMain: {fileID: 21300000, guid: 0a2a1a829a9373f48ba36d3ffed47470, type: 3}
     skinSpriteCorridor: {fileID: 21300000, guid: 94e407fd1fe0dfd49b204e7e6aee64a3, type: 3}
+    skinSpriteNormalGun: {fileID: 21300000, guid: 5f4df1bd5457dcf4e98fefdb88bb283f, type: 3}
+    skinSpriteDoubleGun: {fileID: 21300000, guid: fe312d53103330c4b816f971d9219d1e, type: 3}
+    skinSpriteLaserGun: {fileID: 21300000, guid: 9129d48d74164214cbe9aafc8b392ed4, type: 3}
+    skinSpriteBigGun: {fileID: 21300000, guid: eaa0231da4bb6d84f91a4efed7d40214, type: 3}
+    skinSpriteHealFragment: {fileID: 21300000, guid: ef8e938f65ccc8a44b5a2521701b31c0, type: 3}
     cost: 1
     isPurchased: 0
   - skinSpriteMain: {fileID: 21300000, guid: 0b1c5ac13a1bc594eb7d73cf95cf3ac0, type: 3}
     skinSpriteCorridor: {fileID: 21300000, guid: 20277061245f9a842beffb22cb020d61, type: 3}
+    skinSpriteNormalGun: {fileID: 21300000, guid: 3c6e33c097dc80a4baaf0e27b356a2f9, type: 3}
+    skinSpriteDoubleGun: {fileID: 21300000, guid: 5681956d75bc9614f9fb7118d0369957, type: 3}
+    skinSpriteLaserGun: {fileID: 21300000, guid: 279ae6ca49c580a45a17934435bfbdf7, type: 3}
+    skinSpriteBigGun: {fileID: 21300000, guid: 9cd9daed8cc3a0c4584b5c4adc71f2be, type: 3}
+    skinSpriteHealFragment: {fileID: 21300000, guid: 1feeed08d9ceed642988650d1ae37870, type: 3}
     cost: 1
     isPurchased: 0
   - skinSpriteMain: {fileID: 21300000, guid: f4a2d441fefe85d4799668ea3f7810e8, type: 3}
     skinSpriteCorridor: {fileID: 21300000, guid: 0ae02766bfa41cd4d91bac2cd39aa251, type: 3}
+    skinSpriteNormalGun: {fileID: 21300000, guid: 4993bf82f5d4c9e49bfe594bd3287078, type: 3}
+    skinSpriteDoubleGun: {fileID: 21300000, guid: d5b762bf59b7ca24c86ca23b73bb8208, type: 3}
+    skinSpriteLaserGun: {fileID: 21300000, guid: 08cccbcd5643c0e4b95efadf6ba2b2c9, type: 3}
+    skinSpriteBigGun: {fileID: 21300000, guid: 04bff77eafde72a47a564c5b0cd19f8f, type: 3}
+    skinSpriteHealFragment: {fileID: 21300000, guid: 68f6e377abb6e764ebf8862ce88b7b82, type: 3}
     cost: 1
     isPurchased: 0
   - skinSpriteMain: {fileID: 21300000, guid: e42d101788e3b0b49aafb657ca4fdfba, type: 3}
     skinSpriteCorridor: {fileID: 21300000, guid: 729fe19f610ef00419b27519e9613c67, type: 3}
+    skinSpriteNormalGun: {fileID: 21300000, guid: 35fa3d7c0a055764d9a6d86a1387206c, type: 3}
+    skinSpriteDoubleGun: {fileID: 21300000, guid: 1eaaa1539c214ff4d9cc72b5bcec72dd, type: 3}
+    skinSpriteLaserGun: {fileID: 21300000, guid: cd3cc3a934bdea9468592a356f3edf6a, type: 3}
+    skinSpriteBigGun: {fileID: 21300000, guid: 9f2bdd4a3e2ce364da4b9cb481099aa6, type: 3}
+    skinSpriteHealFragment: {fileID: 21300000, guid: 8cac1734bc3a17d42b3f10d1125999d8, type: 3}
     cost: 1
     isPurchased: 0
   - skinSpriteMain: {fileID: 21300000, guid: 655920b672d4ac54a92a0b8a861f45b5, type: 3}
     skinSpriteCorridor: {fileID: 21300000, guid: 5a966cff0741e2d498f62b8307320137, type: 3}
+    skinSpriteNormalGun: {fileID: 21300000, guid: 60cabcdc29551b542b477eea1b304637, type: 3}
+    skinSpriteDoubleGun: {fileID: 21300000, guid: a52d88fc939e9a441afcc06334697b69, type: 3}
+    skinSpriteLaserGun: {fileID: 21300000, guid: d39677f4e9405af459d0ce168291eda6, type: 3}
+    skinSpriteBigGun: {fileID: 21300000, guid: 53b7c5698473fca409998faab7baa210, type: 3}
+    skinSpriteHealFragment: {fileID: 21300000, guid: 329d4ae10e61e904597c7c8b54633331, type: 3}
     cost: 1
     isPurchased: 0
   - skinSpriteMain: {fileID: 21300000, guid: 9f00a0028193ce643a59b89ad7ae5963, type: 3}
     skinSpriteCorridor: {fileID: 21300000, guid: f0ba5bffad216104db2438f959dba8f2, type: 3}
+    skinSpriteNormalGun: {fileID: 21300000, guid: 2bb7a705282d6d941bd61e51e5deda84, type: 3}
+    skinSpriteDoubleGun: {fileID: 21300000, guid: 1a43f7850036818439c1aca993f134ea, type: 3}
+    skinSpriteLaserGun: {fileID: 21300000, guid: 2374d2182690f61488f34927bddad4af, type: 3}
+    skinSpriteBigGun: {fileID: 21300000, guid: 61da9e2819f7733438bbef314004de00, type: 3}
+    skinSpriteHealFragment: {fileID: 21300000, guid: d42f2b4c1e19d51468c725d69aaee090, type: 3}
     cost: 1
     isPurchased: 0
   - skinSpriteMain: {fileID: 21300000, guid: a2a91a2be52476346ba962fbfa17b14b, type: 3}
     skinSpriteCorridor: {fileID: 21300000, guid: c749d6a8a7281104bba538735d393e4c, type: 3}
+    skinSpriteNormalGun: {fileID: 21300000, guid: 3f70375bd15e3b94b9a328ba73eafd25, type: 3}
+    skinSpriteDoubleGun: {fileID: 21300000, guid: ec6fe0726aa33704197a27d96352a121, type: 3}
+    skinSpriteLaserGun: {fileID: 21300000, guid: 218598b791efcfc418e4482a480e2132, type: 3}
+    skinSpriteBigGun: {fileID: 21300000, guid: 2e1451238443bdf4ea885e72c6ffa6d4, type: 3}
+    skinSpriteHealFragment: {fileID: 21300000, guid: bb805822f4b2a984c886607cb8f7ec00, type: 3}
     cost: 1
     isPurchased: 0
   - skinSpriteMain: {fileID: 21300000, guid: e64af2e5c5a9e474e929671cb22eb3de, type: 3}
     skinSpriteCorridor: {fileID: 21300000, guid: cbae1d659d6438b4399611b77cba2516, type: 3}
+    skinSpriteNormalGun: {fileID: 21300000, guid: 676bfa5dfc28ba04087b978ad50ed00b, type: 3}
+    skinSpriteDoubleGun: {fileID: 21300000, guid: 72ea4f5cc9c47fe43acd9e5457b87335, type: 3}
+    skinSpriteLaserGun: {fileID: 21300000, guid: 47fae220cfd8039408c38bf26aa329f5, type: 3}
+    skinSpriteBigGun: {fileID: 21300000, guid: d9731b9ee09bb2b44aad8e349bcac6cd, type: 3}
+    skinSpriteHealFragment: {fileID: 21300000, guid: c01bbc87109baab4482a69c924119eac, type: 3}
     cost: 1
     isPurchased: 0
   - skinSpriteMain: {fileID: 21300000, guid: ec675ea1f150e254e84244a8f10efadc, type: 3}
     skinSpriteCorridor: {fileID: 21300000, guid: 85064469e2b6ca441bbdbe7b80dad9bb, type: 3}
+    skinSpriteNormalGun: {fileID: 21300000, guid: 313c7336bc6ef334c86ae0d4b6a53f54, type: 3}
+    skinSpriteDoubleGun: {fileID: 21300000, guid: 2a37359b417c7ca4eb1e6dc6e3922190, type: 3}
+    skinSpriteLaserGun: {fileID: 21300000, guid: c8bc4fd1a86827a40bb2262b3419e83d, type: 3}
+    skinSpriteBigGun: {fileID: 21300000, guid: 73c763be6e601e94da266e0433f50b15, type: 3}
+    skinSpriteHealFragment: {fileID: 21300000, guid: bd31acbbc3c33f046b053a2ae3a4184a, type: 3}
     cost: 1
     isPurchased: 0

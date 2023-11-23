@@ -105,8 +105,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f8eb555a857a2c44b996808a035d7446, type: 3}
-  m_Color: {r: 0.2735849, g: 0.2735849, b: 0.2735849, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 004c52818b7a9a84e8c57d6e3b4975f7, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -185,8 +185,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooledObjects: []
-  prefabs:
-  - {fileID: 5949201873329385209, guid: 948efb3ad2a29404691c338fdbfcd85b, type: 3}
+  prefab: {fileID: 0}
+  type: 
 --- !u!114 &4777617023678110374
 MonoBehaviour:
   m_ObjectHideFlags: 0

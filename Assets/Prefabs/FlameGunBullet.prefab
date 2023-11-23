@@ -77,10 +77,10 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5f5736c3178f9dd47ab6f27f732e8cab, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 19e1e5544ded67b4cb505e07dc2b65ef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 0
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 1, y: 2}
   m_AdaptiveModeThreshold: 0.5
@@ -142,6 +142,7 @@ MonoBehaviour:
   damage: 0
   startingPos: {x: 0, y: 0}
   isBombGunShoot: 0
+  targetT: {fileID: 0}
 --- !u!114 &6175964395458536739
 MonoBehaviour:
   m_ObjectHideFlags: 0
