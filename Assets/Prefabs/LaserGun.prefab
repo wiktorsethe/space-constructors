@@ -68,8 +68,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooledObjects: []
-  prefabs:
-  - {fileID: 5949201873329385209, guid: d72bfabc229e33b4e9676b8356849c9a, type: 3}
+  prefab: {fileID: 0}
+  type: 
 --- !u!1 &4340626013909713249
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 4340626014642829823}
   - component: {fileID: 4975735349051817481}
   m_Layer: 0
-  m_Name: GunGraphic
+  m_Name: Skin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -175,12 +175,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 92448f818377eee4fa47c8308103f80f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f27722b751053eb44b02f8164f04e3d5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.24, y: 2.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -196,7 +196,7 @@ Animator:
   m_GameObject: {fileID: 4340626014642829821}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 020f4aab43460504c8740407d4bda37b, type: 2}
+  m_Controller: {fileID: 9100000, guid: ff1174fbcad5028479d2b45e357adb2e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 4340626014642829823}
   - component: {fileID: 7420323197727034308}
   m_Layer: 0
-  m_Name: GunGraphic
+  m_Name: Skin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
