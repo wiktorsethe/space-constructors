@@ -34,7 +34,7 @@ public class ShootingBombGun : MonoBehaviour
     }
     void FireBullet()
     {
-        shootAnimator.SetTrigger("Play");
+        //shootAnimator.SetTrigger("Play");
         GameObject bullet = objPool.GetPooledObject();
         bullet.transform.position = firePoint.position;
         bullet.GetComponent<ShootingBombBullet>().startingPos = firePoint.position;

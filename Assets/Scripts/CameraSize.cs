@@ -44,6 +44,8 @@ public class CameraSize : MonoBehaviour
                 float targetSize = objectWidth * 0.5f;
                 //mainCamera.orthographicSize = objectWidth * 0.5f;
                 DOTween.To(() => mainCamera.orthographicSize, x => mainCamera.orthographicSize = x, targetSize, 1f).SetUpdate(UpdateType.Normal, true);
+                bgScaler.SmoothChangeScale(targetSize);
+
                 if (targetSize <= 9f)
                 {
                     DOTween.To(() => mainCamera.orthographicSize, x => mainCamera.orthographicSize = x, 9f, 1f).SetUpdate(UpdateType.Normal, true);
@@ -53,13 +55,15 @@ public class CameraSize : MonoBehaviour
             {
                 float targetSize = objectHeight * 0.5f;
                 DOTween.To(() => mainCamera.orthographicSize, x => mainCamera.orthographicSize = x, targetSize, 1f).SetUpdate(UpdateType.Normal, true);
+                bgScaler.SmoothChangeScale(targetSize);
+
                 if (targetSize <= 9f)
                 {
                     DOTween.To(() => mainCamera.orthographicSize, x => mainCamera.orthographicSize = x, 9f, 1f).SetUpdate(UpdateType.Normal, true);
                 }
             }
+            //bgScaler.ActivateCortoutine();
             uniScaler.ActivateCortoutine();
-            bgScaler.ActivateCortoutine();
             GameObject[] teleports = GameObject.FindGameObjectsWithTag("Planet");
             foreach (GameObject tp in teleports)
             {

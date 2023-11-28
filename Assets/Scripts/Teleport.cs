@@ -10,6 +10,7 @@ public class Teleport : MonoBehaviour
     private CameraSize camSize;
     public PlayerStats playerStats;
     private GameManager gameManager;
+    private BackgroundScaler bgScaler;
     [Space(20f)]
     [Header("Variables")]
     [SerializeField] private float attractionDistance = 5f;
@@ -32,6 +33,7 @@ public class Teleport : MonoBehaviour
         camShake = GameObject.FindObjectOfType(typeof(CameraShake)) as CameraShake;
         camSize = GameObject.FindObjectOfType(typeof(CameraSize)) as CameraSize;
         gameManager = GameObject.FindObjectOfType(typeof(GameManager)) as GameManager;
+        bgScaler = GameObject.FindObjectOfType(typeof(BackgroundScaler)) as BackgroundScaler;
         mainCamera = Camera.main;
 
         SpriteRenderer meshRender = GetComponent<SpriteRenderer>();
@@ -75,6 +77,7 @@ public class Teleport : MonoBehaviour
             if (!sizeChanged)
             {
                 camSize.CamSize(targetSize, collisionTime * 2);
+                bgScaler.SmoothChangeScale(targetSize);
                 sizeChanged = true;
                 player.GetComponent<ShipMovement>().movementJoystick.enabled = false;
             }

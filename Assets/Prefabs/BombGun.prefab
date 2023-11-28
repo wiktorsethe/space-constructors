@@ -126,7 +126,7 @@ Animator:
   m_GameObject: {fileID: 7068402221696085045}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 10b8e1599f71ad347bd314eef705f594, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooledObjects: []
-  prefab: {fileID: 0}
+  prefab: {fileID: 5949201873329385209, guid: 948efb3ad2a29404691c338fdbfcd85b, type: 3}
   type: 
 --- !u!114 &4777617023678110374
 MonoBehaviour:

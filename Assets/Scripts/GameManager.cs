@@ -74,7 +74,6 @@ public class GameManager : MonoBehaviour
             float newSize = mainCamera.orthographicSize * 3f;
 
             camSize.CamSize(newSize, 4f);
-
             Invoke("SpawnBoss", 5f);
 
             camFollow.enabled = false;

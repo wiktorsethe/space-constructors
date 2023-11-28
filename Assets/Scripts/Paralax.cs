@@ -10,14 +10,19 @@ public class Paralax : MonoBehaviour
     private float startPosY;
     private Camera mainCam;
     [SerializeField] private float parallaxEffect;
-
     private void Start()
     {
         startPosX = transform.position.x;
         startPosY = transform.position.y;
+        mainCam = Camera.main;
+
+        StartingParallax();
+    }
+    public void StartingParallax()
+    {
+        
         lengthX = GetComponent<SpriteRenderer>().bounds.size.x;
         lengthY = GetComponent<SpriteRenderer>().bounds.size.y;
-        mainCam = Camera.main;
 
     }
     private void Update()
