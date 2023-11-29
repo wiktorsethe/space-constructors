@@ -18,7 +18,7 @@ public class CameraSize : MonoBehaviour
         uniScaler = GameObject.FindObjectOfType<UniverseScaler>() as UniverseScaler;
         bgScaler = GameObject.FindObjectOfType<BackgroundScaler>() as BackgroundScaler;
         uniMaxSize = GameObject.FindObjectOfType<UniverseMaxSize>() as UniverseMaxSize;
-        ChangeCamSize();
+        Invoke("ChangeCamSize", 0.5f);
     }
     
     public void ChangeCamSize()

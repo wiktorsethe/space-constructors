@@ -3333,6 +3333,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1174772321}
   smoothSpeed: 1
+--- !u!114 &1085019614 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2208610056510984500, guid: 102d95da12710e04894cdf7673b40628, type: 3}
+  m_PrefabInstance: {fileID: 789493987}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a47f546fc70ec8428172694e78e4288, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1091192484
 GameObject:
   m_ObjectHideFlags: 0
@@ -3607,17 +3618,6 @@ RectTransform:
   m_AnchoredPosition: {x: -700, y: -400}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1131185432 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8170153791668043265, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
-  m_PrefabInstance: {fileID: 970814684}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a47f546fc70ec8428172694e78e4288, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1164233716
 GameObject:
   m_ObjectHideFlags: 0
@@ -4740,6 +4740,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6491061620938209526, guid: 2c41a2e4240f7634abd6d128aa878f16, type: 3}
   m_PrefabInstance: {fileID: 1501127866}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1501127868 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6491061620938209523, guid: 2c41a2e4240f7634abd6d128aa878f16, type: 3}
+  m_PrefabInstance: {fileID: 1501127866}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a47f546fc70ec8428172694e78e4288, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1506492312
 GameObject:
   m_ObjectHideFlags: 0
@@ -6700,17 +6711,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
   m_PrefabInstance: {fileID: 2048808489}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2048808491 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8170153791668043265, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
-  m_PrefabInstance: {fileID: 2048808489}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a47f546fc70ec8428172694e78e4288, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2078082527
 GameObject:
   m_ObjectHideFlags: 0
@@ -7110,11 +7110,11 @@ PrefabInstance:
     - target: {fileID: 5877223503080307285, guid: d7d2f667c34dd554f8d13aa9ca6b8446, type: 3}
       propertyPath: movementJoystick
       value: 
-      objectReference: {fileID: 1131185432}
+      objectReference: {fileID: 1085019614}
     - target: {fileID: 5877223503080307285, guid: d7d2f667c34dd554f8d13aa9ca6b8446, type: 3}
       propertyPath: rotationJoystick
       value: 
-      objectReference: {fileID: 2048808491}
+      objectReference: {fileID: 1501127868}
     - target: {fileID: 5877223503080307287, guid: d7d2f667c34dd554f8d13aa9ca6b8446, type: 3}
       propertyPath: m_Name
       value: Walker

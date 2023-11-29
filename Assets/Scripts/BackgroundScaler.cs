@@ -5,20 +5,13 @@ using UnityEngine;
 public class BackgroundScaler : MonoBehaviour
 {
     private GameObject player;
-    public Paralax[] paralaxes;
-    private float smoothTime = 5f;
+    private float smoothTime = 1f;
 
     private Vector3 velocity = Vector3.zero;
-    private void Start()
-    {
-        paralaxes = GameObject.FindObjectsOfType<Paralax>();
-    }
+
     public void ActivateCortoutine()
     {
-        foreach(Paralax script in paralaxes)
-        {
-            script.StartingParallax();
-        }
+        
         StartCoroutine("ChangeBackgroundScale");
     }
     private IEnumerator ChangeBackgroundScale()
@@ -29,7 +22,6 @@ public class BackgroundScaler : MonoBehaviour
 
         Vector3 newScale = new Vector3(1, 1, 1) * (bounds.size.magnitude / 9f);
         transform.localScale = newScale;
-
     }
     private Bounds Bounds()
     {
@@ -46,16 +38,11 @@ public class BackgroundScaler : MonoBehaviour
 
             return bounds;
         }
-
         return new Bounds(Vector3.zero, Vector3.zero);
     }
 
     public void SmoothChangeScale(float targetSize)
     {
-        foreach (Paralax script in paralaxes)
-        {
-            script.StartingParallax();
-        }
         StartCoroutine(SmoothScaleChangeCoroutine(targetSize));
     }
     IEnumerator SmoothScaleChangeCoroutine(float targetSize)

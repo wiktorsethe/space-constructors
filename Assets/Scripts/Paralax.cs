@@ -15,18 +15,11 @@ public class Paralax : MonoBehaviour
         startPosX = transform.position.x;
         startPosY = transform.position.y;
         mainCam = Camera.main;
-
-        StartingParallax();
-    }
-    public void StartingParallax()
-    {
-        
-        lengthX = GetComponent<SpriteRenderer>().bounds.size.x;
-        lengthY = GetComponent<SpriteRenderer>().bounds.size.y;
-
     }
     private void Update()
     {
+        lengthX = GetComponent<SpriteRenderer>().bounds.size.x;
+        lengthY = GetComponent<SpriteRenderer>().bounds.size.y;
         float tempX = (mainCam.transform.position.x * (1 - parallaxEffect));
         float distX = (mainCam.transform.position.x * parallaxEffect);
 

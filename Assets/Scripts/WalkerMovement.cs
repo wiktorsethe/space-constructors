@@ -26,6 +26,7 @@ public class WalkerMovement : MonoBehaviour
         moveVector.x = movementJoystick.Horizontal * moveSpeed * Time.deltaTime;
         moveVector.y = movementJoystick.Vertical * moveSpeed * Time.deltaTime;
         rb.MovePosition(rb.position + moveVector);
+
     }
     private void Rotate()
     {

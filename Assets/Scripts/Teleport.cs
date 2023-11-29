@@ -77,7 +77,7 @@ public class Teleport : MonoBehaviour
             if (!sizeChanged)
             {
                 camSize.CamSize(targetSize, collisionTime * 2);
-                bgScaler.SmoothChangeScale(targetSize);
+                bgScaler.SmoothChangeScale(targetSize * 1.2f);
                 sizeChanged = true;
                 player.GetComponent<ShipMovement>().movementJoystick.enabled = false;
             }
