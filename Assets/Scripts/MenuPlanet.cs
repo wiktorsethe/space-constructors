@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System;
 
 public class MenuPlanet : MonoBehaviour
 {
     public PlayerStats playerStats;
+    public ShipProgress shipProgress;
     [Header("UI")]
     [SerializeField] private GameObject gameMenu;
     [SerializeField] private GameObject pauseMenu;
@@ -16,7 +18,10 @@ public class MenuPlanet : MonoBehaviour
     [SerializeField] private TMP_Text goldText;
     [SerializeField] private TMP_Text screwText;
     [SerializeField] private TMP_Text oreText;
-
+    [SerializeField] private TMP_Text timeText;
+    [SerializeField] private TMP_Text killsText;
+    [SerializeField] private TMP_Text goldEarnedText;
+    [SerializeField] private TMP_Text scoreText;
     private void Update()
     {
         goldText.text = playerStats.gold.ToString();
@@ -40,18 +45,25 @@ public class MenuPlanet : MonoBehaviour
     public void Restart()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(0);
+        playerStats.Reset();
+        shipProgress.Reset();
+        SceneManager.LoadScene("Universe");
     }
-
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene("main");
+    }
     public void GameOver()
     {
         gameMenu.SetActive(false);
         pauseMenu.SetActive(false);
         gameOverMenu.SetActive(true);
-        //TimeSpan timeSpan = TimeSpan.FromSeconds(playerStats.bestTime);
-        //bestTimeText.text = "Best Time: " + string.Format("{0:00}:{1:00}:{2:00}", timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds);
-        //mostKillsText.text = "Most Kills: " + playerStats.mostKills.ToString();
-        //mostGoldEarnedText.text = "Most Gold Earned: " + playerStats.mostGoldEarned.ToString();
+        TimeSpan timeSpan = TimeSpan.FromSeconds(PlayerPrefs.GetFloat("BestTimeTimer"));
+        timeText.text = string.Format("{0:00}:{1:00}:{2:00}", timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds);
+        killsText.text = PlayerPrefs.GetInt("Kills").ToString();
+        goldEarnedText.text = PlayerPrefs.GetInt("GoldEarned").ToString();
+        scoreText.text = PlayerPrefs.GetInt("Score").ToString();
+
         Time.timeScale = 0f;
     }
 }

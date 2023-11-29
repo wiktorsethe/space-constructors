@@ -15,7 +15,6 @@ public class HpBar : MonoBehaviour
     [SerializeField] private TMP_Text hpText;
     [SerializeField] private GameObject shieldText;
     [SerializeField] private Slider hpBar;
-    [SerializeField] private Slider shieldBar;
     private bool isFlameStarted = false;
     private bool isPoisonStarted = false;
     private GameObject flameParticle;
