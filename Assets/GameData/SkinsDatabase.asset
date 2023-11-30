@@ -25,6 +25,20 @@ MonoBehaviour:
     animatorBigGun: {fileID: 9100000, guid: 388ebd7ef3ec54047babdbf750286888, type: 2}
     skinSpriteHealFragment: {fileID: 21300000, guid: 492cfe327f79b3b4cbebd0b3a32c2cf4, type: 3}
     animatorHealFragment: {fileID: 9100000, guid: 0126e39aa6db22a40a1986ce63945a30, type: 2}
+    skinSpriteFlameGun: {fileID: 21300000, guid: dc9279b9425bb9843b804c3768251b9c, type: 3}
+    animatorFlameGun: {fileID: 9100000, guid: 5310b8cf1f55e8742b9ba7d4a0a47309, type: 2}
+    skinSpritePoisonGun: {fileID: 21300000, guid: 7e5279ca0df81394c8f22c05b647f47c, type: 3}
+    animatorPoisonGun: {fileID: 9100000, guid: e0d9c92c12593db4ba2a7241f2fe9649, type: 2}
+    skinSpriteStunningGun: {fileID: 21300000, guid: db4d02c6ae3cf3049a14c95cba5cabbd, type: 3}
+    animatorStunningGun: {fileID: 9100000, guid: 1463f05db1ba1f04f80c09703d9d8313, type: 2}
+    skinSpriteBombGun: {fileID: 21300000, guid: 004c52818b7a9a84e8c57d6e3b4975f7, type: 3}
+    animatorBombGun: {fileID: 9100000, guid: 191e3eb0b7fdc9141a2601e6faa00680, type: 2}
+    skinSpriteDashFragment: {fileID: 21300000, guid: 704709a553d98294a8d410fab2ac39fb, type: 3}
+    animatorDashFragment: {fileID: 9100000, guid: f6cc98edb284a0e4bac847ca289a4f1a, type: 2}
+    skinSpriteHommingGun: {fileID: 21300000, guid: 36b608dfcd5e36e49a1fea80caf89f22, type: 3}
+    animatorHommingGun: {fileID: 9100000, guid: 526a86cd2b1aa0445aa761b1fcd1f9bc, type: 2}
+    skinSpriteShieldFragment: {fileID: 21300000, guid: 543f2a9248a27d04d9a7ed86a93a05ae, type: 3}
+    animatorShieldFragment: {fileID: 9100000, guid: 5dab2e12cd53ed74baeb03840d9a7ca1, type: 2}
     cost: 1
     isPurchased: 1
   - skinSpriteMain: {fileID: 21300000, guid: 7d9c7cb46a9c9a74d9a033a62c5cbf32, type: 3}
@@ -39,6 +53,20 @@ MonoBehaviour:
     animatorBigGun: {fileID: 9100000, guid: 11ca57bdb75964d46bd2c18256207822, type: 2}
     skinSpriteHealFragment: {fileID: 21300000, guid: ba943a70707935b4a82f475e1ec02e2e, type: 3}
     animatorHealFragment: {fileID: 9100000, guid: 325532bd029ca91418fd857abefe9a10, type: 2}
+    skinSpriteFlameGun: {fileID: 21300000, guid: 750a23d281e2c9c4c9c1c40cb03ea454, type: 3}
+    animatorFlameGun: {fileID: 9100000, guid: 252c5ea3065986b429745e90e5a4c50d, type: 2}
+    skinSpritePoisonGun: {fileID: 21300000, guid: 2325936dae147124ea500dedce20a8bc, type: 3}
+    animatorPoisonGun: {fileID: 9100000, guid: e2fc6261fe368874da8657e500ef8ff5, type: 2}
+    skinSpriteStunningGun: {fileID: 21300000, guid: 05b13ec2f27d7ea44b9c54d9b49797a4, type: 3}
+    animatorStunningGun: {fileID: 9100000, guid: 59f912562aa9dfc4190db36db941d5a7, type: 2}
+    skinSpriteBombGun: {fileID: 21300000, guid: 71f29aacaf650df4b89d5146e47aa451, type: 3}
+    animatorBombGun: {fileID: 9100000, guid: e7d4334d5975bb94c9dc3f9382719a5f, type: 2}
+    skinSpriteDashFragment: {fileID: 21300000, guid: 991d472409330f6469c3b4211e63ccf9, type: 3}
+    animatorDashFragment: {fileID: 9100000, guid: f57e07dcd22c89b4282f1b1cad404ad7, type: 2}
+    skinSpriteHommingGun: {fileID: 21300000, guid: 611fdd360c535ce4196bae65420bb318, type: 3}
+    animatorHommingGun: {fileID: 9100000, guid: 4ae9501f97501ba4db439b4999a80c55, type: 2}
+    skinSpriteShieldFragment: {fileID: 21300000, guid: 6b6ed066a7e4fb7459c37917345cb94a, type: 3}
+    animatorShieldFragment: {fileID: 9100000, guid: 6b4d221afa7488e4e9529aaa851c2311, type: 2}
     cost: 1
     isPurchased: 1
   - skinSpriteMain: {fileID: 21300000, guid: ed005d8e20e73a04c9da88ec228327d1, type: 3}
@@ -53,6 +81,20 @@ MonoBehaviour:
     animatorBigGun: {fileID: 9100000, guid: 6e4066bb09b82c2449b0a807130d9ad5, type: 2}
     skinSpriteHealFragment: {fileID: 21300000, guid: 9de7f05f91a437c46a4a269dc2b3fb43, type: 3}
     animatorHealFragment: {fileID: 9100000, guid: 76234e46f0720b1469e35b420825c94b, type: 2}
+    skinSpriteFlameGun: {fileID: 21300000, guid: c83d7a6fcda69eb4cb556f6200e517c5, type: 3}
+    animatorFlameGun: {fileID: 9100000, guid: cc1fca162f21bb94eb256a65cedd7200, type: 2}
+    skinSpritePoisonGun: {fileID: 21300000, guid: caffbcb2d190e2e4395a8d1d3b8cfc62, type: 3}
+    animatorPoisonGun: {fileID: 9100000, guid: 20f710713735f234691c48bcb5fb9079, type: 2}
+    skinSpriteStunningGun: {fileID: 21300000, guid: fbe1a9e3cc583ac4d9501cc6f8755dbe, type: 3}
+    animatorStunningGun: {fileID: 9100000, guid: 74a2ee83b2554bb4a85b3d42367f567f, type: 2}
+    skinSpriteBombGun: {fileID: 21300000, guid: 6659c0987144b8c4c970ddfe245b387a, type: 3}
+    animatorBombGun: {fileID: 9100000, guid: 9d5e0f922380ad544989f6af1e2675a3, type: 2}
+    skinSpriteDashFragment: {fileID: 21300000, guid: 0ebf7cd7c555e6648815864c86407b0c, type: 3}
+    animatorDashFragment: {fileID: 9100000, guid: 1aa4a5f5ea7d98e48bc2b17507bd79dc, type: 2}
+    skinSpriteHommingGun: {fileID: 21300000, guid: 8851dc2058c85ac49bf52c918cdcdcea, type: 3}
+    animatorHommingGun: {fileID: 9100000, guid: 588732cd113a2b14783e081b33d50d0b, type: 2}
+    skinSpriteShieldFragment: {fileID: 21300000, guid: 795c9e6a8cee1ed42b04dcb7cc79f16f, type: 3}
+    animatorShieldFragment: {fileID: 9100000, guid: c0930a8e562f493488c69a7e87a705d5, type: 2}
     cost: 1
     isPurchased: 1
   - skinSpriteMain: {fileID: 21300000, guid: 0a2a1a829a9373f48ba36d3ffed47470, type: 3}
@@ -67,6 +109,20 @@ MonoBehaviour:
     animatorBigGun: {fileID: 9100000, guid: 592e7e6adcb0e4c43872067cdd8dfa22, type: 2}
     skinSpriteHealFragment: {fileID: 21300000, guid: ef8e938f65ccc8a44b5a2521701b31c0, type: 3}
     animatorHealFragment: {fileID: 9100000, guid: d6fba22af778f7b438337ca153290ed5, type: 2}
+    skinSpriteFlameGun: {fileID: 21300000, guid: d5671d56586f17e44a0f5e161905d621, type: 3}
+    animatorFlameGun: {fileID: 9100000, guid: 0533e0c9e91cf8d45956ed35234392bc, type: 2}
+    skinSpritePoisonGun: {fileID: 21300000, guid: 56ee17f3f81164c459fcad09bd16a7a1, type: 3}
+    animatorPoisonGun: {fileID: 9100000, guid: 4bab371d0ef9d6a4b934b9f94213d683, type: 2}
+    skinSpriteStunningGun: {fileID: 21300000, guid: d03913514b37c9345b5261108e4c9914, type: 3}
+    animatorStunningGun: {fileID: 9100000, guid: b8d5d07d2f0defb408b4f13065df05ab, type: 2}
+    skinSpriteBombGun: {fileID: 21300000, guid: 17411f30430ec8a4daa9970818761ff8, type: 3}
+    animatorBombGun: {fileID: 9100000, guid: 28d2d6b0f96a8494b87bafa222a4667e, type: 2}
+    skinSpriteDashFragment: {fileID: 21300000, guid: 5257b4f95d26a9f4b98d2e6c4d513848, type: 3}
+    animatorDashFragment: {fileID: 9100000, guid: 265b2ffafda938b4bb8d52f3628d0699, type: 2}
+    skinSpriteHommingGun: {fileID: 21300000, guid: 9167633e17efb7046b34c0e08f38dc62, type: 3}
+    animatorHommingGun: {fileID: 9100000, guid: e5c331cd3eaff6d4dbf1668f2f656fb5, type: 2}
+    skinSpriteShieldFragment: {fileID: 21300000, guid: 9f2cf22a5d7297e468ad3215d35f060a, type: 3}
+    animatorShieldFragment: {fileID: 9100000, guid: 46996596d95eb5e4ca820452ea435829, type: 2}
     cost: 1
     isPurchased: 1
   - skinSpriteMain: {fileID: 21300000, guid: 0b1c5ac13a1bc594eb7d73cf95cf3ac0, type: 3}
@@ -81,6 +137,20 @@ MonoBehaviour:
     animatorBigGun: {fileID: 9100000, guid: c3929827361cafa42998b62fd6be6bfc, type: 2}
     skinSpriteHealFragment: {fileID: 21300000, guid: 1feeed08d9ceed642988650d1ae37870, type: 3}
     animatorHealFragment: {fileID: 9100000, guid: bf710154d9fceb947a40f7e9728e10fe, type: 2}
+    skinSpriteFlameGun: {fileID: 21300000, guid: 17d6f0549a9c5ea4798f44c33cb09466, type: 3}
+    animatorFlameGun: {fileID: 9100000, guid: db9f54cf9d536c64cb583af9f14e2563, type: 2}
+    skinSpritePoisonGun: {fileID: 21300000, guid: 267c9e81fb7594145a715bb15973dce4, type: 3}
+    animatorPoisonGun: {fileID: 9100000, guid: 608408f232214934e8cc5db34ee915ff, type: 2}
+    skinSpriteStunningGun: {fileID: 21300000, guid: 7b771692b4ad24543b940dd1899ce338, type: 3}
+    animatorStunningGun: {fileID: 9100000, guid: 3fd4880e174629b48b6aecebfbc46930, type: 2}
+    skinSpriteBombGun: {fileID: 21300000, guid: c153cb9b1ccbd784a8f97806f50a1fa9, type: 3}
+    animatorBombGun: {fileID: 9100000, guid: 8b6df40a1dd038840a17ce4050e64cf5, type: 2}
+    skinSpriteDashFragment: {fileID: 21300000, guid: 6eaf0114dec64aa4398946879a788baf, type: 3}
+    animatorDashFragment: {fileID: 9100000, guid: 3fbf28d9467e889449eebfc624e5e7b0, type: 2}
+    skinSpriteHommingGun: {fileID: 21300000, guid: 2757096e159b9744d8beb5903c8c7540, type: 3}
+    animatorHommingGun: {fileID: 9100000, guid: 33b71ef89c1b0cf448883dde5d72c35b, type: 2}
+    skinSpriteShieldFragment: {fileID: 21300000, guid: 6aff89798e0f3b44fb55664407e93c37, type: 3}
+    animatorShieldFragment: {fileID: 9100000, guid: 482d3b0397a0fac45a0c16d40fa18318, type: 2}
     cost: 1
     isPurchased: 1
   - skinSpriteMain: {fileID: 21300000, guid: f4a2d441fefe85d4799668ea3f7810e8, type: 3}
@@ -95,6 +165,20 @@ MonoBehaviour:
     animatorBigGun: {fileID: 9100000, guid: 702e2cf69809e5c44a06f2d717b1966f, type: 2}
     skinSpriteHealFragment: {fileID: 21300000, guid: 68f6e377abb6e764ebf8862ce88b7b82, type: 3}
     animatorHealFragment: {fileID: 9100000, guid: 787fdc88625446944bf5760afeab03ac, type: 2}
+    skinSpriteFlameGun: {fileID: 21300000, guid: 3c5d7177ce10d2c449cdc47327d33ba8, type: 3}
+    animatorFlameGun: {fileID: 9100000, guid: 58b4370f8c5541a4b8819d40a05154c2, type: 2}
+    skinSpritePoisonGun: {fileID: 21300000, guid: e2e97dedc462f5945bc6080e4788082e, type: 3}
+    animatorPoisonGun: {fileID: 9100000, guid: 62c615d71bdc0db49907d5686c3d276a, type: 2}
+    skinSpriteStunningGun: {fileID: 21300000, guid: 1eeb2bd348132f348bc79558472fd8b6, type: 3}
+    animatorStunningGun: {fileID: 9100000, guid: 78a89db297021ed449c4f9b144a63ea6, type: 2}
+    skinSpriteBombGun: {fileID: 21300000, guid: 8e39dc97bd760234688ac1aa2af35e02, type: 3}
+    animatorBombGun: {fileID: 9100000, guid: f375b49cec70587429fde744233d1ce7, type: 2}
+    skinSpriteDashFragment: {fileID: 21300000, guid: 84b5804ec2e6822498b622d16962c6bc, type: 3}
+    animatorDashFragment: {fileID: 9100000, guid: 8ce915804865bc74d9f2ac59c878f551, type: 2}
+    skinSpriteHommingGun: {fileID: 21300000, guid: 1c7c1cbb785211546b5b0f3f74a43936, type: 3}
+    animatorHommingGun: {fileID: 9100000, guid: 94c2144089930b54c8319d364c622a4d, type: 2}
+    skinSpriteShieldFragment: {fileID: 21300000, guid: a27e97e651ff0494eacbf32c1a47ee74, type: 3}
+    animatorShieldFragment: {fileID: 9100000, guid: f4c29e8ff2f33d442b9b9194c30f2474, type: 2}
     cost: 1
     isPurchased: 1
   - skinSpriteMain: {fileID: 21300000, guid: e42d101788e3b0b49aafb657ca4fdfba, type: 3}
@@ -109,6 +193,20 @@ MonoBehaviour:
     animatorBigGun: {fileID: 9100000, guid: 3f3803254c0294c4c927148297339d6f, type: 2}
     skinSpriteHealFragment: {fileID: 21300000, guid: 8cac1734bc3a17d42b3f10d1125999d8, type: 3}
     animatorHealFragment: {fileID: 9100000, guid: ee4818aab7e75cb4f9f962018a108d71, type: 2}
+    skinSpriteFlameGun: {fileID: 21300000, guid: 48e0d9658f42094458ff4709dca27990, type: 3}
+    animatorFlameGun: {fileID: 9100000, guid: 2f8b06d48768bab48bd08ab243db10ca, type: 2}
+    skinSpritePoisonGun: {fileID: 21300000, guid: 97a65f49355ee754a96cda9583f2d4a0, type: 3}
+    animatorPoisonGun: {fileID: 9100000, guid: 96ad6eeb2b4ea8545b9419849e6aa267, type: 2}
+    skinSpriteStunningGun: {fileID: 21300000, guid: 6ea4e113a0529894888a6d3ecbffd203, type: 3}
+    animatorStunningGun: {fileID: 9100000, guid: ebc7d889b2cd59345a927a603be1eacb, type: 2}
+    skinSpriteBombGun: {fileID: 21300000, guid: 5fab853966b7f7b42a088325baf6c713, type: 3}
+    animatorBombGun: {fileID: 9100000, guid: 1fdf5ace3303e844da0224abd58cdd8f, type: 2}
+    skinSpriteDashFragment: {fileID: 21300000, guid: defbedd9e9a6fb74cbf37e17b02eedd9, type: 3}
+    animatorDashFragment: {fileID: 9100000, guid: 6bdd5574809a1fe4f85c804674dce021, type: 2}
+    skinSpriteHommingGun: {fileID: 21300000, guid: 6a5ab009ff48a024eb4f870dcad66e69, type: 3}
+    animatorHommingGun: {fileID: 9100000, guid: 4abd1454e526af84696c2fb7742c688a, type: 2}
+    skinSpriteShieldFragment: {fileID: 21300000, guid: 9901f1bb16eb1c545a8f09474fdbb21f, type: 3}
+    animatorShieldFragment: {fileID: 9100000, guid: 916d7587a3a59f64a95c04c33075eacd, type: 2}
     cost: 1
     isPurchased: 1
   - skinSpriteMain: {fileID: 21300000, guid: 655920b672d4ac54a92a0b8a861f45b5, type: 3}
@@ -123,6 +221,20 @@ MonoBehaviour:
     animatorBigGun: {fileID: 9100000, guid: a2bd4eb45bfbe96478de3bf96f74c709, type: 2}
     skinSpriteHealFragment: {fileID: 21300000, guid: 329d4ae10e61e904597c7c8b54633331, type: 3}
     animatorHealFragment: {fileID: 9100000, guid: 4e1eb44fbe184ce40a7d7f42fa30392e, type: 2}
+    skinSpriteFlameGun: {fileID: 21300000, guid: dec0a34665359ab4a885c00544f603f5, type: 3}
+    animatorFlameGun: {fileID: 9100000, guid: d6b8dcf4cfa9dbb478b50d6e97288dcb, type: 2}
+    skinSpritePoisonGun: {fileID: 21300000, guid: c67fe0f5e65339d42b7d3f3ff82766fd, type: 3}
+    animatorPoisonGun: {fileID: 9100000, guid: 02ef1957b86cda44a9f8917f255cd8cb, type: 2}
+    skinSpriteStunningGun: {fileID: 21300000, guid: 94a0664efc9c3b74e97d661286300bf3, type: 3}
+    animatorStunningGun: {fileID: 9100000, guid: 4ed807d396dc15449b0bd08b08c9a908, type: 2}
+    skinSpriteBombGun: {fileID: 21300000, guid: 87d0663e51d992d408432eede9d4e099, type: 3}
+    animatorBombGun: {fileID: 9100000, guid: 723fa9c0f687f0a42b322ebb537d8bce, type: 2}
+    skinSpriteDashFragment: {fileID: 21300000, guid: c5eb06734c3392241841dcd76869a362, type: 3}
+    animatorDashFragment: {fileID: 9100000, guid: 94a77d45e36dd984a91cca22dfcd7693, type: 2}
+    skinSpriteHommingGun: {fileID: 21300000, guid: c59c5131ab393ff42ad0751b74e52f90, type: 3}
+    animatorHommingGun: {fileID: 9100000, guid: f9ce38643600f5e409524f9a9d84e013, type: 2}
+    skinSpriteShieldFragment: {fileID: 21300000, guid: d623eeeb13b4d9d4aa28e06a7dec8164, type: 3}
+    animatorShieldFragment: {fileID: 9100000, guid: b29aa7059d400ae4d8673fcc7972bcfe, type: 2}
     cost: 1
     isPurchased: 1
   - skinSpriteMain: {fileID: 21300000, guid: 9f00a0028193ce643a59b89ad7ae5963, type: 3}
@@ -137,6 +249,20 @@ MonoBehaviour:
     animatorBigGun: {fileID: 9100000, guid: 4ec82916cf0ddd148ae15cfaef1e8579, type: 2}
     skinSpriteHealFragment: {fileID: 21300000, guid: d42f2b4c1e19d51468c725d69aaee090, type: 3}
     animatorHealFragment: {fileID: 9100000, guid: 6e5f1b0774c14714daaad5823594e481, type: 2}
+    skinSpriteFlameGun: {fileID: 21300000, guid: 38eb6d23711436f49b7bb0cef66b6a79, type: 3}
+    animatorFlameGun: {fileID: 9100000, guid: fcc2ea087e742b64b938b3199aa8dfa2, type: 2}
+    skinSpritePoisonGun: {fileID: 21300000, guid: 55feab172f6b36041a29dbf14ea294be, type: 3}
+    animatorPoisonGun: {fileID: 9100000, guid: 7c70104269de10a44afe9ad5e1e423b0, type: 2}
+    skinSpriteStunningGun: {fileID: 21300000, guid: d0f9aada5f232b54db63c6c173492702, type: 3}
+    animatorStunningGun: {fileID: 9100000, guid: 10f011f8dbb5d9348be41922cddea48a, type: 2}
+    skinSpriteBombGun: {fileID: 21300000, guid: 7ceb0d8a0eafe29499e1d637322683e5, type: 3}
+    animatorBombGun: {fileID: 9100000, guid: 9ded18cb5640ee44bbcd20b5dbdae8a7, type: 2}
+    skinSpriteDashFragment: {fileID: 21300000, guid: c3b7c9816da18de43bee94f36f82528d, type: 3}
+    animatorDashFragment: {fileID: 9100000, guid: 01c352ce9c4af874fad374a6f958e136, type: 2}
+    skinSpriteHommingGun: {fileID: 21300000, guid: d5d35d9d5e344da47bad1c10bdd1e107, type: 3}
+    animatorHommingGun: {fileID: 9100000, guid: 2c1f51c334f0d234e83308a295f18495, type: 2}
+    skinSpriteShieldFragment: {fileID: 21300000, guid: 5477b7fb61f16994ead2c054cf59c748, type: 3}
+    animatorShieldFragment: {fileID: 9100000, guid: 144cc5873b9f8ff4985445a631f99484, type: 2}
     cost: 1
     isPurchased: 1
   - skinSpriteMain: {fileID: 21300000, guid: a2a91a2be52476346ba962fbfa17b14b, type: 3}
@@ -151,6 +277,20 @@ MonoBehaviour:
     animatorBigGun: {fileID: 9100000, guid: 9057d3988faf4db4ca33ef91ab535d36, type: 2}
     skinSpriteHealFragment: {fileID: 21300000, guid: bb805822f4b2a984c886607cb8f7ec00, type: 3}
     animatorHealFragment: {fileID: 9100000, guid: 7e50d7859e04ecf4380c2290dbf5b15a, type: 2}
+    skinSpriteFlameGun: {fileID: 21300000, guid: 6feb699e3ab991448b98a2d508abbcf3, type: 3}
+    animatorFlameGun: {fileID: 9100000, guid: 57a41435ab18f7c47a2eeaa864bc26d3, type: 2}
+    skinSpritePoisonGun: {fileID: 21300000, guid: 450f0c4b7e76db742b7b95610dea91aa, type: 3}
+    animatorPoisonGun: {fileID: 9100000, guid: 5220997cd93c0be499d812c3a66b7c43, type: 2}
+    skinSpriteStunningGun: {fileID: 21300000, guid: 721a30beaf39b7740a8b01d3497b5c70, type: 3}
+    animatorStunningGun: {fileID: 9100000, guid: 334c0ec85712f924ba2a7effec620257, type: 2}
+    skinSpriteBombGun: {fileID: 21300000, guid: 66a529d6d3c5b274ea9d54856a845c8c, type: 3}
+    animatorBombGun: {fileID: 9100000, guid: 3eb61d092a8c6c14f8db8a0a655b89b3, type: 2}
+    skinSpriteDashFragment: {fileID: 21300000, guid: d2a67b467fc9d4f4b98d4a21d6180aba, type: 3}
+    animatorDashFragment: {fileID: 9100000, guid: ee5f1540745ed3d46a47243643b2c0c1, type: 2}
+    skinSpriteHommingGun: {fileID: 21300000, guid: 40ae3468ac7f16043b1cadf2c511ea81, type: 3}
+    animatorHommingGun: {fileID: 9100000, guid: 661953f7ad0bde04087351a83e27ebff, type: 2}
+    skinSpriteShieldFragment: {fileID: 21300000, guid: 297536f89318c6d4681875aa62625591, type: 3}
+    animatorShieldFragment: {fileID: 9100000, guid: cc85394f74a69d64a8973aa016d8b72c, type: 2}
     cost: 1
     isPurchased: 1
   - skinSpriteMain: {fileID: 21300000, guid: e64af2e5c5a9e474e929671cb22eb3de, type: 3}
@@ -165,6 +305,20 @@ MonoBehaviour:
     animatorBigGun: {fileID: 9100000, guid: 9ef3cb89b559a434db6dbcbe94fb4197, type: 2}
     skinSpriteHealFragment: {fileID: 21300000, guid: c01bbc87109baab4482a69c924119eac, type: 3}
     animatorHealFragment: {fileID: 9100000, guid: ebab1ba336f8b8a469f66a3c95f44b9d, type: 2}
+    skinSpriteFlameGun: {fileID: 21300000, guid: 934dcf06e0cf8e541a8acbe395397125, type: 3}
+    animatorFlameGun: {fileID: 9100000, guid: b41b1dccb45136c4b9491bf3290bda49, type: 2}
+    skinSpritePoisonGun: {fileID: 21300000, guid: f3268b70af8a1264fb4a2a03f72f5b9a, type: 3}
+    animatorPoisonGun: {fileID: 9100000, guid: b812775b67e139344ab67f90b02bd82b, type: 2}
+    skinSpriteStunningGun: {fileID: 21300000, guid: 4ec15563edbed9347b71b5cf125b38c0, type: 3}
+    animatorStunningGun: {fileID: 9100000, guid: 2216983c548e7e8458ec50f6b9642c35, type: 2}
+    skinSpriteBombGun: {fileID: 21300000, guid: eef0411a52d5e644eb7b4fd9ceecfb48, type: 3}
+    animatorBombGun: {fileID: 9100000, guid: 0572f783805cf0148a1630de90c37382, type: 2}
+    skinSpriteDashFragment: {fileID: 21300000, guid: ccf74adeb03f6654aa87274300d7db5d, type: 3}
+    animatorDashFragment: {fileID: 9100000, guid: a081f9405ba849446b0029aaf04d83e0, type: 2}
+    skinSpriteHommingGun: {fileID: 21300000, guid: ed21e89199599724f8436fb0320f043c, type: 3}
+    animatorHommingGun: {fileID: 9100000, guid: fa18b0afad95d0846946430212ab8606, type: 2}
+    skinSpriteShieldFragment: {fileID: 21300000, guid: de7521e192229be498632783462cff82, type: 3}
+    animatorShieldFragment: {fileID: 9100000, guid: c5e0433056ad3d0409a117edd77e230a, type: 2}
     cost: 1
     isPurchased: 1
   - skinSpriteMain: {fileID: 21300000, guid: ec675ea1f150e254e84244a8f10efadc, type: 3}
@@ -179,5 +333,19 @@ MonoBehaviour:
     animatorBigGun: {fileID: 9100000, guid: 1c153376ac0cc1b4b854252aa518a898, type: 2}
     skinSpriteHealFragment: {fileID: 21300000, guid: bd31acbbc3c33f046b053a2ae3a4184a, type: 3}
     animatorHealFragment: {fileID: 9100000, guid: ee5e9e2c672bb0a4bad52af99802cd96, type: 2}
+    skinSpriteFlameGun: {fileID: 21300000, guid: c397ba8e8227c314b85422a95f853cf1, type: 3}
+    animatorFlameGun: {fileID: 9100000, guid: cb73144c6a980574ebaf11bdfc784fe8, type: 2}
+    skinSpritePoisonGun: {fileID: 21300000, guid: 310ba2131665de6488ce23550068f264, type: 3}
+    animatorPoisonGun: {fileID: 9100000, guid: c0f1cef5488f3e44abd2f565e39fb1ba, type: 2}
+    skinSpriteStunningGun: {fileID: 21300000, guid: 3192a0e5e9e20134183a41721e9caea5, type: 3}
+    animatorStunningGun: {fileID: 9100000, guid: 29af1960eb406624e93d1c44d8d5b489, type: 2}
+    skinSpriteBombGun: {fileID: 21300000, guid: 67813b3d4e5839f438bc507be2814b9d, type: 3}
+    animatorBombGun: {fileID: 9100000, guid: 5d0b9003d10ff464ea466a8e74883c45, type: 2}
+    skinSpriteDashFragment: {fileID: 21300000, guid: f95565260cc59ff47a34c822bf9e552c, type: 3}
+    animatorDashFragment: {fileID: 9100000, guid: a1d45268b0c94284983cada797574632, type: 2}
+    skinSpriteHommingGun: {fileID: 21300000, guid: 149396fff534d6b46a66ccf4747d572b, type: 3}
+    animatorHommingGun: {fileID: 9100000, guid: f718dae6a7bd3824abef72db971945ab, type: 2}
+    skinSpriteShieldFragment: {fileID: 21300000, guid: 8aa9dab4bd73cd549b2471dabf2f7f95, type: 3}
+    animatorShieldFragment: {fileID: 9100000, guid: f47cebc14b4276a41a37df249abe1ad8, type: 2}
     cost: 1
     isPurchased: 1

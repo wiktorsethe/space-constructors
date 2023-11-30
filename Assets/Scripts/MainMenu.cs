@@ -16,6 +16,14 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject dailyChallengesMenu;
     [SerializeField] private GameObject shopMenu;
     [SerializeField] private GameObject optionsMenu;
+    [Space(20f)]
+    [Header("Rest")]
+    [SerializeField] private Animator menuAnimation;
+    private void Start()
+    {
+        menuAnimation.Rebind();
+        menuAnimation.Play("MenuAnim");
+    }
     public void Play()
     {
         playerStats.Reset();

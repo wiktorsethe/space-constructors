@@ -3371,7 +3371,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 4402dd1ee3a21c94488b35a624d4fe06, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -7419,6 +7419,7 @@ MonoBehaviour:
   dailyChallengesMenu: {fileID: 66652776}
   shopMenu: {fileID: 518770905}
   optionsMenu: {fileID: 1519771439}
+  menuAnimation: {fileID: 224999239}
 --- !u!114 &554575360
 MonoBehaviour:
   m_ObjectHideFlags: 0

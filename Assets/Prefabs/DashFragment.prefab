@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2174138466620340645}
   - component: {fileID: 3066191426800728120}
   m_Layer: 0
-  m_Name: DashFragmentGraphic
+  m_Name: Skin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,7 +95,7 @@ Animator:
   m_GameObject: {fileID: 1107788957421664944}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a1d45268b0c94284983cada797574632, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

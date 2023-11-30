@@ -80,7 +80,7 @@ GameObject:
   - component: {fileID: 9115666835147349827}
   - component: {fileID: 2613796761717894520}
   m_Layer: 0
-  m_Name: GunGraphic
+  m_Name: Skin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -163,7 +163,7 @@ Animator:
   m_GameObject: {fileID: 9115666835147349825}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cb73144c6a980574ebaf11bdfc784fe8, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
