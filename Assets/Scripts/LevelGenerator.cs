@@ -12,7 +12,7 @@ public class LevelGenerator : MonoBehaviour
     public GameObject[] levelParts;
     [Space(20f)]
     [Header("Variables")]
-    private float bufferDistance = 1.2f;
+    private float bufferDistance = 3f;
     private void Start()
     {
         mainCamera = Camera.main;

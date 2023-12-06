@@ -22,6 +22,10 @@ public class MenuPlanet : MonoBehaviour
     [SerializeField] private TMP_Text killsText;
     [SerializeField] private TMP_Text goldEarnedText;
     [SerializeField] private TMP_Text scoreText;
+    [Space(20f)]
+    [Header("Objects")]
+    [SerializeField] private Animator transition;
+    [SerializeField] private GameObject levelLoader;
     private void Update()
     {
         goldText.text = playerStats.gold.ToString();
@@ -44,14 +48,15 @@ public class MenuPlanet : MonoBehaviour
     }
     public void Restart()
     {
-        Time.timeScale = 1f;
+        Resume();
         playerStats.Reset();
         shipProgress.Reset();
-        SceneManager.LoadScene("Universe");
+        StartCoroutine("LoadUniverse");
     }
     public void BackToMenu()
     {
-        SceneManager.LoadScene("main");
+        Resume();
+        StartCoroutine("LoadMenu");
     }
     public void GameOver()
     {
@@ -65,5 +70,19 @@ public class MenuPlanet : MonoBehaviour
         scoreText.text = PlayerPrefs.GetInt("Score").ToString();
 
         Time.timeScale = 0f;
+    }
+    private IEnumerator LoadMenu()
+    {
+        levelLoader.SetActive(true);
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("main");
+    }
+    private IEnumerator LoadUniverse()
+    {
+        levelLoader.SetActive(true);
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("Universe");
     }
 }

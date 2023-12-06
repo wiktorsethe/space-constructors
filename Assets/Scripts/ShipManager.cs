@@ -107,8 +107,8 @@ public class ShipManager : MonoBehaviour
                 }
                 else if (shipProgress.shipParts[i].shipPartIndex == 12)
                 {
-                    shipPart.transform.Find("Skin").GetComponent<SpriteRenderer>().sprite = skinsDB.skins[playerStats.selectedSkin].skinSpriteHommingGun;
-                    shipPart.transform.Find("Skin").GetComponent<Animator>().runtimeAnimatorController = skinsDB.skins[playerStats.selectedSkin].animatorHommingGun;
+                    shipPart.transform.Find("Skin").GetComponent<SpriteRenderer>().sprite = skinsDB.skins[playerStats.selectedSkin].skinSpriteHomingGun;
+                    shipPart.transform.Find("Skin").GetComponent<Animator>().runtimeAnimatorController = skinsDB.skins[playerStats.selectedSkin].animatorHomingGun;
                 }
                 else if (shipProgress.shipParts[i].shipPartIndex == 13)
                 {
@@ -274,8 +274,8 @@ public class ShipManager : MonoBehaviour
             }
             else if (index == 12)
             {
-                shipPart.transform.Find("Skin").GetComponent<SpriteRenderer>().sprite = skinsDB.skins[playerStats.selectedSkin].skinSpriteHommingGun;
-                shipPart.transform.Find("Skin").GetComponent<Animator>().runtimeAnimatorController = skinsDB.skins[playerStats.selectedSkin].animatorHommingGun;
+                shipPart.transform.Find("Skin").GetComponent<SpriteRenderer>().sprite = skinsDB.skins[playerStats.selectedSkin].skinSpriteHomingGun;
+                shipPart.transform.Find("Skin").GetComponent<Animator>().runtimeAnimatorController = skinsDB.skins[playerStats.selectedSkin].animatorHomingGun;
             }
             else if (index == 13)
             {

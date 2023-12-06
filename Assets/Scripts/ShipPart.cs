@@ -7,6 +7,7 @@ public struct ShipPart
 {
     public Sprite image;
     public GameObject shipPart;
+    public string itemName;
     public int ownedAmount;
     public int oreCost;
     public int screwCost;

@@ -7,11 +7,12 @@ using DG.Tweening;
 public class ForgeManSlider : MonoBehaviour
 {
     public ShipPartsDatabase shipPartsDB;
-    [SerializeField] public int shipPartNumber;
+    public int shipPartNumber;
     [SerializeField] public TMP_Text amountText;
     [SerializeField] public Slider sliderBar;
     private void Start()
     {
+        PlayerPrefs.SetInt("BossPoints", 10);//do usuniêcia
         if (shipPartsDB.shipParts[shipPartNumber].isOwned)
         {
             GetComponent<Button>().interactable = false;

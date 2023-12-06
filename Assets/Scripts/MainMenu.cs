@@ -19,6 +19,9 @@ public class MainMenu : MonoBehaviour
     [Space(20f)]
     [Header("Rest")]
     [SerializeField] private Animator menuAnimation;
+    [SerializeField] private Animator transition;
+    [SerializeField] private GameObject levelLoader;
+
     private void Start()
     {
         menuAnimation.Rebind();
@@ -33,7 +36,7 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.SetInt("Kills", 0);
         PlayerPrefs.SetInt("GoldEarned", 0);
         PlayerPrefs.DeleteKey("FirstBoss");
-        SceneManager.LoadScene(1);
+        StartCoroutine("LoadLevel");
     }
     public void Skins()
     {
@@ -82,5 +85,12 @@ public class MainMenu : MonoBehaviour
         dailyChallengesMenu.SetActive(false);
         optionsMenu.SetActive(false);
         shopMenu.SetActive(false);
+    }
+    private IEnumerator LoadLevel()
+    {
+        levelLoader.SetActive(true);
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(1);
     }
 }

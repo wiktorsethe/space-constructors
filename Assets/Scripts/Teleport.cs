@@ -26,7 +26,9 @@ public class Teleport : MonoBehaviour
     private GameObject player;
     private Camera mainCamera;
     [SerializeField] private Transform safeSpawn;
-    
+    [SerializeField] private Animator transition;
+    [SerializeField] private GameObject levelLoader;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -39,6 +41,8 @@ public class Teleport : MonoBehaviour
         SpriteRenderer meshRender = GetComponent<SpriteRenderer>();
         Bounds bounds = meshRender.bounds;
         size = bounds.size;
+        transition = GameObject.Find("Loader").GetComponent<Animator>();
+        levelLoader = GameObject.Find("Loader");
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -48,10 +52,11 @@ public class Teleport : MonoBehaviour
             PlayerPrefs.SetFloat("BestTimeTimer", gameManager.bestTimeTimer);
             PlayerPrefs.SetInt("Kills", gameManager.kills);
             PlayerPrefs.SetInt("GoldEarned", gameManager.goldEarned);
-            SceneManager.LoadScene(targetScene);
+            StartCoroutine("LoadLevel");
         }
-        else
+        else if(collision.transform.tag == "Ship" && gravity > playerStats.shipGravity)
         {
+            Debug.Log("1");
             playerStats.shipCurrentHealth -= playerStats.shipMaxHealth;
         }
     }
@@ -62,7 +67,7 @@ public class Teleport : MonoBehaviour
         {
             distance = Vector3.Distance(player.transform.position, transform.position);
         }
-        if (distance <= attractionDistance)
+        if (distance <= attractionDistance && player)
         {
             if(collisionTime == -1)
             {
@@ -111,5 +116,11 @@ public class Teleport : MonoBehaviour
     public void ChangeAttractionSize()
     {
         attractionDistance = size.x * 0.24f;
+    }
+    private IEnumerator LoadLevel()
+    {
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(targetScene);
     }
 }

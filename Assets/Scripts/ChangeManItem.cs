@@ -1,16 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 public class ChangeManItem : MonoBehaviour
 {
     public ShipPartsDatabase shipPartsDB;
-    [SerializeField] public int shipPartNumber;
-    [SerializeField] public TMP_Text amountText;
-    private void Start()
-    {
-        amountText.text = shipPartsDB.shipParts[shipPartNumber].ownedAmount.ToString();
-    }
+    public int shipPartNumber;
+    [SerializeField] private TMP_Text amountText;
+    
     public void Minus()
     {
         if(shipPartsDB.shipParts[shipPartNumber].ownedAmount > 0)

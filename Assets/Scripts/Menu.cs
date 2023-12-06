@@ -37,6 +37,8 @@ public class Menu : MonoBehaviour
     [SerializeField] private GameObject shipPartMenuPrefab;
     [SerializeField] private GameObject cardsMenuText;
     public GameObject dashButton;
+    [SerializeField] private Animator transition;
+    [SerializeField] private GameObject levelLoader;
     [Space(20f)]
 
     [Header("Texts")]
@@ -164,14 +166,15 @@ public class Menu : MonoBehaviour
     }
     public void Restart()
     {
-        Time.timeScale = 1f;
+        Resume();
         playerStats.Reset();
         shipProgress.Reset();
-        SceneManager.LoadScene("Universe");
+        StartCoroutine("LoadUniverse");
     }
     public void BackToMenu()
     {
-        SceneManager.LoadScene("main");
+        Resume();
+        StartCoroutine("LoadMenu");
     }
     public void ExitConstructMenu()
     {
@@ -310,5 +313,19 @@ public class Menu : MonoBehaviour
         Vector2 worldCenter = mainCam.ViewportToWorldPoint(viewportCenter);
 
         return worldCenter;
+    }
+    private IEnumerator LoadMenu()
+    {
+        levelLoader.SetActive(true);
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("main");
+    }
+    private IEnumerator LoadUniverse()
+    {
+        levelLoader.SetActive(true);
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("Universe");
     }
 }
