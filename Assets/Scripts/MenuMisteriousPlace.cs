@@ -24,19 +24,14 @@ public class MenuMisteriousPlace : MonoBehaviour
     [Space(20f)]
     [Header("Lists")]
     [SerializeField] private List<Card> generatedCards = new List<Card>();
-    [Space(20f)]
-    [Header("Texts")]
-    [SerializeField] private TMP_Text changeCardsAmountText;
+
     private void Start()
     {
         camSize = GameObject.FindObjectOfType(typeof(CameraSize)) as CameraSize;
         walkerMovement = GameObject.FindObjectOfType(typeof(WalkerMovement)) as WalkerMovement;
         mainCam = Camera.main;
     }
-    private void Update()
-    {
-        changeCardsAmountText.text = PlayerPrefs.GetInt("ChangeCards").ToString();
-    }
+
     public void PauseMenu()
     {
         Time.timeScale = 0f;

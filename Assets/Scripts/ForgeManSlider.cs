@@ -29,7 +29,7 @@ public class ForgeManSlider : MonoBehaviour
         if (bossPoints > 0)
         {
             PlayerPrefs.SetInt("BossPoints", bossPoints -= 1); //dodaæ bosspoint po zabiciu bossa
-            Debug.Log(bossPoints);
+            //Debug.Log(bossPoints);
             shipPartsDB.shipParts[shipPartNumber].produceAmount++;
             SetSliderValue();
             if(shipPartsDB.shipParts[shipPartNumber].produceAmount >= shipPartsDB.shipParts[shipPartNumber].neededToProduceAmount)

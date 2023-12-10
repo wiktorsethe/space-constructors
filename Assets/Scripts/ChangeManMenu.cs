@@ -9,6 +9,7 @@ public class ChangeManMenu : MonoBehaviour
     public ShipPartsDatabase shipPartsDB;
     [SerializeField] private GameObject changeItemPrefab;
     [SerializeField] private GameObject changeManMenuPanel;
+    [SerializeField] private TMP_Text changeCardsAmountText;
     private void Start()
     {
         for (int i = 0; i < shipPartsDB.shipParts.Length; i++)
@@ -17,10 +18,13 @@ public class ChangeManMenu : MonoBehaviour
             {
                 GameObject obj = Instantiate(changeItemPrefab, changeManMenuPanel.transform);
                 obj.GetComponent<ChangeManItem>().shipPartNumber = i;
-                obj.transform.Find("ItemImg").GetComponent<Image>().sprite = shipPartsDB.shipParts[i].image;
-                obj.transform.Find("ItemNameTxt").GetComponent<TMP_Text>().text = shipPartsDB.shipParts[i].itemName;
-                obj.transform.Find("ItemAmountTxt").GetComponent<TMP_Text>().text = shipPartsDB.shipParts[i].ownedAmount.ToString();
+                obj.transform.Find("ItemImgPanel").transform.Find("Image").GetComponent<Image>().sprite = shipPartsDB.shipParts[i].image;
+                obj.transform.Find("BackgroundAmount").transform.Find("AmountTxt").GetComponent<TMP_Text>().text = shipPartsDB.shipParts[i].ownedAmount.ToString();
             }
         }
+    }
+    private void Update()
+    {
+        changeCardsAmountText.text = "Changepoints: " + PlayerPrefs.GetInt("ChangeCards");
     }
 }
