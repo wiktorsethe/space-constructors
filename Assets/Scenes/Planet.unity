@@ -7088,8 +7088,6 @@ GameObject:
   - component: {fileID: 1859827763}
   - component: {fileID: 1859827765}
   - component: {fileID: 1859827766}
-  - component: {fileID: 1859827768}
-  - component: {fileID: 1859827767}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -7235,76 +7233,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1859827758}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43f8a62d811e76442981c0dbb6c846ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  obstaclePrefab: {fileID: 5343667911992834465, guid: 9e7dad0f744436a43bf4ad11fdbe826a, type: 3}
-  spawnPoints:
-  - {fileID: 1365117437}
-  - {fileID: 311421679}
-  - {fileID: 1871230326}
-  - {fileID: 1695578478}
-  - {fileID: 470545200}
-  - {fileID: 473708752}
-  - {fileID: 646284024}
-  - {fileID: 130010036}
-  - {fileID: 1506492312}
-  - {fileID: 1378686405}
-  - {fileID: 1103895273}
-  - {fileID: 2021971392}
-  - {fileID: 281241045}
-  - {fileID: 2086532576}
-  - {fileID: 1459483016}
-  - {fileID: 727246147}
-  pooledObjects: []
-  spawnRate: 10
---- !u!114 &1859827767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1859827758}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43f8a62d811e76442981c0dbb6c846ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  obstaclePrefab: {fileID: 6282078967647910801, guid: be1271b06d2e2a6489030a0a60eb0cfb, type: 3}
-  spawnPoints:
-  - {fileID: 1365117437}
-  - {fileID: 311421679}
-  - {fileID: 1871230326}
-  - {fileID: 1695578478}
-  - {fileID: 470545200}
-  - {fileID: 473708752}
-  - {fileID: 646284024}
-  - {fileID: 130010036}
-  - {fileID: 1506492312}
-  - {fileID: 1378686405}
-  - {fileID: 1103895273}
-  - {fileID: 2021971392}
-  - {fileID: 281241045}
-  - {fileID: 2086532576}
-  - {fileID: 1459483016}
-  - {fileID: 727246147}
-  pooledObjects: []
-  spawnRate: 10
---- !u!114 &1859827768
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1859827758}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43f8a62d811e76442981c0dbb6c846ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstaclePrefab: {fileID: 6827807731172849505, guid: 14907db974a0f7e4a8212f1e7299b14e, type: 3}
+  obstaclePrefabs:
+  - {fileID: 6827807731172849505, guid: 14907db974a0f7e4a8212f1e7299b14e, type: 3}
+  - {fileID: 6282078967647910801, guid: be1271b06d2e2a6489030a0a60eb0cfb, type: 3}
+  - {fileID: 5343667911992834465, guid: 9e7dad0f744436a43bf4ad11fdbe826a, type: 3}
   spawnPoints:
   - {fileID: 1365117437}
   - {fileID: 311421679}

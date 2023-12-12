@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject obstaclePrefab;
+    [SerializeField] private GameObject[] obstaclePrefabs;
     [SerializeField] private GameObject[] spawnPoints;
     [SerializeField] private List<GameObject> pooledObjects = new List<GameObject>();
     public float spawnRate;
@@ -67,7 +67,7 @@ public class ObstacleSpawner : MonoBehaviour
     }
     private void InstantiateObject()
     {
-        GameObject obj = Instantiate(obstaclePrefab);
+        GameObject obj = Instantiate(obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)]);
         obj.SetActive(false);
         pooledObjects.Add(obj);
     }

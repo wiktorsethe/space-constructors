@@ -8,7 +8,7 @@ public class WalkerMovement : MonoBehaviour
     public FloatingJoystick rotationJoystick;
     private Rigidbody2D rb;
     [Header("Variables")]
-    [SerializeField] private float moveSpeed;
+    [SerializeField] public float moveSpeed;
     [SerializeField] private float rotationSpeed;
     private Vector2 moveVector;
     private void Awake()
@@ -41,4 +41,5 @@ public class WalkerMovement : MonoBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
     }
+
 }

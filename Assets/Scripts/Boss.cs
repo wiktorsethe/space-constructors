@@ -15,11 +15,11 @@ public class Boss : MonoBehaviour
     [Header("Other GameObjects")]
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private GameObject damageTextPrefab;
-    [SerializeField] private Transform[] firePoints;
     private GameObject player;
     [Space(20f)]
 
     [Header("Shooting")]
+    [SerializeField] private Transform[] firePoints;
     [SerializeField] private float bulletSpeed;
     [SerializeField] private string target;
     private float shootTimer = 0;

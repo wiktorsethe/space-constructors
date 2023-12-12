@@ -10596,7 +10596,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &1387172736
 Animator:
   serializedVersion: 5
@@ -11457,12 +11457,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1450058411}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43f8a62d811e76442981c0dbb6c846ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstaclePrefab: {fileID: 8118670879902747521, guid: 4143b144cb4727d49a039174c8030952, type: 3}
+  obstaclePrefabs:
+  - {fileID: 8118670879902747521, guid: 4143b144cb4727d49a039174c8030952, type: 3}
   spawnPoints:
   - {fileID: 719621745}
   - {fileID: 1433408637}
@@ -11481,12 +11482,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1450058411}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43f8a62d811e76442981c0dbb6c846ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstaclePrefab: {fileID: 4783588202239419623, guid: 4a8cc43fa0e130f4e9f3757b7ecb99d6, type: 3}
+  obstaclePrefabs:
+  - {fileID: 5509932595293020115, guid: 4a8cc43fa0e130f4e9f3757b7ecb99d6, type: 3}
+  - {fileID: 4097292490769698411, guid: eedad65d5d0f824418346303719b62a4, type: 3}
   spawnPoints:
   - {fileID: 2083240447}
   - {fileID: 1365926436}

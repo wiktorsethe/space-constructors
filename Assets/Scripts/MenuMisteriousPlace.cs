@@ -9,6 +9,7 @@ public class MenuMisteriousPlace : MonoBehaviour
 {
     [Header("Other Scripts")]
     public PlayerStats playerStats;
+    public ShipProgress shipProgress;
     public CardsDatabase cardsDB;
     private WalkerMovement walkerMovement;
     private CameraSize camSize;
@@ -24,14 +25,22 @@ public class MenuMisteriousPlace : MonoBehaviour
     [Space(20f)]
     [Header("Lists")]
     [SerializeField] private List<Card> generatedCards = new List<Card>();
-
+    [SerializeField] private Animator transition;
+    [SerializeField] private GameObject levelLoader;
     private void Start()
     {
         camSize = GameObject.FindObjectOfType(typeof(CameraSize)) as CameraSize;
-        walkerMovement = GameObject.FindObjectOfType(typeof(WalkerMovement)) as WalkerMovement;
         mainCam = Camera.main;
     }
-
+    public void ExitMenu()
+    {
+        Time.timeScale = 1f;
+        gameMenu.SetActive(true);
+        pauseMenu.SetActive(false);
+        misteriousManMenu.SetActive(false);
+        forgeManMenu.SetActive(false);
+        changeManMenu.SetActive(false);
+    }
     public void PauseMenu()
     {
         Time.timeScale = 0f;
@@ -43,13 +52,13 @@ public class MenuMisteriousPlace : MonoBehaviour
     }
     public void Resume()
     {
+        Time.timeScale = 1f;
         gameMenu.SetActive(true);
         pauseMenu.SetActive(false);
         misteriousManMenu.SetActive(false);
         forgeManMenu.SetActive(false);
         changeManMenu.SetActive(false);
-        walkerMovement.enabled = true;
-        Time.timeScale = 1f;
+
     }
     public void MisteriousManMenu()
     {
@@ -87,8 +96,15 @@ public class MenuMisteriousPlace : MonoBehaviour
     }
     public void Restart()
     {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(0);
+        Resume();
+        playerStats.Reset();
+        shipProgress.Reset();
+        StartCoroutine("LoadUniverse");
+    }
+    public void BackToMenu()
+    {
+        Resume();
+        StartCoroutine("LoadMenu");
     }
     public void ChooseCard(int i)
     {
@@ -113,5 +129,19 @@ public class MenuMisteriousPlace : MonoBehaviour
     {
         SceneManager.LoadScene("Universe");
 
+    }
+    private IEnumerator LoadMenu()
+    {
+        levelLoader.SetActive(true);
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("main");
+    }
+    private IEnumerator LoadUniverse()
+    {
+        levelLoader.SetActive(true);
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("Universe");
     }
 }
