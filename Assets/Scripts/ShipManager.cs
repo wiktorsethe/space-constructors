@@ -130,7 +130,7 @@ public class ShipManager : MonoBehaviour
                 }
             }
         }
-        Invoke("StartingPos", 0.5f);
+        Invoke("StartingPos", 1f);
         menu.HideConstructPoints();
         gravityWarning.alpha = 0;
     }

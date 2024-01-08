@@ -20,7 +20,7 @@ public class BackgroundScaler : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         Bounds bounds = Bounds();
 
-        Vector3 newScale = new Vector3(1, 1, 1) * (bounds.size.magnitude / 9f);
+        Vector3 newScale = new Vector3(1, 1, 1) * (bounds.size.magnitude / 8.5f);
         transform.localScale = newScale;
     }
     private Bounds Bounds()

@@ -49,9 +49,9 @@ public class CameraSize : MonoBehaviour
                     bgScaler.SmoothChangeScale(targetSize);
                 }
 
-                if (targetSize <= 9f)
+                if (targetSize <= 12f)
                 {
-                    DOTween.To(() => mainCamera.orthographicSize, x => mainCamera.orthographicSize = x, 9f, 1f).SetUpdate(UpdateType.Normal, true);
+                    DOTween.To(() => mainCamera.orthographicSize, x => mainCamera.orthographicSize = x, 12f, 1f).SetUpdate(UpdateType.Normal, true);
                 }
             }
             else
@@ -63,9 +63,9 @@ public class CameraSize : MonoBehaviour
                     bgScaler.SmoothChangeScale(targetSize);
                 }
 
-                if (targetSize <= 9f)
+                if (targetSize <= 12f)
                 {
-                    DOTween.To(() => mainCamera.orthographicSize, x => mainCamera.orthographicSize = x, 9f, 1f).SetUpdate(UpdateType.Normal, true);
+                    DOTween.To(() => mainCamera.orthographicSize, x => mainCamera.orthographicSize = x, 12f, 1f).SetUpdate(UpdateType.Normal, true);
                 }
             }
             //bgScaler.ActivateCortoutine();

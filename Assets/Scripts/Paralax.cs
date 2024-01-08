@@ -10,6 +10,7 @@ public class Paralax : MonoBehaviour
     private float startPosY;
     private Camera mainCam;
     [SerializeField] private float parallaxEffect;
+    [SerializeField] private GameObject space;
     private void Start()
     {
         startPosX = transform.position.x;
@@ -18,20 +19,31 @@ public class Paralax : MonoBehaviour
     }
     private void Update()
     {
-        lengthX = GetComponent<SpriteRenderer>().bounds.size.x;
-        lengthY = GetComponent<SpriteRenderer>().bounds.size.y;
-        float tempX = (mainCam.transform.position.x * (1 - parallaxEffect));
-        float distX = (mainCam.transform.position.x * parallaxEffect);
+        if (space)
+        {
+            space.transform.position = GameObject.FindGameObjectWithTag("Player").transform.position;
 
-        float tempY = (mainCam.transform.position.y * (1 - parallaxEffect));
-        float distY = (mainCam.transform.position.y * parallaxEffect);
+        }
+        else
+        {
+            lengthX = GetComponent<SpriteRenderer>().bounds.size.x;
+            lengthY = GetComponent<SpriteRenderer>().bounds.size.y;
+            float tempX = (mainCam.transform.position.x * (1 - parallaxEffect));
+            float distX = (mainCam.transform.position.x * parallaxEffect);
 
-        transform.position = new Vector3(startPosX + distX, startPosY + distY, transform.position.z);
+            float tempY = (mainCam.transform.position.y * (1 - parallaxEffect));
+            float distY = (mainCam.transform.position.y * parallaxEffect);
 
-        if (tempX > startPosX + lengthX) { startPosX += lengthX; }
-        else if (tempX < startPosX - lengthX) { startPosX -= lengthX; }
+            transform.position = new Vector3(startPosX + distX, startPosY + distY, transform.position.z);
 
-        if (tempY > startPosY + lengthY) { startPosY += lengthY; }
-        else if (tempY < startPosY - lengthY) { startPosY -= lengthY; }
+            if (tempX > startPosX + lengthX) { startPosX += lengthX; }
+            else if (tempX < startPosX - lengthX) { startPosX -= lengthX; }
+
+            if (tempY > startPosY + lengthY) { startPosY += lengthY; }
+            else if (tempY < startPosY - lengthY) { startPosY -= lengthY; }
+
+
+        }
+
     }
 }
