@@ -16,168 +16,168 @@ MonoBehaviour:
   - image: {fileID: 21300000, guid: f56c8172fd2a36842a57d8d0082daf52, type: 3}
     shipPart: {fileID: 5953221920737725232, guid: 8a36e4a37f4681842a2a5d08ad5eb84e, type: 3}
     itemName: Corridor
-    ownedAmount: 81
+    ownedAmount: 2
     oreCost: 10
     screwCost: 10
     gravityBonus: 2
     hpBonus: 20
     shipPartType: corridor
     isOwned: 1
-    produceAmount: 1
-    neededToProduceAmount: 111
+    produceAmount: 0
+    neededToProduceAmount: 10
   - image: {fileID: 21300000, guid: 2f237efa278ed3244945baaf8e48cc0b, type: 3}
     shipPart: {fileID: 5953221920737725232, guid: 8c5c946de78166c43b50ddd344e0c1c4, type: 3}
     itemName: Main
-    ownedAmount: 107
-    oreCost: 10
-    screwCost: 10
+    ownedAmount: 1
+    oreCost: 20
+    screwCost: 15
     gravityBonus: 6
     hpBonus: 50
     shipPartType: main
     isOwned: 1
-    produceAmount: 1
-    neededToProduceAmount: 101
+    produceAmount: 0
+    neededToProduceAmount: 10
   - image: {fileID: 21300000, guid: 97222c48deedb5c4d87ea37a66cd2d15, type: 3}
     shipPart: {fileID: 2566265039767232474, guid: c928b84be04ab294baf525fb5cc1f4fa, type: 3}
     itemName: Normal Gun
-    ownedAmount: 98
-    oreCost: 10
-    screwCost: 10
+    ownedAmount: 0
+    oreCost: 15
+    screwCost: 15
     gravityBonus: 1
-    hpBonus: 15
+    hpBonus: 10
     shipPartType: normalGun
-    isOwned: 1
-    produceAmount: 1
-    neededToProduceAmount: 101
+    isOwned: 0
+    produceAmount: 0
+    neededToProduceAmount: 10
   - image: {fileID: 21300000, guid: 072ca775f5f5e864290090073688e7ae, type: 3}
     shipPart: {fileID: 2566265039767232474, guid: a1ae2524dece0e64bae343132162b6ab, type: 3}
     itemName: Laser Gun
-    ownedAmount: 98
-    oreCost: 0
-    screwCost: 0
+    ownedAmount: 0
+    oreCost: 15
+    screwCost: 15
     gravityBonus: 1
-    hpBonus: 15
+    hpBonus: 10
     shipPartType: laserGun
     isOwned: 0
-    produceAmount: 1
-    neededToProduceAmount: 100
+    produceAmount: 0
+    neededToProduceAmount: 10
   - image: {fileID: 21300000, guid: 3231ba3c46b070443915e91242f40072, type: 3}
     shipPart: {fileID: 2566265039767232474, guid: 784004fbb19601440abd806ae104b635, type: 3}
     itemName: Big Gun
-    ownedAmount: 98
-    oreCost: 0
-    screwCost: 0
+    ownedAmount: 0
+    oreCost: 15
+    screwCost: 15
     gravityBonus: 1
-    hpBonus: 15
+    hpBonus: 10
     shipPartType: bigGun
     isOwned: 0
-    produceAmount: 1
-    neededToProduceAmount: 100
+    produceAmount: 0
+    neededToProduceAmount: 10
   - image: {fileID: 21300000, guid: 4bda9bff6522c474681a18397f0d9997, type: 3}
     shipPart: {fileID: 2566265039767232474, guid: 87f03315fe9515345806355290a80874, type: 3}
     itemName: Double Gun
-    ownedAmount: 98
-    oreCost: 0
-    screwCost: 0
+    ownedAmount: 0
+    oreCost: 15
+    screwCost: 15
     gravityBonus: 1
-    hpBonus: 15
+    hpBonus: 10
     shipPartType: doubleGun
     isOwned: 0
-    produceAmount: 1
-    neededToProduceAmount: 100
+    produceAmount: 0
+    neededToProduceAmount: 10
   - image: {fileID: 21300000, guid: 75dffdb29455f0d45a0ef0bde335e851, type: 3}
     shipPart: {fileID: 6773448880224228588, guid: c8830f9dd21e47644b7885b07be83216, type: 3}
     itemName: Health Regen
-    ownedAmount: 98
-    oreCost: 0
-    screwCost: 0
+    ownedAmount: 0
+    oreCost: 15
+    screwCost: 15
     gravityBonus: 1
-    hpBonus: 15
+    hpBonus: 10
     shipPartType: healthRegen
     isOwned: 0
-    produceAmount: 1
-    neededToProduceAmount: 100
+    produceAmount: 0
+    neededToProduceAmount: 10
   - image: {fileID: 21300000, guid: c65070856113b6d4fb31a844394177cd, type: 3}
     shipPart: {fileID: 981391396233474392, guid: ede555efee255b240a032e09d9dca879, type: 3}
     itemName: Poison Gun
-    ownedAmount: 98
-    oreCost: 0
-    screwCost: 0
+    ownedAmount: 0
+    oreCost: 15
+    screwCost: 15
     gravityBonus: 1
-    hpBonus: 15
+    hpBonus: 10
     shipPartType: poisonGun
     isOwned: 0
-    produceAmount: 1
-    neededToProduceAmount: 100
+    produceAmount: 0
+    neededToProduceAmount: 10
   - image: {fileID: 21300000, guid: a1a92a75829b7014fbfce72a498cefe1, type: 3}
     shipPart: {fileID: 6998996897852225894, guid: 334fc0e7fb433be47950416f5f6f2783, type: 3}
     itemName: Flame Gun
-    ownedAmount: 98
-    oreCost: 0
-    screwCost: 0
+    ownedAmount: 0
+    oreCost: 15
+    screwCost: 15
     gravityBonus: 1
-    hpBonus: 15
+    hpBonus: 10
     shipPartType: flameGun
     isOwned: 0
-    produceAmount: 1
-    neededToProduceAmount: 100
+    produceAmount: 0
+    neededToProduceAmount: 10
   - image: {fileID: 21300000, guid: 9b6b63e917303a047911f30e1eb11892, type: 3}
     shipPart: {fileID: 9059050534220614162, guid: d626f1fd3ab6cfd4aa5a9c951643ce36, type: 3}
     itemName: Bomb Gun
-    ownedAmount: 98
-    oreCost: 0
-    screwCost: 0
+    ownedAmount: 0
+    oreCost: 15
+    screwCost: 15
     gravityBonus: 1
-    hpBonus: 15
+    hpBonus: 10
     shipPartType: bombGun
     isOwned: 0
-    produceAmount: 1
-    neededToProduceAmount: 100
+    produceAmount: 0
+    neededToProduceAmount: 10
   - image: {fileID: 21300000, guid: cd7b054c04f4c294a9194934d7457431, type: 3}
     shipPart: {fileID: 3025597490013899895, guid: f41795a43acaa03459ded35e74849324, type: 3}
     itemName: Homing Gun
-    ownedAmount: 98
-    oreCost: 0
-    screwCost: 0
-    gravityBonus: 0
-    hpBonus: 0
+    ownedAmount: 0
+    oreCost: 15
+    screwCost: 15
+    gravityBonus: 1
+    hpBonus: 10
     shipPartType: homingGun
     isOwned: 0
-    produceAmount: 1
-    neededToProduceAmount: 100
+    produceAmount: 0
+    neededToProduceAmount: 10
   - image: {fileID: 21300000, guid: 24e11019c19c388479a7f4ae010c188e, type: 3}
     shipPart: {fileID: 1411379949368553517, guid: c6715361e069a7a4f9c3046f3b8aa21d, type: 3}
     itemName: Stunning Gun
-    ownedAmount: 99
-    oreCost: 0
-    screwCost: 0
+    ownedAmount: 0
+    oreCost: 15
+    screwCost: 15
     gravityBonus: 1
-    hpBonus: 15
+    hpBonus: 10
     shipPartType: stunningGun
     isOwned: 0
-    produceAmount: 1
-    neededToProduceAmount: 100
+    produceAmount: 0
+    neededToProduceAmount: 10
   - image: {fileID: 21300000, guid: 75dffdb29455f0d45a0ef0bde335e851, type: 3}
     shipPart: {fileID: 3650537372648192703, guid: d67b89cdaf3f3f942b33766603c878e0, type: 3}
     itemName: 'Shield '
-    ownedAmount: 99
-    oreCost: 0
-    screwCost: 0
+    ownedAmount: 0
+    oreCost: 15
+    screwCost: 15
     gravityBonus: 1
-    hpBonus: 35
+    hpBonus: 10
     shipPartType: shield
     isOwned: 0
-    produceAmount: 1
-    neededToProduceAmount: 100
+    produceAmount: 0
+    neededToProduceAmount: 10
   - image: {fileID: 21300000, guid: 9f0ba76dd9981d0419f791fa777ee1f7, type: 3}
     shipPart: {fileID: 1793594598498737876, guid: 5afab95dae863574d8769e88325c9e11, type: 3}
     itemName: 'Dash '
-    ownedAmount: 107
-    oreCost: 0
-    screwCost: 0
+    ownedAmount: 0
+    oreCost: 15
+    screwCost: 15
     gravityBonus: 1
-    hpBonus: 35
+    hpBonus: 10
     shipPartType: dash
     isOwned: 0
-    produceAmount: 1
-    neededToProduceAmount: 100
+    produceAmount: 0
+    neededToProduceAmount: 10

@@ -112,10 +112,27 @@ public class MenuMisteriousPlace : MonoBehaviour
         playerStats.laserGunDamageValue += generatedCards[i].laserGunDamageValue * 2;
         playerStats.bigGunDamageValue += generatedCards[i].bigGunDamageValue * 2;
         playerStats.doubleGunDamageValue += generatedCards[i].doubleGunDamageValue * 2;
+        playerStats.poisonGunCollisionDamageValue += generatedCards[i].poisonGunCollisionDamageValue * 2;
+        playerStats.poisonGunBetweenDamageValue += generatedCards[i].poisonGunBetweenDamageValue * 2;
+        playerStats.flameGunCollisionDamageValue += generatedCards[i].flameGunCollisionDamageValue * 2;
+        playerStats.flameGunBetweenDamageValue += generatedCards[i].flameGunBetweenDamageValue * 2;
+        playerStats.bombGunDamageValue += generatedCards[i].bombGunDamageValue * 2;
+        playerStats.homingGunDamageValue += generatedCards[i].homingGunDamageValue * 2;
+        playerStats.stunningGunDamageValue += generatedCards[i].stunningGunDamageValue * 2;
+
         playerStats.normalGunAttackSpeedValue += generatedCards[i].normalGunAttackSpeedValue * 2;
         playerStats.laserGunAttackSpeedValue += generatedCards[i].laserGunAttackSpeedValue * 2;
         playerStats.bigGunAttackSpeedValue += generatedCards[i].bigGunAttackSpeedValue * 2;
         playerStats.doubleGunAttackSpeedValue += generatedCards[i].doubleGunAttackSpeedValue * 2;
+        playerStats.poisonGunCollisionAttackSpeedValue += generatedCards[i].poisonGunCollisionAttackSpeedValue * 2;
+        playerStats.poisonGunBetweenAttackSpeedValue += generatedCards[i].poisonGunBetweenAttackSpeedValue * 2;
+        playerStats.poisonGunDurationValue += generatedCards[i].poisonGunDurationValue * 2;
+        playerStats.flameGunCollisionAttackSpeedValue += generatedCards[i].flameGunCollisionAttackSpeedValue * 2;
+        playerStats.flameGunDurationValue += generatedCards[i].flameGunDurationValue * 2;
+        playerStats.bombGunAttackSpeedValue += generatedCards[i].bombGunAttackSpeedValue * 2;
+        playerStats.homingGunAttackSpeedValue += generatedCards[i].homingGunAttackSpeedValue * 2;
+        playerStats.stunDurationValue += generatedCards[i].stunDurationValue * 2;
+
         playerStats.shipSpeedValue += generatedCards[i].shipSpeedValue * 2;
         playerStats.oreMiningBonusValue = generatedCards[i].oreMiningBonus * 2;
         gameMenu.SetActive(true);

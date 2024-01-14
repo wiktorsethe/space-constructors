@@ -65,7 +65,7 @@ public class PlayerStats : ScriptableObject
         shipCurrentHealth = 100;
         shipCurrentShield = 0;
         shipMaxShield = 0;
-        shipSpeedValue = 10;
+        shipSpeedValue = 50;
         level = 1;
         experience = 0;
         shipGravity = 1;

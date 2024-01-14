@@ -235,10 +235,27 @@ public class Menu : MonoBehaviour
         playerStats.laserGunDamageValue += generatedCards[i].laserGunDamageValue;
         playerStats.bigGunDamageValue += generatedCards[i].bigGunDamageValue;
         playerStats.doubleGunDamageValue += generatedCards[i].doubleGunDamageValue;
+        playerStats.poisonGunCollisionDamageValue += generatedCards[i].poisonGunCollisionDamageValue;
+        playerStats.poisonGunBetweenDamageValue += generatedCards[i].poisonGunBetweenDamageValue;
+        playerStats.flameGunCollisionDamageValue += generatedCards[i].flameGunCollisionDamageValue;
+        playerStats.flameGunBetweenDamageValue += generatedCards[i].flameGunBetweenDamageValue;
+        playerStats.bombGunDamageValue += generatedCards[i].bombGunDamageValue;
+        playerStats.homingGunDamageValue += generatedCards[i].homingGunDamageValue;
+        playerStats.stunningGunDamageValue += generatedCards[i].stunningGunDamageValue;
+
         playerStats.normalGunAttackSpeedValue += generatedCards[i].normalGunAttackSpeedValue;
         playerStats.laserGunAttackSpeedValue += generatedCards[i].laserGunAttackSpeedValue;
         playerStats.bigGunAttackSpeedValue += generatedCards[i].bigGunAttackSpeedValue;
         playerStats.doubleGunAttackSpeedValue += generatedCards[i].doubleGunAttackSpeedValue;
+        playerStats.poisonGunCollisionAttackSpeedValue += generatedCards[i].poisonGunCollisionAttackSpeedValue;
+        playerStats.poisonGunBetweenAttackSpeedValue += generatedCards[i].poisonGunBetweenAttackSpeedValue;
+        playerStats.poisonGunDurationValue += generatedCards[i].poisonGunDurationValue;
+        playerStats.flameGunCollisionAttackSpeedValue += generatedCards[i].flameGunCollisionAttackSpeedValue;
+        playerStats.flameGunDurationValue += generatedCards[i].flameGunDurationValue;
+        playerStats.bombGunAttackSpeedValue += generatedCards[i].bombGunAttackSpeedValue;
+        playerStats.homingGunAttackSpeedValue += generatedCards[i].homingGunAttackSpeedValue;
+        playerStats.stunDurationValue += generatedCards[i].stunDurationValue;
+
         playerStats.shipSpeedValue += generatedCards[i].shipSpeedValue;
         playerStats.oreMiningBonusValue = generatedCards[i].oreMiningBonus;
         generatedCards.Clear();

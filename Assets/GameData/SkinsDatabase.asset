@@ -35,8 +35,8 @@ MonoBehaviour:
     animatorBombGun: {fileID: 9100000, guid: 191e3eb0b7fdc9141a2601e6faa00680, type: 2}
     skinSpriteDashFragment: {fileID: 21300000, guid: 704709a553d98294a8d410fab2ac39fb, type: 3}
     animatorDashFragment: {fileID: 9100000, guid: f6cc98edb284a0e4bac847ca289a4f1a, type: 2}
-    skinSpriteHommingGun: {fileID: 21300000, guid: 36b608dfcd5e36e49a1fea80caf89f22, type: 3}
-    animatorHommingGun: {fileID: 9100000, guid: 526a86cd2b1aa0445aa761b1fcd1f9bc, type: 2}
+    skinSpriteHomingGun: {fileID: 0}
+    animatorHomingGun: {fileID: 0}
     skinSpriteShieldFragment: {fileID: 21300000, guid: 543f2a9248a27d04d9a7ed86a93a05ae, type: 3}
     animatorShieldFragment: {fileID: 9100000, guid: 5dab2e12cd53ed74baeb03840d9a7ca1, type: 2}
     cost: 1
@@ -63,11 +63,11 @@ MonoBehaviour:
     animatorBombGun: {fileID: 9100000, guid: e7d4334d5975bb94c9dc3f9382719a5f, type: 2}
     skinSpriteDashFragment: {fileID: 21300000, guid: 991d472409330f6469c3b4211e63ccf9, type: 3}
     animatorDashFragment: {fileID: 9100000, guid: f57e07dcd22c89b4282f1b1cad404ad7, type: 2}
-    skinSpriteHommingGun: {fileID: 21300000, guid: 611fdd360c535ce4196bae65420bb318, type: 3}
-    animatorHommingGun: {fileID: 9100000, guid: 4ae9501f97501ba4db439b4999a80c55, type: 2}
+    skinSpriteHomingGun: {fileID: 0}
+    animatorHomingGun: {fileID: 0}
     skinSpriteShieldFragment: {fileID: 21300000, guid: 6b6ed066a7e4fb7459c37917345cb94a, type: 3}
     animatorShieldFragment: {fileID: 9100000, guid: 6b4d221afa7488e4e9529aaa851c2311, type: 2}
-    cost: 1
+    cost: 1000
     isPurchased: 1
   - skinSpriteMain: {fileID: 21300000, guid: ed005d8e20e73a04c9da88ec228327d1, type: 3}
     skinSpriteCorridor: {fileID: 21300000, guid: 3be4ce4575c8802499a5e824ef1128e4, type: 3}
@@ -91,12 +91,12 @@ MonoBehaviour:
     animatorBombGun: {fileID: 9100000, guid: 9d5e0f922380ad544989f6af1e2675a3, type: 2}
     skinSpriteDashFragment: {fileID: 21300000, guid: 0ebf7cd7c555e6648815864c86407b0c, type: 3}
     animatorDashFragment: {fileID: 9100000, guid: 1aa4a5f5ea7d98e48bc2b17507bd79dc, type: 2}
-    skinSpriteHommingGun: {fileID: 21300000, guid: 8851dc2058c85ac49bf52c918cdcdcea, type: 3}
-    animatorHommingGun: {fileID: 9100000, guid: 588732cd113a2b14783e081b33d50d0b, type: 2}
+    skinSpriteHomingGun: {fileID: 0}
+    animatorHomingGun: {fileID: 0}
     skinSpriteShieldFragment: {fileID: 21300000, guid: 795c9e6a8cee1ed42b04dcb7cc79f16f, type: 3}
     animatorShieldFragment: {fileID: 9100000, guid: c0930a8e562f493488c69a7e87a705d5, type: 2}
-    cost: 1
-    isPurchased: 1
+    cost: 1500
+    isPurchased: 0
   - skinSpriteMain: {fileID: 21300000, guid: 0a2a1a829a9373f48ba36d3ffed47470, type: 3}
     skinSpriteCorridor: {fileID: 21300000, guid: 94e407fd1fe0dfd49b204e7e6aee64a3, type: 3}
     skinSpriteNormalGun: {fileID: 21300000, guid: 5f4df1bd5457dcf4e98fefdb88bb283f, type: 3}
@@ -119,12 +119,12 @@ MonoBehaviour:
     animatorBombGun: {fileID: 9100000, guid: 28d2d6b0f96a8494b87bafa222a4667e, type: 2}
     skinSpriteDashFragment: {fileID: 21300000, guid: 5257b4f95d26a9f4b98d2e6c4d513848, type: 3}
     animatorDashFragment: {fileID: 9100000, guid: 265b2ffafda938b4bb8d52f3628d0699, type: 2}
-    skinSpriteHommingGun: {fileID: 21300000, guid: 9167633e17efb7046b34c0e08f38dc62, type: 3}
-    animatorHommingGun: {fileID: 9100000, guid: e5c331cd3eaff6d4dbf1668f2f656fb5, type: 2}
+    skinSpriteHomingGun: {fileID: 0}
+    animatorHomingGun: {fileID: 0}
     skinSpriteShieldFragment: {fileID: 21300000, guid: 9f2cf22a5d7297e468ad3215d35f060a, type: 3}
     animatorShieldFragment: {fileID: 9100000, guid: 46996596d95eb5e4ca820452ea435829, type: 2}
-    cost: 1
-    isPurchased: 1
+    cost: 1500
+    isPurchased: 0
   - skinSpriteMain: {fileID: 21300000, guid: 0b1c5ac13a1bc594eb7d73cf95cf3ac0, type: 3}
     skinSpriteCorridor: {fileID: 21300000, guid: 20277061245f9a842beffb22cb020d61, type: 3}
     skinSpriteNormalGun: {fileID: 21300000, guid: 3c6e33c097dc80a4baaf0e27b356a2f9, type: 3}
@@ -147,12 +147,12 @@ MonoBehaviour:
     animatorBombGun: {fileID: 9100000, guid: 8b6df40a1dd038840a17ce4050e64cf5, type: 2}
     skinSpriteDashFragment: {fileID: 21300000, guid: 6eaf0114dec64aa4398946879a788baf, type: 3}
     animatorDashFragment: {fileID: 9100000, guid: 3fbf28d9467e889449eebfc624e5e7b0, type: 2}
-    skinSpriteHommingGun: {fileID: 21300000, guid: 2757096e159b9744d8beb5903c8c7540, type: 3}
-    animatorHommingGun: {fileID: 9100000, guid: 33b71ef89c1b0cf448883dde5d72c35b, type: 2}
+    skinSpriteHomingGun: {fileID: 0}
+    animatorHomingGun: {fileID: 0}
     skinSpriteShieldFragment: {fileID: 21300000, guid: 6aff89798e0f3b44fb55664407e93c37, type: 3}
     animatorShieldFragment: {fileID: 9100000, guid: 482d3b0397a0fac45a0c16d40fa18318, type: 2}
-    cost: 1
-    isPurchased: 1
+    cost: 1500
+    isPurchased: 0
   - skinSpriteMain: {fileID: 21300000, guid: f4a2d441fefe85d4799668ea3f7810e8, type: 3}
     skinSpriteCorridor: {fileID: 21300000, guid: 0ae02766bfa41cd4d91bac2cd39aa251, type: 3}
     skinSpriteNormalGun: {fileID: 21300000, guid: 4993bf82f5d4c9e49bfe594bd3287078, type: 3}
@@ -175,12 +175,12 @@ MonoBehaviour:
     animatorBombGun: {fileID: 9100000, guid: f375b49cec70587429fde744233d1ce7, type: 2}
     skinSpriteDashFragment: {fileID: 21300000, guid: 84b5804ec2e6822498b622d16962c6bc, type: 3}
     animatorDashFragment: {fileID: 9100000, guid: 8ce915804865bc74d9f2ac59c878f551, type: 2}
-    skinSpriteHommingGun: {fileID: 21300000, guid: 1c7c1cbb785211546b5b0f3f74a43936, type: 3}
-    animatorHommingGun: {fileID: 9100000, guid: 94c2144089930b54c8319d364c622a4d, type: 2}
+    skinSpriteHomingGun: {fileID: 0}
+    animatorHomingGun: {fileID: 0}
     skinSpriteShieldFragment: {fileID: 21300000, guid: a27e97e651ff0494eacbf32c1a47ee74, type: 3}
     animatorShieldFragment: {fileID: 9100000, guid: f4c29e8ff2f33d442b9b9194c30f2474, type: 2}
-    cost: 1
-    isPurchased: 1
+    cost: 1500
+    isPurchased: 0
   - skinSpriteMain: {fileID: 21300000, guid: e42d101788e3b0b49aafb657ca4fdfba, type: 3}
     skinSpriteCorridor: {fileID: 21300000, guid: 729fe19f610ef00419b27519e9613c67, type: 3}
     skinSpriteNormalGun: {fileID: 21300000, guid: 35fa3d7c0a055764d9a6d86a1387206c, type: 3}
@@ -203,12 +203,12 @@ MonoBehaviour:
     animatorBombGun: {fileID: 9100000, guid: 1fdf5ace3303e844da0224abd58cdd8f, type: 2}
     skinSpriteDashFragment: {fileID: 21300000, guid: defbedd9e9a6fb74cbf37e17b02eedd9, type: 3}
     animatorDashFragment: {fileID: 9100000, guid: 6bdd5574809a1fe4f85c804674dce021, type: 2}
-    skinSpriteHommingGun: {fileID: 21300000, guid: 6a5ab009ff48a024eb4f870dcad66e69, type: 3}
-    animatorHommingGun: {fileID: 9100000, guid: 4abd1454e526af84696c2fb7742c688a, type: 2}
+    skinSpriteHomingGun: {fileID: 0}
+    animatorHomingGun: {fileID: 0}
     skinSpriteShieldFragment: {fileID: 21300000, guid: 9901f1bb16eb1c545a8f09474fdbb21f, type: 3}
     animatorShieldFragment: {fileID: 9100000, guid: 916d7587a3a59f64a95c04c33075eacd, type: 2}
-    cost: 1
-    isPurchased: 1
+    cost: 2500
+    isPurchased: 0
   - skinSpriteMain: {fileID: 21300000, guid: 655920b672d4ac54a92a0b8a861f45b5, type: 3}
     skinSpriteCorridor: {fileID: 21300000, guid: 5a966cff0741e2d498f62b8307320137, type: 3}
     skinSpriteNormalGun: {fileID: 21300000, guid: 60cabcdc29551b542b477eea1b304637, type: 3}
@@ -231,12 +231,12 @@ MonoBehaviour:
     animatorBombGun: {fileID: 9100000, guid: 723fa9c0f687f0a42b322ebb537d8bce, type: 2}
     skinSpriteDashFragment: {fileID: 21300000, guid: c5eb06734c3392241841dcd76869a362, type: 3}
     animatorDashFragment: {fileID: 9100000, guid: 94a77d45e36dd984a91cca22dfcd7693, type: 2}
-    skinSpriteHommingGun: {fileID: 21300000, guid: c59c5131ab393ff42ad0751b74e52f90, type: 3}
-    animatorHommingGun: {fileID: 9100000, guid: f9ce38643600f5e409524f9a9d84e013, type: 2}
+    skinSpriteHomingGun: {fileID: 0}
+    animatorHomingGun: {fileID: 0}
     skinSpriteShieldFragment: {fileID: 21300000, guid: d623eeeb13b4d9d4aa28e06a7dec8164, type: 3}
     animatorShieldFragment: {fileID: 9100000, guid: b29aa7059d400ae4d8673fcc7972bcfe, type: 2}
-    cost: 1
-    isPurchased: 1
+    cost: 2500
+    isPurchased: 0
   - skinSpriteMain: {fileID: 21300000, guid: 9f00a0028193ce643a59b89ad7ae5963, type: 3}
     skinSpriteCorridor: {fileID: 21300000, guid: f0ba5bffad216104db2438f959dba8f2, type: 3}
     skinSpriteNormalGun: {fileID: 21300000, guid: 2bb7a705282d6d941bd61e51e5deda84, type: 3}
@@ -259,12 +259,12 @@ MonoBehaviour:
     animatorBombGun: {fileID: 9100000, guid: 9ded18cb5640ee44bbcd20b5dbdae8a7, type: 2}
     skinSpriteDashFragment: {fileID: 21300000, guid: c3b7c9816da18de43bee94f36f82528d, type: 3}
     animatorDashFragment: {fileID: 9100000, guid: 01c352ce9c4af874fad374a6f958e136, type: 2}
-    skinSpriteHommingGun: {fileID: 21300000, guid: d5d35d9d5e344da47bad1c10bdd1e107, type: 3}
-    animatorHommingGun: {fileID: 9100000, guid: 2c1f51c334f0d234e83308a295f18495, type: 2}
+    skinSpriteHomingGun: {fileID: 0}
+    animatorHomingGun: {fileID: 0}
     skinSpriteShieldFragment: {fileID: 21300000, guid: 5477b7fb61f16994ead2c054cf59c748, type: 3}
     animatorShieldFragment: {fileID: 9100000, guid: 144cc5873b9f8ff4985445a631f99484, type: 2}
-    cost: 1
-    isPurchased: 1
+    cost: 2500
+    isPurchased: 0
   - skinSpriteMain: {fileID: 21300000, guid: a2a91a2be52476346ba962fbfa17b14b, type: 3}
     skinSpriteCorridor: {fileID: 21300000, guid: c749d6a8a7281104bba538735d393e4c, type: 3}
     skinSpriteNormalGun: {fileID: 21300000, guid: 3f70375bd15e3b94b9a328ba73eafd25, type: 3}
@@ -287,12 +287,12 @@ MonoBehaviour:
     animatorBombGun: {fileID: 9100000, guid: 3eb61d092a8c6c14f8db8a0a655b89b3, type: 2}
     skinSpriteDashFragment: {fileID: 21300000, guid: d2a67b467fc9d4f4b98d4a21d6180aba, type: 3}
     animatorDashFragment: {fileID: 9100000, guid: ee5f1540745ed3d46a47243643b2c0c1, type: 2}
-    skinSpriteHommingGun: {fileID: 21300000, guid: 40ae3468ac7f16043b1cadf2c511ea81, type: 3}
-    animatorHommingGun: {fileID: 9100000, guid: 661953f7ad0bde04087351a83e27ebff, type: 2}
+    skinSpriteHomingGun: {fileID: 0}
+    animatorHomingGun: {fileID: 0}
     skinSpriteShieldFragment: {fileID: 21300000, guid: 297536f89318c6d4681875aa62625591, type: 3}
     animatorShieldFragment: {fileID: 9100000, guid: cc85394f74a69d64a8973aa016d8b72c, type: 2}
-    cost: 1
-    isPurchased: 1
+    cost: 2500
+    isPurchased: 0
   - skinSpriteMain: {fileID: 21300000, guid: e64af2e5c5a9e474e929671cb22eb3de, type: 3}
     skinSpriteCorridor: {fileID: 21300000, guid: cbae1d659d6438b4399611b77cba2516, type: 3}
     skinSpriteNormalGun: {fileID: 21300000, guid: 676bfa5dfc28ba04087b978ad50ed00b, type: 3}
@@ -315,12 +315,12 @@ MonoBehaviour:
     animatorBombGun: {fileID: 9100000, guid: 0572f783805cf0148a1630de90c37382, type: 2}
     skinSpriteDashFragment: {fileID: 21300000, guid: ccf74adeb03f6654aa87274300d7db5d, type: 3}
     animatorDashFragment: {fileID: 9100000, guid: a081f9405ba849446b0029aaf04d83e0, type: 2}
-    skinSpriteHommingGun: {fileID: 21300000, guid: ed21e89199599724f8436fb0320f043c, type: 3}
-    animatorHommingGun: {fileID: 9100000, guid: fa18b0afad95d0846946430212ab8606, type: 2}
+    skinSpriteHomingGun: {fileID: 0}
+    animatorHomingGun: {fileID: 0}
     skinSpriteShieldFragment: {fileID: 21300000, guid: de7521e192229be498632783462cff82, type: 3}
     animatorShieldFragment: {fileID: 9100000, guid: c5e0433056ad3d0409a117edd77e230a, type: 2}
-    cost: 1
-    isPurchased: 1
+    cost: 2500
+    isPurchased: 0
   - skinSpriteMain: {fileID: 21300000, guid: ec675ea1f150e254e84244a8f10efadc, type: 3}
     skinSpriteCorridor: {fileID: 21300000, guid: 85064469e2b6ca441bbdbe7b80dad9bb, type: 3}
     skinSpriteNormalGun: {fileID: 21300000, guid: 313c7336bc6ef334c86ae0d4b6a53f54, type: 3}
@@ -343,9 +343,9 @@ MonoBehaviour:
     animatorBombGun: {fileID: 9100000, guid: 5d0b9003d10ff464ea466a8e74883c45, type: 2}
     skinSpriteDashFragment: {fileID: 21300000, guid: f95565260cc59ff47a34c822bf9e552c, type: 3}
     animatorDashFragment: {fileID: 9100000, guid: a1d45268b0c94284983cada797574632, type: 2}
-    skinSpriteHommingGun: {fileID: 21300000, guid: 149396fff534d6b46a66ccf4747d572b, type: 3}
-    animatorHommingGun: {fileID: 9100000, guid: f718dae6a7bd3824abef72db971945ab, type: 2}
+    skinSpriteHomingGun: {fileID: 0}
+    animatorHomingGun: {fileID: 0}
     skinSpriteShieldFragment: {fileID: 21300000, guid: 8aa9dab4bd73cd549b2471dabf2f7f95, type: 3}
     animatorShieldFragment: {fileID: 9100000, guid: f47cebc14b4276a41a37df249abe1ad8, type: 2}
-    cost: 1
-    isPurchased: 1
+    cost: 2500
+    isPurchased: 0

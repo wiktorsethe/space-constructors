@@ -5,8 +5,7 @@ using UnityEngine.Purchasing;
 using TMPro;
 using UnityEngine.UI;
 public class InAppManager : MonoBehaviour
-{
-
+{/*
     //[SerializeField] AudioSource buySound;
     public PlayerStats playerData;
     //public SaveManager save;
@@ -37,7 +36,7 @@ public class InAppManager : MonoBehaviour
         builder.AddProduct(remove_ads, ProductType.Subscription);
         builder.AddProduct(remove_ads_bonus, ProductType.Consumable);
         UnityPurchasing.Initialize(this, builder);
-    }*/
+    }
     private void Start()
     {
         if (Application.platform != RuntimePlatform.IPhonePlayer)
@@ -117,7 +116,7 @@ public class InAppManager : MonoBehaviour
             //Firebase.Analytics.FirebaseAnalytics.LogEvent("JJF_purchase_NoAds1000diam");
             save.SaveGameBothPlayerStats();
             subBonusButton.text = "Purchased";
-        }*/
+        }
     }
 
     public void OnPurchaseFailure(Product product, PurchaseFailureReason reason)
@@ -167,5 +166,5 @@ public class InAppManager : MonoBehaviour
             Debug.Log(e);
         }
 
-    }
+    }*/
 }

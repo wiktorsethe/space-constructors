@@ -12,7 +12,7 @@ public class EnemyDashResetState : StateMachineBehaviour
         timer = 0f;
         //animator.updateMode = AnimatorUpdateMode.Normal;
         camShake = GameObject.FindObjectOfType(typeof(CameraShake)) as CameraShake;
-        camShake.ShakeCamera(2f, 0.5f, 3);
+        camShake.ShakeCamera(0.3f, 1f, 6);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

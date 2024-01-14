@@ -11,10 +11,32 @@ public struct Card
     public int laserGunDamageValue;
     public int doubleGunDamageValue;
     public int bigGunDamageValue;
+    public int poisonGunCollisionDamageValue;
+    public int poisonGunBetweenDamageValue;
+    public int flameGunCollisionDamageValue;
+    public int flameGunBetweenDamageValue;
+    public int bombGunDamageValue;
+    public int homingGunDamageValue;
+    public int stunningGunDamageValue;
+
     public int normalGunAttackSpeedValue;
     public int laserGunAttackSpeedValue;
     public int doubleGunAttackSpeedValue;
     public int bigGunAttackSpeedValue;
+    public int poisonGunCollisionAttackSpeedValue;
+    public int poisonGunBetweenAttackSpeedValue;
+    public int poisonGunDurationValue;
+    public int flameGunCollisionAttackSpeedValue;
+    public int flameGunDurationValue;
+    public int bombGunAttackSpeedValue;
+    public int homingGunAttackSpeedValue;
+    public int stunDurationValue;
+
     public int shipSpeedValue;
     public float oreMiningBonus;
+
+    /* 
+
+    public float stunDurationValue;
+     */
 }

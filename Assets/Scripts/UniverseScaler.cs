@@ -18,7 +18,7 @@ public class UniverseScaler : MonoBehaviour
 
         Bounds bounds = Bounds();
 
-        Vector3 newScale = new Vector3(1, 1, 1) * (bounds.size.magnitude / 50f);
+        Vector3 newScale = new Vector3(1, 1, 1) * (bounds.size.magnitude / 75f);
         transform.localScale = newScale;
     }
     private Bounds Bounds()

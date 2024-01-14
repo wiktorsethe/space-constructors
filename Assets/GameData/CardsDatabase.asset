@@ -14,74 +14,164 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cards:
   - image: {fileID: 21300000, guid: bb19d358101dac644a00ad597b5ad036, type: 3}
-    description: You will get 10 damage more for normal gun but -2  in move speed
-    normalGunDamageValue: 10
+    description: You will get 4 damage more for normal gun but -2 in your speed
+    normalGunDamageValue: 4
     laserGunDamageValue: 0
     doubleGunDamageValue: 0
     bigGunDamageValue: 0
+    poisonGunCollisionDamageValue: 0
+    poisonGunBetweenDamageValue: 0
+    flameGunCollisionDamageValue: 0
+    flameGunBetweenDamageValue: 0
+    bombGunDamageValue: 0
+    homingGunDamageValue: 0
+    stunningGunDamageValue: 0
     normalGunAttackSpeedValue: 0
     laserGunAttackSpeedValue: 0
     doubleGunAttackSpeedValue: 0
     bigGunAttackSpeedValue: 0
+    poisonGunCollisionAttackSpeedValue: 0
+    poisonGunBetweenAttackSpeedValue: 0
+    poisonGunDurationValue: 0
+    flameGunCollisionAttackSpeedValue: 0
+    flameGunDurationValue: 0
+    bombGunAttackSpeedValue: 0
+    homingGunAttackSpeedValue: 0
+    stunDurationValue: 0
     shipSpeedValue: -2
     oreMiningBonus: 0
   - image: {fileID: 21300000, guid: 53b4cb8dc2b9372498e884fd161a12f1, type: 3}
-    description: You will get +4 ship speed but 3 damage less on normal gun
-    normalGunDamageValue: -3
-    laserGunDamageValue: 0
-    doubleGunDamageValue: 0
-    bigGunDamageValue: 0
+    description: You will get +6 ship speed but 2 damage less on all your guns
+    normalGunDamageValue: -2
+    laserGunDamageValue: -2
+    doubleGunDamageValue: -2
+    bigGunDamageValue: -2
+    poisonGunCollisionDamageValue: -2
+    poisonGunBetweenDamageValue: 0
+    flameGunCollisionDamageValue: -2
+    flameGunBetweenDamageValue: 0
+    bombGunDamageValue: -2
+    homingGunDamageValue: -2
+    stunningGunDamageValue: -2
     normalGunAttackSpeedValue: 0
     laserGunAttackSpeedValue: 0
     doubleGunAttackSpeedValue: 0
     bigGunAttackSpeedValue: 0
-    shipSpeedValue: 4
+    poisonGunCollisionAttackSpeedValue: 0
+    poisonGunBetweenAttackSpeedValue: 0
+    poisonGunDurationValue: 0
+    flameGunCollisionAttackSpeedValue: 0
+    flameGunDurationValue: 0
+    bombGunAttackSpeedValue: 0
+    homingGunAttackSpeedValue: 0
+    stunDurationValue: 0
+    shipSpeedValue: 6
     oreMiningBonus: 0
   - image: {fileID: 21300000, guid: 30caea405ff066c47a9d7233f1a22227, type: 3}
-    description: You will get 3 damage more for double gun
+    description: You will get 3 damage more for double gun and poison gun
     normalGunDamageValue: 0
     laserGunDamageValue: 0
     doubleGunDamageValue: 3
     bigGunDamageValue: 0
+    poisonGunCollisionDamageValue: 3
+    poisonGunBetweenDamageValue: 0
+    flameGunCollisionDamageValue: 0
+    flameGunBetweenDamageValue: 0
+    bombGunDamageValue: 0
+    homingGunDamageValue: 0
+    stunningGunDamageValue: 0
     normalGunAttackSpeedValue: 0
     laserGunAttackSpeedValue: 0
     doubleGunAttackSpeedValue: 0
     bigGunAttackSpeedValue: 0
+    poisonGunCollisionAttackSpeedValue: 0
+    poisonGunBetweenAttackSpeedValue: 0
+    poisonGunDurationValue: 0
+    flameGunCollisionAttackSpeedValue: 0
+    flameGunDurationValue: 0
+    bombGunAttackSpeedValue: 0
+    homingGunAttackSpeedValue: 0
+    stunDurationValue: 0
     shipSpeedValue: 0
     oreMiningBonus: 0
   - image: {fileID: 21300000, guid: c23bfe3b59172494ea8e944d26e2cf7a, type: 3}
-    description: 111
-    normalGunDamageValue: 111
+    description: You will get 1 second faster recoil on laser gun
+    normalGunDamageValue: 0
+    laserGunDamageValue: -1
+    doubleGunDamageValue: 0
+    bigGunDamageValue: 0
+    poisonGunCollisionDamageValue: 0
+    poisonGunBetweenDamageValue: 0
+    flameGunCollisionDamageValue: 0
+    flameGunBetweenDamageValue: 0
+    bombGunDamageValue: 0
+    homingGunDamageValue: 0
+    stunningGunDamageValue: 0
+    normalGunAttackSpeedValue: 0
+    laserGunAttackSpeedValue: 0
+    doubleGunAttackSpeedValue: 0
+    bigGunAttackSpeedValue: 0
+    poisonGunCollisionAttackSpeedValue: 0
+    poisonGunBetweenAttackSpeedValue: 0
+    poisonGunDurationValue: 0
+    flameGunCollisionAttackSpeedValue: 0
+    flameGunDurationValue: 0
+    bombGunAttackSpeedValue: 0
+    homingGunAttackSpeedValue: 0
+    stunDurationValue: 0
+    shipSpeedValue: 0
+    oreMiningBonus: 0
+  - image: {fileID: 21300000, guid: 47d279b609ebee34b97242d6e74dcfb0, type: 3}
+    description: You will get mining bonus but 1 damage less on flame and bomb gun
+    normalGunDamageValue: 0
     laserGunDamageValue: 0
     doubleGunDamageValue: 0
     bigGunDamageValue: 0
+    poisonGunCollisionDamageValue: 0
+    poisonGunBetweenDamageValue: 0
+    flameGunCollisionDamageValue: -1
+    flameGunBetweenDamageValue: 0
+    bombGunDamageValue: -1
+    homingGunDamageValue: 0
+    stunningGunDamageValue: 0
     normalGunAttackSpeedValue: 0
     laserGunAttackSpeedValue: 0
     doubleGunAttackSpeedValue: 0
     bigGunAttackSpeedValue: 0
+    poisonGunCollisionAttackSpeedValue: 0
+    poisonGunBetweenAttackSpeedValue: 0
+    poisonGunDurationValue: 0
+    flameGunCollisionAttackSpeedValue: 0
+    flameGunDurationValue: 0
+    bombGunAttackSpeedValue: 0
+    homingGunAttackSpeedValue: 0
+    stunDurationValue: 0
     shipSpeedValue: 0
-    oreMiningBonus: 0
+    oreMiningBonus: 7
   - image: {fileID: 21300000, guid: 47d279b609ebee34b97242d6e74dcfb0, type: 3}
-    description: 222
-    normalGunDamageValue: 333
+    description: You will get faster recoil on every gun but 3 ship speed less
+    normalGunDamageValue: 0
     laserGunDamageValue: 0
-    doubleGunDamageValue: 3
+    doubleGunDamageValue: 0
     bigGunDamageValue: 0
-    normalGunAttackSpeedValue: 0
-    laserGunAttackSpeedValue: 0
-    doubleGunAttackSpeedValue: 0
-    bigGunAttackSpeedValue: 0
-    shipSpeedValue: 0
-    oreMiningBonus: 0
-  - image: {fileID: 21300000, guid: 47d279b609ebee34b97242d6e74dcfb0, type: 3}
-    description: 333
-    normalGunDamageValue: 333
-    laserGunDamageValue: 0
-    doubleGunDamageValue: 3
-    bigGunDamageValue: 0
-    normalGunAttackSpeedValue: 0
-    laserGunAttackSpeedValue: 0
-    doubleGunAttackSpeedValue: 0
-    bigGunAttackSpeedValue: 0
-    shipSpeedValue: 0
+    poisonGunCollisionDamageValue: 0
+    poisonGunBetweenDamageValue: 0
+    flameGunCollisionDamageValue: 0
+    flameGunBetweenDamageValue: 0
+    bombGunDamageValue: 0
+    homingGunDamageValue: 0
+    stunningGunDamageValue: 0
+    normalGunAttackSpeedValue: -1
+    laserGunAttackSpeedValue: -1
+    doubleGunAttackSpeedValue: -1
+    bigGunAttackSpeedValue: -1
+    poisonGunCollisionAttackSpeedValue: -1
+    poisonGunBetweenAttackSpeedValue: 0
+    poisonGunDurationValue: 0
+    flameGunCollisionAttackSpeedValue: -1
+    flameGunDurationValue: 0
+    bombGunAttackSpeedValue: -1
+    homingGunAttackSpeedValue: -1
+    stunDurationValue: 0
+    shipSpeedValue: -3
     oreMiningBonus: 0

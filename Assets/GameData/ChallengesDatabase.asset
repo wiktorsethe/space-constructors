@@ -20,10 +20,10 @@ MonoBehaviour:
     mostGoldEarnedTask: 0
     mostKillsTask: 10
     isDone: 0
-  - task: Last for 10 seconds
+  - task: Last for 4 minutes
     reward: {fileID: 11400000, guid: 5263916799579ea459ef2334c8dd4354, type: 2}
     amount: 150
-    bestTimeTask: 100
+    bestTimeTask: 240
     mostGoldEarnedTask: 0
     mostKillsTask: 0
     isDone: 0
@@ -34,10 +34,24 @@ MonoBehaviour:
     mostGoldEarnedTask: 50
     mostKillsTask: 0
     isDone: 0
-  - task: Collect 50 gold and kill 5 mobs
+  - task: Collect 50 gold and kill 5 enemies
     reward: {fileID: 11400000, guid: 5263916799579ea459ef2334c8dd4354, type: 2}
     amount: 150
     bestTimeTask: 0
     mostGoldEarnedTask: 50
     mostKillsTask: 5
+    isDone: 0
+  - task: Kill 30 enemies
+    reward: {fileID: 11400000, guid: 5263916799579ea459ef2334c8dd4354, type: 2}
+    amount: 150
+    bestTimeTask: 0
+    mostGoldEarnedTask: 0
+    mostKillsTask: 30
+    isDone: 0
+  - task: Last for 2 minutes and earn 30 gold
+    reward: {fileID: 11400000, guid: 5263916799579ea459ef2334c8dd4354, type: 2}
+    amount: 120
+    bestTimeTask: 120
+    mostGoldEarnedTask: 30
+    mostKillsTask: 0
     isDone: 0

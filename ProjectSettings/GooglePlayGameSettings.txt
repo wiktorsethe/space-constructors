@@ -1,2 +1,11 @@
 lastUpgrade=01101
 proj.pluginVersion=0.11.01
+proj.AppId=463788413511
+and.BundleId=space.constructors
+proj.classDir=Assets
+proj.ConstantsClassName=GPGSIds
+and.ResourceData=%3c%3fxml+version%3d%221.0%22+encoding%3d%22utf-8%22%3f%3e%0d%0a%3c%21--Google+Play+game+services+IDs.+Save+this+file+as+res%2fvalues%2fgames-ids.xml+in+your+project.--%3e%0d%0a%3cresources%3e%0d%0a++%3c%21--app_id--%3e%0d%0a++%3cstring+name%3d%22app_id%22+translatable%3d%22false%22%3e463788413511%3c%2fstring%3e%0d%0a++%3c%21--package_name--%3e%0d%0a++%3cstring+name%3d%22package_name%22+translatable%3d%22false%22%3espace.constructors%3c%2fstring%3e%0d%0a%3c%2fresources%3e
+and.ClientId=463788413511-v18r7ouh8i2a7msm6pjro9cao6fkhsot.apps.googleusercontent.com
+android.SetupDone=true
+App.NearbdServiceId=space.constructors
+android.NearbySetupDone=true
