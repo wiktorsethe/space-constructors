@@ -61,6 +61,9 @@ public class EnemyShip : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            ShowLootText();
+            playerStats.screw += 5;
+
             SetMaxHealth(maxHealth);
             moveSpeed = 2f;
             expBar.SetExperience(experience);
@@ -155,6 +158,11 @@ public class EnemyShip : MonoBehaviour
     {
         var text = Instantiate(damageTextPrefab, transform.position, Quaternion.identity);
         text.GetComponent<TMP_Text>().text = amount.ToString();
+    }
+    private void ShowLootText()
+    {
+        var text = Instantiate(damageTextPrefab, transform.position, Quaternion.identity);
+        text.GetComponent<TMP_Text>().text = "+5 screws";
     }
     IEnumerator ChangingSpeed()
     {

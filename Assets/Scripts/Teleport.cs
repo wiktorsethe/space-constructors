@@ -56,7 +56,7 @@ public class Teleport : MonoBehaviour
         }
         else if(collision.transform.tag == "Ship" && gravity > playerStats.shipGravity)
         {
-            Debug.Log("1");
+            //Debug.Log("1");
             playerStats.shipCurrentHealth -= playerStats.shipMaxHealth;
         }
     }
@@ -67,6 +67,7 @@ public class Teleport : MonoBehaviour
         {
             distance = Vector3.Distance(player.transform.position, transform.position);
         }
+        
         if (distance <= attractionDistance && player)
         {
             if(collisionTime == -1)
@@ -115,7 +116,7 @@ public class Teleport : MonoBehaviour
     }
     public void ChangeAttractionSize()
     {
-        attractionDistance = size.x * 0.24f;
+        attractionDistance = GetComponent<SpriteRenderer>().bounds.size.x * 0.1f;
     }
     private IEnumerator LoadLevel()
     {

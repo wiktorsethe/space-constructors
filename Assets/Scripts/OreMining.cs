@@ -46,7 +46,7 @@ public class OreMining : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             healthBarCanvas.SetActive(true);
-            if (attackTimer > 4f && !attacked)
+            if (attackTimer > 2f && !attacked)
             {
                 attacked = true;
                 currentHealth -= 10;
@@ -58,11 +58,11 @@ public class OreMining : MonoBehaviour
                 }
                 if (currentHealth <= 0)
                 {
-                    Destroy(gameObject, 2f);
+                    Destroy(gameObject, 1.5f);
                 }
                 attackTimer = 0f;
             }
-            if (attackTimer < 4f)
+            if (attackTimer < 2f)
             {
                 attacked = false;
             }
