@@ -3784,6 +3784,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Loader
       objectReference: {fileID: 0}
+    - target: {fileID: 7384981492567389299, guid: ccefdcd8257f80f4282b9c3848132293, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7384981492567389300, guid: ccefdcd8257f80f4282b9c3848132293, type: 3}
       propertyPath: m_Camera
       value: 

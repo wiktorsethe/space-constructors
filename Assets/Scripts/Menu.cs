@@ -112,6 +112,7 @@ public class Menu : MonoBehaviour
             Destroy(shipPartsInstantiate[i]);
         }
         shipPartsInstantiate.Clear();
+        
         for (int i = 0; i < shipPartsDB.shipParts.Length; i++)
         {
             if (shipPartsDB.shipParts[i].ownedAmount > 0 && shipManager.activeConstructPoint.GetComponent<ConstructPoint>().shipPartType != shipPartsDB.shipParts[i].shipPartType && shipPartsDB.shipParts[i].isOwned)
@@ -127,6 +128,9 @@ public class Menu : MonoBehaviour
                 obj.GetComponent<Button>().onClick.AddListener(() => shipManager.NewPart(obj.GetComponent<ShipPartMenu>().index));
             }
         }
+        float itemWidth = constructMenu.transform.Find("Scroll View").transform.Find("Panel").transform.GetChild(0).GetComponent<RectTransform>().sizeDelta.x;
+
+        constructMenu.transform.Find("Scroll View").transform.Find("Panel").GetComponent<RectTransform>().sizeDelta = Vector2.right * ((itemWidth + 0.5f) * shipPartsInstantiate.Count / 2f - 0.5f);
     }
     public void PauseMenu()
     {

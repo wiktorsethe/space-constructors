@@ -19,7 +19,7 @@ public class EnemyShip : MonoBehaviour
     [Space(20f)]
     [Header("GameObjects and Rest")]
     [SerializeField] private Transform firePoint;
-    [SerializeField] private GameObject damageTextPrefab;
+    [SerializeField] private GameObject textPrefab;
     [SerializeField] private string target;
     [Space(20f)]
     [Header("Health System")]
@@ -149,19 +149,19 @@ public class EnemyShip : MonoBehaviour
         SetHealth();
         moveSpeed = 0.5f;
         StartCoroutine(ChangingSpeed());
-        if (damageTextPrefab)
+        if (textPrefab)
         {
             ShowDamageText(damage);
         }
     }
     private void ShowDamageText(int amount)
     {
-        var text = Instantiate(damageTextPrefab, transform.position, Quaternion.identity);
+        var text = Instantiate(textPrefab, transform.position, Quaternion.identity);
         text.GetComponent<TMP_Text>().text = amount.ToString();
     }
     private void ShowLootText()
     {
-        var text = Instantiate(damageTextPrefab, transform.position, Quaternion.identity);
+        var text = Instantiate(textPrefab, transform.position, Quaternion.identity);
         text.GetComponent<TMP_Text>().text = "+5 screws";
     }
     IEnumerator ChangingSpeed()
