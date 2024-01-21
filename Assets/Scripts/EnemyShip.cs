@@ -41,6 +41,7 @@ public class EnemyShip : MonoBehaviour
     private GameObject dashParticle;
     private ObjectPool[] objPools;
     public Vector2 retreatVector;
+    private bool isActivated = false;
     private void Start()
     {
         expBar = GameObject.FindObjectOfType(typeof(ExpBar)) as ExpBar;
@@ -52,6 +53,11 @@ public class EnemyShip : MonoBehaviour
     }
     private void Update()
     {
+        if (!isActivated)
+        {
+            SetMaxHealth(maxHealth);
+            isActivated = true;
+        }
         fillBar.color = healthGradient.Evaluate(healthBar.normalizedValue);
         hideTimer += Time.deltaTime;
         if (hideTimer > 3f)
@@ -63,13 +69,12 @@ public class EnemyShip : MonoBehaviour
         {
             ShowLootText();
             playerStats.screw += 5;
-
-            SetMaxHealth(maxHealth);
-            moveSpeed = 2f;
+            moveSpeed = 45f;
             expBar.SetExperience(experience);
             playerStats.gold += gold;
             gameManager.goldEarned += gold;
             gameManager.kills += 1;
+            isActivated = false;
             gameObject.SetActive(false);
         }
 
@@ -147,7 +152,7 @@ public class EnemyShip : MonoBehaviour
         hideTimer = 0f;
         currentHealth -= damage;
         SetHealth();
-        moveSpeed = 0.5f;
+        moveSpeed = 40f;
         StartCoroutine(ChangingSpeed());
         if (textPrefab)
         {
@@ -168,7 +173,7 @@ public class EnemyShip : MonoBehaviour
     {
         yield return new WaitForSeconds(0.3f);
 
-        while (moveSpeed < 2f)
+        while (moveSpeed < 45f)
         {
             moveSpeed += 0.1f;
             yield return new WaitForSeconds(0.1f);

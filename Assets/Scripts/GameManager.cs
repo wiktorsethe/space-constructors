@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public CameraFollow camFollow;
     public Boundaries bounds;
     public ObstacleSpawner[] obstacleSpawners;
-    private GameObject player;
+    //private GameObject player;
     [Space(20f)]
 
     [Header("Variables")]
@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
         camFollow = GameObject.FindObjectOfType(typeof(CameraFollow)) as CameraFollow;
         bounds = GameObject.FindObjectOfType(typeof(Boundaries)) as Boundaries;
         menu = GameObject.FindObjectOfType(typeof(Menu)) as Menu;
-        player = GameObject.FindGameObjectWithTag("Player");
+        //player = GameObject.FindGameObjectWithTag("Player");
         obstacleSpawners = GameObject.FindObjectsOfType<ObstacleSpawner>();
         if (menu)
         {

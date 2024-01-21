@@ -21,7 +21,7 @@ public class EnemyDashAttackState : StateMachineBehaviour
         {
             //Vector3 vectorToTarget = ship.transform.position - animator.transform.position;
             //animator.transform.Find("EnemyShipImage").transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget);
-            animator.transform.position = Vector2.MoveTowards(animator.transform.position, ship.transform.position, playerStats.shipSpeedValue * 2f * Time.deltaTime);
+            animator.transform.position = Vector2.MoveTowards(animator.transform.position, ship.transform.position, playerStats.shipSpeedValue + 7f * Time.deltaTime);
         }
         else if(Vector2.Distance(animator.transform.position, ship.transform.position) <= 5f)
         {

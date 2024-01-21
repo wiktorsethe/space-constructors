@@ -220,7 +220,7 @@ MonoBehaviour:
   gold: 100
   moveSpeed: 45
   firePoint: {fileID: 4097292489951620099}
-  damageTextPrefab: {fileID: 8062151463999637536, guid: b9d2f93f3a98b4d4b8a1be849730c94f, type: 3}
+  textPrefab: {fileID: 8062151463999637536, guid: b9d2f93f3a98b4d4b8a1be849730c94f, type: 3}
   target: Ship
   canvas: {fileID: 8359735771660387106}
   healthBarCanvas: {fileID: 8359735771660387111}

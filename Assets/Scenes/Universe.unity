@@ -7272,7 +7272,7 @@ GameObject:
   - component: {fileID: 800084992}
   - component: {fileID: 800084991}
   m_Layer: 5
-  m_Name: ExtText
+  m_Name: ExpText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
