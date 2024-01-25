@@ -17,16 +17,15 @@ public class EnemyDashAttackState : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if(Vector2.Distance(animator.transform.position, ship.transform.position) > 5f)
+        if(Vector2.Distance(animator.transform.position, animator.transform.GetComponent<EnemyShip>().savedPos) > 5f)
         {
             //Vector3 vectorToTarget = ship.transform.position - animator.transform.position;
             //animator.transform.Find("EnemyShipImage").transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget);
-            animator.transform.position = Vector2.MoveTowards(animator.transform.position, ship.transform.position, playerStats.shipSpeedValue + 7f * Time.deltaTime);
+            animator.transform.position = Vector2.MoveTowards(animator.transform.position, animator.transform.GetComponent<EnemyShip>().savedPos, animator.transform.GetComponent<EnemyShip>().moveSpeed * 2 * Time.deltaTime);
         }
-        else if(Vector2.Distance(animator.transform.position, ship.transform.position) <= 5f)
+        else if(Vector2.Distance(animator.transform.position, animator.transform.GetComponent<EnemyShip>().savedPos) <= 5f)
         {
-            animator.GetComponent<EnemyShip>().Dash();
-            hpBar.SetHealth(5);
+            
             animator.SetTrigger("Reset");
         }
     }

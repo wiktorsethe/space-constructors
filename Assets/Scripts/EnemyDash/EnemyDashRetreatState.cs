@@ -16,7 +16,7 @@ public class EnemyDashRetreatState : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.transform.position = Vector2.MoveTowards(animator.transform.position, animator.transform.GetComponent<EnemyShip>().retreatVector, 5f * Time.deltaTime);
+        animator.transform.position = Vector2.MoveTowards(animator.transform.position, animator.transform.GetComponent<EnemyShip>().retreatVector, animator.transform.GetComponent<EnemyShip>().moveSpeed * Time.deltaTime);
 
         if (Vector2.Distance(animator.transform.position, ship.transform.position) > 12f)
         {

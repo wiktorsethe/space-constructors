@@ -88,13 +88,13 @@ MonoBehaviour:
   - image: {fileID: 21300000, guid: 75dffdb29455f0d45a0ef0bde335e851, type: 3}
     shipPart: {fileID: 6773448880224228588, guid: c8830f9dd21e47644b7885b07be83216, type: 3}
     itemName: Health Regen
-    ownedAmount: 0
+    ownedAmount: 1
     oreCost: 15
     screwCost: 15
     gravityBonus: 1
     hpBonus: 10
     shipPartType: healthRegen
-    isOwned: 0
+    isOwned: 1
     produceAmount: 0
     neededToProduceAmount: 10
   - image: {fileID: 21300000, guid: c65070856113b6d4fb31a844394177cd, type: 3}

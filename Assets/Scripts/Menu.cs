@@ -204,7 +204,7 @@ public class Menu : MonoBehaviour
         Time.timeScale = 0f;
         shipMovement.enabled = false;
         cardsMenuText.SetActive(true);
-        cardsMenu.GetComponentInChildren<HorizontalLayoutGroup>().enabled = true;
+        cardsMenu.GetComponentInChildren<GridLayoutGroup>().enabled = true;
         for (int i = 0; i < cards.Count; i++)
         {
             if (!cards[i].activeSelf)
@@ -264,7 +264,7 @@ public class Menu : MonoBehaviour
         playerStats.oreMiningBonusValue = generatedCards[i].oreMiningBonus;
         generatedCards.Clear();
         cardsMenuText.SetActive(false);
-        cardsMenu.GetComponentInChildren<HorizontalLayoutGroup>().enabled = false;
+        cardsMenu.GetComponentInChildren <GridLayoutGroup>().enabled = false;
         for (int j = 0; j < cards.Count; j++)
         {
             if (j != i)

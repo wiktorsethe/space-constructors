@@ -15,12 +15,13 @@ public class EnemyShip : MonoBehaviour
     [SerializeField] private int experience;
     [SerializeField] private int gold;
     private float bulletSpeed = 10f;
-    public float moveSpeed = 2f;
+    public float moveSpeed;
     [Space(20f)]
     [Header("GameObjects and Rest")]
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject textPrefab;
     [SerializeField] private string target;
+    public Vector3 savedPos;
     [Space(20f)]
     [Header("Health System")]
     [SerializeField] private Canvas canvas;

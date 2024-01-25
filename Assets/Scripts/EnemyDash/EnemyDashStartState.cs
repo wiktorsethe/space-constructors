@@ -20,10 +20,11 @@ public class EnemyDashStartState : StateMachineBehaviour
         //animator.transform.GetComponent<EnemyDash>().ChangeRotation();
         if (Vector2.Distance(animator.transform.position, ship.transform.position) > 15f)
         {
-            animator.transform.position = Vector2.MoveTowards(animator.transform.position, ship.transform.position, 2f * Time.deltaTime);
+            animator.transform.position = Vector2.MoveTowards(animator.transform.position, ship.transform.position, animator.transform.GetComponent<EnemyShip>().moveSpeed * Time.deltaTime);
         }
         else if (Vector2.Distance(animator.transform.position, ship.transform.position) <= 15f)
         {
+            animator.transform.GetComponent<EnemyShip>().savedPos = ship.transform.position;
             animator.SetTrigger("Attack");
         }
     }

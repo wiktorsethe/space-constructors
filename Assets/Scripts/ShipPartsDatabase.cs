@@ -64,12 +64,12 @@ public class ShipPartsDatabase : ScriptableObject
         shipParts[5].isOwned = false;
 
         //part 6
-        shipParts[6].ownedAmount = 0;
+        shipParts[6].ownedAmount = 1;
         shipParts[6].oreCost = 15;
         shipParts[6].screwCost = 15;
         shipParts[6].gravityBonus = 1;
         shipParts[6].hpBonus = 10;
-        shipParts[6].isOwned = false;
+        shipParts[6].isOwned = true;
 
         //part 7
         shipParts[7].ownedAmount = 0;

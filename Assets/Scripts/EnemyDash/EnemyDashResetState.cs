@@ -6,13 +6,22 @@ public class EnemyDashResetState : StateMachineBehaviour
 {
     private float timer = 0f;
     private CameraShake camShake;
+    private GameObject ship;
+    private HpBar hpBar;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         timer = 0f;
+        ship = animator.GetComponent<EnemyShip>().FindClosestObject();
+        hpBar = GameObject.FindObjectOfType(typeof(HpBar)) as HpBar;
         //animator.updateMode = AnimatorUpdateMode.Normal;
-        camShake = GameObject.FindObjectOfType(typeof(CameraShake)) as CameraShake;
-        camShake.ShakeCamera(0.3f, 1f, 6);
+        if (Vector2.Distance(animator.transform.position, ship.transform.position) < 5f)
+        {
+            camShake = GameObject.FindObjectOfType(typeof(CameraShake)) as CameraShake;
+            camShake.ShakeCamera(0.2f, 1f, 3);
+            animator.GetComponent<EnemyShip>().Dash();
+            hpBar.SetHealth(5);
+        }
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
