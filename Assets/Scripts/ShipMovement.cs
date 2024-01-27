@@ -18,8 +18,8 @@ public class ShipMovement : MonoBehaviour
     }
     private void Start()
     {
-        movementJoystick = GameObject.Find("Movement JoyStick").GetComponent<FloatingJoystick>();
-        rotationJoystick = GameObject.Find("Rotation JoyStick").GetComponent<FloatingJoystick>();
+        //movementJoystick = GameObject.Find("Movement JoyStick").GetComponent<FloatingJoystick>();
+        //rotationJoystick = GameObject.Find("Rotation JoyStick").GetComponent<FloatingJoystick>();
     }
     private void Update()
     {

@@ -2531,6 +2531,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Loader
       objectReference: {fileID: 0}
+    - target: {fileID: 7384981492567389299, guid: ccefdcd8257f80f4282b9c3848132293, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7384981492567389300, guid: ccefdcd8257f80f4282b9c3848132293, type: 3}
       propertyPath: m_Camera
       value: 
@@ -4257,6 +4261,9 @@ MonoBehaviour:
   rotationJoystick: {fileID: 1551144819}
   moveSpeed: 10
   rotationSpeed: 20
+  arrowPrefab: {fileID: 0}
+  arrow: {fileID: 0}
+  arrowDistance: 2
 --- !u!50 &6121250161231303129
 Rigidbody2D:
   serializedVersion: 4

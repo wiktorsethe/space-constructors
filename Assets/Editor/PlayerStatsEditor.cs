@@ -70,6 +70,7 @@ public class PlayerStatsEditor : Editor
         playerStats.screw = EditorGUILayout.IntField("Screw ", playerStats.screw);
         playerStats.selectedSkin = EditorGUILayout.IntField("Selected Skin", playerStats.selectedSkin);
         playerStats.refreshKey = EditorGUILayout.IntField("Refresh Keys", playerStats.refreshKey);
+        playerStats.isAfterTutorial = EditorGUILayout.Toggle("Player After Tutorial", playerStats.isAfterTutorial);
         EditorGUILayout.Space();
         GUILayout.Label("       DEATH SCREEN STATS", EditorStyles.boldLabel);
         playerStats.bestTime = EditorGUILayout.FloatField("Best Time Stat", playerStats.bestTime);

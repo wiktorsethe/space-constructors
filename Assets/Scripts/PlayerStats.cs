@@ -58,7 +58,7 @@ public class PlayerStats : ScriptableObject
     public string lastDateBonus;
     public int selectedSkin;
     public int refreshKey;
-
+    public bool isAfterTutorial;
     public void Reset()
     {
         shipMaxHealth = 100;
@@ -103,6 +103,7 @@ public class PlayerStats : ScriptableObject
 
         oreMiningBonusValue = 1;
         shipPosition = new Vector3(0f, 0f, 0f);
+        
     }
     public void ResetRestStats()
     {
@@ -127,5 +128,6 @@ public class PlayerStats : ScriptableObject
         todayMostKills = 0;
         todayMostGoldEarned = 0;
         todayBestTime = 0;
+        isAfterTutorial = false;
     }
 }

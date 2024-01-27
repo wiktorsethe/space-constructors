@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: SkinsDatabase
   m_EditorClassIdentifier: 
   skins:
-  - skinSpriteMain: {fileID: 21300000, guid: 81a8daacbd4053e4997c55531cf1b14b, type: 3}
+  - skinTitle: Guardian
+    skinSpriteMain: {fileID: 21300000, guid: 81a8daacbd4053e4997c55531cf1b14b, type: 3}
     skinSpriteCorridor: {fileID: 21300000, guid: 73046434a08477945ba0acff471eff25, type: 3}
     skinSpriteNormalGun: {fileID: 21300000, guid: f8eb555a857a2c44b996808a035d7446, type: 3}
     animatorNormalGun: {fileID: 9100000, guid: 10b8e1599f71ad347bd314eef705f594, type: 2}
@@ -41,7 +42,8 @@ MonoBehaviour:
     animatorShieldFragment: {fileID: 9100000, guid: 5dab2e12cd53ed74baeb03840d9a7ca1, type: 2}
     cost: 1
     isPurchased: 1
-  - skinSpriteMain: {fileID: 21300000, guid: 7d9c7cb46a9c9a74d9a033a62c5cbf32, type: 3}
+  - skinTitle: Shadowstrike
+    skinSpriteMain: {fileID: 21300000, guid: 7d9c7cb46a9c9a74d9a033a62c5cbf32, type: 3}
     skinSpriteCorridor: {fileID: 21300000, guid: b88988473cb0b9f4db5f39f6487d34ac, type: 3}
     skinSpriteNormalGun: {fileID: 21300000, guid: 716ee650b86aef34f9eaaaa906538fb4, type: 3}
     animatorNormalGun: {fileID: 9100000, guid: b9f8fde038797e544925ad1215f164e3, type: 2}
@@ -69,7 +71,8 @@ MonoBehaviour:
     animatorShieldFragment: {fileID: 9100000, guid: 6b4d221afa7488e4e9529aaa851c2311, type: 2}
     cost: 1000
     isPurchased: 1
-  - skinSpriteMain: {fileID: 21300000, guid: ed005d8e20e73a04c9da88ec228327d1, type: 3}
+  - skinTitle: Crimson
+    skinSpriteMain: {fileID: 21300000, guid: ed005d8e20e73a04c9da88ec228327d1, type: 3}
     skinSpriteCorridor: {fileID: 21300000, guid: 3be4ce4575c8802499a5e824ef1128e4, type: 3}
     skinSpriteNormalGun: {fileID: 21300000, guid: 49a97f5edf13a3d4b94ed6ebe97793fc, type: 3}
     animatorNormalGun: {fileID: 9100000, guid: bddcabb215d3c5c48bb0e0b2f9052fa0, type: 2}
@@ -97,7 +100,8 @@ MonoBehaviour:
     animatorShieldFragment: {fileID: 9100000, guid: c0930a8e562f493488c69a7e87a705d5, type: 2}
     cost: 1500
     isPurchased: 0
-  - skinSpriteMain: {fileID: 21300000, guid: 0a2a1a829a9373f48ba36d3ffed47470, type: 3}
+  - skinTitle: Nebula
+    skinSpriteMain: {fileID: 21300000, guid: 0a2a1a829a9373f48ba36d3ffed47470, type: 3}
     skinSpriteCorridor: {fileID: 21300000, guid: 94e407fd1fe0dfd49b204e7e6aee64a3, type: 3}
     skinSpriteNormalGun: {fileID: 21300000, guid: 5f4df1bd5457dcf4e98fefdb88bb283f, type: 3}
     animatorNormalGun: {fileID: 9100000, guid: 6a0a00e36cb2a8c4689c632007ff34d4, type: 2}
@@ -125,7 +129,8 @@ MonoBehaviour:
     animatorShieldFragment: {fileID: 9100000, guid: 46996596d95eb5e4ca820452ea435829, type: 2}
     cost: 1500
     isPurchased: 0
-  - skinSpriteMain: {fileID: 21300000, guid: 0b1c5ac13a1bc594eb7d73cf95cf3ac0, type: 3}
+  - skinTitle: Midnight
+    skinSpriteMain: {fileID: 21300000, guid: 0b1c5ac13a1bc594eb7d73cf95cf3ac0, type: 3}
     skinSpriteCorridor: {fileID: 21300000, guid: 20277061245f9a842beffb22cb020d61, type: 3}
     skinSpriteNormalGun: {fileID: 21300000, guid: 3c6e33c097dc80a4baaf0e27b356a2f9, type: 3}
     animatorNormalGun: {fileID: 9100000, guid: e5ca375173fac7548aff4730f0a18a4b, type: 2}
@@ -153,7 +158,8 @@ MonoBehaviour:
     animatorShieldFragment: {fileID: 9100000, guid: 482d3b0397a0fac45a0c16d40fa18318, type: 2}
     cost: 1500
     isPurchased: 0
-  - skinSpriteMain: {fileID: 21300000, guid: f4a2d441fefe85d4799668ea3f7810e8, type: 3}
+  - skinTitle: Solaris
+    skinSpriteMain: {fileID: 21300000, guid: f4a2d441fefe85d4799668ea3f7810e8, type: 3}
     skinSpriteCorridor: {fileID: 21300000, guid: 0ae02766bfa41cd4d91bac2cd39aa251, type: 3}
     skinSpriteNormalGun: {fileID: 21300000, guid: 4993bf82f5d4c9e49bfe594bd3287078, type: 3}
     animatorNormalGun: {fileID: 9100000, guid: 8a59ee41d03ecbe46aa21810b2761a34, type: 2}
@@ -181,7 +187,8 @@ MonoBehaviour:
     animatorShieldFragment: {fileID: 9100000, guid: f4c29e8ff2f33d442b9b9194c30f2474, type: 2}
     cost: 1500
     isPurchased: 0
-  - skinSpriteMain: {fileID: 21300000, guid: e42d101788e3b0b49aafb657ca4fdfba, type: 3}
+  - skinTitle: Crystalized
+    skinSpriteMain: {fileID: 21300000, guid: e42d101788e3b0b49aafb657ca4fdfba, type: 3}
     skinSpriteCorridor: {fileID: 21300000, guid: 729fe19f610ef00419b27519e9613c67, type: 3}
     skinSpriteNormalGun: {fileID: 21300000, guid: 35fa3d7c0a055764d9a6d86a1387206c, type: 3}
     animatorNormalGun: {fileID: 9100000, guid: 5311d2c8f79357e49936f5cd52cef330, type: 2}
@@ -209,7 +216,8 @@ MonoBehaviour:
     animatorShieldFragment: {fileID: 9100000, guid: 916d7587a3a59f64a95c04c33075eacd, type: 2}
     cost: 2500
     isPurchased: 0
-  - skinSpriteMain: {fileID: 21300000, guid: 655920b672d4ac54a92a0b8a861f45b5, type: 3}
+  - skinTitle: Zenith
+    skinSpriteMain: {fileID: 21300000, guid: 655920b672d4ac54a92a0b8a861f45b5, type: 3}
     skinSpriteCorridor: {fileID: 21300000, guid: 5a966cff0741e2d498f62b8307320137, type: 3}
     skinSpriteNormalGun: {fileID: 21300000, guid: 60cabcdc29551b542b477eea1b304637, type: 3}
     animatorNormalGun: {fileID: 9100000, guid: 612d5c8115509f0429ce8198cfab55e6, type: 2}
@@ -237,7 +245,8 @@ MonoBehaviour:
     animatorShieldFragment: {fileID: 9100000, guid: b29aa7059d400ae4d8673fcc7972bcfe, type: 2}
     cost: 2500
     isPurchased: 0
-  - skinSpriteMain: {fileID: 21300000, guid: 9f00a0028193ce643a59b89ad7ae5963, type: 3}
+  - skinTitle: Inferno
+    skinSpriteMain: {fileID: 21300000, guid: 9f00a0028193ce643a59b89ad7ae5963, type: 3}
     skinSpriteCorridor: {fileID: 21300000, guid: f0ba5bffad216104db2438f959dba8f2, type: 3}
     skinSpriteNormalGun: {fileID: 21300000, guid: 2bb7a705282d6d941bd61e51e5deda84, type: 3}
     animatorNormalGun: {fileID: 9100000, guid: 5ff705e941dec044281bba5efb797234, type: 2}
@@ -265,7 +274,8 @@ MonoBehaviour:
     animatorShieldFragment: {fileID: 9100000, guid: 144cc5873b9f8ff4985445a631f99484, type: 2}
     cost: 2500
     isPurchased: 0
-  - skinSpriteMain: {fileID: 21300000, guid: a2a91a2be52476346ba962fbfa17b14b, type: 3}
+  - skinTitle: Aquatic
+    skinSpriteMain: {fileID: 21300000, guid: a2a91a2be52476346ba962fbfa17b14b, type: 3}
     skinSpriteCorridor: {fileID: 21300000, guid: c749d6a8a7281104bba538735d393e4c, type: 3}
     skinSpriteNormalGun: {fileID: 21300000, guid: 3f70375bd15e3b94b9a328ba73eafd25, type: 3}
     animatorNormalGun: {fileID: 9100000, guid: a1f4705d3ac2a8d468b5b23b620baef6, type: 2}
@@ -293,7 +303,8 @@ MonoBehaviour:
     animatorShieldFragment: {fileID: 9100000, guid: cc85394f74a69d64a8973aa016d8b72c, type: 2}
     cost: 2500
     isPurchased: 0
-  - skinSpriteMain: {fileID: 21300000, guid: e64af2e5c5a9e474e929671cb22eb3de, type: 3}
+  - skinTitle: Quantum
+    skinSpriteMain: {fileID: 21300000, guid: e64af2e5c5a9e474e929671cb22eb3de, type: 3}
     skinSpriteCorridor: {fileID: 21300000, guid: cbae1d659d6438b4399611b77cba2516, type: 3}
     skinSpriteNormalGun: {fileID: 21300000, guid: 676bfa5dfc28ba04087b978ad50ed00b, type: 3}
     animatorNormalGun: {fileID: 9100000, guid: 5fd2c3d5993496349b00885700aacd16, type: 2}
@@ -321,7 +332,8 @@ MonoBehaviour:
     animatorShieldFragment: {fileID: 9100000, guid: c5e0433056ad3d0409a117edd77e230a, type: 2}
     cost: 2500
     isPurchased: 0
-  - skinSpriteMain: {fileID: 21300000, guid: ec675ea1f150e254e84244a8f10efadc, type: 3}
+  - skinTitle: Eternal
+    skinSpriteMain: {fileID: 21300000, guid: ec675ea1f150e254e84244a8f10efadc, type: 3}
     skinSpriteCorridor: {fileID: 21300000, guid: 85064469e2b6ca441bbdbe7b80dad9bb, type: 3}
     skinSpriteNormalGun: {fileID: 21300000, guid: 313c7336bc6ef334c86ae0d4b6a53f54, type: 3}
     animatorNormalGun: {fileID: 9100000, guid: 0379f996f7c0d0448ade5a13d38d0f6c, type: 2}

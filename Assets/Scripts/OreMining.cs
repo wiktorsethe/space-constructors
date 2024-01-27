@@ -51,10 +51,10 @@ public class OreMining : MonoBehaviour
                 attacked = true;
                 currentHealth -= 10;
                 SetHealth();
-                playerStats.ore += (int)(10 * playerStats.oreMiningBonusValue);
+                playerStats.ore += (int)(2 * playerStats.oreMiningBonusValue);
                 if (miningTextPrefab)
                 {  
-                    ShowMiningText((int)(10 * playerStats.oreMiningBonusValue));
+                    ShowMiningText((int)(2 * playerStats.oreMiningBonusValue));
                 }
                 if (currentHealth <= 0)
                 {

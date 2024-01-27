@@ -16,6 +16,7 @@ public class Shop : MonoBehaviour
     [SerializeField] private GameObject selectButton;
     [SerializeField] private TMP_Text costBuyText;
     [SerializeField] private TMP_Text selectText;
+    [SerializeField] private TMP_Text titleText;
     [Space(20f)]
     [Header("Other")]
     private int activeSkinIndex;
@@ -24,6 +25,7 @@ public class Shop : MonoBehaviour
     {
         activeSkinIndex = playerStats.selectedSkin;
         skinSprite.sprite = skinsDB.skins[activeSkinIndex].skinSpriteMain;
+        titleText.text = skinsDB.skins[activeSkinIndex].skinTitle;
     }
     private void Update()
     {
@@ -59,6 +61,7 @@ public class Shop : MonoBehaviour
             activeSkinIndex++;
         }
         skinSprite.sprite = skinsDB.skins[activeSkinIndex].skinSpriteMain;
+        titleText.text = skinsDB.skins[activeSkinIndex].skinTitle;
     }
     public void PrevIndex()
     {
@@ -71,6 +74,7 @@ public class Shop : MonoBehaviour
             activeSkinIndex--;
         }
         skinSprite.sprite = skinsDB.skins[activeSkinIndex].skinSpriteMain;
+        titleText.text = skinsDB.skins[activeSkinIndex].skinTitle;
     }
     public void BuySkin()
     {

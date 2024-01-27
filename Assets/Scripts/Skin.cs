@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 [System.Serializable]
 public struct Skin
 {
+    public string skinTitle;
     public Sprite skinSpriteMain;
     public Sprite skinSpriteCorridor;
     public Sprite skinSpriteNormalGun;
