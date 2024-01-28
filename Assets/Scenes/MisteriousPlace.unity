@@ -899,7 +899,7 @@ RectTransform:
   - {fileID: 899270570}
   - {fileID: 1813257513}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2539,6 +2539,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 713966075}
+    - target: {fileID: 7384981492567389300, guid: ccefdcd8257f80f4282b9c3848132293, type: 3}
+      propertyPath: m_SortingOrder
+      value: 102
+      objectReference: {fileID: 0}
+    - target: {fileID: 7384981492567389300, guid: ccefdcd8257f80f4282b9c3848132293, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1209203219
+      objectReference: {fileID: 0}
     - target: {fileID: 7384981492567389303, guid: ccefdcd8257f80f4282b9c3848132293, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2549,7 +2557,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7384981492567389303, guid: ccefdcd8257f80f4282b9c3848132293, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7384981492567389303, guid: ccefdcd8257f80f4282b9c3848132293, type: 3}
       propertyPath: m_AnchorMax.x
