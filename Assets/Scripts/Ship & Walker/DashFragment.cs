@@ -10,10 +10,12 @@ public class DashFragment : MonoBehaviour
     private ShipMovement shipMovement;
     [SerializeField] private Sprite buttonOn;
     [SerializeField] private Sprite buttonOff;
+    [SerializeField] private AudioSource dashingSound;
     private void Start()
     {
         menu = GameObject.FindObjectOfType<Menu>() as Menu;
         shipMovement = GameObject.FindObjectOfType<ShipMovement>() as ShipMovement;
+        dashingSound = GameObject.Find("Dash").GetComponent<AudioSource>();
         menu.dashButton.SetActive(true);
         menu.dashButton.GetComponent<Button>().onClick.AddListener(() => OnClickDash());
     }
@@ -25,7 +27,8 @@ public class DashFragment : MonoBehaviour
     {
         menu.dashButton.GetComponent<Image>().sprite = buttonOff;
         shipMovement.isDashActivated = true;
-        yield return new WaitForSeconds(1f);
+        dashingSound.Play();
+        yield return new WaitForSeconds(5f);
         menu.dashButton.GetComponent<Image>().sprite = buttonOn;
         shipMovement.isDashActivated = false;
 

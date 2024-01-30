@@ -21,6 +21,7 @@ public class MenuMisteriousPlace : MonoBehaviour
     [SerializeField] private GameObject forgeManMenu;
     [SerializeField] private GameObject changeManMenu;
     [SerializeField] private GameObject cardPrefab;
+    [SerializeField] private AudioSource buttonSound;
     private Camera mainCam;
     [Space(20f)]
     [Header("Lists")]
@@ -35,6 +36,7 @@ public class MenuMisteriousPlace : MonoBehaviour
     public void ExitMenu()
     {
         Time.timeScale = 1f;
+        buttonSound.Play();
         gameMenu.SetActive(true);
         pauseMenu.SetActive(false);
         misteriousManMenu.SetActive(false);
@@ -44,6 +46,7 @@ public class MenuMisteriousPlace : MonoBehaviour
     public void PauseMenu()
     {
         Time.timeScale = 0f;
+        buttonSound.Play();
         pauseMenu.SetActive(true);
         gameMenu.SetActive(false);
         misteriousManMenu.SetActive(false);
@@ -53,6 +56,7 @@ public class MenuMisteriousPlace : MonoBehaviour
     public void Resume()
     {
         Time.timeScale = 1f;
+        buttonSound.Play();
         gameMenu.SetActive(true);
         pauseMenu.SetActive(false);
         misteriousManMenu.SetActive(false);
@@ -62,6 +66,7 @@ public class MenuMisteriousPlace : MonoBehaviour
     }
     public void MisteriousManMenu()
     {
+        buttonSound.Play();
         gameMenu.SetActive(false);
         pauseMenu.SetActive(false);
         misteriousManMenu.SetActive(true);
@@ -80,6 +85,7 @@ public class MenuMisteriousPlace : MonoBehaviour
     }
     public void ForgeManMenu()
     {
+        buttonSound.Play();
         gameMenu.SetActive(false);
         pauseMenu.SetActive(false);
         misteriousManMenu.SetActive(false);
@@ -88,6 +94,7 @@ public class MenuMisteriousPlace : MonoBehaviour
     }
     public void ChangeManMenu()
     {
+        buttonSound.Play();
         gameMenu.SetActive(false);
         pauseMenu.SetActive(false);
         misteriousManMenu.SetActive(false);
@@ -108,6 +115,7 @@ public class MenuMisteriousPlace : MonoBehaviour
     }
     public void ChooseCard(int i)
     {
+        buttonSound.Play();
         playerStats.normalGunDamageValue += generatedCards[i].normalGunDamageValue * 2;
         playerStats.laserGunDamageValue += generatedCards[i].laserGunDamageValue * 2;
         playerStats.bigGunDamageValue += generatedCards[i].bigGunDamageValue * 2;
@@ -141,11 +149,6 @@ public class MenuMisteriousPlace : MonoBehaviour
         Time.timeScale = 1f;
         camSize.CamSize(mainCam.orthographicSize / 3f, 5f);
         Invoke("ChangeScene", 5f);
-    }
-    void ChangeScene()
-    {
-        SceneManager.LoadScene("Universe");
-
     }
     private IEnumerator LoadMenu()
     {

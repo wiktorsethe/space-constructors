@@ -10,9 +10,11 @@ public class ForgeManSlider : MonoBehaviour
     public int shipPartNumber;
     [SerializeField] public TMP_Text amountText;
     [SerializeField] public Slider sliderBar;
+    [SerializeField] private AudioSource buttonSound;
     private void Start()
     {
         PlayerPrefs.SetInt("BossPoints", 10);//do usuniêcia
+        buttonSound = GameObject.Find("Button").GetComponent<AudioSource>();
         if (shipPartsDB.shipParts[shipPartNumber].isOwned)
         {
             GetComponent<Button>().interactable = false;
@@ -25,6 +27,7 @@ public class ForgeManSlider : MonoBehaviour
     }
     private void AddToForge(int shipPartNumber)
     {
+        buttonSound.Play();
         int bossPoints = PlayerPrefs.GetInt("BossPoints");
         if (bossPoints > 0)
         {

@@ -12,10 +12,12 @@ public class HealingFragment : MonoBehaviour
     [SerializeField] private Animator healAnimator;
     private float regen = 0f;
     private float timer = 0f;
-    
+    [SerializeField] private AudioSource healingSound;
+
     private void Start()
     {
         hpBar = GameObject.FindObjectOfType(typeof(HpBar)) as HpBar;
+        healingSound = GameObject.Find("Heal").GetComponent<AudioSource>();
     }
     private void Update()
     {
@@ -24,6 +26,7 @@ public class HealingFragment : MonoBehaviour
         if (timer >= 3f)
         {
             healAnimator.SetTrigger("Play");
+            healingSound.Play();
             hpBar.RegenerateHealthByFragment(regen);
             timer = 0f;
         }

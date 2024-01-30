@@ -8,9 +8,11 @@ public class ShieldFragment : MonoBehaviour
     public PlayerStats playerStats;
     private float timer = 0f;
     private bool isShieldActive = false;
+    [SerializeField] private AudioSource shieldingSound;
     private void Start()
     {
         hpBar = GameObject.FindObjectOfType(typeof(HpBar)) as HpBar;
+        shieldingSound = GameObject.Find("Shield").GetComponent<AudioSource>();
     }
     private void Update()
     {
@@ -25,6 +27,7 @@ public class ShieldFragment : MonoBehaviour
             if (timer >= 60f)
             {
                 hpBar.ActiveShield();
+                shieldingSound.Play();
                 isShieldActive = true;
                 timer = 0f;
             }

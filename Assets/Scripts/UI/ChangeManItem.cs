@@ -8,10 +8,15 @@ public class ChangeManItem : MonoBehaviour
     public ShipPartsDatabase shipPartsDB;
     public int shipPartNumber;
     [SerializeField] private TMP_Text amountText;
-    
+    [SerializeField] private AudioSource buttonSound;
+    private void Start()
+    {
+        buttonSound = GameObject.Find("Button").GetComponent<AudioSource>();
+    }
     public void Minus()
     {
-        if(shipPartsDB.shipParts[shipPartNumber].ownedAmount > 0)
+        buttonSound.Play();
+        if (shipPartsDB.shipParts[shipPartNumber].ownedAmount > 0)
         {
             int changeCards = PlayerPrefs.GetInt("ChangeCards");
             PlayerPrefs.SetInt("ChangeCards", changeCards += 1);
@@ -22,6 +27,7 @@ public class ChangeManItem : MonoBehaviour
     }
     public void Plus()
     {
+        buttonSound.Play();
         int changeCards = PlayerPrefs.GetInt("ChangeCards");
         if (changeCards > 0)
         {
