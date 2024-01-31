@@ -26,6 +26,11 @@ public class MenuPlanet : MonoBehaviour
     [Header("Objects")]
     [SerializeField] private Animator transition;
     [SerializeField] private GameObject levelLoader;
+    [SerializeField] private AudioSource buttonSound;
+    private void Start()
+    {
+        buttonSound = GameObject.Find("Button").GetComponent<AudioSource>();
+    }
     private void Update()
     {
         goldText.text = playerStats.gold.ToString();
@@ -34,6 +39,7 @@ public class MenuPlanet : MonoBehaviour
     }
     public void PauseMenu()
     {
+        buttonSound.Play();
         Time.timeScale = 0f;
         pauseMenu.SetActive(true);
         gameMenu.SetActive(false);
@@ -41,6 +47,7 @@ public class MenuPlanet : MonoBehaviour
     }
     public void Resume()
     {
+        buttonSound.Play();
         gameMenu.SetActive(true);
         pauseMenu.SetActive(false);
         gameOverMenu.SetActive(false);

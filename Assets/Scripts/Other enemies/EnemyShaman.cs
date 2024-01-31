@@ -27,6 +27,7 @@ public class EnemyShaman : MonoBehaviour
     [SerializeField] private GameObject miningTextPrefab;
     [SerializeField] private Animator animator;
     private bool facingRight;
+    [SerializeField] private AudioSource spellSound;
     [Space(20f)]
     [Header("Health System")]
     [SerializeField] private Canvas canvas;
@@ -45,7 +46,7 @@ public class EnemyShaman : MonoBehaviour
         gameManager = GameObject.FindObjectOfType(typeof(GameManager)) as GameManager;
         player = GameObject.FindGameObjectWithTag("Player");
         objPool = GetComponent<ObjectPool>();
-
+        spellSound = GameObject.Find("Spell").GetComponent<AudioSource>();
         canvas.worldCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         currentHealth = maxHealth;
         SetMaxHealth(maxHealth);
@@ -91,10 +92,10 @@ public class EnemyShaman : MonoBehaviour
     }
     private void SpawnMinions()
     {
-        for(int i=0; i<3; i++)
+        spellSound.Play();
+        for (int i=0; i<3; i++)
         {
             //GameObject minion = Instantiate(enemyWarriorPrefab, spawnPoints[i].transform.position, Quaternion.identity);
-
             GameObject minion = objPool.GetPooledObject();
             minion.transform.position = spawnPoints[i].transform.position;
             minion.transform.rotation = Quaternion.identity;

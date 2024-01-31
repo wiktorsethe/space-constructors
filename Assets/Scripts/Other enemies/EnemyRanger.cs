@@ -27,6 +27,7 @@ public class EnemyRanger : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private string target = "Player";
     private bool facingRight = false;
+    [SerializeField] private AudioSource arrowSound;
     [Space(20f)]
     [Header("Health System")]
     [SerializeField] private Canvas canvas;
@@ -45,6 +46,7 @@ public class EnemyRanger : MonoBehaviour
         expBar = GameObject.FindObjectOfType(typeof(ExpBar)) as ExpBar;
         gameManager = GameObject.FindObjectOfType(typeof(GameManager)) as GameManager;
         player = GameObject.FindGameObjectWithTag("Player");
+        arrowSound = GameObject.Find("Arrow").GetComponent<AudioSource>();
         objPool = GetComponent<ObjectPool>();
         canvas.worldCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         currentHealth = maxHealth;
@@ -94,6 +96,7 @@ public class EnemyRanger : MonoBehaviour
     void FireBullet()
     {
         GameObject bullet = objPool.GetPooledObject();
+        arrowSound.Play();
         bullet.transform.position = firePoint.position;
         bullet.GetComponent<ShootingBullet>().startingPos = firePoint.position;
         bullet.transform.rotation = firePoint.rotation;

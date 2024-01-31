@@ -23,6 +23,7 @@ public class EnemyWarrior : MonoBehaviour
     [SerializeField] private GameObject miningTextPrefab;
     [SerializeField] private Animator animator;
     private bool facingRight;
+    [SerializeField] private AudioSource attackSound;
     [Space(20f)]
     [Header("Health System")]
     [SerializeField] private Canvas canvas;
@@ -42,7 +43,7 @@ public class EnemyWarrior : MonoBehaviour
         hpBar = GameObject.FindObjectOfType(typeof(HpBar)) as HpBar;
         gameManager = GameObject.FindObjectOfType(typeof(GameManager)) as GameManager;
         player = GameObject.FindGameObjectWithTag("Player");
-
+        attackSound = GameObject.Find("Sword").GetComponent<AudioSource>();
         canvas.worldCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         currentHealth = maxHealth;
         SetMaxHealth(maxHealth);
@@ -82,6 +83,7 @@ public class EnemyWarrior : MonoBehaviour
             if (attackTimer >= 3f)
             {
                 //FireBullet();
+                attackSound.Play();
                 animator.SetTrigger("Play");
                 hpBar.SetHealth(5f);
                 attackTimer = 0f;
