@@ -10,17 +10,13 @@ public class FlameThrower : MonoBehaviour
     private void Start()
     {
         hpBar = GameObject.FindObjectOfType(typeof(HpBar)) as HpBar;
-        // Listen for when particles are emitted and resize the collider accordingly
+        // Nas³uchuj, kiedy cz¹steczki zostan¹ wyemitowane, i dostosuj odpowiednio rozmiar kolidera 
         particles.trigger.SetCollider(0, colliderToResize);
-
-        // Adjust the collider size initially
-        //ResizeCollider();
     }
     private void Update()
     {
-        // Update the collider size each frame
+        // Aktualizuj rozmiar kolidera w ka¿dej klatce
         ResizeCollider();
-    
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -31,20 +27,20 @@ public class FlameThrower : MonoBehaviour
     }
     private void ResizeCollider()
     {
+        // Pobierz tablicê cz¹steczek
         ParticleSystem.Particle[] particleArray = new ParticleSystem.Particle[particles.main.maxParticles];
         int particleCount = particles.GetParticles(particleArray);
 
         if (particleCount > 0)
         {
+            // Utwórz granicê obejmuj¹c¹ wszystkie cz¹steczki ognia
             Bounds bounds = new Bounds(particleArray[0].position, Vector3.zero);
 
             for (int i = 1; i < particleCount; i++)
             {
                 bounds.Encapsulate(particleArray[i].position);
             }
-
-            // Resize the collider to match the bounds
-            //colliderToResize.transform.position = bounds.center;
+            // Dostosuj rozmiar kolidera, aby pasowa³ do granicy
             colliderToResize.transform.localScale = bounds.size;
         }
     }

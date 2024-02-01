@@ -13,7 +13,7 @@ public class CollectLoot : MonoBehaviour
 
     [Header("Other GameObjects")]
     private GameObject player;
-    [SerializeField] private GameObject miningTextPrefab;
+    [SerializeField] private GameObject textPrefab;
     [Space(20f)]
 
     [Header("Other")]
@@ -23,12 +23,13 @@ public class CollectLoot : MonoBehaviour
 
     private void Start()
     {
+        // ZnajdŸ gracza i GameManagera na scenie
         player = GameObject.FindGameObjectWithTag("Player");
         gameManager = GameObject.FindObjectOfType(typeof(GameManager)) as GameManager;
     }
     private void Update()
     {
-
+        // Obliczanie kierunku przeciwnego do gracza i poruszanie siê w tym kierunku
         Vector3 reverseDirection = transform.position - player.transform.position;
         reverseDirection.Normalize();
         timer += Time.deltaTime;
@@ -36,21 +37,13 @@ public class CollectLoot : MonoBehaviour
         {
             transform.position += new Vector3(reverseDirection.x, reverseDirection.y, 0f) * speed * Time.deltaTime;
             speed -= 0.1f;
-            Collider[] colliders = Physics.OverlapSphere(transform.position, 1f);
-            for (int i = 0; i < colliders.Length; i++)
-            {
-                if (colliders[i].tag == "Terrain")
-                {
-                    Vector3 dirToTarget = transform.position - colliders[i].transform.position;
-                    transform.position += new Vector3(dirToTarget.x, dirToTarget.y, 0f) * speed * Time.deltaTime;
-                }
-            }
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
         {
+            // Sprawdzanie nazwy ³upu i dodawanie odpowiedniej czêœci do bazy danych statku
             if (lootName == "Corridor")
             {
                 for (int i = 0; i < shipPartsDB.shipParts.Length; i++)
@@ -58,7 +51,7 @@ public class CollectLoot : MonoBehaviour
                     if (shipPartsDB.shipParts[i].shipPartType == "corridor")
                     {
                         shipPartsDB.shipParts[i].ownedAmount++;
-                        ShowMiningText(1, "Corridor");
+                        ShowText(1, "Corridor");
                     }
                     Destroy(this.gameObject);
                 }
@@ -70,7 +63,7 @@ public class CollectLoot : MonoBehaviour
                     if (shipPartsDB.shipParts[i].shipPartType == "main")
                     {
                         shipPartsDB.shipParts[i].ownedAmount++;
-                        ShowMiningText(1, "Main");
+                        ShowText(1, "Main");
                     }
                     Destroy(this.gameObject);
                 }
@@ -82,7 +75,7 @@ public class CollectLoot : MonoBehaviour
                     if (shipPartsDB.shipParts[i].shipPartType == "normalGun")
                     {
                         shipPartsDB.shipParts[i].ownedAmount++;
-                        ShowMiningText(1, "Normal Gun");
+                        ShowText(1, "Normal Gun");
                     }
                     Destroy(this.gameObject);
                 }
@@ -94,7 +87,7 @@ public class CollectLoot : MonoBehaviour
                     if(shipPartsDB.shipParts[i].shipPartType == "laserGun")
                     {
                         shipPartsDB.shipParts[i].ownedAmount++;
-                        ShowMiningText(1, "Laser Gun");
+                        ShowText(1, "Laser Gun");
                     }
                     Destroy(this.gameObject);
                 }
@@ -106,7 +99,7 @@ public class CollectLoot : MonoBehaviour
                     if (shipPartsDB.shipParts[i].shipPartType == "doubleGun")
                     {
                         shipPartsDB.shipParts[i].ownedAmount++;
-                        ShowMiningText(1, "Double Gun");
+                        ShowText(1, "Double Gun");
                     }
                     Destroy(this.gameObject);
                 }
@@ -118,18 +111,19 @@ public class CollectLoot : MonoBehaviour
                     if (shipPartsDB.shipParts[i].shipPartType == "bigGun")
                     {
                         shipPartsDB.shipParts[i].ownedAmount++;
-                        ShowMiningText(1, "Big Gun");
+                        ShowText(1, "Big Gun");
                     }
                     Destroy(this.gameObject);
                 }
             }
             
         }
+        // Przeniesienie statku do Mysterious Place po zebraniu Orb z bossa
         if (other.gameObject.tag == "Ship")
         {
             if (lootName == "Orb")
             {
-                ShowMiningText(1, "Orb");
+                ShowText(1, "Orb");
                 playerStats.shipPosition = transform.position;
                 PlayerPrefs.SetFloat("BestTimeTimer", gameManager.bestTimeTimer);
                 PlayerPrefs.SetInt("Kills", gameManager.kills);
@@ -139,9 +133,10 @@ public class CollectLoot : MonoBehaviour
             }
         }
     }
-    private void ShowMiningText(int amount, string type)
+    private void ShowText(int amount, string type)
     {
-        var text = Instantiate(miningTextPrefab, transform.position, Quaternion.identity);
+        // Wyœwietlenie tekstu informuj¹cego o zebraniu ³upu
+        var text = Instantiate(textPrefab, transform.position, Quaternion.identity);
         text.GetComponent<TMP_Text>().text = "+ " + amount.ToString() + " " + type;
     }
 }

@@ -29,30 +29,40 @@ public class GameManager : MonoBehaviour
     private Vector3 bossSize = new Vector3(5.29f, 8.04f, 0.2f);
     private void Start()
     {
+        // Inicjalizacja referencji do skryptów i obiektów
         camSize = GameObject.FindObjectOfType(typeof(CameraSize)) as CameraSize;
         camFollow = GameObject.FindObjectOfType(typeof(CameraFollow)) as CameraFollow;
         bounds = GameObject.FindObjectOfType(typeof(Boundaries)) as Boundaries;
         menu = GameObject.FindObjectOfType(typeof(Menu)) as Menu;
         //player = GameObject.FindGameObjectWithTag("Player");
         obstacleSpawners = GameObject.FindObjectsOfType<ObstacleSpawner>();
+
+        // Deaktywacja paska zdrowia bossa na starcie gry
         if (menu)
         {
             menu.DeactiveBossHealthBar();
         }
+
+        // Ustawienie tekstu nazwy sceny i animacja jej pojawienia siê
         sceneNameText.text = sceneName;
         FadeInSceneNameText();
         Invoke("FadeOutSceneNameText", 3f);
+
+        // Wczytanie najlepszego czasu, liczby zniszczonych przeciwników i zebranego z³ota z PlayerPrefs
         bestTimeTimer = PlayerPrefs.GetFloat("BestTimeTimer");
         kills = PlayerPrefs.GetInt("Kills");
         goldEarned = PlayerPrefs.GetInt("GoldEarned");
         score = PlayerPrefs.GetInt("Score");
+
+        // Uruchomienie rutyny zmiany czêstotliwoœci pojawiania siê przeszkód
         StartCoroutine(SpawnRateChanger());
     }
     private void Update()
     {
         bestTimeTimer += Time.deltaTime;
-        
-        if(bestTimeTimer > playerStats.bestTime)
+
+        // Aktualizacja najlepszego czasu, liczby zniszczonych przeciwników i zebranego z³ota w statystykach gracza
+        if (bestTimeTimer > playerStats.bestTime)
         {
             playerStats.bestTime = bestTimeTimer;
             playerStats.todayBestTime = bestTimeTimer; //poraw jak nie dziala
@@ -68,8 +78,10 @@ public class GameManager : MonoBehaviour
             playerStats.todayMostGoldEarned = goldEarned;
         }
 
-        if(playerStats.level == 5 && SceneManager.GetActiveScene().name == "Universe" && !PlayerPrefs.HasKey("FirstBoss"))
+        // Wywo³anie bossa na poziomie 5 w scenie "Universe"
+        if (playerStats.level == 5 && SceneManager.GetActiveScene().name == "Universe" && !PlayerPrefs.HasKey("FirstBoss"))
         {
+            // Aktywacja paska zdrowia bossa, dostosowanie rozmiaru kamery, wywo³anie bossa i dezaktywacja innych elementów gry
             menu.ActiveBossHealthBar();
             float newSize = mainCamera.orthographicSize * 3f;
 
@@ -82,6 +94,7 @@ public class GameManager : MonoBehaviour
                 script.enabled = false;
             }
             bounds.Check();
+
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("EnemyShip");
             foreach(GameObject enemy in enemies)
             {
@@ -92,9 +105,12 @@ public class GameManager : MonoBehaviour
             {
                 Destroy(meteorite);
             }
+
+            // Zapisanie informacji o pierwszym spotkaniu z bossem w PlayerPrefs
             PlayerPrefs.SetString("FirstBoss", "True");
         }
 
+        // Deaktywacja obiektów Particle System, które ju¿ siê zakoñczy³y
         ParticleSystem[] particles = FindObjectsOfType<ParticleSystem>();
         foreach (ParticleSystem obj in particles)
         {
@@ -107,15 +123,18 @@ public class GameManager : MonoBehaviour
 
     private void FadeInSceneNameText()
     {
+        // Animacja pojawienia siê tekstu nazwy sceny
         sceneNameText.DOFade(1f, 2f);
     }
     private void FadeOutSceneNameText()
     {
+        // Animacja zanikania tekstu nazwy sceny
         sceneNameText.DOFade(0f, 2f);
         Destroy(sceneNameText.gameObject, 2f);
     }
     IEnumerator SpawnRateChanger()
     {
+        // Rutyna zmieniaj¹ca czêstoœæ pojawiania siê przeszkód co 10 sekund
         while (true)
         {
             yield return new WaitForSeconds(10f);
@@ -128,31 +147,7 @@ public class GameManager : MonoBehaviour
 
     private void SpawnBoss()
     {
+        // Spawn bossa w okreœlonej pozycji i rotacji
         Instantiate(bossPrefab, new Vector3(mainCamera.transform.position.x, bounds.spawnPoints[1].transform.position.y + bossSize.y + 10f, 0f), Quaternion.identity);
-        /*
-        Renderer[] playerRenderers = player.GetComponentsInChildren<Renderer>();
-        if (playerRenderers.Length > 0)
-        {
-            Bounds combinedBounds = playerRenderers[0].bounds;
-            for (int i = 1; i < playerRenderers.Length; i++)
-            {
-                combinedBounds.Encapsulate(playerRenderers[i].bounds);
-            }
-            Vector3 size = combinedBounds.size;
-            Vector3 center = combinedBounds.center;
-
-            Vector3 gap = new Vector3(size.x / bossSize.x, size.y / bossSize.y, bossSize.z);
-
-            GameObject boss = Instantiate(bossPrefab, new Vector3(mainCamera.transform.position.x, bounds.spawnPoints[1].transform.position.y - bossSize.y * gap.y, 0f), Quaternion.identity);
-
-            if (gap.x <= gap.y)
-            {
-                //boss.transform.localScale = new Vector3(gap.y, gap.y, boss.transform.localScale.z);
-            }
-            else
-            {
-                //boss.transform.localScale = new Vector3(gap.x, gap.x, boss.transform.localScale.z);
-            }
-        }*/
     }
 }
