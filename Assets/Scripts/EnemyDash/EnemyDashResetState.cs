@@ -4,52 +4,33 @@ using UnityEngine;
 
 public class EnemyDashResetState : StateMachineBehaviour
 {
-    private float timer = 0f;
+    private float timer;
     private CameraShake camShake;
     private GameObject ship;
     private HpBar hpBar;
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        timer = 0f;
-        ship = animator.GetComponent<EnemyShip>().FindClosestObject();
+        timer = 0f; // Zresetowanie timera
+        ship = animator.GetComponent<EnemyShip>().FindClosestObject(); // Znalezienie najbli¿szego fragmentu statku
         hpBar = GameObject.FindObjectOfType(typeof(HpBar)) as HpBar;
-        //animator.updateMode = AnimatorUpdateMode.Normal;
+
+        // Sprawdzenie, czy uda³o siê trafiæ w gracza 
         if (Vector2.Distance(animator.transform.position, ship.transform.position) < 5f)
         {
             camShake = GameObject.FindObjectOfType(typeof(CameraShake)) as CameraShake;
-            camShake.ShakeCamera(0.2f, 1f, 3);
+            camShake.ShakeCamera(0.2f, 1f, 3); // Wywo³anie trzêsienia kamery
             animator.GetComponent<EnemyShip>().Dash();
-            hpBar.SetHealth(5);
+            hpBar.SetHealth(5); // Zadanie obra¿eñ  
         }
     }
 
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         timer += Time.deltaTime;
+        // Sprawdzenie, czy timer przekroczy³ 2 sekundy
         if (timer > 2f)
         {
-            //animator.updateMode = AnimatorUpdateMode.AnimatePhysics;
-            animator.SetTrigger("Retreat");
+            animator.SetTrigger("Retreat"); // Przygotowanie do nastêpnego ataku
         }
     }
-
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        
-    }
-
-    // OnStateMove is called right after Animator.OnAnimatorMove()
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that processes and affects root motion
-    //}
-
-    // OnStateIK is called right after Animator.OnAnimatorIK()
-    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that sets up animation IK (inverse kinematics)
-    //}
 }

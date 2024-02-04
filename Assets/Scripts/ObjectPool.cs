@@ -4,21 +4,25 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
+    // Lista obiektów w puli
     public List<GameObject> pooledObjects = new List<GameObject>();
-    [SerializeField] private GameObject prefab;
-    public string type;
-    // Start is called before the first frame update
+    [SerializeField] private GameObject prefab; // Prefabrykat obiektu do instancjonowania
+    public string type; // Typ obiektu w puli (np. "bullet", "enemy", "explosion")
     void Start()
     {
+        // Na starcie utwórz pocz¹tkow¹ pulê obiektów
         for (int i = 0; i < 1; i++)
         {
             InstantiateObject();
         }
     }
 
+    // Metoda do pobierania obiektu z puli
     public GameObject GetPooledObject()
     {
         bool active = false;
+
+        // SprawdŸ, czy istnieje nieaktywny obiekt w puli
         foreach (GameObject obj in pooledObjects)
         {
             if (!obj.activeSelf)
@@ -31,12 +35,14 @@ public class ObjectPool : MonoBehaviour
             }
         }
 
+        // Jeœli wszystkie obiekty s¹ aktywne, utwórz nowy obiekt
         if (active)
         {
             InstantiateObject();
         }
 
         Next:
+        // ZnajdŸ i zwróæ pierwszy nieaktywny obiekt w puli
         for (int i=0; i<pooledObjects.Count; i++)
         {
             if (!pooledObjects[i].activeInHierarchy)
@@ -45,13 +51,13 @@ public class ObjectPool : MonoBehaviour
             }
         }
 
-
-        return null;
+         
+        return null; // Zwróæ null, jeœli nie ma dostêpnego obiektu w puli
     }
     private void InstantiateObject()
     {
         GameObject bullet = Instantiate(prefab);
-        bullet.SetActive(false);
-        pooledObjects.Add(bullet);
+        bullet.SetActive(false); // Ustawienie obiektu jako nieaktywnego
+        pooledObjects.Add(bullet); // Dodanie obiektu do puli
     }
 }

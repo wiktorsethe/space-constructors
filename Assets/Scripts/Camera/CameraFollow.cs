@@ -9,14 +9,17 @@ public class CameraFollow : MonoBehaviour
 
     private void Start()
     {
-        smoothSpeed = 1e+17f;
+        smoothSpeed = 1e+17f; // Natychmiastowe œledzenie
     }
     void Update()
     {
         if (target)
         {
+            // Obliczenie docelowej pozycji kamery
             Vector3 desiredPosition = new Vector3(target.position.x, target.position.y, transform.position.z);
+            // Wyg³adzenie ruchu kamery za pomoc¹ funkcji Lerp
             Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
+            // Przypisanie pozycji kamery
             transform.position = smoothedPosition;
         }
     }

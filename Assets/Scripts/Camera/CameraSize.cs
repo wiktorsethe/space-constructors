@@ -20,7 +20,7 @@ public class CameraSize : MonoBehaviour
         uniMaxSize = GameObject.FindObjectOfType<UniverseMaxSize>() as UniverseMaxSize;
         Invoke("ChangeCamSize", 0.5f);
     }
-    
+    // Funkcja zmieniaj¹ca rozmiar kamery na podstawie rozmiaru statku
     public void ChangeCamSize()
     {
         if (parentObject != null)
@@ -34,7 +34,6 @@ public class CameraSize : MonoBehaviour
 
 
             Vector3 cameraPosition = parentBounds.center - mainCamera.transform.forward * distance;
-            //mainCamera.transform.position = cameraPosition;
 
             float frustumHeight = 2f * distance * Mathf.Tan(mainCamera.fieldOfView * 0.5f * Mathf.Deg2Rad);
             float frustumWidth = frustumHeight * mainCamera.aspect;
@@ -42,7 +41,6 @@ public class CameraSize : MonoBehaviour
             if (objectWidth > objectHeight)
             {
                 float targetSize = objectWidth * 0.5f;
-                //mainCamera.orthographicSize = objectWidth * 0.5f;
                 DOTween.To(() => mainCamera.orthographicSize, x => mainCamera.orthographicSize = x, targetSize, 1f).SetUpdate(UpdateType.Normal, true);
                 if (bgScaler)
                 {
@@ -68,7 +66,6 @@ public class CameraSize : MonoBehaviour
                     DOTween.To(() => mainCamera.orthographicSize, x => mainCamera.orthographicSize = x, 12f, 1f).SetUpdate(UpdateType.Normal, true);
                 }
             }
-            //bgScaler.ActivateCortoutine();
             if (uniScaler)
             {
                 uniScaler.ActivateCortoutine();
@@ -84,7 +81,7 @@ public class CameraSize : MonoBehaviour
             }
         }
     }
-
+    // Funkcja obliczaj¹ca granice statku gracza
     public Bounds CalculateParentBounds()
     {
         Renderer[] renderers = parentObject.GetComponentsInChildren<Renderer>();
@@ -103,6 +100,7 @@ public class CameraSize : MonoBehaviour
 
         return new Bounds(Vector3.zero, Vector3.zero);
     }
+    // Funkcja zmieniaj¹ca rozmiar kamery przy teleportacji gracza/zmianie sceny
     public void CamSize(float targetSize, float duration)
     {   
         

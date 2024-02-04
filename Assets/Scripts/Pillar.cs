@@ -27,11 +27,13 @@ public class Pillar : MonoBehaviour
     private ObjectPool[] objPools;
     private void Awake()
     {
-        objPools = GetComponents<ObjectPool>();
-        SetMaxHealth(maxHealth);
-        healthBarCanvas.SetActive(false);
+        objPools = GetComponents<ObjectPool>(); // Inicjalizacja puli obiektów
+        SetMaxHealth(maxHealth); // Ustawienie maksymalnej wartoœci zdrowia
+        healthBarCanvas.SetActive(false); // Ukrycie paska zdrowia na starcie
 
-        cam = Camera.main;
+        cam = Camera.main; // Pobranie g³ównej kamery
+
+        //Obliczenie skali obiektu do rozmiaru ekranu
         float cameraHeight = cam.orthographicSize * 0.25f;
         float cameraWidth = cameraHeight * cam.aspect;
 
@@ -43,20 +45,24 @@ public class Pillar : MonoBehaviour
     }
     private void Update()
     {
+        // Aktualizacja koloru paska zdrowia w zale¿noœci od aktualnego zdrowia
         fillBar.color = healthGradient.Evaluate(healthBar.normalizedValue);
         hideTimer += Time.deltaTime;
+
+        // Ukrycie paska zdrowia po pewnym czasie bez obra¿eñ
         if (hideTimer > 3f)
         {
-            healthBarCanvas.SetActive(false);
+            healthBarCanvas.SetActive(false); 
         }
 
+        // Zresetowanie zdrowia i dezaktywacja obiektu po jego zniszczeniu
         if (currentHealth <= 0)
         {
             SetMaxHealth(maxHealth);
             gameObject.SetActive(false);
         }
 
-
+        // Sprawdzenie czy cz¹steczki ognia i trucizny zakoñczy³y swoje dzia³anie
         if (flameParticle != null)
         {
             if (!flameParticle.GetComponent<ParticleSystem>().IsAlive())
@@ -74,29 +80,17 @@ public class Pillar : MonoBehaviour
                 poisonParticle.SetActive(false);
             }
         }
-    }/*
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.transform.GetComponent<ShootingBullet>().type == "PoisonBullet")
-        {
-            StartPoison();
-        }
-        if (collision.transform.GetComponent<ShootingBullet>().type == "NormalBullet" || collision.transform.GetComponent<ShootingBullet>().type == "HomingBullet" || collision.transform.GetComponent<ShootingBullet>().type == "StunningBullet")
-        {
-            CollisionDetected((int)collision.transform.GetComponent<ShootingBullet>().damage);
-        }
-        if (collision.transform.GetComponent<ShootingBullet>().type == "FlameBullet")
-        {
-            StartFlame();
-        }
-    }*/
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // Rozpoznanie typu pocisku i uruchomienie odpowiedniej reakcji
         if (collision.transform.GetComponent<ShootingBullet>().type == "PoisonBullet")
         {
             StartPoison();
         }
-        if (collision.transform.GetComponent<ShootingBullet>().type == "NormalBullet" || collision.transform.GetComponent<ShootingBullet>().type == "HomingBullet" || collision.transform.GetComponent<ShootingBullet>().type == "StunningBullet")
+        if (collision.transform.GetComponent<ShootingBullet>().type == "NormalBullet" 
+            || collision.transform.GetComponent<ShootingBullet>().type == "HomingBullet" 
+            || collision.transform.GetComponent<ShootingBullet>().type == "StunningBullet")
         {
             CollisionDetected((int)collision.transform.GetComponent<ShootingBullet>().damage);
         }
@@ -107,6 +101,7 @@ public class Pillar : MonoBehaviour
     }
     public void SetMaxHealth(int health)
     {
+        // Ustawienie maksymalnego zdrowia
         currentHealth = health;
         maxHealth = health;
         healthBar.maxValue = health;
@@ -115,10 +110,12 @@ public class Pillar : MonoBehaviour
     }
     public void SetHealth()
     {
+        // Animacja zmiany wartoœci paska zdrowia
         DOTween.To(() => healthBar.value, x => healthBar.value = x, currentHealth, 1.5f);
     }
     private void CollisionDetected(int damage)
     {
+        // Wykrycie kolizji z pociskiem, wyœwietlenie obra¿eñ i zaktualizowanie paska zdrowia
         healthBarCanvas.SetActive(true);
         hideTimer = 0f;
         currentHealth -= damage;
@@ -130,11 +127,13 @@ public class Pillar : MonoBehaviour
     }
     private void ShowDamageText(int amount)
     {
+        // Wyœwietlenie tekstu obra¿eñ
         var text = Instantiate(damageTextPrefab, transform.position, Quaternion.identity);
         text.GetComponent<TMP_Text>().text = amount.ToString();
     }
     public void StartPoison()
     {
+        // Uruchomienie efektu trucizny, jeœli jeszcze nie zosta³ uruchomiony
         if (!isPoisonStarted)
         {
             isPoisonStarted = true;
@@ -144,6 +143,7 @@ public class Pillar : MonoBehaviour
     }
     IEnumerator Poison()
     {
+        // Uruchomienie efektu trucizny i zadawanie obra¿eñ w okreœlonych odstêpach czasu
         float elapsedTime = 0f;
         foreach (ObjectPool script in objPools)
         {
@@ -166,6 +166,7 @@ public class Pillar : MonoBehaviour
     }
     public void StartFlame()
     {
+        // Uruchomienie efektu ognia, jeœli jeszcze nie zosta³ uruchomiony
         if (!isFlameStarted)
         {
             isFlameStarted = true;
@@ -174,6 +175,7 @@ public class Pillar : MonoBehaviour
     }
     IEnumerator Flame()
     {
+        // Uruchomienie efektu ognia i zadawanie obra¿eñ w okreœlonych odstêpach czasu
         float elapsedTime = 0f;
         foreach (ObjectPool script in objPools)
         {

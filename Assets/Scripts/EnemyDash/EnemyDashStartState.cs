@@ -5,45 +5,26 @@ using UnityEngine;
 public class EnemyDashStartState : StateMachineBehaviour
 {
     private GameObject ship;
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+    private float speed;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        ship = animator.GetComponent<EnemyShip>().FindClosestObject();
-        animator.transform.GetComponent<EnemyShip>().retreatVector = Vector2.zero;
+        ship = animator.GetComponent<EnemyShip>().FindClosestObject(); // Znalezienie najbli¿szego fragmentu statku
+        animator.transform.GetComponent<EnemyShip>().retreatVector = Vector2.zero; // Reset wektora statku wroga do ataku
+        speed = animator.transform.GetComponent<EnemyShip>().moveSpeed;
     }
 
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        //Vector3 vectorToTarget = ship.transform.position - animator.transform.position;
-        //animator.transform.Find("EnemyShipImage").transform.rotation = Quaternion.LookRotation(Vector3.forward, vectorToTarget);
-        //animator.transform.GetComponent<EnemyDash>().ChangeRotation();
+        // Poruszanie sie w kierunku celu
         if (Vector2.Distance(animator.transform.position, ship.transform.position) > 15f)
         {
-            animator.transform.position = Vector2.MoveTowards(animator.transform.position, ship.transform.position, animator.transform.GetComponent<EnemyShip>().moveSpeed * Time.deltaTime);
+            animator.transform.position = Vector2.MoveTowards(animator.transform.position, ship.transform.position, speed * Time.deltaTime);
         }
         else if (Vector2.Distance(animator.transform.position, ship.transform.position) <= 15f)
         {
+            // Ustawienie pozycji, któr¹ wrogi statek bêdzie atakowa³
             animator.transform.GetComponent<EnemyShip>().savedPos = ship.transform.position;
             animator.SetTrigger("Attack");
         }
     }
-
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        
-    }
-
-    // OnStateMove is called right after Animator.OnAnimatorMove()
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that processes and affects root motion
-    //}
-
-    // OnStateIK is called right after Animator.OnAnimatorIK()
-    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that sets up animation IK (inverse kinematics)
-    //}
 }

@@ -9,21 +9,24 @@ public class EnemyShip : MonoBehaviour
     [Header("Other Scripts")]
     private ExpBar expBar;
     private GameManager gameManager;
-    public PlayerStats playerStats;
+    [SerializeField] private PlayerStats playerStats;
     [Space(20f)]
+
     [Header("Variables")]
     [SerializeField] private int experience;
     [SerializeField] private int gold;
+    [SerializeField] private string target;
     private float bulletSpeed = 10f;
     public float moveSpeed;
     [Space(20f)]
+
     [Header("GameObjects and Rest")]
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject textPrefab;
-    [SerializeField] private string target;
     [SerializeField] private AudioSource dashingSound;
     public Vector3 savedPos;
     [Space(20f)]
+
     [Header("Health System")]
     [SerializeField] private Canvas canvas;
     [SerializeField] private GameObject healthBarCanvas;
@@ -31,9 +34,10 @@ public class EnemyShip : MonoBehaviour
     [SerializeField] private Gradient healthGradient;
     [SerializeField] private Image fillBar;
     [SerializeField] private int maxHealth;
-    public int currentHealth;
     private float hideTimer = 0f;
+    public int currentHealth;
     [Space(20f)]
+
     [Header("Particles and animator staff")]
     public Animator animator;
     private bool isFlameStarted = false;
@@ -42,8 +46,8 @@ public class EnemyShip : MonoBehaviour
     private GameObject poisonParticle;
     private GameObject dashParticle;
     private ObjectPool[] objPools;
+    private bool isObjectActivated = false;
     public Vector2 retreatVector;
-    private bool isActivated = false;
     private void Start()
     {
         expBar = GameObject.FindObjectOfType(typeof(ExpBar)) as ExpBar;
@@ -56,10 +60,11 @@ public class EnemyShip : MonoBehaviour
     }
     private void Update()
     {
-        if (!isActivated)
+        // Sprawdzenie, czy obiekt jest ju¿ aktywny i ustawienie zdrowia do 100%
+        if (!isObjectActivated)
         {
             SetMaxHealth(maxHealth);
-            isActivated = true;
+            isObjectActivated = true;
         }
         fillBar.color = healthGradient.Evaluate(healthBar.normalizedValue);
         hideTimer += Time.deltaTime;
@@ -68,6 +73,7 @@ public class EnemyShip : MonoBehaviour
             healthBarCanvas.SetActive(false);
         }
 
+        // Zresetowanie zdrowia i dezaktywacja obiektu po jego zniszczeniu 
         if (currentHealth <= 0)
         {
             ShowLootText();
@@ -77,11 +83,11 @@ public class EnemyShip : MonoBehaviour
             playerStats.gold += gold;
             gameManager.goldEarned += gold;
             gameManager.kills += 1;
-            isActivated = false;
+            isObjectActivated = false;
             gameObject.SetActive(false);
         }
 
-
+        // Sprawdzenie czy cz¹steczki ognia, trucizny i ataku "dash" zakoñczy³y swoje dzia³anie
         if (flameParticle != null)
         {
             if (!flameParticle.GetComponent<ParticleSystem>().IsAlive())
@@ -111,6 +117,7 @@ public class EnemyShip : MonoBehaviour
     }
     public void FireBullet()
     {
+        // Znalezienie obiektu z puli i strza³ w kierunku celu 
         foreach (ObjectPool script in objPools)
         {
             if (script.type == "bullet")
@@ -128,9 +135,11 @@ public class EnemyShip : MonoBehaviour
             }
         }
     }
+
+    // Ustawienie rotacji w kierunku najbli¿szego fragmentu statku gracza
     public void ChangeRotation()
     {
-        GameObject ship = FindClosestObject();
+        GameObject ship = FindClosestObject(); // Znalezienie najbli¿szego fragmentu statku 
         if (ship)
         {
             Vector3 vectorToTarget = ship.transform.position - animator.transform.position;
@@ -139,6 +148,7 @@ public class EnemyShip : MonoBehaviour
     }
     public void SetMaxHealth(int health)
     {
+        // Ustawienie maksymalnego zdrowia
         currentHealth = health;
         maxHealth = health;
         healthBar.maxValue = health;
@@ -147,10 +157,12 @@ public class EnemyShip : MonoBehaviour
     }
     public void SetHealth()
     {
+        // Animacja zmiany wartoœci paska zdrowia
         DOTween.To(() => healthBar.value, x => healthBar.value = x, currentHealth, 1.5f);
     }
     public void CollisionDetected(int damage)
     {
+        // Wykrycie kolizji z pociskiem, wyœwietlenie obra¿eñ i zaktualizowanie paska zdrowia
         healthBarCanvas.SetActive(true);
         hideTimer = 0f;
         currentHealth -= damage;
@@ -164,16 +176,19 @@ public class EnemyShip : MonoBehaviour
     }
     private void ShowDamageText(int amount)
     {
+        // Wyœwietlenie tekstu obra¿eñ
         var text = Instantiate(textPrefab, transform.position, Quaternion.identity);
         text.GetComponent<TMP_Text>().text = amount.ToString();
     }
     private void ShowLootText()
     {
+        // Wyœwietlenie tekstu zdobyczy
         var text = Instantiate(textPrefab, transform.position, Quaternion.identity);
         text.GetComponent<TMP_Text>().text = "+5 screws";
     }
     IEnumerator ChangingSpeed()
     {
+        // Zmiana prêdkoœci poruszania po trafieniu
         yield return new WaitForSeconds(0.3f);
 
         while (moveSpeed < 45f)
@@ -185,6 +200,7 @@ public class EnemyShip : MonoBehaviour
     }
     public void StartPoison()
     {
+        // Uruchomienie efektu trucizny, jeœli jeszcze nie zosta³ uruchomiony
         if (!isPoisonStarted)
         {
             isPoisonStarted = true;
@@ -194,6 +210,7 @@ public class EnemyShip : MonoBehaviour
     }
     IEnumerator Poison()
     {
+        // Uruchomienie efektu trucizny i zadawanie obra¿eñ w okreœlonych odstêpach czasu
         float elapsedTime = 0f;
         foreach (ObjectPool script in objPools)
         {
@@ -216,6 +233,7 @@ public class EnemyShip : MonoBehaviour
     }
     public void StartFlame()
     {
+        // Uruchomienie efektu ognia, jeœli jeszcze nie zosta³ uruchomiony
         if (!isFlameStarted)
         {
             isFlameStarted = true;
@@ -224,12 +242,13 @@ public class EnemyShip : MonoBehaviour
     }
     IEnumerator Flame()
     {
+        // Uruchomienie efektu ognia i zadawanie obra¿eñ w okreœlonych odstêpach czasu
         float elapsedTime = 0f;
         foreach (ObjectPool script in objPools)
         {
             if (script.type == "flameParticle")
             {
-                flameParticle = script.GetPooledObject(); //tu cos nie gra
+                flameParticle = script.GetPooledObject();
                 flameParticle.transform.parent = transform;
                 ParticleSystem.MainModule main = flameParticle.GetComponent<ParticleSystem>().main;
                 main.duration = playerStats.flameGunDurationValue;
@@ -246,6 +265,7 @@ public class EnemyShip : MonoBehaviour
     }
     public void StartStun()
     {
+        // Uruchomienie efektu og³uszenia
         StartCoroutine("Stun");
     }
     IEnumerator Stun()

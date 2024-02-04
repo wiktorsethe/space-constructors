@@ -5,41 +5,24 @@ using UnityEngine;
 public class EnemyDashRetreatState : StateMachineBehaviour
 {
     private GameObject ship;
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+    private float speed;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        ship = animator.GetComponent<EnemyShip>().FindClosestObject();
-        animator.transform.GetComponent<EnemyShip>().retreatVector = animator.transform.position - ship.transform.position;
-        animator.transform.GetComponent<EnemyShip>().retreatVector.Normalize();
+        ship = animator.GetComponent<EnemyShip>().FindClosestObject(); // Znalezienie najbli¿szego fragmentu statku
+        animator.transform.GetComponent<EnemyShip>().retreatVector = animator.transform.position - ship.transform.position; // Obliczenie odpowiedniego wektora statku wroga do ataku
+        animator.transform.GetComponent<EnemyShip>().retreatVector.Normalize(); // Normalizacja ruchu dla jednostkowej d³ugoœci
+        speed = animator.transform.GetComponent<EnemyShip>().moveSpeed;
     }
 
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.transform.position = Vector2.MoveTowards(animator.transform.position, animator.transform.GetComponent<EnemyShip>().retreatVector, animator.transform.GetComponent<EnemyShip>().moveSpeed * Time.deltaTime);
+        // Przesuwanie pozycji wroga w kierunku obliczonego wektora z zadan¹ prêdkoœci¹
+        animator.transform.position = Vector2.MoveTowards(animator.transform.position, animator.transform.GetComponent<EnemyShip>().retreatVector, speed * Time.deltaTime);
 
+        // Sprawdzenie, czy odleg³oœæ miêdzy wrogiem a celem jest wiêksza ni¿ 12
         if (Vector2.Distance(animator.transform.position, ship.transform.position) > 12f)
         {
-            animator.SetTrigger("Start");
+            animator.SetTrigger("Start"); // Powtórzenie ataku
         }
-        
     }
-
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-
-    }
-
-    // OnStateMove is called right after Animator.OnAnimatorMove()
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that processes and affects root motion
-    //}
-
-    // OnStateIK is called right after Animator.OnAnimatorIK()
-    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that sets up animation IK (inverse kinematics)
-    //}
 }

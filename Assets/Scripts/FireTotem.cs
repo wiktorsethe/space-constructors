@@ -181,7 +181,7 @@ public class FireTotem : MonoBehaviour
         {
             if (script.type == "flameParticle")
             {
-                flameParticle = script.GetPooledObject(); //tu cos nie gra
+                flameParticle = script.GetPooledObject();
                 flameParticle.transform.parent = transform;
                 ParticleSystem.MainModule main = flameParticle.GetComponent<ParticleSystem>().main;
                 main.duration = playerStats.flameGunDurationValue;
@@ -203,7 +203,7 @@ public class FireTotem : MonoBehaviour
         {
             if (script.type == "flameThrowerParticle")
             {
-                flameThrowerParticle = script.GetPooledObject(); //tu cos nie gra
+                flameThrowerParticle = script.GetPooledObject();
                 flameThrowerParticle.transform.parent = transform.Find("FireTotemGraphic").transform;
                 ParticleSystem.MainModule main = flameThrowerParticle.GetComponent<ParticleSystem>().main;
                 main.loop = true;
