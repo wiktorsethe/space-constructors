@@ -54,10 +54,12 @@ MonoBehaviour:
   playerStats: {fileID: 11400000, guid: 284895b3224468a48aa2a763a688b966, type: 2}
   experience: 10
   gold: 100
-  moveSpeed: 10
+  target: Ship
+  moveSpeed: 5
   firePoint: {fileID: 926813584579028283}
   textPrefab: {fileID: 8062151463999637536, guid: b9d2f93f3a98b4d4b8a1be849730c94f, type: 3}
-  target: Ship
+  dashingSound: {fileID: 0}
+  savedPos: {x: 0, y: 0, z: 0}
   canvas: {fileID: 4612682865846929946}
   healthBarCanvas: {fileID: 4612682865846929951}
   healthBar: {fileID: 4612682865846929949}

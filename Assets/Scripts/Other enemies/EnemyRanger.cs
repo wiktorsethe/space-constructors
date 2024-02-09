@@ -39,14 +39,14 @@ public class EnemyRanger : MonoBehaviour
     private int currentHealth;
     [SerializeField] private float Angle;
     private float hideTimer = 0f;
-
+    private bool isObjectActivated = false;
 
     private void Start()
     {
         expBar = GameObject.FindObjectOfType(typeof(ExpBar)) as ExpBar;
         gameManager = GameObject.FindObjectOfType(typeof(GameManager)) as GameManager;
         player = GameObject.FindGameObjectWithTag("Player");
-        arrowSound = GameObject.Find("Arrow").GetComponent<AudioSource>();
+        arrowSound = GameObject.Find("VolumeManager").transform.Find("Arrow").GetComponent<AudioSource>();
         objPool = GetComponent<ObjectPool>();
         canvas.worldCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         currentHealth = maxHealth;
@@ -92,6 +92,24 @@ public class EnemyRanger : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
         }
 
+        if (!isObjectActivated)
+        {
+            SetMaxHealth(maxHealth);
+            isObjectActivated = true;
+        }
+
+        if (currentHealth <= 0)
+        {
+            SetMaxHealth(maxHealth);
+            expBar.SetExperience(experience);
+            playerStats.gold += gold;
+            gameManager.goldEarned += gold;
+            gameManager.kills += 1;
+            shootTimer = -10f;
+            GetComponent<LootBag>().InstantiateLoot(transform.position);
+            isObjectActivated = false;
+            gameObject.SetActive(false);
+        }
     }
     void FireBullet()
     {
@@ -138,17 +156,6 @@ public class EnemyRanger : MonoBehaviour
         hideTimer = 0f;
         currentHealth -= 10;
         SetHealth();
-        if (currentHealth <= 0)
-        {
-            SetMaxHealth(maxHealth);
-            expBar.SetExperience(experience);
-            playerStats.gold += gold;
-            gameManager.goldEarned += gold;
-            gameManager.kills += 1;
-            shootTimer = -10f;
-            GetComponent<LootBag>().InstantiateLoot(transform.position);
-            gameObject.SetActive(false);
-        }
         if (miningTextPrefab)
         {
             ShowMiningText(10);

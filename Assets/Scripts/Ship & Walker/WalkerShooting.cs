@@ -7,8 +7,8 @@ public class WalkerShooting : MonoBehaviour
     [Header("Objects and List")]
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject[] enemies;
+    [SerializeField] private AudioSource shootingSound;
     private ObjectPool objPool;
-    //public GameObject activeEnemy;
     private float distance;
     [Space(20f)]
 
@@ -21,6 +21,7 @@ public class WalkerShooting : MonoBehaviour
     private void Start()
     {
         objPool = GetComponent<ObjectPool>();
+        shootingSound = GameObject.Find("Shooting").GetComponent<AudioSource>();
     }
     void Update()
     {
@@ -56,6 +57,7 @@ public class WalkerShooting : MonoBehaviour
     void FireBullet()
     {
         GameObject bullet = objPool.GetPooledObject();
+        shootingSound.Play();
         bullet.transform.position = firePoint.position;
         bullet.GetComponent<ShootingBullet>().startingPos = firePoint.position;
         bullet.transform.rotation = firePoint.rotation;

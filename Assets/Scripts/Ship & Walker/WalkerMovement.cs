@@ -28,7 +28,7 @@ public class WalkerMovement : MonoBehaviour
         Move();
         Rotate();
 
-        if (Vector3.Distance(choosenTarget.transform.position, transform.position) >= distanceThreshold)
+        if (Vector3.Distance(choosenTarget.transform.position, transform.position) >= distanceThreshold && choosenTarget)
         {
             Vector3 direction = (choosenTarget.transform.position - transform.position).normalized;
             //Debug.DrawRay(transform.position, direction * 10f, Color.red);

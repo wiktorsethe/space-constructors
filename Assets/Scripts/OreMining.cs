@@ -20,7 +20,7 @@ public class OreMining : MonoBehaviour
     [SerializeField] private Image fillBar;
     [SerializeField] private int maxHealth;
     private int currentHealth;
-    [SerializeField] private float distance;
+    [SerializeField] private float distance = 6;
     private bool attacked = false;
     private float attackTimer = 0;
 

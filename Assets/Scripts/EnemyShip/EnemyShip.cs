@@ -18,6 +18,7 @@ public class EnemyShip : MonoBehaviour
     [SerializeField] private string target;
     private float bulletSpeed = 10f;
     public float moveSpeed;
+    private float moveSpeedParameter;
     [Space(20f)]
 
     [Header("GameObjects and Rest")]
@@ -57,9 +58,11 @@ public class EnemyShip : MonoBehaviour
         canvas.worldCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         SetMaxHealth(maxHealth);
         healthBarCanvas.SetActive(false);
+        moveSpeedParameter = moveSpeed;
     }
     private void Update()
     {
+        Debug.Log(moveSpeed);
         // Sprawdzenie, czy obiekt jest ju¿ aktywny i ustawienie zdrowia do 100%
         if (!isObjectActivated)
         {
@@ -78,7 +81,7 @@ public class EnemyShip : MonoBehaviour
         {
             ShowLootText();
             playerStats.screw += 5;
-            moveSpeed = 45f;
+            moveSpeed = moveSpeedParameter;
             expBar.SetExperience(experience);
             playerStats.gold += gold;
             gameManager.goldEarned += gold;
@@ -167,7 +170,7 @@ public class EnemyShip : MonoBehaviour
         hideTimer = 0f;
         currentHealth -= damage;
         SetHealth();
-        moveSpeed = 40f;
+        moveSpeed = moveSpeedParameter / 2;
         StartCoroutine(ChangingSpeed());
         if (textPrefab)
         {
@@ -191,7 +194,7 @@ public class EnemyShip : MonoBehaviour
         // Zmiana prêdkoœci poruszania po trafieniu
         yield return new WaitForSeconds(0.3f);
 
-        while (moveSpeed < 45f)
+        while (moveSpeed < moveSpeedParameter)
         {
             moveSpeed += 0.1f;
             yield return new WaitForSeconds(0.1f);
@@ -273,7 +276,7 @@ public class EnemyShip : MonoBehaviour
         moveSpeed = 0f;
         yield return new WaitForSeconds(playerStats.stunDurationValue);
 
-        while (moveSpeed < 2f)
+        while (moveSpeed < moveSpeedParameter)
         {
             moveSpeed += 0.1f;
             yield return new WaitForSeconds(0.1f);

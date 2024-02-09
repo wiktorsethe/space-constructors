@@ -5,10 +5,12 @@ using UnityEngine;
 public class EnemyShipStartState : StateMachineBehaviour
 {
     private GameObject ship;
+    private float speed;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        ship = animator.GetComponent<EnemyShip>().FindClosestObject();
+        ship = animator.GetComponent<EnemyShip>().FindClosestObject(); 
+        speed = animator.transform.GetComponent<EnemyShip>().moveSpeed;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -16,11 +18,15 @@ public class EnemyShipStartState : StateMachineBehaviour
     {
         if (Vector2.Distance(animator.transform.position, ship.transform.position) > 10f)
         {
-            animator.transform.position = Vector2.MoveTowards(animator.transform.position, ship.transform.position, 2f * Time.deltaTime);
+            animator.transform.position = Vector2.MoveTowards(animator.transform.position, ship.transform.position, speed * Time.deltaTime);
         }
         else if (Vector2.Distance(animator.transform.position, ship.transform.position) <= 10f)
         {
             animator.SetTrigger("Attack");
+        }
+        else if (Vector2.Distance(animator.transform.position, ship.transform.position) >= 40f)
+        {
+            animator.gameObject.SetActive(false);
         }
     }
 

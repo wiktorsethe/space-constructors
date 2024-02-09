@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipPartsDB: {fileID: 11400000, guid: 7750664a700cbd8439c2f6aebe185d4a, type: 2}
   playerStats: {fileID: 11400000, guid: 284895b3224468a48aa2a763a688b966, type: 2}
-  miningTextPrefab: {fileID: 8062151463999637536, guid: b9d2f93f3a98b4d4b8a1be849730c94f, type: 3}
+  textPrefab: {fileID: 8062151463999637536, guid: b9d2f93f3a98b4d4b8a1be849730c94f, type: 3}
   lootName: 
 --- !u!50 &7514952469481525847
 Rigidbody2D:

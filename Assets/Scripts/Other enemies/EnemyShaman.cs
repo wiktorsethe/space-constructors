@@ -39,14 +39,14 @@ public class EnemyShaman : MonoBehaviour
     private int currentHealth;
     [SerializeField] private float Angle;
     private float hideTimer = 0f;
-
+    private bool isObjectActivated = false;
     private void Start()
     {
         expBar = GameObject.FindObjectOfType(typeof(ExpBar)) as ExpBar;
         gameManager = GameObject.FindObjectOfType(typeof(GameManager)) as GameManager;
         player = GameObject.FindGameObjectWithTag("Player");
         objPool = GetComponent<ObjectPool>();
-        spellSound = GameObject.Find("Spell").GetComponent<AudioSource>();
+        spellSound = GameObject.Find("VolumeManager").transform.Find("Spell").GetComponent<AudioSource>();
         canvas.worldCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         currentHealth = maxHealth;
         SetMaxHealth(maxHealth);
@@ -89,6 +89,25 @@ public class EnemyShaman : MonoBehaviour
                 spawnTimer = 0f;
             }
         }
+
+        if (!isObjectActivated)
+        {
+            SetMaxHealth(maxHealth);
+            isObjectActivated = true;
+        }
+
+        if (currentHealth <= 0)
+        {
+            SetMaxHealth(maxHealth);
+            expBar.SetExperience(experience);
+            playerStats.gold += gold;
+            gameManager.goldEarned += gold;
+            gameManager.kills += 1;
+            spawnTimer = -10f;
+            GetComponent<LootBag>().InstantiateLoot(transform.position);
+            isObjectActivated = false;
+            gameObject.SetActive(false);
+        }
     }
     private void SpawnMinions()
     {
@@ -128,17 +147,7 @@ public class EnemyShaman : MonoBehaviour
         hideTimer = 0f;
         currentHealth -= 10;
         SetHealth();
-        if (currentHealth <= 0)
-        {
-            SetMaxHealth(maxHealth);
-            expBar.SetExperience(experience);
-            playerStats.gold += gold;
-            gameManager.goldEarned += gold;
-            gameManager.kills += 1;
-            spawnTimer = -10f;
-            GetComponent<LootBag>().InstantiateLoot(transform.position);
-            gameObject.SetActive(false);
-        }
+
         if (miningTextPrefab)
         {
             ShowMiningText(10);
