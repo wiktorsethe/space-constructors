@@ -18,7 +18,8 @@ public class CameraSize : MonoBehaviour
         uniScaler = GameObject.FindObjectOfType<UniverseScaler>() as UniverseScaler;
         bgScaler = GameObject.FindObjectOfType<BackgroundScaler>() as BackgroundScaler;
         uniMaxSize = GameObject.FindObjectOfType<UniverseMaxSize>() as UniverseMaxSize;
-        Invoke("ChangeCamSize", 0.5f);
+        //Invoke("ChangeCamSize", 0.5f);
+        ChangeCamSize();
     }
     // Funkcja zmieniaj¹ca rozmiar kamery na podstawie rozmiaru statku
     public void ChangeCamSize()
@@ -70,11 +71,6 @@ public class CameraSize : MonoBehaviour
             {
                 uniScaler.ActivateCortoutine();
             }
-            GameObject[] teleports = GameObject.FindGameObjectsWithTag("Planet");
-            foreach (GameObject tp in teleports)
-            {
-                tp.GetComponent<Teleport>().ChangeAttractionSize();
-            }
             if (uniMaxSize)
             {
                 uniMaxSize.ActivateCortoutine();
@@ -105,5 +101,9 @@ public class CameraSize : MonoBehaviour
     {   
         
         DOTween.To(() => mainCamera.orthographicSize, x => mainCamera.orthographicSize = x, targetSize, duration).SetUpdate(UpdateType.Normal, true);
+        if (bgScaler)
+        {
+            bgScaler.SmoothChangeScale(targetSize);
+        }
     }
 }

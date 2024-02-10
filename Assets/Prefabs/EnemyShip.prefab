@@ -410,10 +410,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats: {fileID: 11400000, guid: 284895b3224468a48aa2a763a688b966, type: 2}
-  experience: 10
+  experience: 40
   gold: 100
   target: Ship
-  moveSpeed: 5
+  moveSpeed: 7
   firePoint: {fileID: 5509932596111113659}
   textPrefab: {fileID: 8062151463999637536, guid: b9d2f93f3a98b4d4b8a1be849730c94f, type: 3}
   dashingSound: {fileID: 0}

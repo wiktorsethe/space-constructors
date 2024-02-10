@@ -17,7 +17,7 @@ public class EnemyDashAttackState : StateMachineBehaviour
         if (Vector2.Distance(animator.transform.position, animator.transform.GetComponent<EnemyShip>().savedPos) > 5f)
         {
             // Poruszanie wroga w kierunku zapisanej pozycji z podwójn¹ prêdkoœci¹ ruchu
-            animator.transform.position = Vector2.MoveTowards(animator.transform.position, animator.transform.GetComponent<EnemyShip>().savedPos, speed * 2 * Time.deltaTime);
+            animator.transform.position = Vector2.MoveTowards(animator.transform.position, animator.transform.GetComponent<EnemyShip>().savedPos, speed * 4 * Time.deltaTime);
         }
         // Jeœli zapisana pozycja gracza jest ju¿ nieaktualna
         else if (Vector2.Distance(animator.transform.position, animator.transform.GetComponent<EnemyShip>().savedPos) <= 5f)

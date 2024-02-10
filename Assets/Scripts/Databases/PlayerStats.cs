@@ -65,12 +65,12 @@ public class PlayerStats : ScriptableObject
         shipCurrentHealth = 100;
         shipCurrentShield = 0;
         shipMaxShield = 0;
-        shipSpeedValue = 30;
-        level = 1;
-        experience = 0;
+        shipSpeedValue = 40;
+        level = 4;
+        experience = 800;
         shipGravity = 1;
-        ore = 50;
-        screw = 5;
+        ore = 1500;
+        screw = 550;
         bestTime = 0;
         mostKills = 0;
         mostGoldEarned = 0;
@@ -87,18 +87,18 @@ public class PlayerStats : ScriptableObject
         homingGunDamageValue = 4f;
         stunningGunDamageValue = 0f;
 
-        normalGunAttackSpeedValue = 3f;
-        laserGunAttackSpeedValue = 3f;
+        normalGunAttackSpeedValue = 2f;
+        laserGunAttackSpeedValue = 2f;
         doubleGunAttackSpeedValue = 2f;
         bigGunAttackSpeedValue = 4f;
-        poisonGunCollisionAttackSpeedValue = 6f;
-        poisonGunBetweenAttackSpeedValue = 1.5f;
+        poisonGunCollisionAttackSpeedValue = 4f;
+        poisonGunBetweenAttackSpeedValue = 1f;
         poisonGunDurationValue = 3;
-        flameGunCollisionAttackSpeedValue = 4.5f;
+        flameGunCollisionAttackSpeedValue = 4f;
         flameGunDurationValue = 2f;
-        bombGunAttackSpeedValue = 5f;
-        homingGunAttackSpeedValue = 3f;
-        stunningGunAttackSpeedValue = 6f;
+        bombGunAttackSpeedValue = 4f;
+        homingGunAttackSpeedValue = 2f;
+        stunningGunAttackSpeedValue = 4f;
         stunDurationValue = 2f;
 
         oreMiningBonusValue = 1;

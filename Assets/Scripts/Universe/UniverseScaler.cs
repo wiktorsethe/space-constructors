@@ -20,6 +20,12 @@ public class UniverseScaler : MonoBehaviour
 
         Vector3 newScale = new Vector3(1, 1, 1) * (bounds.size.magnitude / 75f);
         transform.localScale = newScale;
+
+        GameObject[] teleports = GameObject.FindGameObjectsWithTag("Planet");
+        foreach (GameObject tp in teleports)
+        {
+            tp.GetComponent<Teleport>().ChangeAttractionSize();
+        }
     }
     private Bounds Bounds()
     {

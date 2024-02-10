@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public CameraSize camSize;
     public CameraFollow camFollow;
     public Boundaries bounds;
+    public BackgroundScaler bgScaler;
     public ObstacleSpawner[] obstacleSpawners;
     //private GameObject player;
     [Space(20f)]
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour
         camFollow = GameObject.FindObjectOfType(typeof(CameraFollow)) as CameraFollow;
         bounds = GameObject.FindObjectOfType(typeof(Boundaries)) as Boundaries;
         menu = GameObject.FindObjectOfType(typeof(Menu)) as Menu;
+        bgScaler = GameObject.FindObjectOfType(typeof(BackgroundScaler)) as BackgroundScaler;
         //player = GameObject.FindGameObjectWithTag("Player");
         obstacleSpawners = GameObject.FindObjectsOfType<ObstacleSpawner>();
 
@@ -106,6 +108,7 @@ public class GameManager : MonoBehaviour
                 Destroy(meteorite);
             }
 
+            bgScaler.ActivateCortoutine();
             // Zapisanie informacji o pierwszym spotkaniu z bossem w PlayerPrefs
             PlayerPrefs.SetString("FirstBoss", "True");
         }
@@ -137,7 +140,7 @@ public class GameManager : MonoBehaviour
         // Rutyna zmieniaj¹ca czêstoœæ pojawiania siê przeszkód co 10 sekund
         while (true)
         {
-            yield return new WaitForSeconds(10f);
+            yield return new WaitForSeconds(30f);
             foreach (ObstacleSpawner obsSpawn in obstacleSpawners)
             {
                 obsSpawn.spawnRate -= 0.1f;

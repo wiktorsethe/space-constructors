@@ -10,7 +10,7 @@ public class EnemyShaman : MonoBehaviour
     private ExpBar expBar;
     public PlayerStats playerStats;
     private GameManager gameManager;
-    private ObjectPool objPool;
+    private ObjectPool[] objPools;
     [Space(20f)]
     [Header("Variables")]
     [SerializeField] private int experience; // ??
@@ -45,7 +45,7 @@ public class EnemyShaman : MonoBehaviour
         expBar = GameObject.FindObjectOfType(typeof(ExpBar)) as ExpBar;
         gameManager = GameObject.FindObjectOfType(typeof(GameManager)) as GameManager;
         player = GameObject.FindGameObjectWithTag("Player");
-        objPool = GetComponent<ObjectPool>();
+        objPools = GetComponents<ObjectPool>();
         spellSound = GameObject.Find("VolumeManager").transform.Find("Spell").GetComponent<AudioSource>();
         canvas.worldCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         currentHealth = maxHealth;
@@ -112,14 +112,34 @@ public class EnemyShaman : MonoBehaviour
     private void SpawnMinions()
     {
         spellSound.Play();
-        for (int i=0; i<3; i++)
+        foreach (ObjectPool script in objPools)
         {
-            //GameObject minion = Instantiate(enemyWarriorPrefab, spawnPoints[i].transform.position, Quaternion.identity);
-            GameObject minion = objPool.GetPooledObject();
-            minion.transform.position = spawnPoints[i].transform.position;
-            minion.transform.rotation = Quaternion.identity;
-            minions.Add(minion);
-            minion.SetActive(false);
+            if (script.type == "minion1")
+            {
+                GameObject minion = script.GetPooledObject();
+                minion.transform.position = spawnPoints[0].transform.position;
+                minion.transform.rotation = Quaternion.identity;
+                minions.Add(minion);
+                minion.SetActive(false);
+            }
+
+            if (script.type == "minion2")
+            {
+                GameObject minion = script.GetPooledObject();
+                minion.transform.position = spawnPoints[1].transform.position;
+                minion.transform.rotation = Quaternion.identity;
+                minions.Add(minion);
+                minion.SetActive(false);
+            }
+
+            if (script.type == "minion3")
+            {
+                GameObject minion = script.GetPooledObject();
+                minion.transform.position = spawnPoints[2].transform.position;
+                minion.transform.rotation = Quaternion.identity;
+                minions.Add(minion);
+                minion.SetActive(false);
+            }
         }
     }
     private void EnableMinions()

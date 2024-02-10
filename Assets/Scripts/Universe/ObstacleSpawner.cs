@@ -35,40 +35,28 @@ public class ObstacleSpawner : MonoBehaviour
     }
     public GameObject GetPooledObject()
     {
-        bool active = false;
-        foreach (GameObject obj in pooledObjects)
+        int rand = Random.Range(0, 2);
+        if(rand == 0 && pooledObjects.Count != 0)
         {
-            if (!obj.activeSelf)
+            for (int i = 0; i < pooledObjects.Count; i++)
             {
-                goto Next;
-            }
-            else if (obj.activeSelf)
-            {
-                active = true;
-            }
-        }
-
-        if (active)
-        {
-            InstantiateObject();
-        }
-
-    Next:
-        for (int i = 0; i < pooledObjects.Count; i++)
-        {
-            if (!pooledObjects[i].activeInHierarchy)
-            {
-                return pooledObjects[i];
+                if (!pooledObjects[i].activeInHierarchy)
+                {
+                    return pooledObjects[i];
+                }
             }
         }
-
-
+        else
+        {
+            return InstantiateObject();
+        }
         return null;
     }
-    private void InstantiateObject()
+    private GameObject InstantiateObject()
     {
         GameObject obj = Instantiate(obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)]);
         obj.SetActive(false);
         pooledObjects.Add(obj);
+        return obj;
     }
 }

@@ -137,7 +137,7 @@ public class Menu : MonoBehaviour
     public void PauseMenu()
     {
         swipeInMenu.enabled = true;
-        camSize.enabled = false;
+        //camSize.enabled = false;
         DOTween.To(() => mainCam.orthographicSize, x => mainCam.orthographicSize = x, 4f, 1f).SetUpdate(UpdateType.Normal, true);
         shipManager.RotateToCenter();
         //shipManager.MoveObj();
@@ -156,7 +156,7 @@ public class Menu : MonoBehaviour
     public void Resume()
     {
         swipeInMenu.enabled = false;
-        camSize.enabled = true;
+        //camSize.enabled = true;
         camSize.ChangeCamSize();
         //constructMenu.SetActive(false);
         gameMenu.SetActive(true);

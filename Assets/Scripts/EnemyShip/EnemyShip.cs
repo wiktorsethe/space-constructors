@@ -62,7 +62,6 @@ public class EnemyShip : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(moveSpeed);
         // Sprawdzenie, czy obiekt jest ju¿ aktywny i ustawienie zdrowia do 100%
         if (!isObjectActivated)
         {

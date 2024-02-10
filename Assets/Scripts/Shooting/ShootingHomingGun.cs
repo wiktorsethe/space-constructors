@@ -40,11 +40,11 @@ public class ShootingHomingGun : MonoBehaviour
     void FireBullet()
     {
         targets = GameObject.FindGameObjectsWithTag("Enemy");
+        shootingSound.Play();
         if (targets.Length > 0)
         {
             shootAnimator.SetTrigger("Play");
             GameObject bullet = objPool.GetPooledObject();
-            shootingSound.Play();
             bullet.transform.position = firePoint.position;
             bullet.GetComponent<ShootingBullet>().startingPos = firePoint.position;
             bullet.transform.rotation = firePoint.rotation;

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5031180633385289877}
   - component: {fileID: 7128265960731214793}
   - component: {fileID: 7796274511555379519}
+  - component: {fileID: 4727850325949822639}
   m_Layer: 0
   m_Name: BigGunBullet
   m_TagString: Bullet
@@ -123,8 +124,9 @@ MonoBehaviour:
   type: NormalBullet
   target: 
   damage: 0
-  shootParticles: {fileID: 4456395838552135815, guid: c6dd3fc4905aba047a74f61c37cc81a7, type: 3}
   startingPos: {x: 0, y: 0}
+  isBombGunShoot: 0
+  targetT: {fileID: 0}
 --- !u!58 &7796274511555379519
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -141,3 +143,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.2
+--- !u!114 &4727850325949822639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5949201873329385209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ab626b24757ddf4c9a2f979031c523f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  prefab: {fileID: 4456395838552135815, guid: c6dd3fc4905aba047a74f61c37cc81a7, type: 3}
+  type: 

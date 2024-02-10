@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 6282078967647910800}
   - component: {fileID: 4202945638694126439}
   - component: {fileID: 4458088991978251526}
+  - component: {fileID: 8015850117061716051}
+  - component: {fileID: 2652486399392250774}
   m_Layer: 0
   m_Name: EnemyShaman
   m_TagString: EnemyShaman
@@ -58,6 +60,7 @@ MonoBehaviour:
   enemyWarriorPrefab: {fileID: 5343667911992834465, guid: 9e7dad0f744436a43bf4ad11fdbe826a, type: 3}
   miningTextPrefab: {fileID: 8062151463999637536, guid: b9d2f93f3a98b4d4b8a1be849730c94f, type: 3}
   animator: {fileID: 4297690327896596905}
+  spellSound: {fileID: 0}
   canvas: {fileID: 6282078968107654008}
   healthBarCanvas: {fileID: 6282078968107654013}
   healthBar: {fileID: 6282078968107654015}
@@ -127,7 +130,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pooledObjects: []
   prefab: {fileID: 5343667911992834465, guid: 9e7dad0f744436a43bf4ad11fdbe826a, type: 3}
-  type: 
+  type: minion1
+--- !u!114 &8015850117061716051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6282078967647910801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ab626b24757ddf4c9a2f979031c523f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  prefab: {fileID: 5343667911992834465, guid: 9e7dad0f744436a43bf4ad11fdbe826a, type: 3}
+  type: minion2
+--- !u!114 &2652486399392250774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6282078967647910801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ab626b24757ddf4c9a2f979031c523f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  prefab: {fileID: 5343667911992834465, guid: 9e7dad0f744436a43bf4ad11fdbe826a, type: 3}
+  type: minion3
 --- !u!1 &6282078967857492212
 GameObject:
   m_ObjectHideFlags: 0

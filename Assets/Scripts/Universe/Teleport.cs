@@ -11,12 +11,14 @@ public class Teleport : MonoBehaviour
     public PlayerStats playerStats;
     private GameManager gameManager;
     private BackgroundScaler bgScaler;
+    private ShipMovement shipMovement;
     [Space(20f)]
     [Header("Variables")]
     [SerializeField] private float attractionDistance = 5f;
     [SerializeField] private float attractionForce = 10f;
     [SerializeField] private string targetScene;
     private bool sizeChanged = false;
+    private bool isFirstTimeChanged = false;
     private float collisionTime = -1;
     private float distance;
     public int gravity;
@@ -36,6 +38,7 @@ public class Teleport : MonoBehaviour
         camSize = GameObject.FindObjectOfType(typeof(CameraSize)) as CameraSize;
         gameManager = GameObject.FindObjectOfType(typeof(GameManager)) as GameManager;
         bgScaler = GameObject.FindObjectOfType(typeof(BackgroundScaler)) as BackgroundScaler;
+        shipMovement = GameObject.FindObjectOfType(typeof(ShipMovement)) as ShipMovement;
         mainCamera = Camera.main;
 
         SpriteRenderer meshRender = GetComponent<SpriteRenderer>();
@@ -76,6 +79,8 @@ public class Teleport : MonoBehaviour
             }
             GetComponent<PlanetRotate>().rotatingSpeed = 0f;
             int vibrato = (int)(attractionDistance - distance);
+            shipMovement.enabled = false;
+            player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             Vector3 direction = transform.position - player.transform.position;
             player.GetComponent<Rigidbody2D>().AddForce(direction * attractionForce);
             camShake.ShakeCamera(3f, 0.5f, vibrato);
@@ -116,7 +121,10 @@ public class Teleport : MonoBehaviour
     }
     public void ChangeAttractionSize()
     {
-        attractionDistance = GetComponent<SpriteRenderer>().bounds.size.x * 0.1f;
+        Vector2 rozmiar = GetComponent<SpriteRenderer>().bounds.size;
+        // Oblicz œredni¹ wielkoœæ obiektu (œrednia z szerokoœci i wysokoœci)
+        float sredniaWielkosc = (rozmiar.x + rozmiar.y) / 2f;
+        attractionDistance = sredniaWielkosc * 1.1f;
     }
     private IEnumerator LoadLevel()
     {

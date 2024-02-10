@@ -26,6 +26,7 @@ public class HpBar : MonoBehaviour
         SetMaxHealth((int)playerStats.shipMaxHealth);
         objPools = GetComponents<ObjectPool>();
         player = GameObject.FindGameObjectWithTag("Player");
+        shieldText.SetActive(false);
     }
     private void Update()
     {
@@ -55,6 +56,13 @@ public class HpBar : MonoBehaviour
         StartCoroutine(AnimateNumberIterationHp((int)hpBar.value, (int)playerStats.shipMaxHealth));
         playerStats.shipCurrentHealth = health;
     }
+    public void SetHealthAfterNewPart()
+    {
+        hpBar.maxValue = playerStats.shipMaxHealth;
+        hpBar.value = playerStats.shipCurrentHealth;
+        StartCoroutine(AnimateNumberIterationHp((int)hpBar.value, (int)playerStats.shipMaxHealth));
+    } 
+        
     public void SetHealth(float health)
     {
         if(playerStats.shipCurrentShield > 0)

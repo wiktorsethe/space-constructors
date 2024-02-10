@@ -37,10 +37,10 @@ public class ShootingDoubleGun : MonoBehaviour
     void FireBullet()
     {
         shootAnimator.SetTrigger("Play");
+        shootingSound.Play();
         for (int i=0; i<firePoints.Length; i++)
         {
             GameObject bullet = objPool.GetPooledObject();
-            shootingSound.Play();
             bullet.transform.position = firePoints[i].position;
             bullet.GetComponent<ShootingBullet>().startingPos = firePoints[i].position;
             bullet.transform.rotation = firePoints[i].rotation;

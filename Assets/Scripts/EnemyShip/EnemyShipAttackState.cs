@@ -34,7 +34,7 @@ public class EnemyShipAttackState : StateMachineBehaviour
 
         else if (Vector2.Distance(animator.transform.position, ship.transform.position) <= 15f)
         {
-            if(timer >= 3f)
+            if(timer >= 2.5f)
             {
                 animator.transform.GetComponent<EnemyShip>().FireBullet();
                 timer = 0f;
