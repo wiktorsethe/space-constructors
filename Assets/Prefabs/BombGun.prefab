@@ -146,8 +146,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1506714105417796595}
-  - component: {fileID: 6089382347051831027}
   - component: {fileID: 4777617023678110374}
+  - component: {fileID: 6089382347051831027}
   m_Layer: 0
   m_Name: BombGun
   m_TagString: Untagged
@@ -172,21 +172,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6089382347051831027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9059050534220614162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ab626b24757ddf4c9a2f979031c523f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pooledObjects: []
-  prefab: {fileID: 5949201873329385209, guid: 948efb3ad2a29404691c338fdbfcd85b, type: 3}
-  type: 
 --- !u!114 &4777617023678110374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,6 +187,22 @@ MonoBehaviour:
   playerStats: {fileID: 11400000, guid: 284895b3224468a48aa2a763a688b966, type: 2}
   shootAnimator: {fileID: 4098076237107322380}
   firePoint: {fileID: 7068402220419814568}
+  shootingSound: {fileID: 0}
   bulletSpeed: 10
   target: Enemy
   shootTimer: 0
+--- !u!114 &6089382347051831027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9059050534220614162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ab626b24757ddf4c9a2f979031c523f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  prefab: {fileID: 5949201873329385209, guid: 948efb3ad2a29404691c338fdbfcd85b, type: 3}
+  type: 

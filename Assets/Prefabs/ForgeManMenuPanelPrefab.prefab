@@ -584,6 +584,7 @@ MonoBehaviour:
   shipPartNumber: 1
   amountText: {fileID: 7467223790845706678}
   sliderBar: {fileID: 7467223792694818946}
+  buttonSound: {fileID: 0}
 --- !u!114 &7467223792340626611
 MonoBehaviour:
   m_ObjectHideFlags: 0

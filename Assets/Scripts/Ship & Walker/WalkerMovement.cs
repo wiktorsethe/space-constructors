@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class WalkerMovement : MonoBehaviour
 {
     public FloatingJoystick movementJoystick;
@@ -28,7 +28,7 @@ public class WalkerMovement : MonoBehaviour
         Move();
         Rotate();
 
-        if (Vector3.Distance(choosenTarget.transform.position, transform.position) >= distanceThreshold && choosenTarget)
+        if (choosenTarget && Vector3.Distance(choosenTarget.transform.position, transform.position) >= distanceThreshold)
         {
             Vector3 direction = (choosenTarget.transform.position - transform.position).normalized;
             //Debug.DrawRay(transform.position, direction * 10f, Color.red);
@@ -43,7 +43,7 @@ public class WalkerMovement : MonoBehaviour
             arrow.transform.rotation = Quaternion.LookRotation(Vector3.forward, targetDir);
 
         }
-        else if (Vector3.Distance(choosenTarget.transform.position, transform.position) < distanceThreshold && arrow != null)
+        else if (choosenTarget && Vector3.Distance(choosenTarget.transform.position, transform.position) < distanceThreshold && arrow != null)
         {
             Destroy(arrow);
             arrow = null;

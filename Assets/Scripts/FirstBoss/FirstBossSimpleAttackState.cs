@@ -43,7 +43,7 @@ public class FirstBossSimpleAttackState : StateMachineBehaviour
 
         if (Vector2.Distance(animator.transform.position, ship.transform.position) >= 16f)
         {
-            animator.transform.position = Vector2.MoveTowards(animator.transform.position, ship.transform.position, 4f * Time.deltaTime);
+            animator.transform.position = Vector2.MoveTowards(animator.transform.position, ship.transform.position, 20f * Time.deltaTime);
         }
         else if(Vector2.Distance(animator.transform.position, ship.transform.position) < 15f)
         {

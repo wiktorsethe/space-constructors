@@ -177,6 +177,7 @@ public class Menu : MonoBehaviour
         Resume();
         playerStats.Reset();
         shipProgress.Reset();
+        PlayerPrefs.DeleteKey("FirstBoss");
         StartCoroutine("LoadUniverse");
     }
     public void BackToMenu()

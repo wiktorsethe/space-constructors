@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviour
             {
                 Destroy(meteorite);
             }
-
+            //Invoke("DisableParalax", 2f);
             bgScaler.ActivateCortoutine();
             // Zapisanie informacji o pierwszym spotkaniu z bossem w PlayerPrefs
             PlayerPrefs.SetString("FirstBoss", "True");
@@ -123,8 +123,13 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    private void DisableParalax()
+    {
 
-    private void FadeInSceneNameText()
+        GameObject.Find("1").GetComponent<Paralax>().isFightingWithBoss = true;
+        GameObject.Find("1").transform.position = GameObject.Find("2").transform.position;
+    }
+private void FadeInSceneNameText()
     {
         // Animacja pojawienia siê tekstu nazwy sceny
         sceneNameText.DOFade(1f, 2f);

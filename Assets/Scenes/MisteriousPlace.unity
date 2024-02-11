@@ -653,6 +653,7 @@ MonoBehaviour:
   camSize: {fileID: 0}
   camFollow: {fileID: 0}
   bounds: {fileID: 0}
+  bgScaler: {fileID: 0}
   obstacleSpawners: []
   bestTimeTimer: 0
   kills: 0
@@ -4172,8 +4173,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shipPartsDB: {fileID: 11400000, guid: 7750664a700cbd8439c2f6aebe185d4a, type: 2}
-  changeItemPrefab: {fileID: 7467223792340626609, guid: 445bc0f7966e9074a96ae162d100ab57, type: 3}
-  changeManMenuPanel: {fileID: 1510036740}
+  forgeItemPrefab: {fileID: 7467223792340626609, guid: 445bc0f7966e9074a96ae162d100ab57, type: 3}
+  forgeManMenuPanel: {fileID: 1510036740}
   bosspointsTxt: {fileID: 1335502396}
 --- !u!1 &2116380730
 GameObject:

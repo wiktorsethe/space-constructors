@@ -55,6 +55,7 @@ public class FirstBossMinionScript : MonoBehaviour
         {
             SetMaxHealth(maxHealth);
             moveSpeed = 2f;
+            GameObject.Find("FirstBoss(Clone)").GetComponent<FirstBossScript>().Shield();
             gameObject.SetActive(false);
         }
 

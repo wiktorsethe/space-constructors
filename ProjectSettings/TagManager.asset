@@ -22,6 +22,7 @@ TagManager:
   - Pillar
   - FlameThrower
   - Wall
+  - MinionShip
   layers:
   - Default
   - TransparentFX

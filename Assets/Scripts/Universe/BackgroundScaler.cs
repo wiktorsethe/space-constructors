@@ -47,7 +47,7 @@ public class BackgroundScaler : MonoBehaviour
     }
     IEnumerator SmoothScaleChangeCoroutine(float targetSize)
     {
-        Vector3 targetTransform = new Vector3(targetSize / 8f, targetSize / 8f, 1f);
+        Vector3 targetTransform = new Vector3(targetSize / 5f, targetSize / 5f, 1f);
         while (Vector3.Distance(transform.localScale, targetTransform) > 0.01f)
         {
             transform.localScale = Vector3.SmoothDamp(transform.localScale, targetTransform, ref velocity, smoothTime);

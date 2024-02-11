@@ -21,9 +21,9 @@ public class HealingFragment : MonoBehaviour
     }
     private void Update()
     {
-        regen = playerStats.shipMaxHealth * 0.0005f;
+        regen = playerStats.shipMaxHealth * 0.01f;
         timer += Time.deltaTime;
-        if (timer >= 3f)
+        if (timer >= 3f && playerStats.shipCurrentHealth < playerStats.shipMaxHealth)
         {
             healAnimator.SetTrigger("Play");
             healingSound.Play();

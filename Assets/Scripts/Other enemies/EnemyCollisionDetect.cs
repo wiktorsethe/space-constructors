@@ -39,6 +39,25 @@ public class EnemyCollisionDetect : MonoBehaviour
                     transform.parent.GetComponent<EnemyShip>().StartStun();
                 }
             }
+            if (transform.parent.tag == "MinionShip")
+            {
+                if (collision.GetComponent<ShootingBullet>().type == "PoisonBullet")
+                {
+                    transform.parent.GetComponent<FirstBossMinionScript>().StartPoison();
+                }
+                if (collision.GetComponent<ShootingBullet>().type == "NormalBullet" || collision.GetComponent<ShootingBullet>().type == "HomingBullet")
+                {
+                    transform.parent.GetComponent<FirstBossMinionScript>().CollisionDetected((int)collision.GetComponent<ShootingBullet>().damage);
+                }
+                if (collision.GetComponent<ShootingBullet>().type == "FlameBullet")
+                {
+                    transform.parent.GetComponent<FirstBossMinionScript>().StartFlame();
+                }
+                if (collision.GetComponent<ShootingBullet>().type == "StunningBullet")
+                {
+                    transform.parent.GetComponent<FirstBossMinionScript>().StartStun();
+                }
+            }
         }
     }
 }

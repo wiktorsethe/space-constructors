@@ -11,6 +11,7 @@ public class Paralax : MonoBehaviour
     private Camera mainCam;
     [SerializeField] private float parallaxEffect;
     [SerializeField] private GameObject space;
+    public bool isFightingWithBoss = false;
     private void Start()
     {
         startPosX = transform.position.x;
@@ -19,10 +20,9 @@ public class Paralax : MonoBehaviour
     }
     private void Update()
     {
-        if (space)
+        if (space && !isFightingWithBoss)
         {
             space.transform.position = GameObject.FindGameObjectWithTag("Player").transform.position;
-
         }
         else
         {
@@ -41,9 +41,6 @@ public class Paralax : MonoBehaviour
 
             if (tempY > startPosY + lengthY) { startPosY += lengthY; }
             else if (tempY < startPosY - lengthY) { startPosY -= lengthY; }
-
-
         }
-
     }
 }

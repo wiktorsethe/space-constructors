@@ -25,7 +25,7 @@ public class FirstBossFlamethrowerAttackState : StateMachineBehaviour
         {
             if (Vector2.Distance(animator.transform.position, newPos) > playerSize * 1.1f)
             {
-                animator.transform.position = Vector2.MoveTowards(animator.transform.position, newPos, (playerStats.shipSpeedValue * 1.5f) * Time.deltaTime);
+                animator.transform.position = Vector2.MoveTowards(animator.transform.position, newPos, (playerStats.shipSpeedValue * 0.5f) * Time.deltaTime);
             }
             else
             {

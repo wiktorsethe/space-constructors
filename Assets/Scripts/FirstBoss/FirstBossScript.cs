@@ -202,6 +202,7 @@ public class FirstBossScript : MonoBehaviour
                 bullet.SetActive(true);
                 bullet.GetComponent<ShootingBullet>().target = target;
                 bullet.GetComponent<ShootingBullet>().damage = 1;
+                bullet.GetComponent<ShootingBullet>().ChangeSize();
                 Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
                 Vector2 bulletVelocity = firePoints[i].up * bulletSpeed;
                 rb.velocity = bulletVelocity;

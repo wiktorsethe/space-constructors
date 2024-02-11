@@ -72,6 +72,7 @@ public class MenuMisteriousPlace : MonoBehaviour
         misteriousManMenu.SetActive(true);
         forgeManMenu.SetActive(false);
         changeManMenu.SetActive(false);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         for (int i=0; i<cardsDB.cards.Length; i++)
         {
             GameObject obj = Instantiate(cardPrefab, misteriousManMenu.transform.Find("Scroll").transform.Find("Panel").transform);
@@ -91,6 +92,7 @@ public class MenuMisteriousPlace : MonoBehaviour
         misteriousManMenu.SetActive(false);
         forgeManMenu.SetActive(true);
         changeManMenu.SetActive(false);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>().velocity = Vector2.zero;
     }
     public void ChangeManMenu()
     {
@@ -100,6 +102,7 @@ public class MenuMisteriousPlace : MonoBehaviour
         misteriousManMenu.SetActive(false);
         forgeManMenu.SetActive(false);
         changeManMenu.SetActive(true);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>().velocity = Vector2.zero;
     }
     public void Restart()
     {

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3477588971784978335}
   m_Layer: 0
   m_Name: FirstBossMinion
-  m_TagString: EnemyShip
+  m_TagString: MinionShip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3477588971784978334}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.7, y: -3.43, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3477588971854347954}
@@ -51,6 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerStats: {fileID: 11400000, guid: 284895b3224468a48aa2a763a688b966, type: 2}
   moveSpeed: 2
+  bossObject: {fileID: 0}
   damageTextPrefab: {fileID: 8062151463999637536, guid: b9d2f93f3a98b4d4b8a1be849730c94f, type: 3}
   canvas: {fileID: 8979577414003372759}
   healthBarCanvas: {fileID: 8979577414003372754}
@@ -89,7 +90,6 @@ MonoBehaviour:
   currentHealth: 0
   animator: {fileID: 3477588971784978335}
   retreatVector: {x: 0, y: 0}
-  pivotObject: {fileID: 0}
 --- !u!114 &3477588971784978328
 MonoBehaviour:
   m_ObjectHideFlags: 0

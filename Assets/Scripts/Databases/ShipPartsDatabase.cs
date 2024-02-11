@@ -85,7 +85,7 @@ public class ShipPartsDatabase : ScriptableObject
         shipParts[8].screwCost = 15;
         shipParts[8].gravityBonus = 1;
         shipParts[8].hpBonus = 10;
-        shipParts[8].isOwned = true;
+        shipParts[8].isOwned = false;
 
         //part 9
         shipParts[9].ownedAmount = 10;
@@ -93,7 +93,7 @@ public class ShipPartsDatabase : ScriptableObject
         shipParts[9].screwCost = 15;
         shipParts[9].gravityBonus = 1;
         shipParts[9].hpBonus = 10;
-        shipParts[9].isOwned = true;
+        shipParts[9].isOwned = false;
 
         //part 10
         shipParts[10].ownedAmount = 0;
@@ -109,7 +109,7 @@ public class ShipPartsDatabase : ScriptableObject
         shipParts[11].screwCost = 15;
         shipParts[11].gravityBonus = 1;
         shipParts[11].hpBonus = 10;
-        shipParts[11].isOwned = true;
+        shipParts[11].isOwned = false;
 
         //part 12
         shipParts[12].ownedAmount = 10;
@@ -117,7 +117,7 @@ public class ShipPartsDatabase : ScriptableObject
         shipParts[12].screwCost = 15;
         shipParts[12].gravityBonus = 1;
         shipParts[12].hpBonus = 10;
-        shipParts[12].isOwned = true;
+        shipParts[12].isOwned = false;
 
         //part 13
         shipParts[13].ownedAmount = 10;
@@ -125,6 +125,6 @@ public class ShipPartsDatabase : ScriptableObject
         shipParts[13].screwCost = 15;
         shipParts[13].gravityBonus = 1;
         shipParts[13].hpBonus = 10;
-        shipParts[13].isOwned = true;
+        shipParts[13].isOwned = false;
     }
 }

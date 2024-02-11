@@ -88,16 +88,10 @@ public class ShootingBombBullet : MonoBehaviour
     }
     public void ChangeSize()
     {
-        float cameraHeight = cam.orthographicSize * 0.13f;
-        float cameraWidth = cameraHeight * cam.aspect;
-        if (cameraHeight != camHeight)
-        {
-            float scaleX = cameraWidth / transform.localScale.x;
-            float scaleY = cameraHeight / transform.localScale.y;
-
-            float objectScale = Mathf.Min(scaleX, scaleY);
-            transform.localScale = new Vector3(objectScale, objectScale, 1f);
-            camHeight = cameraHeight;
-        }
+        Camera mainCamera = Camera.main;
+        float orthographicSize = mainCamera.orthographicSize;
+        float currentSize = orthographicSize * 2f;
+        float scaleFactor = currentSize / 24;
+        transform.localScale = new Vector3(scaleFactor, scaleFactor, 1f);
     }
 }
