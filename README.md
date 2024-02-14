@@ -5,6 +5,6 @@ The project is called Space Constructors - it is a fun and simple demo game that
 
 ## How to play?
 You can download the game from the Play store on Android <br>
-[SOON] <br>
+https://play.google.com/store/apps/details?id=space.constructors <br>
 or download it from here and fire it up in Unity :) <br>
 Unfortunately, $99 a year is too high a price to release a project on IOS.
