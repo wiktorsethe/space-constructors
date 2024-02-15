@@ -66,11 +66,11 @@ public class PlayerStats : ScriptableObject
         shipCurrentShield = 0;
         shipMaxShield = 0;
         shipSpeedValue = 40;
-        level = 4;
-        experience = 800;
+        level = 1;
+        experience = 0;
         shipGravity = 1;
-        ore = 1500;
-        screw = 550;
+        ore = 50;
+        screw = 10;
         bestTime = 0;
         mostKills = 0;
         mostGoldEarned = 0;

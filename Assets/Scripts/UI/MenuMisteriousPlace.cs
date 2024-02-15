@@ -153,6 +153,10 @@ public class MenuMisteriousPlace : MonoBehaviour
         camSize.CamSize(mainCam.orthographicSize / 3f, 5f);
         Invoke("ChangeScene", 5f);
     }
+    private void ChangeScene()
+    {
+        StartCoroutine("LoadUniverse");
+    }
     private IEnumerator LoadMenu()
     {
         levelLoader.SetActive(true);

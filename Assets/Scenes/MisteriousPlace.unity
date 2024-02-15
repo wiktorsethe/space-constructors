@@ -4445,7 +4445,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementJoystick: {fileID: 414894267}
   rotationJoystick: {fileID: 1551144819}
-  moveSpeed: 10
+  moveSpeed: 18
   rotationSpeed: 20
   arrowPrefab: {fileID: 0}
   arrow: {fileID: 0}
