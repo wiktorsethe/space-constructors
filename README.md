@@ -8,3 +8,6 @@ You can download the game from the Play store on Android <br>
 https://play.google.com/store/apps/details?id=space.constructors <br>
 or download it from here and fire it up in Unity :) <br>
 Unfortunately, $99 a year is too high a price to release a project on IOS.
+
+## Short video gameplay
+https://www.youtube.com/watch?v=BiaXmhiUQds&t=2s
